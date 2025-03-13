@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body{
+            /* font-weight:500; */
+            /* font-family:'Times New Roman', Times, serif; */
+            padding-left:110px;
+            padding-right:110px;
+
+        }
+        custom-heading[level='1'] {
+            font-family: 'Times New Roman', Times, serif;
+            color: red;
+            font-weight: 900;
+            font-size: x-large;
+            text-align: center; 
+            display: block;
+            margin: 0 auto;
+        }
+        custom-heading[level='2']{
+            font-family: 'Times New Roman', Times, serif;
+            color: red;
+            font-weight: 900;
+            text-align: center;
+            font-size: x-large;
+        }
+        sub-heading{
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(26, 100, 184);
+            font-weight: bold;
+            font-size: large;
+        }
+        image-tag{
+            font-family: Arial, sans-serif;
+            /* background-color: #f0f0f0; */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        custom-style{
+            font-style: italic;
+        }
+        custom-process{
+            font-family: 'Times New Roman', Times, serif;
+            padding: 10px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        custom-spacing{
+            margin-top: 15px;
+            margin-bottom:5px;
+            display: block;
+        }
+        /*.container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }*/
+        .container-1 {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            background-color:rgba(251, 253, 255, 0.489);
+        }
+        .container img {
+            width: 150px; 
+            height: 150px;
+            object-fit:fill;
+            background-color:rgba(251, 253, 255, 0.489);
+        }
+    </style>
+<body>
+
+<p>
+    <custom-heading level="1">2 ANSYS OPERATIONS</custom-heading level='1'>
+
+<custom-heading level='2'>2.1 Getting Started</custom-heading level='2'><br>
+<custom-spacing>There are three basic choices (Fig. 2.1) to start ANSYS from the
+Windows Start Menu.</custom-spacing>
+<div class="container-1">
+    <span><img src="0.jpg" alt="image" width="170px"></span>
+    <span><img src="1.jpg" alt="image" width="230px"></span>
+</div> 
+<image-tag>Fig. 2.1 Three basic choices to start ANSYS</image-tag>
+
+<custom-style>ANSYS Workbench:</custom-style> This is a new GUI with an emphasis on CAD connectivity,
+ease of use, and easy management of assembly contact.<br>
+<custom-spacing><custom-style>ANSYS:</custom-style> This starts ANSYS in the traditional GUI. The program starts
+immediately using the settings last changed under the next item, ‘Configure
+ANSYS Products’.</custom-spacing><br>
+<custom-style>Configure ANSYS Products:</custom-style> This choice brings up the ANSYS Launcher.<br>
+<custom-spacing>ANSYS has many finite-element analysis capabilities, ranging from a
+simple, linear, static analysis to a complex, nonlinear, transient dynamic
+analysis.</custom-spacing>The process for a typical analysis involves three general tasks:<br>
+<ul>
+    <li>Building the model
+    <li>Applying loads and obtaining the solution
+    <li>Reviewing the results.
+</ul>
+<sub-heading>2.1.1 Building the Model</sub-heading><br>
+<custom-spacing>Building a finite element model requires more time than any other part
+of the analysis. First, specify a jobname and analysis title. Then, use the
+preprocessor to define the element type(s), element real constant(s), material
+properties and the model geometry.</custom-spacing>
+<sub-heading>2.1.1.1 Specifying a Jobname and Analysis Title</sub-heading>
+This task is not required for an analysis, but is recommended.
+<b>Defining the Jobname</b>
+The <custom-style>jobname </custom-style> a name that identifies an analysis job. When the
+analyst defines a jobname for an analysis, the jobname becomes the first part
+of the name of all files the program creates. The extension or suffix for these
+files&#39; names is a file identifier such as .DB. Using a jobname for each analysis,
+ensures that no files are overwritten.
+If a jobname is not specified, all files receive the name FILE or file,
+depending on the operating system. The default jobname can be changed
+using  <custom-process>Utility Menu&gt; File&gt; Change Jobname.</custom-process>
+<b>Defining an Analysis Title</b>
+<custom-process>Utility Menu&gt; File&gt;</custom-process> Change Title defines a title for the analysis. The
+program includes the title on all graphics displays and on the solution output.
+<b>Defining Units</b>
+The program does not assume a system of units for the analysis. Any
+system of units can be used so long as the same system is used for all the
+data entered.
+<sub-heading>2.1.1.2 Defining Element Types</sub-heading>
+The element library contains more than 150 different element types.
+Each element type has a unique number and a prefix that identifies the
+element category: PLANE182, SOLID185, BEAM188, ELBOW290, and so on.
+The element type determines, among other things:
+<ul>
+    <li> degree-of-freedom set
+    <li>Whether the element lies in 2-D or 3-D space.
+</ul>
+BEAM188, for example, has six structural degrees of freedom (UX, UY,
+UZ, ROTX, ROTY, ROTZ), is a line element, and can be modeled in 3-D
+space.  User must be in the general preprocessor to define element types.
+While defining the actual elements, point to the appropriate type reference
+number using the <custom-process>Main Menu&gt; Preprocessor&gt; Modeling&gt; Create&gt;
+Elements&gt; Elem Attributes.</custom-process>
+<sub-heading>2.1.1.3 Defining Element Real Constants</sub-heading>
+Element real constants are properties that depend on the element
+type, such as the cross-sectional properties of a beam element. Not all
+element types require real constants, and different elements of the same type
+may have different real constant values.
+As with element types, each set of real constants has a reference
+number, and the table of reference number versus real constant set is called
+the real <custom-style>constant table.</custom-style> While defining the elements, point to the appropriate
+real constant reference number using <custom-process>Main Menu&gt; Preprocessor&gt;
+Modeling&gt; Create&gt; Elements&gt; Elem Attributes.</custom-process>
+<sub-heading>2.1.1.4 Defining Material Properties</sub-heading>
+Most element types require material properties. Depending on the
+application, material properties can be linear or nonlinear. As with element
+types and real constants, each set of material properties has a material
+reference number. The table of material reference numbers versus material
+property sets is called the material table. Within one analysis, there may be
+multiple material property sets. The program identifies each set with a unique
+reference number.
+<b>Linear Material Properties</b>
+Linear material properties can be constant or temperature-dependent,
+and isotropic or orthotropic. Use <custom-style>Main Menu&gt; Preprocessor&gt; Material
+Props&gt; Material Models</custom-style> to define constant  material properties.
+Also specify the appropriate property label; for example EX, EY, EZ for
+Young&#39;s modulus, KXX, KYY, KZZ for thermal conductivity, and so forth. For
+isotropic material it is necessary to define only the X-direction property; the
+other directions default to the X-direction value.
+Besides the defaults for Y- and Z-direction properties (which default to
+the X-direction properties), other material property defaults are built in to
+reduce the amount of input. For example, Poisson&#39;s ratio (NUXY) defaults to
+0.3 and shear modulus (GXY) defaults to EX/2(1+NUXY).
+The analyst can choose constant, isotropic, linear material properties
+from a material library available through the GUI. Young&#39;s modulus, density,
+coefficient of thermal expansion, Poisson&#39;s ratio, thermal conductivity and
+specific heat are available for 10 materials in four unit systems.
+<b>Material Model Interface</b>
+The program GUI includes an intuitive hierarchical tree structure
+interface for defining many material models. A logical top-down arrangement
+of material categories guides in defining the appropriate model for the
+analysis.
+<b>Accessing the Material Model Interface</b>
+Access the material model interface via <custom-process>Main Menu&gt; Preprocessor&gt;
+Material Props&gt; Material Models.</custom-process> The <b>Define Material Model
+Behavior</b> dialog box appears, which originally displays the top level of the
+tree structure, as shown in Fig. 2.2.
+<custom-spacing><div class="container-1">
+    <span><img src="2.jpg" alt="image" width="400px"></span>
+</div></custom-spacing> 
+<image-tag>Fig. 2.2  Material Model Interface Initial Screen</image-tag>
+
+<b>Choosing Material Behavior</b><br>
+The <b>Material Models Available</b> window on the right displays a list of
+material categories. If a category is preceded by a folder icon, there are
+subcategories available under the main category. On double-clicking on the
+category, the subcategories appear indented, and below the category as
+shown in Fig. 2.3.
+<custom-spacing><div class="container-1">
+    <span><img src="3.jpg" alt="image" width="400px"></span>
+</div></custom-spacing> 
+<image-tag>Fig. 2.3  Material Model Interface Tree Structure</image-tag>
+
+For example, under Structural are categories Linear, Nonlinear, and
+others. The models are further categorized so that the analyst will eventually
+see a vertical list of material property sets or material models that are
+included under that category. Once it is decided which material property set
+or model will be used, then choose it by double-clicking on the item. A dialog
+
+5
+
+box appears that prompts for the required input data for that  particular
+model or property set.
+<b>Entering Material Data</b>
+Included in a data input dialog box is a table whose rows and columns
+can be altered depending on the requirements of the specific material
+property or model chosen. A typical data input dialog box is shown in Fig. 2.4.
+<custom-spacing><div class="container-1">
+    <span><img src="4.jpg" alt="image" width="400px"></span>
+</div></custom-spacing> 
+<image-tag>Fig. 2.4  A Data Input Dialog Box</image-tag>
+
+There are two interaction areas within a material data input dialog box:
+the data input table, and a series of action buttons that appear at the bottom.
+Depending on the material item defined, the labels in the table vary, as do
+the number of rows and columns that appear initially. The material item also
+dictates the number of rows and columns that are allowed to be added or
+deleted. In most cases, the columns represent temperatures, and the rows
+represent data values.
+<b>Temperature Dependent Data</b>
+Initially, the table is set up for temperature independent data so the
+temperature field is grayed out. At this point, should the analyst decide to
+enter data for various temperatures, s/he can quickly add columns of text
+fields for the data representing each temperature. The temperature
+dependent data can be added or deleted at any time. There is no necessity
+to predetermine if the data should be temperature dependent.
+
+<b>Adding and Deleting Columns</b>
+In order to add a column, position the text cursor in any field in the
+existing column, then click on the Add Temperature button. A new column
+appears to the right of the existing column, and both temperature fields
+become active, as shown in Fig. 2.5.
+<custom-spacing><div class="container-1">
+    <span><img src="5.jpg" alt="image" width="400px"></span>
+</div></custom-spacing> 
+<image-tag>Fig. 2.5  Data Input Dialog Box - Added Column</image-tag>
+
+Then enter the two temperatures and the associated data in the rows.
+More temperature columns can be added, as needed, by following the same
+procedure. Insert columns between existing columns by clicking the text
+cursor in a field within a column that is to the left of where it is nesessary to
+insert the new column, then clicking on the <b>Add Temperature</b> button. A scroll
+bar appears across the bottom of the table when the number of columns
+exceeds the width of the dialog box.
+<b>Adding and Deleting Rows</b>
+It may be necessary to add another row of constants or other data for
+a specific temperature. Then add or delete rows in a similar way as is
+described above for adding or deleting columns. In order to add a row, click
+the text cursor in any field in an existing row, then click on the <b>Add Row (or
+Add Point)</b> button. A new row appears beneath the existing row, as shown
+in Fig. 2.6.
+<custom-spacing><div class="container-1">
+    <span><img src="6.jpg" alt="image" width="400px"></span>
+</div></custom-spacing> 
+<image-tag>Fig. 2.6  Data Input Dialog Box - Added Row</image-tag>
+
+<custom-spacing>More rows can be added, as needed, by following the same procedure.
+    Insert rows between existing rows by positioning the text cursor in a field in 
+    the top row, then clicking on the <b>Add Row (or Add Point)</b> button. 
+    A vertical scroll bar appears in the table when the number of rows exceeds 
+    the height of the dialog box.</custom-spacing>
+
+<b>Entering/Editing Data in Text Fields</b><br>
+<custom-spacing>When a data dialog box first appears, one of the text fields is 
+    selected (black highlight), meaning that the field is ready to accept and display 
+    data as the analyst types. The arrow keys can be used to move the selection status 
+    to other text fields. Also, pressing the Tab key allows to move the selection status 
+    to the text field positioned to the right of the field that is currently selected.</custom-spacing><br>
+<custom-spacing>When the analyst starts typing within a text field, the highlight is 
+    replaced by the characters that are typed. The left and right arrow keys can be used 
+    to position the text cursor anywhere within the field should it be necessary to replace 
+    or delete characters in that field.</custom-spacing><br>
+<custom-spacing>In order to edit data, first select the text field either by clicking on 
+    the field, or using the arrow keys to move the selection status to the particular field.</custom-spacing>
+
+<b>Logging/Editing Material Data</b><br>
+<custom-spacing>The <custom-style>Material Models Defined</custom-style> window displays a log 
+    of each material model specified. After OK is chosen in the data input dialog box, this 
+    window displays a folder icon, and <custom-style>Material Model Number #</custom-style>,
+    followed by the properties defined for this model. Additional models can be defined with 
+    unique numbers by choosing <custom-process>Material> New Model</custom-process>, then 
+    typing a new number in the <custom-style>Define Material ID</custom-style> dialog box.
+    On double-clicking on any material model or property, the associated data input dialog 
+    box appears where the data can be edited, if chosen.</custom-spacing>
+
+<b>Using Material Library Files</b><br>
+<custom-spacing>Although material properties can be defined separately for each finite element
+    analysis, the analyst can also store a material property set in an archival material
+    library file, then retrieve the set and reuse it in multiple analyses. Each material 
+    property set has its own library file. The material library files also enable several
+    users to share commonly used material property data.</custom-spacing>
+
+<sub-heading>2.1.1.5 Creating the Model Geometry</sub-heading><br>
+<custom-spacing>Once material properties are defined, the next step in an analysis is
+    generating a finite element model - nodes and elements - that adequately describes the
+    model geometry. Figure 2.7 shows some sample finite element models.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="7.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+<image-tag>Fig. 2.7 Sample Finite Element Models</image-tag>
+
+<custom-spacing>There are two methods to create the finite element model: solid
+    modeling and direct generation. In <custom-style>solid modeling</custom-style>,
+    the analyst describes the geometric shape of model, then instructs the program to 
+    automatically <custom-style>mesh</custom-style> the geometry with nodes and elements.
+    The size and shape in the elements that the program creates can be controlled. 
+    In <custom-style>direct generation</custom-style>, s/he ‘manually’ defines the 
+    location of each node and the connectivity of each element. Several convenience 
+    operations, such as copying patterns of existing nodes and elements, symmetry 
+    reflection, etc. are available.</custom-spacing>
+
+<sub-heading>2.1.2 Applying Loads and Obtaining the Solution</sub-heading><br>
+<custom-spacing>In this step, the SOLUTION processor defines the analysis type and 
+    analysis options, apply loads, specify load step options, and initiate the finite 
+    element solution. Loads can also be applied via the PREP7 preprocessor.</custom-spacing>
+
+<sub-heading>2.1.2.1 Specifying the Analysis Type and Analysis Options</sub-heading><br>
+<custom-spacing>Specify the analysis type based on the loading conditions and the 
+    response to be calculated. For example, if natural frequencies and mode shapes 
+    are to be calculated, choose a modal analysis. The following analysis types can be 
+    performed in the program: static (or steady-state), transient, harmonic, modal, 
+    spectrum, buckling, and substructuring.</custom-spacing><br>
+<custom-spacing>Analysis options allows the analyst to customize the analysis type. 
+    Typical analysis options are the method of solution, stress stiffening on or off, 
+    and Newton-Raphson options.</custom-spacing><br>
+<custom-spacing>Use <custom-process>Main Menu> Preprocessor> Loads> Analysis Type> New Analysis</custom-process> 
+    or <custom-process>Main Menu> Preprocessor> Loads> Analysis Type> Restart</custom-process> 
+    to define the analysis type and analysis options.</custom-spacing><br>
+<custom-spacing>The analyst can specify either a new analysis or a restart, but a new a
+    analysis is the norm in most cases. A multiframe restart that allows to restart an
+    analysis at any point is available for static and transient analyses. The analysis 
+    type and analysis options cannot be changed after the first solution.</custom-spacing><br>
+<custom-spacing>After the analysis type and analysis options are defined, the next step 
+    is to apply loads. Some structural analysis types require other items to be defined 
+    first, such as master degrees of freedom and gap conditions.</custom-spacing>
+
+<sub-heading>2.1.2.2 Applying Loads</sub-heading><br>
+<custom-spacing>The word <custom-style>loads</custom-style> as used in ANSYS includes 
+    boundary conditions (constraints, supports, or boundary field specifications) as well 
+    as other externally (Fig. 2.8) and internally applied loads. Loads are divided into 
+    following categories:</custom-spacing>
+<ul>
+    <li>DOF Constraints
+    <li>Forces
+    <li>Surface Loads
+    <li>Body Loads
+    <li>Inertia Loads
+    <li>Coupled-field Loads
+</ul>
+<custom-spacing><div class="container-1">
+    <span><img src="22.png" alt="image" width="500px"></span>
+</div></custom-spacing> 
+<image-tag>Fig. 2.8 External Loads</image-tag>
+
+<custom-spacing>Most of these loads can be applied either on the solid model 
+    (keypoints, lines, and areas) or the finite element model (nodes and elements). Two 
+    important load-related terms need to be known are load step and substep.
+    A <custom-style>load step</custom-style> is simply a configuration of loads for 
+    which a solution is to be obtained. In a structural analysis, for example, the 
+    analyst may apply wind loads in one load step and gravity in a second load step. 
+     steps are also useful in dividing a transient load history curve into several segments.</custom-spacing><br>
+<custom-spacing><custom-style>Substeps</custom-style> are incremental steps taken 
+    within a load step. They are mainly used for accuracy and convergence purposes 
+    in transient and nonlinear analyses. Substeps are also known as <custom-style>time steps</custom-style> 
+    - steps taken over a period of time.</custom-spacing><br>
+<custom-spacing>The program uses the concept of <custom-style>time</custom-style> 
+    in transient analyses as well as static (or steady-state) analyses. In a transient 
+    analysis, time represents actual time, in seconds, minutes, or hours. In a static or steady-state analysis, time simply acts as a counter to identify load steps and substeps.</custom-spacing><br>
+<custom-spacing>Loads and boundary conditions can be applied in both the Preprocessor 
+    (<custom-process>Main Menu > Preprocessor > Loads > Define Loads > Apply</custom-process>),
+     and the Solution processor (<custom-process>Main Menu > Solution > Define Loads > Apply</custom-process>).</custom-spacing>
+<ol>
+    <li>Select the kind of constraint to be applied.
+    <li>Select the geometric entity on which it is to be applied.
+    <li>Enter the value and direction for it.
+</ol>
+<custom-spacing>There is no modify command for loads and B.C.’s. If a mistake is made simply
+    apply it again with a new value (the old one will be replaced if it’s on the same entity), 
+    or delete it and reapply it.</custom-spacing><br>
+<custom-spacing>Although loads and boundary conditions can be applied to nodes or elements, 
+    it’s generally better to apply all B.C.’s to the geometry. When the solve command is issued, 
+    they will be automatically transferred to the underlying nodes and elements. If B.C.’s are 
+    put on the geometry, that geometry can be remeshed without having to reapply them.</custom-spacing>
+
+<sub-heading>2.1.2.3 Specifying Load Step Options</sub-heading><br>
+<custom-spacing>Load step options are options that the analyst can change from load step 
+    to load step, such as number of substeps, time at the end of a load step, and output 
+    controls. Depending on the type of analysis s/he is doing, load step options may or may 
+    not be required. The analysis procedures in the analysis guide manuals describe the 
+    appropriate load step options as necessary.</custom-spacing>
+
+<sub-heading>2.1.2.4 Initiating the Solution</sub-heading><br>
+<custom-spacing>Use <custom-process>Main Menu> Solution> Solve> Current LS</custom-process>
+     to initiate solution calculations. When this command is issued, the program takes model 
+     and loading information from the database and calculates the results. Results are written
+      to the results file (Jobname.RST, Jobname.RTH, or Jobname.RMG) and also to the database.
+       The only difference is that only one set of results can reside in the database at one 
+       time, while ANSYS can write all sets of results (for all substeps) to the results file.</custom-spacing><br>
+<custom-spacing>Multiple load steps can be solved in a convenient manner using: 
+    <custom-process>Main Menu> Solution> Solve> From LS Files</custom-process>.</custom-spacing>
+
+<sub-heading>2.1.3 Reviewing the Results</sub-heading><br>
+<custom-spacing>After the solution has been calculated, use the postprocessors to review the 
+    results. Two postprocessors are available: POST1 and POST26.</custom-spacing><br>
+<custom-spacing>Use <custom-style>POST1</custom-style>, the general postprocessor, to review 
+    results at one substep (time step) over the entire model or selected portion of the model. 
+    The GUI path for entering POST1 is <custom-process>Main Menu> General Postproc</custom-process>, 
+    valid only at the Begin level. The analyst can obtain contour displays, deformed shapes, and tabular 
+    listings to review and interpret the results of the analysis. POST1 offers many other capabilities, 
+    including error estimation, load case combinations, calculations among results data, and path operations.</custom-spacing><br>
+<custom-spacing>Use <custom-style>POST26</custom-style>, the time-history postprocessor, to review 
+    results at specific points in the model over all time steps. The GUI path for entering POST26 
+    is <custom-process>Main Menu> TimeHist Postpro</custom-process>, valid only at the Begin level. 
+    Graph plots of results data versus time (or frequency) and tabular listings can be obtained.</custom-spacing>
+
+<custom-heading level="2">2.2 Loading</custom-heading><br>
+<custom-spacing>The primary objective of a finite element analysis is to examine how a structure
+    or component responds to certain loading conditions. Specifying the proper loading conditions 
+    is, therefore, a key step in the analysis. Loads can be applied on the model in a variety of ways.
+     With the help of load step options, the analyst can control how the loads are actually used during solution.</custom-spacing>
+
+<sub-heading>2.2.1 Understanding Loads</sub-heading><br>
+<custom-spacing>The term <custom-style>loads</custom-style> includes <custom-style>boundary conditions</custom-style>
+     and externally or internally applied forcing functions, as illustrated in Fig. 2.9. Examples 
+     of loads in different disciplines are:</custom-spacing><br>
+<b>Structural:</b> displacements, velocities, accelerations, forces, pressures, temperatures 
+(for thermal strain), gravity<br>
+<b>Thermal:</b> temperatures, heat flow rates, convections, internal heat generation, infinite surface<br>
+<custom-spacing>Boundary conditions, as well as other types of loading, are also shown.</custom-spacing>
+<custom-spacing><div class="container-1">
+    <span><img src="9.jpg" alt="image" width="300px"></span>
+</div></custom-spacing> 
+<image-tag>Fig. 2.9 Loads</image-tag>
+
+<custom-spacing>Loads are divided into six categories: DOF constraints, forces (concentrated loads), surface loads, body loads, inertia loads, and coupled-field loads.</custom-spacing>
+<ul>
+    <li>A <custom-style>DOF constraint</custom-style> fixes a degree of freedom (DOF) to a known 
+        value. Examples of constraints are specified displacements and symmetry boundary conditions
+         in a structural analysis, prescribed temperatures in a thermal analysis, and flux-parallel
+         boundary conditions.
+    <li>A <custom-style>force</custom-style> is a concentrated load applied at a node in the model.
+         Examples are forces and moments in a structural analysis, heat flow rates in a thermal
+          analysis, and current segments in a magnetic field analysis.
+    <li>A <custom-style>surface load</custom-style> is a distributed load applied over a surface.
+         Examples are pressures in a structural analysis and convections and heat fluxes in a thermal analysis.
+    <li>A <custom-style>body load</custom-style> is a volumetric or field load. Examples are 
+        temperatures and fluences in a structural analysis, heat generation rates in a thermal 
+        analysis, and current densities in a magnetic field analysis.
+    <li><custom-style>Inertia loads</custom-style> are those attributable to the inertia (mass matrix) 
+        of a body, such as gravitational acceleration, angular velocity, and angular acceleration. 
+        They are mainly used in a structural analysis.
+    <li><custom-style>Coupled-field loads</custom-style> are simply a special case of one of the
+         above loads, where results from one analysis are used as loads in another analysis. 
+         For example, magnetic forces calculated in a magnetic field analysis can be applied
+          as force loads in a structural analysis.
+</ul>
+<custom-spacing>A <custom-style>load step</custom-style> is simply a configuration of 
+    loads for which a solution is obtained. In a linear static or steady-state analysis,
+     the analyst can use different load steps to apply different sets of loads - wind 
+     load in the first load step, gravity load in the second load step, both loads and a 
+     different support condition in the third load step, and so on. In a transient analysis,
+      multiple load steps apply different segments of the load history curve.</custom-spacing><br>
+<custom-spacing>The program uses the set of elements which the analyst selects for the 
+    first load step. It doesn’t matter which element sets are specified for the later 
+    steps for all subsequent load steps. Use <custom-process>Utility Menu> Select> Entities</custom-process> 
+    to select an element set.</custom-spacing><br>
+<custom-spacing>Figure 2.10 shows a load history curve that requires three load steps -
+    the first load step for the ramped load, the second load step for the constant portion 
+    of the load, and the third load step for load removal.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="10.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+<image-tag>Fig. 2.10 Transient Load History Curve</image-tag>
+
+<sub-heading>2.2.3 The Role of Time in Tracking</sub-heading><br>
+<custom-spacing>The program uses time as a tracking parameter in <custom-style>all</custom-style> 
+    static and transient analyses, whether they are or are not truly time-dependent. The advantage 
+    of this is that the analyst can use one consistent ‘counter’ or ‘tracker’ in all cases, 
+    eliminating the need for analysis-dependent terminology. Moreover, time always increases
+     monotonically, and most things in nature happen over a period of time, however brief 
+     the period may be.</custom-spacing><br>
+<custom-spacing>Obviously, in a transient analysis or in a rate-dependent static 
+    analysis (creep or viscoplasticity), <custom-style>time</custom-style> represents 
+    actual, chronological time in seconds, minutes, or hours. Assign the time at the end of 
+    each load step while specifying the load history curve. Use one of the following to assign time:</custom-spacing>
+<ul>
+    <li><custom-process>Main Menu> Preprocessor> Loads> Load Step Opts> Time/Frequenc> Time and Substps</custom-process>
+    <li><custom-process>Main Menu> Preprocessor> Loads> Load Step Opts> Time/Frequenc> Time - Time Step</custom-process>
+    <li><custom-process>Main Menu> Solution> Analysis Type> Sol'n Control</custom-process>
+    <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Time and Substps</custom-process>
+    <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Time - Time Step</custom-process>
+    <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Time and Substps</custom-process>
+    <li><custom-process>Main Menu> Solution> Load Step Opts> Time /Frequenc> Time - Time Step</custom-process>
+</ul>
+<custom-spacing>In a rate-independent analysis, however, <custom-style>time</custom-style> 
+    simply becomes a counter that identifies load steps and substeps. By default, the program 
+    automatically assigns time = 1.0 at the end of load step 1, time = 2.0 at the end of load step 2,
+    and so on. Any substeps within a load step are assignedthe appropriate, linearly 
+    interpolated time value..</custom-spacing>
+
+
+    <sub-heading>2.2.4 Stepped Versus Ramped Loads</sub-heading><br>
+    <custom-spacing>When more than one substep is specified in a load step, the question of whether the loads should be <custom-style>stepped</custom-style> or <custom-style>ramped</custom-style> arises (Fig. 2.11).</custom-spacing>
+    <ul>
+        <li>If a load is <custom-style>stepped</custom-style>, then its full value is applied at the first substep and stays constant for the rest of the load step.
+        <li>If a load is <custom-style>ramped</custom-style>, then its value increases gradually at each substep, with the full value occurring at the end of the load step.
+    </ul>
+    <custom-spacing><div class="container-1">
+        <span><img src="10.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.11 Stepped Versus Ramped Loads</image-tag>
+    
+    <custom-spacing>Use either of the following to indicate whether loads are ramped or stepped:</custom-spacing>
+    <ul>
+        <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Freq & Substeps: Transient Tab</custom-process>
+        <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Time and Substps</custom-process>
+        <li><custom-process>Main Menu> Solution> Load Step Opts > Time/Frequenc> Time & Time Step</custom-process>
+        <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Freq & Substeps</custom-process>
+        <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Time and Substps / Main Menu> Solution> Load Step Opts> Time/Frequenc> Time & Time Step</custom-process>
+    </ul>
+    
+    <sub-heading>2.2.5 Applying Loads</sub-heading><br>
+    <custom-spacing>Most loads can be applied either on the solid model or on the finite element model. For example, the analyst can specify forces at a keypoint or a node. Similarly, s/he can specify convections on lines and areas or on nodes and element faces. No matter how the loads are specified, the solver expects all loads to be in terms of the finite element model. Therefore, if loads are specified on the solid model, the program automatically transfers them to the nodes and elements at the beginning of solution.</custom-spacing>
+    
+    <sub-heading>2.2.5.1 Solid-Model Loads: Advantages and Disadvantages</sub-heading><br>
+    <b>Advantages</b><br>
+    <custom-spacing>Solid-model loads are independent of the finite element mesh. That is, the element mesh can be changed without affecting the applied loads. This allows to make mesh modifications and conduct mesh sensitivity studies without having to reapply loads each time. The solid model usually involves fewer entities than the finite element model. Therefore, selecting solid model entities and applying loads on them is much easier, especially with graphical picking.</custom-spacing><br>
+    <b>Disadvantages</b><br>
+    <custom-spacing>Elements generated by meshing commands are in the currently active element coordinate system. Nodes generated by meshing commands use the global Cartesian coordinate system. Therefore, the solid model and the finite element model may have different coordinate systems and loading directions. Applying keypoint constraints can be tricky, especially when the constraint expansion option is used. All solid-model loads can not be displayed.</custom-spacing>
+    
+    <sub-heading>2.2.5.2 Finite-Element Loads: Advantages and Disadvantages</sub-heading><br>
+    <b>Advantages</b><br>
+    <custom-spacing>There is no need to worry about constraint expansion. All desired nodes can be selected and the appropriate constraints can be specified.</custom-spacing><br>
+    <b>Disadvantages</b><br>
+    <custom-spacing>Any modification of the finite element mesh invalidates the loads, requiring the analyst to delete the previous loads and re-apply them on the new mesh. Applying loads by graphical picking is inconvenient, unless only a few nodes or elements are involved.</custom-spacing>
+    
+    <sub-heading>2.2.5.3 DOF Constraints</sub-heading><br>
+    <custom-spacing>Following are some of the GUI paths that can be used to apply DOF constraints:</custom-spacing>
+    <ul>
+        <li><custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> load type> On Nodes</custom-process>
+        <li><custom-process>Utility Menu> List> Loads> DOF Constraints> On All Keypoints (or On Picked KPs)</custom-process>
+        <li><custom-process>Main Menu> Solution> Define Loads> Apply> load type> On Lines</custom-process>
+    </ul>
+    
+    <sub-heading>2.2.5.4 Transferring Constraints</sub-heading><br>
+    <custom-spacing>Use <custom-process>Main Menu> Preprocessor> Loads> Define Loads> Operate> Transfer to FE> Constraints</custom-process> or <custom-process>Main Menu> Solution> Define Loads> Operate> Transfer to FE> Constraints</custom-process> to transfer constraints that have been applied to the solid model to the corresponding finite element model.</custom-spacing><br>
+    <custom-spacing>Use <custom-process>Main Menu> Preprocessor> Loads> Define Loads> Operate> Transfer to FE> All Solid Lds</custom-process> or <custom-process>Main Menu> Solution> Define Loads> Operate> Transfer to FE> All Solid Lds</custom-process> to transfer all solid model boundary conditions.</custom-spacing>
+    
+    <sub-heading>2.2.5.6 Forces (Concentrated Loads)</sub-heading><br>
+    <custom-spacing>Following are examples of some of the GUI paths used for applying force loads:</custom-spacing>
+    <ul>
+        <li><custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> load type> On Nodes</custom-process>
+        <li><custom-process>Utility Menu> List> Loads> Forces> On All Keypoints (or On Picked KPs)</custom-process>
+        <li><custom-process>Main Menu> Solution> Define Loads> Apply> load type> On Line</custom-process>
+    </ul>
+    
+    <sub-heading>2.2.5.7 Surface Loads</sub-heading><br>
+    <custom-spacing>Following are examples of some of the GUI paths used for applying surface loads:</custom-spacing>
+    <ul>
+        <li><custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> load type> On Nodes</custom-process>
+        <li><custom-process>Utility Menu> List> Loads> Surface> On All Elements (or On Picked Elements)</custom-process>
+        <li><custom-process>Main Menu> Solution> Define Loads> Apply> load type> On Lines</custom-process>
+    </ul>
+    <custom-spacing>The program stores surface loads specified on nodes internally in terms of elements and element faces. Therefore, if both nodal and element surface load commands are used for the same surface, only the last specification is used.</custom-spacing><br>
+    <custom-spacing>The program applies pressures on axisymmetric shell elements or beam elements on their inner or outer surfaces, as appropriate. In-plane pressure load vectors for layered shells (such as SHELL281) are applied on the nodal plane. KEYOPT(11) determines the location of the nodal plane within the shell. When using flat elements to represent doubly curved surfaces, values which should be a function of the active radius of the meridian be inaccurate.</custom-spacing><br>
+    <b>Applying Pressure Loads on Beams</b><br>
+    <custom-spacing>Use <custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> Structural> Pressure> On Beams</custom-process> or <custom-process>Main Menu> Solution> Define Loads> Apply> Structural> Pressure> On Beams</custom-process> to apply pressure loads on the lateral faces and the two ends of beam elements.</custom-spacing><br>
+    <custom-spacing>Lateral pressures, which have units of force per unit length, can be applied both in the normal and tangential directions. The pressures may vary linearly along the element length, and can be specified on a portion of the element, as shown in Fig. 2.12. The analyst can also reduce the pressure down to a force at any location on a beam element by setting the <custom-style>JOFFST</custom-style> field to -1. End pressures have units of force.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="11.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.12 Example of Beam Surface Loads</image-tag>
+    
+    <sub-heading>2.2.5.8 Applying Body Loads</sub-heading><br>
+    <custom-spacing>Following are examples of some of the GUI paths used for applying body loads:</custom-spacing>
+    <ul>
+        <li><custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> load type> On Nodes</custom-process>
+        <li><custom-process>Utility Menu> List> Loads> Body> On Picked Elems</custom-process>
+        <li><custom-process>Main Menu> Solution> Define Loads> Apply> load type> On Keypoints</custom-process>
+        <li><custom-process>Utility Menu> List> Loads> Body> On Picked Lines</custom-process>
+        <li><custom-process>Main Menu> Solution> Define Loads> Apply> load type> On Volumes</custom-process>
+    </ul>
+    
+    <sub-heading>2.2.5.9 Applying Coupled-Field Loads</sub-heading><br>
+    <custom-spacing>A coupled-field analysis usually involves applying results data from one analysis as loads in a second analysis. For example, the nodal temperatures calculated in a thermal analysis can be applied as body loads in a structural analysis. Similarly, magnetic forces calculated in a magnetic field analysis can be applied as nodal forces in a structural analysis. Use <custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> load type> From source</custom-process> or <custom-process>Main Menu> Solution> Define Loads> Apply> load type> From source</custom-process> to apply such coupled-field loads.</custom-spacing>
+    
+    <sub-heading>2.2.5.10 Axisymmetric Loads and Reactions</sub-heading><br>
+    <custom-spacing>For constraints, surface loads, body loads, and Y-direction accelerations, loads are defined exactly as they would be for any nonaxisymmetric model. However, for concentrated forces the procedure is a little different. For these quantities, input load values of force, moment, etc. are on a ‘360° basis.’ That is, the load value is entered in terms of <custom-style>total load around the circumference</custom-style>. For example, if an axisymmetric axial load of 1500 pounds per inch of circumference were applied to a 10’ diameter pipe (Fig. 2.13), the total load of 47,124 lb. (1500*2 π*5 = 47,124) would be applied to node <custom-style>N</custom-style>.</custom-spacing><br>
+    <custom-spacing>Axisymmetric results are interpreted in the same fashion as their corresponding input loads. That is, reaction forces, moments, etc. are reported on a total load (360°) basis.</custom-spacing><br>
+    <custom-spacing>Axisymmetric harmonic elements require that their loads be supplied in a form that the program can interpret as a Fourier series. The GUI path <custom-process>Main Menu> Preprocessor> Loads> Load Step Opts> Other> For Harmonic Ele</custom-process> or <custom-process>Main Menu> Solution> Load Step Opts> Other> For Harmonic Ele</custom-process>, together with other load commands (D, F, SF, etc.), is required for these elements.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="12.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.13 Concentrated Axisymmetric Loads</image-tag>
+    
+    <sub-heading>2.2.6 Specifying Load Step Options</sub-heading><br>
+    <custom-spacing>As mentioned earlier, <custom-style>load step options</custom-style> is a collective name for options that control how loads are used during solution and other options such as output controls, damping specifications, and response spectrum data. Load step options can vary from load step to load step. There are six categories of load step options:</custom-spacing>
+    <ul>
+        <li>General Options
+        <li>Dynamics Options
+        <li>Nonlinear Options
+        <li>Output Controls
+        <li>Biot-Savart Options
+        <li>Spectrum Options
+    </ul>
+    <custom-spacing>These include such options as time at the end of a load step in transient and static analyses, number of substeps or the time step size, stepping or ramping of loads, and reference temperature for thermal strain calculations.</custom-spacing>
+    
+    <sub-heading>2.2.7 Creating Multiple Load Step Files</sub-heading><br>
+    <custom-spacing>All loads and load step options put together form a <custom-style>load step</custom-style>, for which the program can calculate the solution. If there are multiple load steps, store the data for each load step on a file, called the <custom-style>load step file</custom-style>, and read it in later for solution. Use <custom-process>Main Menu> Preprocessor> Loads> Load Step Opts> Write LS File</custom-process> or <custom-process>Main Menu> Solution> Load Step Opts> Write LS File</custom-process>.</custom-spacing><br>
+    <custom-spacing>If the <custom-style>Solution Controls</custom-style> dialog box is used to set the analysis and load step options, define each load step using the <custom-style>Basic</custom-style> tab. After all load step files are written, use one action command to read in the files sequentially and obtain the solution for each load step.</custom-spacing>
+    
+    <custom-heading level="2">2.3 Solution</custom-heading><br>
+    <custom-spacing>In the solution phase of an analysis, the computer takes over and solves the simultaneous set of equations that the finite element method generates. The results of the solution are:</custom-spacing>
+    <ul>
+        <li>Nodal degree of freedom values, which form the primary solution
+        <li>Derived values, which form the element solution
+    </ul>
+    <custom-spacing>The element solution is usually calculated at the elements' integration points. The program writes the results to the database as well as to the results file (.RST, .RTH, or .RMG files).</custom-spacing>
+    
+    <sub-heading>2.3.1 Selecting a Solver</sub-heading><br>
+    <custom-spacing>Several methods for solving the system of simultaneous equations are available in the program: sparse direct solution, Preconditioned Conjugate Gradient (PCG) solution, Jacobi Conjugate Gradient (JCG) solution, Incomplete Cholesky Conjugate Gradient (ICCG) solution, and Quasi-Minimal Residual (QMR) solution. In addition, distributed versions of the sparse, PCG, and JCG solvers are available for use in Distributed ANSYS.</custom-spacing><br>
+    <custom-spacing>Select a solver using: <custom-process>Main Menu> Preprocessor> Loads> Analysis Type> Analysis Options</custom-process> or <custom-process>Main Menu> Solution> Load Step Options> Sol'n Control (: Sol'n Options Tab)</custom-process> or <custom-process>Main Menu> Solution> Analysis Options</custom-process> or <custom-process>Main Menu> Solution> Unabridged Menu> Analysis Options</custom-process></custom-spacing>
+    
+    <sub-heading>2.3.2 Obtaining the Solution</sub-heading><br>
+    <custom-spacing>Use <custom-process>Main Menu> Solution> Current LS</custom-process> to initiate the solution. Because the solution phase generally requires more computer resources that the other phases of an analysis, it is better suited to batch mode than interactive mode.</custom-spacing><br>
+    <custom-spacing>The solver writes output to the output file (Jobname.OUT) and the results file. If the solution is run interactively, the output ‘file’ is actually the screen. By using one of the following before issuing SOLVE, the output can be diverted to a file instead of the screen: <custom-process>Utility Menu> File> Switch Output to> File or Output Window</custom-process></custom-spacing><br>
+    <custom-spacing>Data written to the output file consist of the following:</custom-spacing>
+    <ul>
+        <li>Load summary information
+        <li>Mass and moments of inertia of the model
+        <li>Solution summary information
+        <li>A final closing banner that gives total CPU time and elapsed time
+        <li>Data requested by the <custom-style>OUTPR</custom-style> output control command or its GUI counterpart
+    </ul>
+    <custom-spacing>In interactive mode, much of the output is suppressed. The results file (.RST, .RTH, or .RMG) contains all results data in binary form, which can be reviewed in the postprocessors.</custom-spacing><br>
+    <custom-spacing>Another useful file produced during solution is <custom-style>Jobname.STAT</custom-style>, which gives the status of the solution. This file can be used to monitor an analysis while it is running. It is particularly useful in iterative analyses such as nonlinear and transient analyses. The <custom-style>SOLVE</custom-style> command calculates the solution for the load step data currently in the database.</custom-spacing>
+    
+    <sub-heading>2.3.3 Solving Multiple Load Steps</sub-heading><br>
+    <custom-spacing>There are three ways to define and solve multiple load steps:</custom-spacing>
+    <ul>
+        <li>Multiple <custom-style>SOLVE</custom-style> method
+        <li>Load step file method
+        <li>Array parameter method
+    </ul>
+    
+    <sub-heading>2.3.3.1 Using the Multiple SOLVE Method</sub-heading><br>
+    <custom-spacing>This method is the most straightforward. It involves issuing the <custom-style>SOLVE</custom-style> command after each load step is defined. The main disadvantage, for interactive use, is that the analyst has to wait for the solution to be completed before defining the next load step.</custom-spacing>
+    
+    <sub-heading>2.3.3.2 Using the Load Step File Method</sub-heading><br>
+    <custom-spacing>The load step file is a convenient method to solve problems while the analyst is away from the terminal. It involves writing each load step to a load step file (via the <custom-style>LSWRITE</custom-style> command or its GUI equivalent) and, with one command, reading in each file and obtaining the solution.</custom-spacing><br>
+    <custom-spacing>Issue <custom-process>Main Menu> Solution> From LS Files</custom-process> to solve multiple load steps. This reads in the load step files sequentially and initiates the solution for each load step.</custom-spacing>
+    
+    <sub-heading>2.3.3.3 Using the Array Parameter Method</sub-heading><br>
+    <custom-spacing>This method, mainly intended for transient or nonlinear static analyses, requires knowledge of array parameters and do-loops, which are part of ANSYS Parametric Design Language (APDL). The array parameter method involves building tables of <custom-style>load</custom-style> versus <custom-style>time</custom-style> using array parameters.</custom-spacing>
+    
+    <custom-heading level="2">2.4 Overview of Postprocessing</custom-heading><br>
+    <custom-spacing>After building the model and obtaining the solution, the analyst wants answers to some critical questions: Will the design really work when put to use? How high are the stresses in this region? How does the temperature of this part vary with time? What is the heat loss across this face of my model? How does the magnetic flux flow through this device? How does the placement of this object affect fluid flow? The postprocessors in the ANSYS program can help answer these questions and others.</custom-spacing><br>
+    <custom-spacing>Postprocessing means reviewing the results of an analysis. It is probably the most important step in the analysis, because the analyst is trying to understand how the applied loads affect the design, how good the finite element mesh is, and so on.</custom-spacing>
+    
+    <sub-heading>2.4.1 Postprocessors Available</sub-heading><br>
+    <custom-spacing>Two postprocessors are available for reviewing the results: POST1, the general postprocessor, and POST26, the time-history postprocessor. POST1 allows the analyst to review the results over the entire model at specific load steps and substeps. In a static structural analysis, for example, s/he can display the stress distribution for load step 3. Or, in a transient thermal analysis, s/he can display the temperature distribution at time = 100 seconds. Figure 2.14 is a typical example of a POST1 plot.</custom-spacing><br>
+    <custom-spacing>POST26 allows the analyst to review the variation of a particular result item at specific points in the model with respect to time, frequency, or some other result item. In a transient magnetic analysis, for instance, the analyst can graph the eddy current in a particular element versus time. Or, in a nonlinear structural analysis, s/he can graph the force at a particular node versus its deflection. A Typical POST26 Graph is shown in Fig. 2.15.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="13.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.14 A Typical POST1 Contour Display</image-tag>
+    <custom-spacing><div class="container-1">
+        <span><img src="14.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.15 A Typical POST26 Graph</image-tag>
+    
+    <custom-spacing>It is important to remember that the postprocessors in ANSYS are just <custom-style>tools</custom-style> for reviewing analysis results. The analyst still needs to use engineering judgment to <custom-style>interpret</custom-style> the results. For example, a contour display may show that the highest stress in the model is 37,800 psi. It is now up to her/him to determine whether this level of stress is acceptable for the design.</custom-spacing>
+    
+    <sub-heading>2.4.2 The Results Files</sub-heading><br>
+    <custom-spacing>The analyst can use <custom-style>OUTRES</custom-style> to direct the ANSYS solver to append selected results of an analysis to the results file at specified intervals during solution. The name of the results file depends on the analysis discipline:</custom-spacing>
+    <ul>
+        <li><custom-style>Jobname.RST</custom-style> for a structural analysis and coupled-field analysis
+        <li><custom-style>Jobname.RTH</custom-style> for a thermal and diffusion analyses
+        <li><custom-style>Jobname.RMG</custom-style> for a magnetic field analysis
+    </ul>
+    <custom-spacing>For fluid analyses, the file extension is <custom-style>.RST</custom-style> or <custom-style>.RTH</custom-style>, depending on whether structural degrees of freedom are present.</custom-spacing>
+    
+    <sub-heading>2.4.3 Types of Data Available for Postprocessing</sub-heading><br>
+    <custom-spacing>The solution phase calculates two types of results data - <custom-style>Primary data</custom-style> and <custom-style>Derived data</custom-style>. <custom-style>Primary data</custom-style> consist of the degree-of-freedom solution calculated at each node: displacements in a structural analysis, temperatures in a thermal analysis, magnetic potentials in a magnetic analysis, and so on. These are also known as nodal solution data.</custom-spacing><br>
+    <custom-spacing><custom-style>Derived data</custom-style> are those results calculated from the primary data, such as stresses and strains in a structural analysis, thermal gradients and fluxes in a thermal analysis, magnetic fluxes in a magnetic analysis, and the like. They are typically calculated for each element and may be reported at any of the following locations: at all nodes of each element, at all integration points of each element, or at the centroid of each element. Derived data are also known as element solution data, except when they are averaged at the nodes. In such cases, they become nodal solution data.</custom-spacing>
+    
+    <custom-heading level="2">2.5 The General Postprocessor (POST1)</custom-heading><br>
+    <custom-spacing>Use POST1, the general postprocessor, to review analysis results over the entire model, or selected portions of the model, for a specifically defined combination of loads at a single time. POST1 has many capabilities, ranging from simple graphics displays and tabular listings to more complex data manipulations such as load case combinations. Issue <custom-process>Main Menu> General Postproc</custom-process> to enter the general postprocessor.</custom-spacing>
+    
+    <sub-heading>2.5.1 Reading Results Data into the Database</sub-heading><br>
+    <custom-spacing>The first step in POST1 is to read data from the results file into the database. Model data must exist in the database to do so. If the database does not already contain model data, issue <custom-process>Utility Menu> File> Resume Jobname.db</custom-process> to read the database file, <custom-style>Jobname.DB</custom-style>. The database should contain the <custom-style>same</custom-style> model for which the solution was calculated, including the element types, nodes, elements, element real constants, material properties, and nodal coordinate systems.</custom-spacing>
+    
+    <sub-heading>2.5.2 Reviewing Results in POST1</sub-heading><br>
+    <custom-spacing>Once the desired results data are stored in the database, the analyst can review them through graphics displays and tabular listings. In addition, s/he can map the results data onto a path.</custom-spacing>
+    
+    <sub-heading>2.5.2.1 Displaying Results Graphically</sub-heading><br>
+    <custom-spacing>Graphics displays are perhaps the most effective way to review results. The following types of graphics can be displayed in POST1:</custom-spacing>
+    <ul>
+        <li>Contour displays
+        <li>Deformed shape displays
+        <li>Vector displays
+        <li>Path plots
+        <li>Reaction force displays
+        <li>Particle flow traces
+    </ul>
+    <sub-heading>2.5.2.2 Listing Results in Tabular Form</sub-heading><br>
+    <custom-spacing>An effective way of documenting analysis results is to produce tabular listings in POST1. Listing options are available for nodal and element solution data, reaction data, element table data, and more.</custom-spacing><br>
+    <b>Listing Nodal and Element Solution Data</b><br>
+    <custom-spacing>Use <custom-process>Main Menu> General Postproc> List Results> Nodal Solution</custom-process> to list specified nodal solution data. Use <custom-process>Main Menu> General Postproc> List Results> Element Solution</custom-process> to list specified results for selected elements.</custom-spacing><br>
+    <custom-spacing>Specify the ELEM option with <custom-style>PRESOL</custom-style> to obtain line element solution printout. The program will list all applicable element results for the selected elements.</custom-spacing><br>
+    <b>Listing Reaction Loads and Applied Loads</b><br>
+    <custom-spacing>There are several options in POST1 for listing reaction loads and applied loads. The GUI path <custom-process>Main Menu> General Postproc> List Results> Reaction Solu</custom-process> lists reactions at constrained nodes in the selected set. The GUI path <custom-process>Main Menu> General Postproc> List Results> Nodal Loads</custom-process> lists the summed element nodal loads for the selected nodes, except for any zero values.</custom-spacing><br>
+    <custom-spacing>Another useful command is <custom-process>Main Menu> General Postproc> Nodal Calcs> Total Force Sum</custom-process>. It calculates and lists the force and moment summation for the selected set of nodes.</custom-spacing><br>
+    <b>Listing Element Table Data</b><br>
+    <custom-spacing>Use <custom-process>Main Menu> General Postproc> Element Table> List Elem Table</custom-process> or <custom-process>Main Menu> General Postproc> List Results> Elem Table Data</custom-process> to list specified data stored in the element table. Use <custom-process>Main Menu> General Postproc> Element Table> Sum of Each Item</custom-process> to list the sum of each column in the element table.</custom-spacing>
+    
+    <sub-heading>2.5.2.3 Using the Results Viewer to Access Results File Data</sub-heading><br>
+    <custom-spacing>The Results Viewer (Fig. 2.16) is a compact toolbar for viewing the analysis results. Selecting the Results Viewer disables much of the standard GUI functionality. Many of these operations are not available because of PowerGraphics limitations. However, a good deal of the POST1 functionality is contained in the Result Viewer menu structure, and in the right and middle mouse button context sensitive menus that are accessible in the Results Viewer.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="15.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.16 The Results Viewer</image-tag>
+    
+    <custom-spacing>The Results Viewer can be used to access any data stored in a valid results file (such as <custom-style>*.RST</custom-style>, <custom-style>*.RTH</custom-style>, and <custom-style>*.RMG</custom-style>). Because the viewer can access results data without loading the entire database file, it is an ideal location from which to compare data from many different analyses.</custom-spacing>
+    
+    <custom-heading level="2">2.6 The Time-History Postprocessor (POST26)</custom-heading><br>
+    <custom-spacing>Use the time-history postprocessor to review analysis results at specific locations in the model as a function of time, frequency, or some other change in the analysis parameters that can be related to time. In this mode, the analyst can process results data in many ways. S/he can construct graphics displays, chart representations or tabular listings, or perform math operations on the data sets. A typical time-history task would be to graph result items versus time in a transient analysis, or to graph force versus deflection in a nonlinear structural analysis.</custom-spacing><br>
+    <custom-spacing>Following is the general process for using the time-history postprocessor:</custom-spacing>
+    <ol>
+        <li>Start the time-history processor, either interactively or via the command line.
+        <li>Define time-history variables. This involves not only identifying the variables, but also storing the variables.
+        <li>Process the variables to develop calculated data or to extract or generate related variable sets.
+        <li>Prepare output. This can be via graph plots, tabular listings or file output.
+    </ol>
+    
+    <sub-heading>2.6.1 Entering the Time-History Postprocessor</sub-heading><br>
+    <custom-spacing>The analyst enters the time history processor to process time or frequency related results data. Once an analysis is solved, ANSYS uses the results data to create a ‘Results File.’ The active results file (<custom-style>*.RST</custom-style>, <custom-style>*.RTH</custom-style>, <custom-style>*.RMG</custom-style>, etc.) is automatically loaded when the analyst enters postprocessing. If the current analysis contains no results file, the program queries for one. The file option can also be used to load any other results file for processing.</custom-spacing>
+    
+    <sub-heading>2.6.2 Importing Data</sub-heading><br>
+    <custom-spacing>This feature allows the analyst to read in set(s) of data from a file into time history variable(s). This enables the user, for instance, to display and compare test results data against the corresponding ANSYS results data.</custom-spacing>
+    
+    <sub-heading>2.6.3 Exporting Data</sub-heading><br>
+    <custom-spacing>This feature allows the analyst to write out selected time history variable(s) to an ASCII file or to APDL array/table parameter. This enables to perform several functions such as pass data on to another program for further processing or to archive data in an easily retrievable format.</custom-spacing>
+    
+    <sub-heading>2.6.4 Reviewing the Variables</sub-heading><br>
+    <custom-spacing>Once the variables are defined, they can be reviewed via graph plots or tabular listings.</custom-spacing>
+    
+    <sub-heading>2.6.4.1 Plotting Result Graphs</sub-heading><br>
+    <custom-spacing>The description for graph plotting, both with the variable viewer and from the command line follows:</custom-spacing><br>
+    <b>Interactive</b><br>
+    <custom-spacing>The ‘Graph Data’ button in the variable viewer allows to plot all the selected variables. A maximum of 10 variables can be plotted on a single graph. By default, the variable used for the X-axis of the graphs is TIME for static and transient analyses or FREQUENCY for harmonic analysis. The analyst can select a different variable for the X-axis of the graph using the radio button under the column X-AXIS in the list of variables.</custom-spacing><br>
+    <custom-spacing>When plotting complex data such as from a harmonic analysis, use the 'results to view' drop-down list on the right top corner of the variable viewer to indicate whether to plot Amplitude (default), Phase angle, Real part or Imaginary part.</custom-spacing><br>
+    <custom-spacing>The variable viewer stores all the time points available on the results file. A portion of this data can be displayed by selecting a range for the X-axis value. This is useful when it is necessary to focus on the response around a certain time point e.g., around the moment of impact in a drop test analysis. This is available in the ‘Data Properties’ dialog under the X-AXIS tab. Note that this is a global setting i.e. this setting is used for all subsequent graph plots.</custom-spacing>
+    
+    <sub-heading>2.6.4.2 Listing Results in Tabular Form</sub-heading><br>
+    <custom-spacing>Use the following procedures to create tabular data lists, interactively:</custom-spacing><br>
+    <b>Interactive</b><br>
+    <custom-spacing>The ‘List Data’ button of the variable viewer can be used to list up to six variables in the variable viewer.</custom-spacing><br>
+    <custom-spacing>When listing complex data such as from a harmonic analysis, use the 'results to view' drop-down list on the right top corner of the variable viewer to indicate whether to printout ‘amplitude and phase angle’ or ‘real and imaginary parts’ in the listing. Select amplitude or phase to list ‘Amplitude and Phase Angle’ results. Select real or imaginary to list ‘Real and Imaginary’ results.</custom-spacing><br>
+    <custom-spacing>Data being listed can be restricted to a range of time or frequency. This and other listing controls are available through the ‘Lists’ tab under Data Properties dialog. In addition to setting the range of time or frequency, this dialog also allows to:</custom-spacing>
+    <ul>
+        <li>Control the number of lines before repeating headers on the listings.
+        <li>Additionally print the extreme values of the selected variables.
+        <li>Specify printing every 'n'th data point.
+    </ul>
+    
+    <custom-heading level="2">2.7 Selecting and Components</custom-heading><br>
+    <sub-heading>2.7.1 Selecting</sub-heading><br>
+    <custom-spacing>Selecting (Fig. 2.17) is an important and fundamental concept in ANSYS. Selected entities are the active entities. All operations (including Solving) are performed on the selected set. In many operations items are selected on the fly; ANSYS prompts for what volumes to mesh for example, analyst picks them with the mouse, and ANSYS does the meshing. However there are many times when it is necessary to select things in more sophisticated ways. Also, in an ANSYS input file or batch file things can not be selected with the mouse!</custom-spacing><br>
+    <custom-spacing>Examples where this would be useful:</custom-spacing>
+    <ul>
+        <li>There are many different areas at Z = 0 analyst wants to constrain. He selects them all one by one when applying the constraint, or selects ‘By Location’ beforehand, then says ‘Pick All’ in the picking dialog.
+        <li>There is a structure with many fastener holes that analyst wants to constrain. Again, he could select them all one by one when applying the constraint, or select lines ‘By Length/Radius’, type in the radius of the holes to select all of them in one shot, then ‘Pick All’ in the picking dialog when applying the constraint.
+    </ul>
+    <custom-spacing><div class="container-1">
+        <span><img src="16.jpg" alt="image" width="150px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.17</image-tag>
+    
+    <custom-spacing>After working with the selected set, use <custom-process>Utility Menu > Select > Everything</custom-process> to make the whole model active again.</custom-spacing><br>
+    <b>Select Entities Dialog Box Terminology (Fig. 2.18):</b><br>
+    <custom-spacing><custom-style>From Full:</custom-style> Select from the entire set of entities in the model.</custom-spacing><br>
+    <custom-spacing><custom-style>Reselect:</custom-style> Select a subset from the currently selected entities.</custom-spacing><br>
+    <custom-spacing><custom-style>Also Select:</custom-style> Select in addition to (from the whole model) the set analyst has currently selected.</custom-spacing><br>
+    <custom-spacing><custom-style>Unselect:</custom-style> Remove items from the selection set.</custom-spacing><br>
+    <custom-spacing><custom-style>Select All:</custom-style> This is not the same as Utility Menu > Select > Everything. This selects all of whatever entity analyst has specified at the top of the dialog.</custom-spacing><br>
+    <custom-spacing><custom-style>Invert:</custom-style> Reverses the selected and unselected entities (just the entities specified at the top of the dialog).</custom-spacing><br>
+    <custom-spacing><custom-style>OK:</custom-style> This does the select operation (or brings up a picker dialog so that analyst can pick with the mouse) and then dismisses the dialog.</custom-spacing><br>
+    <custom-spacing><custom-style>Apply:</custom-style> This does the operation but keeps the dialog box. Typically use this so the dialog stays active.</custom-spacing><br>
+    <custom-spacing><custom-style>Replot:</custom-style> Replots whatever is active in the graphics window.</custom-spacing><br>
+    <custom-spacing><custom-style>Plot:</custom-style> Plots only the entity specified at the top of the dialog.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="23.png" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.18</image-tag>
+    
+    <sub-heading>2.7.2 Organizing the Model using Components</sub-heading><br>
+    <custom-spacing>If a group of entities are selected and it might be necessary to use that selection set again, create a component out of it. Components are groups of entities but hold only one kind of entity at a time. Components can themselves be grouped into Assemblies, so this is the way to group different types of entities together. Use <custom-process>Utility Menu > Select > Comp/Assembly > Create Component…</custom-process> to create a component. The Component Manager (Fig. 2.19) makes it very easy to manage and manipulate groups and select/plot what analyst wants to see to the screen. This is found under <custom-process>Utility Menu > Select > Component Manager</custom-process>.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="17.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.19 Component Manager</image-tag>
+    
+    <custom-heading level="2">2.8 Getting Started with Graphics</custom-heading><br>
+    <custom-spacing>The program enables the analyst to portray almost any aspect of the model in pictures or graphs that s/he can view on the terminal screen, store on a file, or plot out as hard copy. The program has numerous features to help customize or enhance the graphics displays.</custom-spacing>
+    
+    <sub-heading>2.8.1 Interactive Versus External Graphics</sub-heading><br>
+    <custom-spacing>Any discussion of graphics assumes that the analyst is running the program interactively and viewing graphics images on the terminal screen. For the most part, this section is written for such a scenario. However, the program can be run in either <custom-style>interactive</custom-style> or <custom-style>batch mode</custom-style> and graphics images stored on a file for later viewing and processing. This process is called creating <custom-style>external graphics</custom-style>.</custom-spacing>
+    
+    <sub-heading>2.8.2 Specifying the Graphics Display Device Type</sub-heading><br>
+    <custom-spacing>For Windows users, the program supports these drivers and capabilities:</custom-spacing>
+    <ul>
+        <li>A window device
+        <li>Hot keyboard/mouse
+        <li>Two- or three-button mouse
+        <li>Hidden line removal
+        <li>Light source shading
+    </ul>
+    <custom-spacing>On a two-button mouse, the shift-right button functions like the middle button of a three-button mouse. While running the program on Windows platforms, there are three alternatives for specifying the graphics device type:</custom-spacing>
+    <ul>
+        <li>Double-click on the Interactive icon in the Program Folder. Click on the down arrow next to <custom-style>Graphics device name</custom-style> and choose the appropriate device.
+        <li>Within the program, issue <custom-process>Utility Menu> PlotCtrls> Device Options</custom-process>.
+        <li>Include the device type on the program execution command line. The command option <custom-style>-d</custom-style> or <custom-style>-D</custom-style> must precede the device type, as shown below: <custom-style>Ansys201 -d device_type</custom-style>
+    </ul>
+    <custom-spacing>The device type is one of the following:</custom-spacing>
+    <ul>
+        <li>WIN32
+        <li>WIN32c
+        <li>3D
+    </ul>
+    <custom-spacing>A colour setting higher than 256 colours is recommended.</custom-spacing><br>
+    <custom-spacing>Specifying an invalid device type causes the program to divert the graphics to a disk file and inhibits the opening of the menu system, even if the <custom-style>-g</custom-style> option is included on the program execution command.</custom-spacing>
+    
+    <sub-heading>2.8.3 Creating Graphics Displays</sub-heading><br>
+    <custom-spacing>Many types of graphics displays can be created: geometry displays (nodes, elements, keypoints, etc.), results displays (temperature or stress contours, etc.), and graphs (stress-strain curves, time-history displays, etc.). Creating any display is a two-step process:</custom-spacing>
+    <ol>
+        <li>Use graphics <custom-style>specification</custom-style> functions to establish specifications (such as the viewing direction, number and color controls, etc.) for the display.
+        <li>Use graphics <custom-style>action</custom-style> functions to actually produce the display.
+    </ol>
+    <custom-spacing>The analyst can perform both types of graphics functions either by using menu functions in the GUI or by typing in commands directly.</custom-spacing>
+    
+    <sub-heading>2.8.3.1 GUI-Driven Graphics Functions</sub-heading><br>
+    <custom-spacing>When running the program interactively, most users will prefer to use the GUI. As they use the GUI functions, they execute commands without actually seeing or editing them. (The program will record all underlying executed commands in your <custom-style>Jobname.LOG</custom-style> file.) Graphics specification functions can be accessed via <custom-process>Utility Menu> PlotCtrls</custom-process>. Graphics action functions reside under <custom-process>Utility Menu> Plot</custom-process>.</custom-spacing>
+    
+    <sub-heading>2.8.3.2 Immediate Mode Graphics</sub-heading><br>
+    <custom-spacing>By default in the GUI, the model will immediately be displayed in the Graphics Window as new entities (such as areas, keypoints, nodes, elements, local coordinate systems, boundary conditions, etc.) are created. This is called <custom-style>immediate mode</custom-style> graphics. Anything drawn immediately in this way, however, will be destroyed if the analyst brings up a menu or dialog box on top of it. Or, if i the GUI is iconified, the immediate mode graphics image will not be shown when the analyst restores the GUI icon.</custom-spacing><br>
+    <custom-spacing>An immediate image will also be automatically scaled to fit nicely within the Graphics Window - a feature called <custom-style>automatic scaling</custom-style>. Periodically, though, the analyst may need to issue an explicit plot function because new entities which lie ‘outside’ the boundaries of the scaled image are created already in the Graphics Window and are thus not captured with immediate mode graphics. The plot function will rescale and redraw the image.</custom-spacing><br>
+    <custom-spacing>To obtain a more ‘permanent’ image, execute one of the plot functions (such as <custom-process>Utility Menu> Plot> Volumes</custom-process>) or a graphics action command (such as <custom-style>VPLOT</custom-style>). An image generated in this way will not be destroyed by menu pop-ups or by iconifying the GUI. Also note that symbols (such as keypoint or node numbers, local coordinate systems, boundary conditions, etc.) are also shown immediately but will not be present on a ‘permanent’ display unless the analyst first ‘turns on’ the appropriate symbol using the functions under <custom-process>Utility Menu> PlotCtrls</custom-process> or the appropriate graphics specification command.</custom-spacing><br>
+    <custom-spacing>If the analyst prefers <custom-style>not</custom-style> to see things immediately as s/he defines them, s/he can use <custom-process>Utility Menu> PlotCtrls> Erase Options> Immediate Display</custom-process> to turn off immediate mode. When the program is run interactively <custom-style>without</custom-style> using the GUI, immediate mode is off by default.</custom-spacing>
+    
+    <sub-heading>2.8.3.4 Replotting the Current Display</sub-heading><br>
+    <custom-spacing>The GUI path <custom-process>Utility Menu> Plot> Replot</custom-process> re-executes the last display action command that was executed. However, the program can execute that command only if it is valid in the current routine.</custom-spacing>
+    
+    <sub-heading>2.8.3.5 Erasing the Current Display</sub-heading><br>
+    <custom-spacing>The current graphics display can be cleared by issuing the <custom-process>Utility Menu> PlotCtrls> Erase Options> Erase Screen</custom-process>. GUI menus will not be erased, however.</custom-spacing>
+    
+    <sub-heading>2.8.3.6 Aborting a Display in Progress</sub-heading><br>
+    <custom-spacing>Invoke the system ‘break’ to terminate a display before it is completed. Typically, this means moving the mouse pointer to the Output Window and typing Ctrl+C. However, the specific procedure varies from system to system. This break must be executed while the display is visibly in progress, or else the entire session will terminate.</custom-spacing>
+    
+    <sub-heading>2.8.4 Multi-Plotting Techniques</sub-heading><br>
+    <custom-spacing>The multi-plotting capabilities within the program enable to display both multiple entities within a window and multiple windows with varying entity types. Defining each window's composition is a four-step process:</custom-spacing>
+    <ol>
+        <li>Define the window layout.
+        <li>Choose the entities to be displayed in each window.
+        <li>Choose the type of element or graph display used for plots.
+        <li>Display the entities selected.
+    </ol>
+    
+    <sub-heading>2.8.4.1 Defining the Window Layout</sub-heading><br>
+    <custom-spacing>First define how many windows are to be used for plotting and how those windows appear on the screen. The following layout options are available:</custom-spacing>
+    <ul>
+        <li>One window
+        <li>Two windows (left and right of the screen, or top and bottom)
+        <li>Three windows (two at the top of the screen and one at the bottom, or one window at the top and two windows at the bottom)
+        <li>Four windows (two at the top of the screen and two at the bottom)
+    </ul>
+    <custom-spacing>Issue the <custom-process>Utility Menu> PlotCtrls> MultiWindow Layout</custom-process> to define the window layout. The program displays a dialog box, in which the analyst can click on the layout s/he prefers. That dialog box also contains a <custom-style>Display upon OK/Apply</custom-style> field, where the analyst also can specify what the program displays next. Choices for this field are <custom-style>Multi-Plots</custom-style>, <custom-style>Replot</custom-style>, and <custom-style>No redisplay</custom-style>. When specifying the layout design is finished, click on <custom-style>Apply</custom-style> or <custom-style>OK</custom-style>.</custom-spacing>
+    
+    <sub-heading>2.8.4.2 Choosing What Entities Each Window Displays</sub-heading><br>
+    <custom-spacing>Once the window layout is designed, choose what entities each window will display. To do so, use: <custom-process>Utility Menu> PlotCtrls> Multi-Plot Controls</custom-process>. A dialog box appears. In its <custom-style>Window to edit</custom-style> field, click on either <custom-style>All window</custom-style> or a specific window number (default is window 1). In the <custom-style>Display type</custom-style> field, choose either <custom-style>Entity plots</custom-style> or <custom-style>Graph plots</custom-style>. Then, click on <custom-style>OK</custom-style>. If <custom-style>Entity plots</custom-style> is choosen, another dialog box appears, listing the types of entities available for display. For Label, specify any of these entity types:</custom-spacing>
+    <ul>
+        <li>NODE (nodes)
+        <li>ELEM (elements)
+        <li>KEYP (keypoints)
+        <li>LINE (lines)
+        <li>AREA (areas)
+        <li>VOLU (volumes)
+        <li>GRPH (graph displays)
+    </ul>
+    <sub-heading>2.8.4.3 Choosing the Display Used for Plots</sub-heading><br>
+    <custom-spacing>When displaying either the ELEM or GRPH entity type, the analyst can control the type of element or graph display used for plots. Use: <custom-process>Utility Menu> PlotCtrls> Multi-Plot Controls</custom-process>. ‘ALL’ can be specified to have all windows use the selected display type, or that display type can be applied only to a specific window (default is window 1).</custom-spacing>
+    
+    <sub-heading>2.8.4.4 Displaying Selected Entities</sub-heading><br>
+    <custom-spacing>Issue <custom-process>Utility Menu> PlotCtrls> Multi-Plots</custom-process> or <custom-process>Utility Menu> Plot> Replot</custom-process> to display the entities selected.</custom-spacing>
+    
+    <custom-heading level="2">2.9 Creating Graphs</custom-heading><br>
+    <custom-spacing>A graph is used to review the material property curves, trace the time-history response of the system, or examine the relationship between any two items in the analysis. ANSYS graphs can be either 2-D (X-Y) or 3-D (X-Y-Z, where Z must always be <custom-style>TIME</custom-style>). Figure 2.20 shows two typical graphs:</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="18.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.20 Typical ANSYS Graphs</image-tag>
+    
+    <custom-spacing>The most convenient way to create and control graph displays is by using the GUI operations available under <custom-process>Utility Menu> Plot</custom-process> and <custom-process>Utility Menu> PlotCtrls</custom-process>. Alternatively, graphics action and control commands can be used.</custom-spacing>
+    
+    <sub-heading>2.9.1 Graph Display Actions</sub-heading><br>
+    <custom-spacing>Use <custom-process>Utility Menu> Plot> Materials</custom-process> to display linear material properties as a function of temperature. Use <custom-process>Utility Menu> Plot> Data Tables</custom-process> to display nonlinear data curves family of commands. Use <custom-process>Utility Menu> Plot> Array Parameters</custom-process> to display column vectors of array parameters. Use <custom-process>Main Menu> General Postproc> Fatigue> Store Stresses> Plot Stresses</custom-process> to display a stress item associated with a particular location and event versus loading number.</custom-spacing>
+    
+    <sub-heading>2.9.2 Changing the Specifications for Graph Displays</sub-heading><br>
+    <sub-heading>2.9.2.1 Changing the Type, Style, and Color of the Graph Display</sub-heading><br>
+    <custom-spacing>The appearance of the graph display can be altered as follows:</custom-spacing><br>
+    <custom-spacing>Turning axis divisions (tick marks) on or off. This feature can be controlled using the command <custom-process>Utility Menu> PlotCtrls> Style> Graphs</custom-process>.</custom-spacing><br>
+    <custom-spacing>Setting line thickness for axes, grid lines or graph curve lines. Graph items can be accentuated by increasing their line thickness, using the AXIS, GRID, and CURVE labels using <custom-process>Utility Menu> PlotCtrls> Style> Graphs</custom-process>.</custom-spacing><br>
+    <custom-spacing>Turning the grid on or off (in the XY plane). A grid can be added to the graph displays, using <custom-process>Utility Menu> PlotCtrls> Style> Graphs</custom-process>. A grid can be either a full grid or a partial grid.</custom-spacing><br>
+    <custom-spacing>Producing a dashed tolerance curve about the displayed curve. A range of data spread, tolerance, or uncertainty can be indicated on the graph curves using <custom-process>Main Menu> TimeHist Postpro> Settings> Graph</custom-process>.</custom-spacing><br>
+    <custom-spacing>Changing the color of curves (and color-filled areas under curves). The CURVE label on the <custom-process>Utility Menu> PlotCtrls> Style> Colors> color type</custom-process> allows to control the color of each curve in the graph.</custom-spacing>
+    
+    <sub-heading>2.9.2.2 Labeling the Graph</sub-heading><br>
+    <custom-spacing>Labeling the axes. The X and Y axes can be labelled using <custom-process>Utility Menu> PlotCtrls> Style> Graphs</custom-process>.</custom-spacing><br>
+    <custom-spacing>Labeling the curves. For POST26 plotted-variable graphs, the labels applied to the curves are established choosing: <custom-process>Main Menu> TimeHist Postpro> Define Variables</custom-process> or <custom-process>Main Menu> TimeHist Postpro> Elec&Mag> Circuit> Define Variables</custom-process>.</custom-spacing><br>
+    <custom-spacing>Adding user-defined graphics and text. Extra graphics and text can be added to the displays using the annotation functions by choosing <custom-process>Utility Menu> PlotCtrls> Annotation</custom-process>.</custom-spacing>
+    
+    <custom-heading level="2">2.10 Annotation</custom-heading><br>
+    <custom-spacing>A common step in the analysis process is presenting model and results data with additional notations applied, such as dimensions, comments, highlights, or other text or artwork. The standard ANSYS display can be enhanced with a variety of annotation primitives including text, dimensions, polygons, symbols, and even pie charts. The ‘!’ and ‘$’ characters are not available for text annotation.</custom-spacing><br>
+    <custom-spacing>2-D text and graphics annotations are formed as a 2-D overlay on the graphics screen. Because this overlay exists as an imaginary plane, when the analyst transforms the model, the constructed annotation will not move with the model. Because of this, 2-D annotation should be used primarily for finalized reports and printouts. Access 2-D annotation functions through <custom-process>Utility Menu> PlotCtrls> Annotation> Create 2D Annotation</custom-process>.</custom-spacing><br>
+    <custom-spacing>The following annotation primitives are available from the 2-D annotation dialog box:</custom-spacing>
+    <ul>
+        <li>Text
+        <li>Lines
+        <li>Rectangles
+        <li>Circles
+        <li>Arcs
+        <li>Polygons
+        <li>Wedges
+        <li>Arrows
+        <li>Dimensions
+        <li>Pies
+        <li>Symbols
+    </ul>
+    <custom-spacing>On choosing <custom-process>Utility Menu> PlotCtrls> Annotation> Create 2D Annotation</custom-process>, the text annotation dialog box appears (Fig. 2.21). Text annotation can be applied either as stroke text or as bitmap fonts. The ‘!’ and ‘$’ characters cann’t be used in ANSYS text annotation.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="19.jpg" alt="image" width="150px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.21 Stroke Text Annotation Dialog Box</image-tag>
+    
+    <custom-spacing>The fields and buttons presented in the annotation dialog box change when the annotation entity type is reset. For example, if the annotation entity is reset to arcs, the dialog box shown, changes to display the options available for annotation arcs. Regardless of which annotation entity is choosen, the annotation dialog box always displays four action buttons:</custom-spacing><br>
+    <custom-spacing><custom-style>Undo</custom-style> - Erases the last annotation entity created.</custom-spacing><br>
+    <custom-spacing><custom-style>Refresh</custom-style> - Redisplays the annotation, which is useful after move and delete operations.</custom-spacing><br>
+    <custom-spacing><custom-style>Close</custom-style> - Closes the annotation dialog box.</custom-spacing><br>
+    <custom-spacing><custom-style>Help</custom-style> - Displays online help for the dialog of the currently selected annotation entity.</custom-spacing><br>
+    <custom-spacing>Once annotations are created, the analyst can control their display by selecting <custom-process>Utility Menu> PlotCtrls> Annotation> Display Annotation</custom-process>. Accessing this menu pick toggles annotation display on and off.</custom-spacing>
+    
+    <custom-heading level="2">2.11 Animation</custom-heading><br>
+    <custom-spacing>Animation is a valuable tool for graphically interpreting many analysis results, especially nonlinear or time-dependent behavior. The ANSYS program provides tools that enable the analyst to animate any type of display.</custom-spacing>
+    
+    <sub-heading>2.11.1 Creating Animated Displays within ANSYS</sub-heading><br>
+    <custom-spacing>The easiest way to perform animation in ANSYS is to use the functions available under <custom-process>Utility Menu> PlotCtrls> Animate</custom-process>. These GUI functions allow to achieve ‘push-button animation’ effects in ANSYS. The GUI functions internally execute ANSYS animation commands, which the analyst can type in directly if prefered.</custom-spacing>
+    
+    <sub-heading>2.11.2 Basic Animation Commands</sub-heading><br>
+    <custom-spacing>Several frames can be displayed in rapid succession to achieve an animation effect, via these commands:</custom-spacing>
+    <ul>
+        <li><custom-process>Utility Menu> PlotCtrls> Redirect Plots> Delete Segments</custom-process>
+        <li><custom-process>Utility Menu> PlotCtrls> Redirect Plots> Segment Status</custom-process>
+        <li><custom-process>Utility Menu> PlotCtrls> Redirect Plots> To Animation File (Windows)</custom-process>
+        <li><custom-process>Utility Menu> PlotCtrls> Animate> Replay Animation</custom-process>
+        <li><custom-process>Utility Menu> PlotCtrls> Animate> Replay Animation</custom-process>
+    </ul>
+    
+    <custom-heading level="2">2.12 Documenting the Analysis</custom-heading><br>
+    <custom-spacing>ANSYS has a Report Generator (Fig. 2.22) available from the main toolbar, which can help to put together an HTML report by capturing images, window listings, etc.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="20.jpg" alt="image" width="500px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.22 Report Generator</image-tag>
+    
+    <custom-spacing>To print a hardcopy of the graphics window: <custom-process>Utility Menu > PlotCtrls > Hard Copy > To Printer</custom-process>. There are several ways of capturing a graphic image for use in Microsoft Word, Powerpoint or some other software.</custom-spacing><br>
+    <custom-spacing>Exact screen shot of the graphics window: <custom-process>Utility Menu > PlotCtrls > Capture Image</custom-process> will pop up another window with a screen shot of the graphics window. It can be kept available for later reference or save the image to a bitmap (.bmp) file. Note that although a windows bitmap file is not compressed, when it is inserted into Word it does get compressed automatically so analyst doesn’t end up with a huge bloated document.</custom-spacing><br>
+    <custom-spacing>Output a vector image: <custom-process>Utility Menu > PlotCtrls > Redirect Plots > To PSCR File…</custom-process>. A Postscript file is a vector file, which means that it is a 2D representation of all of the entities in the graphics window in an editable format. Because it is not a bitmap, it can be scaled to any size without losing any resolution, and is always very crisp looking. It can also be imported into a technical illustration program and manipulated very easily: change the colors, add annotations, change or resize fonts, etc. All this can be done in ANSYS but it can be quicker in an illustration package. One caution about Postscript files! Since they actually write out every entity in the model, if the model is large (say a tet mesh of a CAD model) this file can be huge. It is best suited for getting very crisp images of smallish models or wireframe displays. Microsoft Word will not display the image until it is printed.</custom-spacing><br>
+    <custom-spacing>Output a bitmap image: <custom-process>Utility Menu > PlotCtrls > Redirect Plots > To xyz File…</custom-process>, where xyz is JPEG, TIFF, PNG, etc. These file formats produce good images with reasonably small file sizes. The size of the image file for these formats is not dependant on the size of the model like Postscript.</custom-spacing><br>
+    <b>Controlling the Way the Model Looks</b><br>
+    <custom-spacing>All of the visual aspects of what is seen in the graphics window are controlled from the ‘Plot’ and ‘PlotCtrls’ pull downs from the Utility menu. Use <custom-process>Utility Menu > Plot</custom-process> to plot different types of entities to the screen. Use <custom-process>Utility Menu > PlotCtrls</custom-process> to control the characteristics of what is to be plotted.</custom-spacing><br>
+    <custom-spacing><custom-process>Utility Menu > PlotCtrls > Numbering</custom-process>: Entity Numbers on and off.</custom-spacing><br>
+    <custom-spacing><custom-process>Utility Menu > PlotCtrls > Symbols</custom-process>: Turn various markers and symbols on and off (Fig. 2.23).</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="21.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.23</image-tag>
+    
+    <custom-spacing><custom-process>Utility Menu > PlotCtrls > Style</custom-process>: Change hidden line, element edges, element shrink, etc.</custom-spacing><br>
+    <custom-spacing><custom-process>Utility Menu > PlotCtrls > Device Options</custom-process>: Change between solid shaded and wireframe display.</custom-spacing>
+    
+    <custom-heading level="2">2.13 Typical Modeling Difficulties</custom-heading><br>
+    <custom-spacing>Certain modeling problems can be considered ‘typical’. A typical analyst modeling problem is the case of keypoints, lines, areas, volumes, nodes, and elements that are identical and occupy the same space. This can lead to erroneous models. Proper use of the merge command can eliminate many instances of these problems. The merge can fail if, for example, two elements share the same space, but were defined via alternative sequences of nodes (e.g. elements in the same place, one numbered by nodes selected clockwise, the other counterclockwise).</custom-spacing><br>
+    <custom-spacing>Another problem is failure of keypoints, or lines, or areas to be shared by higher geometric modeling entities. When this happens, the higher entities are not ‘fused’ or ‘welded’ together as intended. Consequently, the elements will not share nodes along what should have been the common boundary.</custom-spacing><br>
+The analyst must always use caution and double-check everything while developing a model.</custom-spacing><br>
+    <custom-spacing>A problem most analysts will encounter is to make a change to a model in error, long after the database was saved. The analyst will have to learn to use a text editor on the log file, to extract that portion of the log file after the last time the database was saved, or retrieved (whichever was most recent). Remove the offending command. That portion of the log file will have to be run on the model as it was the last time it was saved or retrieved. Make sure to be in the correct part of ANSYS (usually /PREP7) when reading in the instructions with /INPUT. The same method can apply if the computer is subjected to a power failure, or if ANSYS crashes without leaving an ‘ansabort.db’ file. After re-starting, take a text editor to the log file, and re-run the appropriate instructions on the model database file as it was when last saved or retrieved.</custom-spacing><br>
+    <custom-spacing>The most common of all errors in Finite Element Modeling is the incorrect application of loads and boundary conditions. This must be thought about very carefully. Most models (not all) are prevented from undergoing free body motion in 2-D or 3-D space, by eliminating at least a minimal number of degrees of freedom (2 translations plus 1 rotation in 2-D, and 3 translations plus 3 rotations in 3-D). Rotations can be prevented either by having constraints on translations at enough distinct nodes in space, or by directly constraining a rotational degree of freedom at a node. A common check on results is to see whether the sums of the reaction forces at the constrained nodes equal the sums of the applied forces and gravity loads.</custom-spacing>
+</body>
+</html>

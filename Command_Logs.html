@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            /* font-weight:500; */
+            /* font-family:'Times New Roman', Times, serif; */
+            padding-left:110px;
+            padding-right:110px;
+
+        }
+        custom-heading[level='1'] {
+            font-family: 'Times New Roman', Times, serif;
+            color: red;
+            font-weight: 900;
+            font-size: x-large;
+            text-align: center; 
+            display: block;
+            margin: 0 auto;
+}
+        custom-heading[level='2']{
+            font-family: 'Times New Roman', Times, serif;
+            color: red;
+            font-weight: 900;
+            text-align: center;
+            font-size: x-large;
+        }
+        sub-heading{
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(26, 100, 184);
+            font-weight: bold;
+            font-size: large;
+        }
+        image-tag{
+            font-family: Arial, sans-serif;
+            /* background-color: #f0f0f0; */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        custom-style{
+            font-style: italic;
+        }
+        custom-process{
+            font-family: 'Times New Roman', Times, serif;
+            padding: 10px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        custom-spacing{
+            margin-top: 15px;
+            margin-bottom:5px;
+            display: block;
+        }
+        /* .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        } */
+        .container-1 {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background-color:rgba(251, 253, 255, 0.489);
+        }
+        .container img {
+            width: 150px; 
+            height: 150px;
+            object-fit:fill;
+            background-color:rgba(251, 253, 255, 0.489);
+        }
+    </style>
+    <custom-heading level="2">1.8 Using the ANSYS Session and Command Logs</custom-heading level='2'><br>
+        The ANSYS program records every command it executes, at two
+        places: the session log file and the internal database command log.<br>
+        The session log file is a text file which is saved in the working directory.
+        The database command log is saved in the ANSYS database. This log can be
+        copied to a file at any time by choosing <custom-process>Utility Menu> File> Write DB Log
+        File</custom-process>. Both files are command logs that can be used as input to the ANSYS
+        program.<br>
+        <sub-heading>1.8.1 Session Log File</sub-heading><br>
+        Every ANSYS session produces a session log named Jobname.LOG.
+        Jobname is determined by the jobname defined at ANSYS entry. The default
+        jobname is <custom-style>FILE</custom-style> or file, depending on the operating system. The program
+        opens the log file when the analyst first enters the program, and closes it
+        when s/he exits the program.<br>
+        The session log file provides a complete record of the ANSYS session in
+        terms of commands and is quite valuable as a means of recovering from a
+        system crash or catastrophic user mistake. By reading in a renamed copy of
+        the log file or by submitting it as a batch file, the s/he can re-execute every
+        command in the log file, recreating the database exactly as it existed
+        previously. The log file is also useful as a debugging tool that can help to
+        reveal any mistakes that might have been made in an ANSYS session.<br>
+        Each new ANSYS session appends commands to the existing
+        file Jobname.LOG. That is, the log file is not overwritten during a new ANSYS
+        session, but added to. A <custom-style>"time stamp,"</custom-style> consisting of the current date and
+        time, is included so that the analyst can identify the start of each session. The
+        entire log file can be listed during an interactive run by picking <custom-process>Utility Menu>
+        List> Files> Log File</custom-process>. Because this file is in ASCII format, it can be viewed
+        and edited readily using an external text editor.<br>
+        <sub-heading>1.8.2 Using the Database Command Log</sub-heading><br>
+        ANSYS captures commands generated during an ANSYS session not
+        only in the log file but also in memory. This in-memory version of the
+        command history is called the internal database log. When the database is
+        saved, the program saves this command log in the database file
+        (Jobname.DB) along with the other database information.<br>
+        Use <custom-process>Utility Menu> File> Write DB Log File</custom-process> to write the database
+        command log to a named ASCII file. Then edit this file, make desired
+        changes, and use the file as command input to the program. This capability is
+        especially useful to use the command history that was created during an
+        interactive session, but have somehow lost or corrupted the session log file
+        (Jobname.LOG) that was associated with the database.<br>
+        If the database is created in multiple sessions by saving and resuming
+        the database file, the ANSYS program keeps the database log continuous by
+        appending each new command that is processed. Therefore, the internal
+        database log is not fragmented; it will represent the complete database.<br>
+        <sub-heading>1.8.3 Command Log File as Input</sub-heading><br>
+        The procedure for re-executing the commands contained in
+        a Jobname.LOG file or in the database log consists of three main steps:
+        1. Establish the command log file
+        2. Edit the command log file as desired
+        3. Read the edited file into the ANSYS session.<br>
+        <custom-spacing><b>Step 1: Establish the Command Log File</b></custom-spacing><br>
+        The method to do this depends on whether the analyst uses the
+        session log file or the database log.<br>
+        <custom-spacing><b>Session Log File</b></custom-spacing><br>
+        Perform the following steps to establish a command log file from the
+        session log file, (Jobname.LOG):<br>
+        1. Rename or copy the session log file to a different name. This can be
+        done at the system level or from within the program.<br>
+        2. List the log file by choosing <custom-process>Utility Menu> List> Files> Log File</custom-process>.<br>
+        3. Choose <custom-process>File> Save as</custom-process> from the Log File window.<br>
+        <custom-spacing><b>Database Command Log</b></custom-spacing><br>
+        Pick <custom-process>Utility Menu> File> Write DB Log File</custom-process> to establish a command
+        log file from the database log. A file name can be specified or the default
+        name, Jobname.LGW can be executed.<br>
+        <custom-spacing><b>Step 2: Edit the Command Log File</b><br></custom-spacing>
+        <custom-spacing>Sometimes, it is necessary to edit the command log file before using it
+        as program input. As the analyst edits the log file, s/he may want to add
+        comments or indentation to improve its readability. Comments can be added
+        to the log file by using comment commands or by using the comment</custom-spacing>
+        character (!).<br>
+        <custom-spacing><b>Step 3: Read in the Edited Log File</b></custom-spacing><br>
+        Pick <custom-process>Utility Menu> File> Read Input</custom-process> from  to read in the edited
+        command log file.
+    </p>
+</body>
+</html>

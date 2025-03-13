@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            /* font-weight:500; */
+            /* font-family:'Times New Roman', Times, serif; */
+            padding-left:110px;
+            padding-right:110px;
+
+        }
+        custom-heading[level='1'] {
+            font-family: 'Times New Roman', Times, serif;
+            color: red;
+            font-weight: 900;
+            font-size: x-large;
+            text-align: center; 
+            display: block;
+            margin: 0 auto;
+}
+        custom-heading[level='2']{
+            font-family: 'Times New Roman', Times, serif;
+            color: red;
+            font-weight: 900;
+            text-align: center;
+            font-size: x-large;
+        }
+        sub-heading{
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(26, 100, 184);
+            font-weight: bold;
+            font-size: large;
+        }
+        image-tag{
+            font-family: Arial, sans-serif;
+            /* background-color: #f0f0f0; */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        custom-style{
+            font-style: italic;
+        }
+        custom-process{
+            font-family: 'Times New Roman', Times, serif;
+            padding: 10px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        custom-spacing{
+            margin-top: 15px;
+            margin-bottom:5px;
+            display: block;
+        }
+        /* .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        } */
+        .container-1 {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background-color:rgba(251, 253, 255, 0.489);
+        }
+        .container img {
+            width: 150px; 
+            height: 150px;
+            object-fit:fill;
+            background-color:rgba(251, 253, 255, 0.489);
+        }
+    </style>
+     <custom-heading level="2">1.7 Customizing the GUI</custom-heading level='2'><br>
+        The GUI allows several levels of customization, ranging from a simple
+        change in the sizes of the GUI and the areas in it to a more complex change
+        in the menu hierarchy and design of the dialog boxes. GUI attributes which
+        can be changed include the following items:
+        <ul>
+            <li>The size of the GUI and the areas in it</li>
+            <li>Colors and fonts</li>
+            <li>The menus shown at GUI start-up</li>
+            <li>The mouse and keyboard focus</li>
+            <li>The menu hierarchy and dialog boxes.</li>
+        </ul>
+        <sub-heading>1.7.1 Changing the GUI Layout</sub-heading><br>
+        The ANSYS toolbar, Main Menu, and Graphics Window, as well as the
+        overall size of the GUI can be resized. To resize the areas in the GUI, drag
+        one of the borders around the areas of the GUI while holding down the left
+        mouse button.<br>
+        In order to change the overall size of the GUI, position the mouse on
+        one of the corners of the GUI and drag it diagonally toward the center of the
+        GUI while holding down the left mouse button. GUI size settings can be saved
+        by selecting <custom-process>Utility Menu> MenuCtrls> Save Menu Layout</custom-process>.<br>
+        <sub-heading>1.7.2 Changing Colors and Fonts</sub-heading><br>
+        The system-level fonts determine the default ANSYS GUI font
+        component. ANSYS uses the fonts that are set at the <custom-process>Display
+        Properties</custom-process> system level. The fonts in the ANSYS GUI are based on the system
+        font settings. Use the <custom-process>Utility Menu> MenuCtrls> Font</custom-process> dialog to modify the
+        GUI fonts. Once these settings are changed, use the <custom-process>Utility Menu>
+        MenuCtrls> Save Menu Layout</custom-process> to save the settings. The saved settings will
+        override the system fonts and become the ANSYS default.<br>
+        The Main Menu fonts can also be modified by using the <custom-process>“right mouse
+        button”</custom-process> - preferences function. At this level, specific fonts and colors are set
+        in the Main Menu at a functional level. The analyst can change the overall
+        fonts, and change the colors according to the progressive level as s/he opens
+        the nested menu items.<br>
+        <sub-heading>1.7.3 Changing the GUI Components Shown at Start-Up</sub-heading><br>
+        By default, the main areas of the GUI (Utility Menu, Main Menu,
+        Standard Toolbar, ANSYS Toolbar, Input Window, Graphics Window, and
+        Output Window) display when the GUI is activated.<br>
+        <sub-heading>1.7.4 Changing the Mouse and Keyboard Focus</sub-heading><br>
+        The ANSYS program uses the concept of input focus to determine
+        which window on the screen is active; that is, which window receives input
+        from the mouse and the keyboard. A window may have implicit focus (also
+        known as pointer focus), in which case moving the mouse pointer into that
+        window makes it active. With explicit focus, it is necessary to move the
+        pointer into the window and click the left button for that window to be active.<br>
+        The ANSYS GUI also gives automatic keyboard focus to the Input
+        Window. This means a command can be entered without first moving the
+        mouse into the Input Window. If a dialog box is brought up, then keyboard
+        focus is automatically redirected to it so the analyst can enter data without
+        moving the mouse. This feature is sometimes called the <custom-style>hot keyboard</custom-style> feature.<br>    
+</body>
+</html>

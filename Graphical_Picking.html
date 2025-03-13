@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            /* font-weight:500; */
+            /* font-family:'Times New Roman', Times, serif; */
+            padding-left:110px;
+            padding-right:110px;
+
+        }
+        custom-heading[level='1'] {
+            font-family: 'Times New Roman', Times, serif;
+            color: red;
+            font-weight: 900;
+            font-size: x-large;
+            text-align: center; 
+            display: block;
+            margin: 0 auto;
+}
+        custom-heading[level='2']{
+            font-family: 'Times New Roman', Times, serif;
+            color: red;
+            font-weight: 900;
+            text-align: center;
+            font-size: x-large;
+        }
+        sub-heading{
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(26, 100, 184);
+            font-weight: bold;
+            font-size: large;
+        }
+        image-tag{
+            font-family: Arial, sans-serif;
+            /* background-color: #f0f0f0; */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        custom-style{
+            font-style: italic;
+        }
+        custom-process{
+            font-family: 'Times New Roman', Times, serif;
+            padding: 10px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        custom-spacing{
+            margin-top: 15px;
+            margin-bottom:5px;
+            display: block;
+        }
+        /* .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        } */
+        .container-1 {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background-color:rgba(251, 253, 255, 0.489);
+        }
+        .container img {
+            width: 150px; 
+            height: 150px;
+            object-fit:fill;
+            background-color:rgba(251, 253, 255, 0.489);
+        }
+    </style>
+    <custom-heading level="2">1.6 Graphical Picking</custom-heading level='2'><br>
+        Many functions in the ANSYS program involve graphical picking - using
+        the mouse to identify model entities and coordinate locations. There are three
+        types of graphical picking operations:
+        <ul>
+            <li><custom-style>Locational</custom-style> picking, where the coordinates of a new point are located.</li>
+            <li><custom-style>Retrieval</custom-style> picking, where existing entities are identified for subsequent
+            operations.</li>
+            <li><custom-style>Query</custom-style> picking, where points are identified on the model for querying
+            data.</li>
+        </ul>
+        <custom-spacing>Mouse Button Assignments for Picking</custom-spacing><br>
+        Mouse button assignments during any picking operation are as follows:
+        <ul>
+            <li>The left button picks or unpicks the entity or location closest to the
+            mouse pointer. When this button is pressed, the analyst can cross-
+            examine the entity numbers before they are picked, and thus
+            query data. Press and drag the left mouse button to preview the
+            item being picked or unpicked.</li>
+            <li>The middle button (shift-right button on a two-button mouse) is
+            the same as the <custom-process>Apply</custom-process> button on the picker. A number of items
+            can be picked, and no operations will take effect until <custom-process>Apply</custom-process> or
+            <custom-process>OK</custom-process> is pressed. If there are no items currently picked, the middle
+            button closes the picker.</li>
+            <li>The right button toggles between pick and unpick mode. This
+            button is the same as the <custom-process>Pick</custom-process> and <custom-process>Unpick</custom-process> toggle buttons on the
+            picking menu.</li>
+        </ul>
+    
+        <custom-spacing>Hot Spots</custom-spacing><br>
+        Hot spots are the locations on an entity that identify it for retrieval
+        picking. For example, if two elements are adjacent, the element that is picked
+        is the one whose hot spot is closest to the mouse pointer. For areas, volumes,
+        and elements, the hot spot is at a location near the centroid. Lines have three
+        hot spots: one in the middle and one near each end.<br>
+        If the hot spots of two or more entities are coincident, picking the
+        coincident entities brings up a <custom-process>"Multiple Entities"</custom-process> dialog box (Fig. 1.29). Press
+        the <custom-process>Next</custom-process> or <custom-process>Prev</custom-process> button to <custom-style>"cycle through"</custom-style> the coincident entities until the
+        desired entity is highlighted. Then click <custom-process>OK</custom-process> to pick that entity.<br>
+        <div class="container-1">
+            <span><img src="./I_Ansys_Basics/31.jpg" alt="image" width="300px"></span>
+        </div> 
+        <image-tag>Fig. 1.29 Multiple Entities Dialog Box</image-tag><br>
+    
+        <sub-heading>1.6.1 Locational and Retrieval Picking</sub-heading><br>
+        Whenever graphical picking (clicking on a menu topic ending with
+        the + symbol) is used, the GUI brings up a picking menu, sometimes known
+        as the picker. Figure 1.30 shows the picking menus for locational and retrieval
+        picking. In this example, creating keypoints by picking their locations on the
+        working plane is a locational picking operation, and picking those keypoints to
+        apply a load on them is a retrieval picking operation.<br>
+        <div class="container-1">
+            <span><img src="./I_Ansys_Basics/32.jpg" alt="image" width="300px"></span>
+        </div> 
+        <image-tag>Fig. 1.30 Picking Menus for Locational and Retrieval Picking</image-tag><br>
+        <ul>
+            <li><custom-process>Function Title</custom-process> - Identifies the function being performed.</li>
+            <li><custom-process>Pick Mode</custom-process> - Allows to pick or unpick a location or entity. Either these
+            toggle buttons or the right mouse button can be used to switch
+            between pick and unpick modes. The mouse pointer is shown as an up
+            arrow for picking and a down arrow for unpicking.</li>
+            For retrieval picking, choose among single, box, polygon, circle, and
+            loop mode. In single pick mode, each click on the mouse picks one entity.
+            With box, polygon, and circle modes, press and drag the mouse to enclose a
+            set of entities in a box, polygon, or circle.<br>
+            Loop mode is available for picking lines and areas only. With loop
+            mode, when the analyst picks on a line, then the complete set of lines (or
+            areas) defining a continuous loop including that line is also picked. This
+            feature is useful when it is necessary to identify continuous lines in order to
+            make an area. For all modes of retrieval picking, ANSYS shows the picked
+            entities highlighted for visual clarity.<br>
+            <li><custom-process>Pick Status</custom-process> - Shows the number of items picked ("Count") and the
+            minimum and maximum number of picks required for the function.</li>
+            <li><custom-process>Picked Data</custom-process> - Shows information about the item being picked. For
+            locational picking, the working plane and global Cartesian coordinates
+            of the point are shown. For retrieval picking, this area shows the entity
+            number. This data can be seen by pressing and dragging the mouse in
+            the graphics area. This allows to preview the information before
+            releasing the mouse button and picking the item.</li>
+            <li><custom-process>Keyboard Entry Options</custom-process> - In some cases, it may be necessary to
+            enter the required data by keyboard in the picker. For example, to
+            specify a known coordinate location during locational picking, it may be
+            easier to enter the coordinates than to use the mouse. In that case,
+            the analyst can choose between working plane coordinates and global
+            Cartesian coordinates. For retrieval picking, choose between entering a
+            list of entity numbers (such as 1,21,343,...) and a range of numbers
+            (such as 1,21,2).</li>
+            <li><custom-process>Action Buttons</custom-process> - This area of the menu contains buttons that take
+            action on the picked entities, as follows:
+            <custom-process>OK</custom-process> - Applies the picked items to execute the function and closes the picking
+            menu.<br>
+            <custom-process>Apply</custom-process> - Applies the picked items to execute the function but does not close
+            the picking menu. Use this button on the menu or stay in the graphics area
+            and click the middle mouse button to apply.<br>
+            <custom-process>Reset</custom-process> - Unpicks all picked entities and restores the menu and the graphics
+            area to their state at the last Apply.<br>
+            <custom-process>Cancel</custom-process> - Cancels the function and closes the picking menu.<br>
+            <custom-process>Pick All</custom-process> - Picks all entities, executes the selected function, and closes the
+            picking menu. This feature is available for retrieval picking only.<br>
+            <custom-process>Help</custom-process> - Brings up help information for the function being performed.</li>
+        </ul>
+        <sub-heading>1.6.2 Query Picking</sub-heading><br>
+        The picker can be used to <custom-style>"Query"</custom-style> data on the model at any time
+        during the analysis. Querying means that, for any picked point on the model,
+        ANSYS will retrieve or calculate specified items from the database and display
+        them. This information can be displayed in an output window, or it can be
+        applied to the model as 3-D annotation. Query picking is a retrieval picking
+        function, with the selection box items varying according to the requested
+        data. The model and results query pickers are discussed in the following
+        sections.<br>
+        <sub-heading>1.6.2.1 The Model Query Picker</sub-heading><br>
+        The model query picker allows to access model information by picking
+        displayed entities. It also performs basic computations to provide simple
+        geometric/loading information. The model query picker can be used to obtain
+        information about the model while building it. This is helpful when building on
+        to an existing model, or for applying forces or loads that are dependent on
+        the model data. The model query picker can be accessed by choosing <custom-process>Utility
+        Menu> List> Picked Entities</custom-process>, at any time during the analysis.<br>
+        <custom-spacing>Annotation</custom-spacing><br>
+        When the model query picker is used to obtain model information,
+        ANSYS displays the information in a text window. That information can also
+        be applied to the model as 3-D annotation by checking the <custom-process>"Generate 3D
+        Anno"</custom-process> box on the picker. The annotation is applied with the appropriate units
+        displayed, and arrows and leaders are attached where necessary. 3-D
+        annotation, unlike 2-D, will attempt to retain the proper positioning on the
+        appropriate entities, even when the model is rotated or resized.<br>
+        The overall 3-D dimensions of the model are defined by a bounding
+        box. If portions of the model's bounding box lie outside of the visible area of
+        the graphics window, it can affect the placement of the 3-D annotations.
+        Zooming out will usually overcome this problem.<br>
+        Modify query annotation using <custom-process>Utility Menu> PlotCtrls> Annotation>
+        Create 3D Annotation</custom-process>. Select <custom-process>"Options"</custom-process> to modify the typeface and move,
+        copy, or resize the annotation.<br>
+        <custom-spacing>Action Buttons</custom-spacing><br>
+        <ul>
+            <li><custom-process>OK</custom-process> - Enters all query data and either displays it in a window or applies
+            it to the model. The model query picker is then closed.</li>
+            <li><custom-process>Apply</custom-process> - Enters all query data and displays it in a window or applies it to
+            the model. The model query picker is left open for additionals
+            operations.</li>
+            <li><custom-process>Reset</custom-process> - Clears all query data.</li>
+            <li><custom-process>Cancel</custom-process> - Clears all query data and closes the model query picker.</li>
+            <li><custom-process>Pick All</custom-process> - Accesses all of the selected query items on the model.</li>
+            <li><custom-process>Help</custom-process> - Brings up this screen of help information.</li>
+        </ul>
+        <custom-spacing>Tips on Using the Model Query Picker</custom-spacing><br>
+        The model query picker is accessible at any time during the analysis. It
+        is useful for determining model database information that would require hand
+        calculations to determine. The computations performed by the picker are not
+        displayed until <custom-process>OK</custom-process> or <custom-process>APPLY</custom-process> is pressed.<br>
+        The items selected by the picker are highlighted before they are
+        actually selected. Hold the left mouse button down and move the pointer
+        around the model to ensure that the proper entity is selected. The analyst can
+        select multiple items, with no computations being performed or annotation
+        applied until <custom-process>OK</custom-process> is clicked. The commands and operations performed by the
+        model query picker are not written to the log file.<br>
+        The annotation that is generated during the preprocessing stage can
+        be displayed at any time during the analysis. This information is not modified
+        or updated during the course of the analysis, and can become invalid. For
+        instance, when a shape is deformed by the applied forces, the area and
+        volume annotations created before applying the force will not change, and
+        the information displayed may be incorrect.<br>
+        <sub-heading>1.6.2.2 The Results Query Picker</sub-heading><br>
+        The most convenient way to review results for specific points on the
+        model is by using the results query picker. Querying means that, for any
+        picked point on the model, the ANSYS program will retrieve a specified results
+        data value from the database and display it. Access the results query picker
+        by choosing <custom-process>Main Menu> General Postproc> Query Results</custom-process>. The analyst can
+        query nodal or element solution data.<br>
+        When this GUI path is choosen, the results query picker for element
+        solution data appears. This menu has most of the same items as the
+        locational and retrieval picking menus:
+        <ul>
+            <li><custom-process>Function Title</custom-process> - Identifies the information being queried; either nodal,
+            element, or subgrid solution data.</li>
+            <li><custom-process>Pick Mode</custom-process> - Allows to pick or unpick a location on the model to be
+            queried. These toggle buttons or the right mouse button can be used
+            to switch between pick and unpick modes. The mouse pointer is shown
+            as an up arrow for picking and a down arrow for unpicking.</li>
+            <li><custom-process>Picked Location</custom-process> - Shows the number and location of the node,
+            element, or subgrid point being picked for query. This information can
+            be previewed by pressing and dragging the mouse in the graphics
+            area. The picked location is highlighted on the model as a square on
+            the displaced shape.</li>
+            <li><custom-process>Queried Data</custom-process> - Shows the queried solution data for the node, element,
+            or subgrid point at the picked location. Use the <custom-process>Max</custom-process> or <custom-process>Min</custom-process> buttons to
+            automatically obtain the maximum or minimum value of the query data
+            over the entire model.</li>
+        </ul>
+        <custom-spacing>Annotation</custom-spacing><br>
+        The results query picker retrieves solution data from the database and
+        displays it in a text window. That information can be applied to the model as
+        3-D annotation by selecting the <custom-process>“Generate 3D Anno”</custom-process> box on the picker. The
+        annotation is applied with the appropriate units displayed, and arrows and
+        leaders are attached where necessary. The overall 3-D dimensions of the
+        model are defined by a bounding box. If portions of the model's bounding box
+        lie outside of the visible area of the graphics window, it can affect the
+        placement of the 3-D annotations. Zooming out will usually overcome this
+        problem. Unlike the model query picker, the results query picker displays the
+        actual data on the model as the mouse pointer is moved over the different
+        entities. This function is available only from the <custom-processor>General Postprocessor</custom-processor>.<br>
+        <custom-spacing>Action Buttons</custom-spacing><br>
+        <ul>
+            <li><custom-process>OK</custom-process> - Clears all query data and closes the results query picker.</li>
+            <li><custom-process>Apply</custom-process> - Clears all query data and brings up the Query Solution Data
+            dialog box again. This button can be used on the picking menu or stay
+            in the graphics area and click the middle mouse button to achieve the
+            same effect.</li>
+            <li><custom-process>Reset</custom-process> - Clears all query data.</li>
+            <li><custom-process>Cancel</custom-process> - Clears all query data and closes the query picking menu.</li>
+            <li><custom-process>Min</custom-process> - Shows the minimum value of the query data over the entire
+            model.</li>
+            <li><custom-process>Max</custom-process> - Shows the maximum value of the query data over the entire
+            model.</li>
+            <li><custom-process>Help</custom-process> - Brings up this screen of help information.</li>
+        </ul>
+</body>
+</html>

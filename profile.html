@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajay Aramburri – A Visionary Professional</title>
+    <style>
+        /* Custom Properties based on Ansys colors */
+        :root {
+          --primary-color: #ED1C24; /* Ansys Red */
+          --secondary-color: #FDFDFD; /* Off-White */
+          --gradient-bg: linear-gradient(135deg, #000000, #333333); /* Black to Dark Gray */
+          --dark-bg: #000000; /* Black */
+          --light-bg: #F5F6F5; /* Light Gray */
+          --text-dark: #000000; /* Black */
+          --text-muted: #333333; /* Dark Gray */
+          --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.1);
+          --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow for hover */
+          --transition: all 0.3s ease;
+        }
+
+        /* Reset */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Poppins', Arial, sans-serif;
+          background-color: var(--light-bg);
+          color: var(--text-muted);
+          line-height: 1.6;
+          perspective: 1000px; /* Enables 3D effect */
+        }
+
+        /* Navbar */
+        .navbar {
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 3rem;
+          background: var(--secondary-color);
+          box-shadow: var(--shadow-sm);
+        }
+
+        .navbar-left img {
+          height: 40px;
+          transition: var(--transition);
+        }
+
+        .navbar-left img:hover {
+          transform: scale(1.1);
+        }
+
+        .navbar-right ul {
+          display: flex;
+          list-style: none;
+          gap: 2rem;
+          align-items: center;
+        }
+
+        .navbar-right a {
+          color: var(--text-dark);
+          text-decoration: none;
+          font-size: 1rem;
+          font-weight: 500;
+          transition: var(--transition);
+        }
+
+        .navbar-right a:hover {
+          color: var(--primary-color);
+        }
+
+        .dropdown {
+          position: relative;
+        }
+
+        .dropdown .dropbtn {
+          background: transparent;
+          color: var(--text-dark);
+          border: none;
+          cursor: pointer;
+          font-size: 1rem;
+          font-weight: 500;
+          transition: var(--transition);
+        }
+
+        .dropdown:hover .dropbtn {
+          color: var(--primary-color);
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background: var(--secondary-color);
+          min-width: 12rem;
+          box-shadow: var(--shadow-sm);
+          border-radius: 8px;
+          transform: translateY(-10px);
+          opacity: 0;
+          transition: var(--transition);
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        .dropdown-content a {
+          color: var(--text-dark);
+          padding: 0.75rem 1rem;
+          display: block;
+        }
+
+        .dropdown-content a:hover {
+          color: var(--primary-color);
+          background: #f0f0f0;
+        }
+
+        .cta-button {
+          background: var(--primary-color);
+          color: var(--secondary-color);
+          padding: 0.75rem 1.5rem;
+          border-radius: 25px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: var(--transition);
+        }
+
+        .cta-button:hover {
+          background: #C81018;
+          transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+          background: var(--gradient-bg);
+          color: var(--secondary-color);
+          text-align: center;
+          padding: 6rem 2rem;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .hero h1 {
+          font-size: 3.5rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+          font-size: 1.25rem;
+          max-width: 40rem;
+          margin: 0 auto 2rem;
+          animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero .cta-button {
+          font-size: 1.1rem;
+          padding: 1rem 2rem;
+          animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content */
+        .content {
+          max-width: 75rem;
+          margin: 0 auto;
+          padding: 4rem 2rem;
+          display: grid;
+          gap: 3rem;
+        }
+
+        .section {
+          background: var(--secondary-color);
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow-sm);
+          transition: var(--transition);
+          transform-style: preserve-3d; /* Enables 3D transforms */
+          border: 2px solid transparent; /* Initial transparent border */
+          position: relative; /* Ensures proper stacking */
+        }
+
+        .section:hover {
+          transform: scale(1.05) translateZ(20px); /* 3D effect */
+          box-shadow: var(--shadow-lg);
+          border: 2px solid var(--primary-color); /* Red border only */
+        }
+
+        .section#get-started:hover {
+          transform: none; /* No scaling or 3D effect */
+          box-shadow: var(--shadow-sm); /* Keeps original shadow */
+          border: 2px solid var(--primary-color); /* Red border only */
+        }
+
+        .section h2 {
+          color: var(--text-dark);
+          font-size: 2rem;
+          font-weight: 600;
+          margin-bottom: 1.5rem;
+        }
+
+        .section p {
+          font-size: 1.1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .section ul {
+          list-style: none;
+          padding-left: 1.5rem;
+        }
+
+        .section li {
+          position: relative;
+          margin-bottom: 1rem;
+          font-size: 1rem;
+        }
+
+        .section li::before {
+          content: '→';
+          color: var(--primary-color);
+          position: absolute;
+          left: -1.5rem;
+          font-weight: bold;
+        }
+
+        .section a {
+          color: var(--primary-color);
+          text-decoration: none;
+          font-weight: 600;
+          transition: var(--transition);
+          pointer-events: auto; /* Ensures clickability */
+          position: relative; /* Brings links forward */
+          z-index: 10; /* Above card transform */
+        }
+
+        .section a:hover {
+          text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+          background: var(--dark-bg);
+          color: var(--secondary-color);
+          padding: 3rem 2rem;
+          text-align: center;
+        }
+
+        footer p {
+          font-size: 0.9rem;
+          margin-bottom: 1rem;
+        }
+
+        footer a {
+          color: var(--primary-color);
+          text-decoration: none;
+          margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+          text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .navbar {
+            flex-direction: column;
+            padding: 1rem;
+          }
+
+          .navbar-right ul {
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+          }
+
+          .hero {
+            padding: 4rem 1rem;
+          }
+
+          .hero h1 {
+            font-size: 2.5rem;
+          }
+
+          .hero p {
+            font-size: 1rem;
+          }
+
+          .content {
+            padding: 2rem 1rem;
+          }
+
+          .section h2 {
+            font-size: 1.5rem;
+          }
+
+          .section:hover {
+            transform: scale(1.03) translateZ(10px); /* Toned down 3D for mobile */
+            border: 2px solid var(--primary-color); /* Red border only */
+          }
+
+          .section#get-started:hover {
+            transform: none; /* No scaling */
+            border: 2px solid var(--primary-color); /* Red border only */
+          }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+          <a href="index.html"><img src="ansys-logo.jpg" alt="Ansys Logo"></a>
+        </div>
+        <div class="navbar-right">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+              <button class="dropbtn">Tutorials</button>
+              <div class="dropdown-content">
+            <a href="Ansys_Basics.html">1.Ansys_Basics</a>
+            <a href="Ansys_Operations.html">2.Ansys_Operations</a>
+            <a href="Modeling&Meshing.html">3.Modeling&Meshing</a>
+            <a href="Structural_Analysis.html">4.Structural_Analysis</a>
+          </div>
+            </li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="pattern.html">Pattern</a></li>
+            <li><a href="index.php">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    <div class="hero" id="home">
+        <h1>Ajay Aramburri – A Visionary Professional in [Insert Industry/Field]</h1>
+        <p>Ajay Aramburri is a seasoned professional renowned for their transformative contributions to [insert industry/field, e.g., technology, business development, data science, etc.]. With a career spanning [insert approximate years of experience if known, e.g., over a decade], Ajay has earned a distinguished reputation as a [insert descriptor, e.g., strategic thinker, innovative leader, technical expert] who excels at the intersection of [insert key areas, e.g., innovation and execution, technology and business strategy].</p>
+        <a href="https://www.linkedin.com/in/ajayaramburri/" class="cta-button" target="_blank">Connect on LinkedIn</a>
+    </div>
+
+    <div class="content">
+        <div class="section" id="about">
+            <h2>About Ajay</h2>
+            <p>Currently affiliated with [insert company/organization if known, or "a forward-thinking organization"], Ajay plays a pivotal role in [insert role or contribution, e.g., spearheading transformative projects, driving operational excellence, or leading cross-functional teams], shaping the future of their field with a bold and proactive approach.</p>
+            <p>Ajay’s expertise is rooted in [list specific skills, e.g., software engineering, project management, market analysis, leadership], cultivated through years of hands-on experience and an unwavering commitment to continuous learning. They hold a degree from [insert institution if known, e.g., a prestigious university], where they built a robust foundation in [insert field of study, e.g., computer science, business administration].</p>
+        </div>
+
+        <div class="section" id="achievements">
+            <h2>Achievements</h2>
+            <p>From [insert example if known, e.g., designing scalable systems] to [insert example if known, e.g., streamlining organizational processes], Ajay’s work reflects a rare blend of technical mastery and visionary foresight. Their career is defined by moments of brilliance, such as [insert specific example of work, e.g., developing scalable solutions, optimizing business processes, or driving digital transformation].</p>
+            <p>Recognized for [insert any notable traits or achievements, e.g., adaptability, problem-solving, or award-winning initiatives], Ajay remains steadfast in their mission to push boundaries and inspire growth.</p>
+        </div>
+
+        <div class="section" id="impact">
+            <h2>Passions & Impact</h2>
+            <p>Beyond their professional accomplishments, Ajay is deeply passionate about [insert interests, e.g., mentoring emerging talent, advancing sustainable practices, exploring cutting-edge technologies], embodying a holistic approach that bridges career success with community impact.</p>
+            <p>Their LinkedIn profile serves as a dynamic showcase of [insert examples if known, e.g., groundbreaking projects, insightful publications, or glowing endorsements], highlighting their influence as a thought leader and innovator.</p>
+        </div>
+
+        <div class="section" id="get-started">
+            <h2>Connect with Ajay</h2>
+            <p>To dive deeper into Ajay’s journey, uncover their latest insights, or explore opportunities for collaboration, visit their LinkedIn profile at <a href="https://www.linkedin.com/in/ajayaramburri/">https://www.linkedin.com/in/ajayaramburri/</a>.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Ajay Aramburri. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+</body>
+</html>

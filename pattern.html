@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Paper Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Properties based on Ansys colors */
+        :root {
+          --primary-color: #ED1C24; /* Ansys Red */
+          --secondary-color: #FDFDFD; /* Off-White */
+          --gradient-bg: linear-gradient(135deg, #000000, #333333); /* Black to Dark Gray */
+          --dark-bg: #000000; /* Black */
+          --light-bg: #F5F6F5; /* Light Gray */
+          --text-dark: #000000; /* Black */
+          --text-muted: #333333; /* Dark Gray */
+          --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.1);
+          --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow for hover */
+          --transition: all 0.3s ease;
+        }
+
+        /* Reset */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Poppins', Arial, sans-serif;
+          background-color: var(--light-bg);
+          color: var(--text-muted);
+          line-height: 1.6;
+          perspective: 1000px; /* Enables 3D effect */
+        }
+
+        /* Navbar */
+        .navbar {
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 3rem;
+          background: var(--secondary-color);
+          box-shadow: var(--shadow-sm);
+        }
+
+        .navbar-left img {
+          height: 40px;
+          transition: var(--transition);
+        }
+
+        .navbar-left img:hover {
+          transform: scale(1.1);
+        }
+
+        .navbar-right ul {
+          display: flex;
+          list-style: none;
+          gap: 2rem;
+          align-items: center;
+        }
+
+        .navbar-right a {
+          color: var(--text-dark);
+          text-decoration: none;
+          font-size: 1rem;
+          font-weight: 500;
+          transition: var(--transition);
+        }
+
+        .navbar-right a:hover {
+          color: var(--primary-color);
+        }
+
+        .dropdown {
+          position: relative;
+        }
+
+        .dropdown .dropbtn {
+          background: transparent;
+          color: var(--text-dark);
+          border: none;
+          cursor: pointer;
+          font-size: 1rem;
+          font-weight: 500;
+          transition: var(--transition);
+        }
+
+        .dropdown:hover .dropbtn {
+          color: var(--primary-color);
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background: var(--secondary-color);
+          min-width: 12rem;
+          box-shadow: var(--shadow-sm);
+          border-radius: 8px;
+          transform: translateY(-10px);
+          opacity: 0;
+          transition: var(--transition);
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        .dropdown-content a {
+          color: var(--text-dark);
+          padding: 0.75rem 1rem;
+          display: block;
+        }
+
+        .dropdown-content a:hover {
+          color: var(--primary-color);
+          background: #f0f0f0;
+        }
+
+        .cta-button {
+          background: var(--primary-color);
+          color: var(--secondary-color);
+          padding: 0.75rem 1.5rem;
+          border-radius: 25px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: var(--transition);
+        }
+
+        .cta-button:hover {
+          background: #C81018;
+          transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+          background: var(--gradient-bg);
+          color: var(--secondary-color);
+          text-align: center;
+          padding: 6rem 2rem;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .hero h1 {
+          font-size: 3.5rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+          font-size: 1.25rem;
+          max-width: 40rem;
+          margin: 0 auto 2rem;
+          animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero .cta-button {
+          font-size: 1.1rem;
+          padding: 1rem 2rem;
+          animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content */
+        .content {
+          max-width: 75rem;
+          margin: 0 auto;
+          padding: 4rem 2rem;
+          display: grid;
+          gap: 3rem;
+        }
+
+        .section {
+          background: var(--secondary-color);
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: var(--shadow-sm);
+          transition: var(--transition);
+          transform-style: preserve-3d; /* Enables 3D transforms */
+          border: 2px solid transparent; /* Initial transparent border */
+          position: relative; /* Ensures proper stacking */
+        }
+
+        .section:hover {
+          transform: scale(1.05) translateZ(20px); /* 3D effect */
+          box-shadow: var(--shadow-lg);
+          border: 2px solid var(--primary-color); /* Red border only */
+        }
+
+        .section h2 {
+          color: var(--text-dark);
+          font-size: 2rem;
+          font-weight: 600;
+          margin-bottom: 1.5rem;
+        }
+
+        .section p {
+          font-size: 1.1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .section ul {
+          list-style: none;
+          padding-left: 1.5rem;
+        }
+
+        .section li {
+          position: relative;
+          margin-bottom: 1rem;
+          font-size: 1rem;
+        }
+
+        .section li::before {
+          content: '→';
+          color: var(--primary-color);
+          position: absolute;
+          left: -1.5rem;
+          font-weight: bold;
+        }
+
+        .section a {
+          color: var(--primary-color);
+          text-decoration: none;
+          font-weight: 600;
+          transition: var(--transition);
+          pointer-events: auto; /* Ensures clickability */
+          position: relative; /* Brings links forward */
+          z-index: 10; /* Above card transform */
+        }
+
+        .section a:hover {
+          text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+          background: var(--dark-bg);
+          color: var(--secondary-color);
+          padding: 3rem 2rem;
+          text-align: center;
+        }
+
+        footer p {
+          font-size: 0.9rem;
+          margin-bottom: 1rem;
+        }
+
+        footer a {
+          color: var(--primary-color);
+          text-decoration: none;
+          margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+          text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .navbar {
+            flex-direction: column;
+            padding: 1rem;
+          }
+
+          .navbar-right ul {
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+          }
+
+          .hero {
+            padding: 4rem 1rem;
+          }
+
+          .hero h1 {
+            font-size: 2.5rem;
+          }
+
+          .hero p {
+            font-size: 1rem;
+          }
+
+          .content {
+            padding: 2rem 1rem;
+          }
+
+          .section h2 {
+            font-size: 1.5rem;
+          }
+
+          .section:hover {
+            transform: scale(1.03) translateZ(10px); /* Toned down 3D for mobile */
+            border: 2px solid var(--primary-color); /* Red border only */
+          }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a href="index.html"><img src="ansys-logo.jpg" alt="Ansys Logo"></a>
+      </div>
+      <div class="navbar-right">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <button class="dropbtn">Tutorials</button>
+            <div class="dropdown-content">
+              <a href="Ansys_Basics.html">1.Ansys_Basics</a>
+              <a href="Ansys_Operations.html">2.Ansys_Operations</a>
+              <a href="Modeling&Meshing.html">3.Modeling&Meshing</a>
+              <a href="Structural_Analysis.html">4.Structural_Analysis</a>
+            </div>
+          </li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="pattern.html">Pattern</a></li>
+          <li><a href="index.php">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Research Paper Analysis</h1>
+        <p>A brief overview of selected papers and patents in manufacturing and materials science.</p>
+        <a href="#papers" class="cta-button">Explore Papers</a>
+    </section>
+
+    <!-- Content Section -->
+    <div class="content" id="papers">
+        <div class="section">
+            <h2>Springer Chapter (10.1007/978-981-19-0296-3_37)</h2>
+            <p><strong>Title (inferred):</strong> Likely from the book <em>Advances in Manufacturing Technologies and Production Engineering</em>.</p>
+            <p><strong>Analysis:</strong> This chapter appears to focus on a specific topic within manufacturing technologies, possibly related to process optimization, automation, or material science in production engineering. Springer chapters like this typically present research findings, case studies, or theoretical advancements. Without full access, it’s unclear if it’s experimental or review-based, but it’s aimed at an academic or industrial audience interested in cutting-edge manufacturing techniques.</p>
+            <p><strong>Key Focus:</strong> Manufacturing innovation or production efficiency.</p>
+            <a href="https://link.springer.com/chapter/10.1007/978-981-19-0296-3_37" target="_blank">Read More</a>
+        </div>
+
+        <div class="section">
+            <h2>IOP Science Article (10.1088/1757-899X/1070/1/012134)</h2>
+            <p><strong>Title (from metadata):</strong> Likely related to <em>Materials Science and Engineering</em> (IOP Conference Series).</p>
+            <p><strong>Analysis:</strong> This article, published in an IOP conference proceeding, probably discusses experimental or applied research in materials engineering. Topics in this journal often include mechanical properties, material synthesis, or industrial applications. The open-access nature suggests it might detail a specific study—perhaps on composites, alloys, or fabrication techniques.</p>
+            <p><strong>Key Focus:</strong> Material properties or engineering applications.</p>
+            <a href="https://iopscience.iop.org/article/10.1088/1757-899X/1070/1/012134/meta" target="_blank">Read More</a>
+        </div>
+
+        <div class="section">
+            <h2>ScienceDirect Article (S2214785320302224)</h2>
+            <p><strong>Title (inferred):</strong> From <em>Materials Today: Proceedings</em>, likely a conference paper.</p>
+            <p><strong>Analysis:</strong> This paper is part of a peer-reviewed conference series focusing on materials science and technology. Based on the journal’s scope, it could explore topics like nanotechnology, material characterization, or sustainable materials. It’s intended for professionals and academics in materials and manufacturing fields.</p>
+            <p><strong>Key Focus:</strong> Emerging trends in material technology.</p>
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S2214785320302224" target="_blank">Read More</a>
+        </div>
+
+        <div class="section">
+            <h2>Springer Chapter (10.1007/978-981-19-0296-3_38)</h2>
+            <p><strong>Title (inferred):</strong> Another chapter from <em>Advances in Manufacturing Technologies and Production Engineering</em>.</p>
+            <p><strong>Analysis:</strong> Similar to the first Springer link, this chapter likely complements other topics in the same book, possibly diving into a different aspect of manufacturing—like robotics, additive manufacturing, or process simulation. It’s a detailed exploration aimed at advancing industrial practices.</p>
+            <p><strong>Key Focus:</strong> Advanced production techniques or systems.</p>
+            <a href="https://link.springer.com/chapter/10.1007/978-981-19-0296-3_38" target="_blank">Read More</a>
+        </div>
+
+        <div class="section">
+            <h2>Indian Patent Certificate (201941033895)</h2>
+            <p><strong>Title (inferred):</strong> Patent certificate from the Indian Patent Office (filed August 31, 2021).</p>
+            <p><strong>Analysis:</strong> This is a legal document certifying a granted patent, likely for an invention in engineering or technology. The exact invention isn’t clear from the link alone—it could be a device, process, or material innovation. Patents like this protect intellectual property with potential industrial applications.</p>
+            <p><strong>Key Focus:</strong> Intellectual property in technology.</p>
+            <a href="https://iprsearch.ipindia.gov.in/RQStatus/PatentCertificatePDF.aspx?AppNo=MjAxOTQxMDMzODk1&FullPath=LVBhdGVudENlcnRpZmljYXRlMzEtMDgtMjAyMS5wZGY=" target="_blank">View Certificate</a>
+        </div>
+
+        <div class="section">
+            <h2>Indian Design Registration (380132-001)</h2>
+            <p><strong>Title (inferred):</strong> Design registration certificate (Design No. 166629).</p>
+            <p><strong>Analysis:</strong> This is a design patent from the Indian Intellectual Property Office, protecting the aesthetic or ornamental aspect of a product rather than its function. It might relate to a tool, machine part, or consumer product with a unique appearance.</p>
+            <p><strong>Key Focus:</strong> Product aesthetics or industrial design.</p>
+            <a href="https://search.ipindia.gov.in/DesignQRStatus/PDF_Viewer.aspx?AppNo=MzgwMTMyLTAwMQ==&CNo=MTY2NjI5" target="_blank">View Certificate</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Research Analysis. All rights reserved.</p>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Use</a></p>
+    </footer>
+</body>
+</html>
