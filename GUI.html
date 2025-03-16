@@ -3,83 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GUI</title>
 </head>
 <body>
     <style>
-        body{
-            font-family: 'Poppins', Arial, sans-serif;
-            padding-left: 110px;
-            padding-right: 110px;
-            color: var(--text-muted);
-            line-height: 1.6;
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
         }
+    
         custom-heading[level='1'] {
-            font-family: 'Times New Roman', Times, serif;
-            color: red;
-            font-weight: 900;
-            font-size: x-large;
-            text-align: center; 
-            display: block;
-            margin: 0 auto;
-}
-        custom-heading[level='2']{
-            font-family: 'Times New Roman', Times, serif;
-            color: red;
-            font-weight: 900;
-            font-size: 40px;
-            text-align: center; 
-            margin: 20px 0;
-            padding-bottom: 250px;
-            
+            font-size: 1.8rem;
         }
-        sub-heading{
-            font-family: 'Times New Roman', Times, serif;
-            color: rgb(26, 100, 184);
-            font-weight: bold;
-            font-size: large;
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
         }
-        image-tag{
-            font-family: Arial, sans-serif;
-            /* background-color: #f0f0f0; */
-            margin: 0;
-            padding: 20px;
-            display: flex;
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
             flex-direction: column;
+            gap: 20px;
             align-items: center;
         }
-        custom-style{
-            font-style: italic;
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
         }
-        custom-process{
-            font-family: 'Times New Roman', Times, serif;
-            padding: 10px;
-            margin: 10px 0;
-            font-weight: bold;
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
         }
-        custom-spacing{
-            margin-top: 15px;
-            margin-bottom:5px;
-            display: block;
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
         }
-        /* .container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        } */
-        .container-1 {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            background-color:rgba(251, 253, 255, 0.489);
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
         }
-        .container img {
-            width: 150px; 
-            height: 150px;
-            object-fit:fill;
-            background-color:rgba(251, 253, 255, 0.489);
+    
+        sub-heading {
+            font-size: 0.9rem;
         }
-    </style>
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
         <custom-heading level="2">1.5 GUI</custom-heading level='2'><br>
         The GUI is an easy and intuitive way to interact with the program. The
         GUI mode is often referred to as interactive mode. The GUI allows to perform
