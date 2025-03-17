@@ -86,6 +86,33 @@
         max-width: 100%;
         background-color: rgba(251, 253, 255, 0.489);
     }
+    .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .nav-buttons a {
+            background-color: rgba(255, 16, 16, 0.808);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #b30000;
+        }
+
+        /* Center the navigation buttons */
+        .nav-buttons {
+            margin-top: 50px;
+            text-align: center;
+        }
     
     /* Media Queries for Mobile Responsiveness */
     @media (max-width: 768px) {
@@ -194,5 +221,9 @@
         <span><img src="./I_Ansys_Basics/3.jpg" alt="image" width="300px"></span>
     </div> 
     <image-tag>Fig. 1.3</image-tag>
+    <div class="nav-buttons">
+        <a href="">Previous</a>
+        <a href="Introduction_to_ANSYS.html">Next</a>
+    </div>
 </body>
 </html>
