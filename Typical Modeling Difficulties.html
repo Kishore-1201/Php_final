@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">2.13 Typical Modeling Difficulties</custom-heading><br>
+    <custom-spacing>Certain modeling problems can be considered ‘typical’. A typical analyst modeling problem is the case of keypoints, lines, areas, volumes, nodes, and elements that are identical and occupy the same space. This can lead to erroneous models. Proper use of the merge command can eliminate many instances of these problems. The merge can fail if, for example, two elements share the same space, but were defined via alternative sequences of nodes (e.g. elements in the same place, one numbered by nodes selected clockwise, the other counterclockwise).</custom-spacing><br>
+    <custom-spacing>Another problem is failure of keypoints, or lines, or areas to be shared by higher geometric modeling entities. When this happens, the higher entities are not ‘fused’ or ‘welded’ together as intended. Consequently, the elements will not share nodes along what should have been the common boundary.</custom-spacing><br>
+The analyst must always use caution and double-check everything while developing a model.</custom-spacing><br>
+    <custom-spacing>A problem most analysts will encounter is to make a change to a model in error, long after the database was saved. The analyst will have to learn to use a text editor on the log file, to extract that portion of the log file after the last time the database was saved, or retrieved (whichever was most recent). Remove the offending command. That portion of the log file will have to be run on the model as it was the last time it was saved or retrieved. Make sure to be in the correct part of ANSYS (usually /PREP7) when reading in the instructions with /INPUT. The same method can apply if the computer is subjected to a power failure, or if ANSYS crashes without leaving an ‘ansabort.db’ file. After re-starting, take a text editor to the log file, and re-run the appropriate instructions on the model database file as it was when last saved or retrieved.</custom-spacing><br>
+    <custom-spacing>The most common of all errors in Finite Element Modeling is the incorrect application of loads and boundary conditions. This must be thought about very carefully. Most models (not all) are prevented from undergoing free body motion in 2-D or 3-D space, by eliminating at least a minimal number of degrees of freedom (2 translations plus 1 rotation in 2-D, and 3 translations plus 3 rotations in 3-D). Rotations can be prevented either by having constraints on translations at enough distinct nodes in space, or by directly constraining a rotational degree of freedom at a node. A common check on results is to see whether the sums of the reaction forces at the constrained nodes equal the sums of the applied forces and gravity loads.</custom-spacing>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">2.12 Documenting the Analysis</custom-heading><br>
+    <custom-spacing>ANSYS has a Report Generator (Fig. 2.22) available from the main toolbar, which can help to put together an HTML report by capturing images, window listings, etc.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/20.jpg" alt="image" width="500px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.22 Report Generator</image-tag>
+    
+    <custom-spacing>To print a hardcopy of the graphics window: <custom-process>Utility Menu > PlotCtrls > Hard Copy > To Printer</custom-process>. There are several ways of capturing a graphic image for use in Microsoft Word, Powerpoint or some other software.</custom-spacing><br>
+    <custom-spacing>Exact screen shot of the graphics window: <custom-process>Utility Menu > PlotCtrls > Capture Image</custom-process> will pop up another window with a screen shot of the graphics window. It can be kept available for later reference or save the image to a bitmap (.bmp) file. Note that although a windows bitmap file is not compressed, when it is inserted into Word it does get compressed automatically so analyst doesn’t end up with a huge bloated document.</custom-spacing><br>
+    <custom-spacing>Output a vector image: <custom-process>Utility Menu > PlotCtrls > Redirect Plots > To PSCR File…</custom-process>. A Postscript file is a vector file, which means that it is a 2D representation of all of the entities in the graphics window in an editable format. Because it is not a bitmap, it can be scaled to any size without losing any resolution, and is always very crisp looking. It can also be imported into a technical illustration program and manipulated very easily: change the colors, add annotations, change or resize fonts, etc. All this can be done in ANSYS but it can be quicker in an illustration package. One caution about Postscript files! Since they actually write out every entity in the model, if the model is large (say a tet mesh of a CAD model) this file can be huge. It is best suited for getting very crisp images of smallish models or wireframe displays. Microsoft Word will not display the image until it is printed.</custom-spacing><br>
+    <custom-spacing>Output a bitmap image: <custom-process>Utility Menu > PlotCtrls > Redirect Plots > To xyz File…</custom-process>, where xyz is JPEG, TIFF, PNG, etc. These file formats produce good images with reasonably small file sizes. The size of the image file for these formats is not dependant on the size of the model like Postscript.</custom-spacing><br>
+    <b>Controlling the Way the Model Looks</b><br>
+    <custom-spacing>All of the visual aspects of what is seen in the graphics window are controlled from the ‘Plot’ and ‘PlotCtrls’ pull downs from the Utility menu. Use <custom-process>Utility Menu > Plot</custom-process> to plot different types of entities to the screen. Use <custom-process>Utility Menu > PlotCtrls</custom-process> to control the characteristics of what is to be plotted.</custom-spacing><br>
+    <custom-spacing><custom-process>Utility Menu > PlotCtrls > Numbering</custom-process>: Entity Numbers on and off.</custom-spacing><br>
+    <custom-spacing><custom-process>Utility Menu > PlotCtrls > Symbols</custom-process>: Turn various markers and symbols on and off (Fig. 2.23).</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/21.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.23</image-tag>
+    
+    <custom-spacing><custom-process>Utility Menu > PlotCtrls > Style</custom-process>: Change hidden line, element edges, element shrink, etc.</custom-spacing><br>
+    <custom-spacing><custom-process>Utility Menu > PlotCtrls > Device Options</custom-process>: Change between solid shaded and wireframe display.</custom-spacing>
+    </body>
+    </html>

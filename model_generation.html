@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Generation</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+
+<p>
+    <custom-heading level="1">3 MODELING AND MESHING</custom-heading level='1'>
+
+<custom-heading level="2">3.1 Model Generation</custom-heading level='2'>
+    <custom-spacing>The function of a finite element analysis is to rebuild mathematically the behavior of a real engineering system. The analysis must be a precise mathematical model of the system. This model comprises the nodes, elements, material properties, real constants, boundary conditions, and other features that are used to represent the physical system.</custom-spacing>
+
+    <sub-heading>3.1.1 What Is Model Generation?</sub-heading><br>
+    <custom-spacing><custom-style>Model generation</custom-style> usually takes on the narrower meaning of generating the nodes and elements that represent the spatial volume and connectivity of the real system. Thus, <custom-style>model generation</custom-style> involves the process of defining the geometric configuration of the model's nodes and elements. ANSYS offers the following approaches to model generation:</custom-spacing>
+    <ul>
+        <li>Creating a solid model using ANSYS
+        <li>Using direct generation
+        <li>Importing a model created in a computer-aided design (CAD) system
+    </ul>
+    
+    <sub-heading>3.1.2 Steps Involved in Model Generation</sub-heading><br>
+    <custom-spacing>A general modeling session might follow this common outline:</custom-spacing>
+    <ul>
+        <li>Start by planning the approach. Find out the objectives, choose what basic form the model will take, decide appropriate element types, and consider how to set up an appropriate mesh density. Carryout general planning before initiating the session.
+        <li>Enter the preprocessor (PREP7) to begin the model-building session. Most often, the model is built using <custom-style>solid modeling</custom-style> procedures.
+        <li>Establish a <custom-style>working plane</custom-style>.
+        <li>Create basic geometric features using <custom-style>geometric primitives</custom-style> and <custom-style>Boolean operators</custom-style>.
+        <li>Activate the suitable <custom-style>coordinate system</custom-style>.
+        <li>Generate other solid model features from the <custom-style>bottom up</custom-style>. That is, create <custom-style>keypoints</custom-style>, and then define <custom-style>lines</custom-style>, <custom-style>areas</custom-style>, and <custom-style>volumes</custom-style> as needed.
+        <li>Employ more <custom-style>Boolean operators</custom-style> or <custom-style>number controls</custom-style> to join separate solid model regions together as appropriate.
+        <li>Create tables of element attributes.
+        <li>Set <custom-style>element attribute pointers</custom-style>.
+        <li>Set <custom-style>meshing controls</custom-style> to set up the desired mesh density if desired. This step is not always required because default element sizes exist.
+        <li>Generate nodes and elements by <custom-style>meshing</custom-style> the solid model.
+        <li>After nodes and elements are generated, add features such as <custom-style>surface-to-surface contact elements</custom-style>, <custom-style>coupled degrees of freedom</custom-style>, and <custom-style>constraint equations</custom-style>.
+        <li>Save the model data to <custom-style>Jobname.DB</custom-style>.
+        <li>Exit the preprocessor.
+    </ul>
+    
+    <sub-heading>3.1.3 Solid Modeling Vs Direct Generation</sub-heading><br>
+    <custom-spacing>Two different methods can be used to generate the model: <custom-style>solid modeling</custom-style> and <custom-style>direct generation</custom-style>. With <custom-style>solid modeling</custom-style>, describe the geometric boundaries of the model, establish controls over the size and desired shape of the elements, and then instruct the ANSYS program to generate the nodes and elements automatically. In the <custom-style>direct generation</custom-style> method, the analyst determines the location of every node and the size, shape, and connectivity of every element prior to defining these entities.</custom-spacing><br>
+    <custom-spacing>The direct generation method is essentially a hands-on, ‘manual’ method that requires to keep track of all the node numbers as the finite element mesh is developed. This detailed accounting can become tiresome for large models, leading to the potential for modeling errors. Solid modeling is usually more dominant and flexible than direct generation, and is by and large the preferred choice for generating the model.</custom-spacing><br>
+    <custom-spacing>The relative advantages and disadvantages of the two approaches are listed here.</custom-spacing><br>
+    <b>Solid Modeling</b><br>
+    <custom-spacing>On the optimistic side, solid modelling is generally more apt for large or complex models, especially 3-D models. This method permits to work with a comparatively small number of entities and permits geometric operations that cannot be completed with nodes and elements. It supports the use of ‘primitive’ areas and volumes. It also facilitates Boolean operations for ‘top down’ construction and readily permits modifications to geometry.</custom-spacing><br>
+    <custom-spacing>However, solid modelling can necessitate large amounts of system time. It can be more taxing, requiring more data entries than direct generation and can ‘fail’ under certain situations.</custom-spacing><br>
+    <b>Direct Generation</b><br>
+    <custom-spacing>On the positive side, direct generation is handy for small or simple models. It offers complete control over the geometry and numbering of every node and every element.</custom-spacing><br>
+    <custom-spacing>However, direct generation is usually more time consuming; the volume of data one must work with can become vast. It cannot be used with adaptive meshing. Direct generation can become monotonous, requiring the analyst to pay more concentration to every detail of the mesh.</custom-spacing>
+    
+    <sub-heading>3.1.4 Importing Solid Models Created in CAD systems</sub-heading><br>
+    <custom-spacing>Instead of generating the solid models using ANSYS, the analyst can produce them in her/his favorite CAD system and then import them into ANSYS, by saving them in the IGES file format. ANSYS comes with IGES support by default. There are Geometry Interfaces available for Pro/E, CATIA, UG, Solidworks, Parasolid, etc. All of these geometry interfaces on the ANSYS Traditional side perform a conversion of the geometry into an ANSYS Neutral File (.anf) format, which it then reads in.</custom-spacing><br>
+    <custom-spacing>Import CAD geometry using <custom-process>File > Import</custom-process>. Models imported from CAD systems may require general repair if they are not of appropriate quality.</custom-spacing><br>
+    <custom-spacing>Generating a model using a CAD package has the following advantages:</custom-spacing>
+    <ul>
+        <li>Repetition of effort can be avoided by using existing CAD models to produce solid models for analysis.
+        <li>More familiar tools can be used to create models.
+    </ul>

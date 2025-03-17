@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">2.8 Getting Started with Graphics</custom-heading><br>
+    <custom-spacing>The program enables the analyst to portray almost any aspect of the model in pictures or graphs that s/he can view on the terminal screen, store on a file, or plot out as hard copy. The program has numerous features to help customize or enhance the graphics displays.</custom-spacing>
+    
+    <sub-heading>2.8.1 Interactive Versus External Graphics</sub-heading><br>
+    <custom-spacing>Any discussion of graphics assumes that the analyst is running the program interactively and viewing graphics images on the terminal screen. For the most part, this section is written for such a scenario. However, the program can be run in either <custom-style>interactive</custom-style> or <custom-style>batch mode</custom-style> and graphics images stored on a file for later viewing and processing. This process is called creating <custom-style>external graphics</custom-style>.</custom-spacing>
+    
+    <sub-heading>2.8.2 Specifying the Graphics Display Device Type</sub-heading><br>
+    <custom-spacing>For Windows users, the program supports these drivers and capabilities:</custom-spacing>
+    <ul>
+        <li>A window device
+        <li>Hot keyboard/mouse
+        <li>Two- or three-button mouse
+        <li>Hidden line removal
+        <li>Light source shading
+    </ul>
+    <custom-spacing>On a two-button mouse, the shift-right button functions like the middle button of a three-button mouse. While running the program on Windows platforms, there are three alternatives for specifying the graphics device type:</custom-spacing>
+    <ul>
+        <li>Double-click on the Interactive icon in the Program Folder. Click on the down arrow next to <custom-style>Graphics device name</custom-style> and choose the appropriate device.
+        <li>Within the program, issue <custom-process>Utility Menu> PlotCtrls> Device Options</custom-process>.
+        <li>Include the device type on the program execution command line. The command option <custom-style>-d</custom-style> or <custom-style>-D</custom-style> must precede the device type, as shown below: <custom-style>Ansys201 -d device_type</custom-style>
+    </ul>
+    <custom-spacing>The device type is one of the following:</custom-spacing>
+    <ul>
+        <li>WIN32
+        <li>WIN32c
+        <li>3D
+    </ul>
+    <custom-spacing>A colour setting higher than 256 colours is recommended.</custom-spacing><br>
+    <custom-spacing>Specifying an invalid device type causes the program to divert the graphics to a disk file and inhibits the opening of the menu system, even if the <custom-style>-g</custom-style> option is included on the program execution command.</custom-spacing>
+    
+    <sub-heading>2.8.3 Creating Graphics Displays</sub-heading><br>
+    <custom-spacing>Many types of graphics displays can be created: geometry displays (nodes, elements, keypoints, etc.), results displays (temperature or stress contours, etc.), and graphs (stress-strain curves, time-history displays, etc.). Creating any display is a two-step process:</custom-spacing>
+    <ol>
+        <li>Use graphics <custom-style>specification</custom-style> functions to establish specifications (such as the viewing direction, number and color controls, etc.) for the display.
+        <li>Use graphics <custom-style>action</custom-style> functions to actually produce the display.
+    </ol>
+    <custom-spacing>The analyst can perform both types of graphics functions either by using menu functions in the GUI or by typing in commands directly.</custom-spacing>
+    
+    <sub-heading>2.8.3.1 GUI-Driven Graphics Functions</sub-heading><br>
+    <custom-spacing>When running the program interactively, most users will prefer to use the GUI. As they use the GUI functions, they execute commands without actually seeing or editing them. (The program will record all underlying executed commands in your <custom-style>Jobname.LOG</custom-style> file.) Graphics specification functions can be accessed via <custom-process>Utility Menu> PlotCtrls</custom-process>. Graphics action functions reside under <custom-process>Utility Menu> Plot</custom-process>.</custom-spacing>
+    
+    <sub-heading>2.8.3.2 Immediate Mode Graphics</sub-heading><br>
+    <custom-spacing>By default in the GUI, the model will immediately be displayed in the Graphics Window as new entities (such as areas, keypoints, nodes, elements, local coordinate systems, boundary conditions, etc.) are created. This is called <custom-style>immediate mode</custom-style> graphics. Anything drawn immediately in this way, however, will be destroyed if the analyst brings up a menu or dialog box on top of it. Or, if i the GUI is iconified, the immediate mode graphics image will not be shown when the analyst restores the GUI icon.</custom-spacing><br>
+    <custom-spacing>An immediate image will also be automatically scaled to fit nicely within the Graphics Window - a feature called <custom-style>automatic scaling</custom-style>. Periodically, though, the analyst may need to issue an explicit plot function because new entities which lie ‘outside’ the boundaries of the scaled image are created already in the Graphics Window and are thus not captured with immediate mode graphics. The plot function will rescale and redraw the image.</custom-spacing><br>
+    <custom-spacing>To obtain a more ‘permanent’ image, execute one of the plot functions (such as <custom-process>Utility Menu> Plot> Volumes</custom-process>) or a graphics action command (such as <custom-style>VPLOT</custom-style>). An image generated in this way will not be destroyed by menu pop-ups or by iconifying the GUI. Also note that symbols (such as keypoint or node numbers, local coordinate systems, boundary conditions, etc.) are also shown immediately but will not be present on a ‘permanent’ display unless the analyst first ‘turns on’ the appropriate symbol using the functions under <custom-process>Utility Menu> PlotCtrls</custom-process> or the appropriate graphics specification command.</custom-spacing><br>
+    <custom-spacing>If the analyst prefers <custom-style>not</custom-style> to see things immediately as s/he defines them, s/he can use <custom-process>Utility Menu> PlotCtrls> Erase Options> Immediate Display</custom-process> to turn off immediate mode. When the program is run interactively <custom-style>without</custom-style> using the GUI, immediate mode is off by default.</custom-spacing>
+    
+    <sub-heading>2.8.3.4 Replotting the Current Display</sub-heading><br>
+    <custom-spacing>The GUI path <custom-process>Utility Menu> Plot> Replot</custom-process> re-executes the last display action command that was executed. However, the program can execute that command only if it is valid in the current routine.</custom-spacing>
+    
+    <sub-heading>2.8.3.5 Erasing the Current Display</sub-heading><br>
+    <custom-spacing>The current graphics display can be cleared by issuing the <custom-process>Utility Menu> PlotCtrls> Erase Options> Erase Screen</custom-process>. GUI menus will not be erased, however.</custom-spacing>
+    
+    <sub-heading>2.8.3.6 Aborting a Display in Progress</sub-heading><br>
+    <custom-spacing>Invoke the system ‘break’ to terminate a display before it is completed. Typically, this means moving the mouse pointer to the Output Window and typing Ctrl+C. However, the specific procedure varies from system to system. This break must be executed while the display is visibly in progress, or else the entire session will terminate.</custom-spacing>
+    
+    <sub-heading>2.8.4 Multi-Plotting Techniques</sub-heading><br>
+    <custom-spacing>The multi-plotting capabilities within the program enable to display both multiple entities within a window and multiple windows with varying entity types. Defining each window's composition is a four-step process:</custom-spacing>
+    <ol>
+        <li>Define the window layout.
+        <li>Choose the entities to be displayed in each window.
+        <li>Choose the type of element or graph display used for plots.
+        <li>Display the entities selected.
+    </ol>
+    
+    <sub-heading>2.8.4.1 Defining the Window Layout</sub-heading><br>
+    <custom-spacing>First define how many windows are to be used for plotting and how those windows appear on the screen. The following layout options are available:</custom-spacing>
+    <ul>
+        <li>One window
+        <li>Two windows (left and right of the screen, or top and bottom)
+        <li>Three windows (two at the top of the screen and one at the bottom, or one window at the top and two windows at the bottom)
+        <li>Four windows (two at the top of the screen and two at the bottom)
+    </ul>
+    <custom-spacing>Issue the <custom-process>Utility Menu> PlotCtrls> MultiWindow Layout</custom-process> to define the window layout. The program displays a dialog box, in which the analyst can click on the layout s/he prefers. That dialog box also contains a <custom-style>Display upon OK/Apply</custom-style> field, where the analyst also can specify what the program displays next. Choices for this field are <custom-style>Multi-Plots</custom-style>, <custom-style>Replot</custom-style>, and <custom-style>No redisplay</custom-style>. When specifying the layout design is finished, click on <custom-style>Apply</custom-style> or <custom-style>OK</custom-style>.</custom-spacing>
+    
+    <sub-heading>2.8.4.2 Choosing What Entities Each Window Displays</sub-heading><br>
+    <custom-spacing>Once the window layout is designed, choose what entities each window will display. To do so, use: <custom-process>Utility Menu> PlotCtrls> Multi-Plot Controls</custom-process>. A dialog box appears. In its <custom-style>Window to edit</custom-style> field, click on either <custom-style>All window</custom-style> or a specific window number (default is window 1). In the <custom-style>Display type</custom-style> field, choose either <custom-style>Entity plots</custom-style> or <custom-style>Graph plots</custom-style>. Then, click on <custom-style>OK</custom-style>. If <custom-style>Entity plots</custom-style> is choosen, another dialog box appears, listing the types of entities available for display. For Label, specify any of these entity types:</custom-spacing>
+    <ul>
+        <li>NODE (nodes)
+        <li>ELEM (elements)
+        <li>KEYP (keypoints)
+        <li>LINE (lines)
+        <li>AREA (areas)
+        <li>VOLU (volumes)
+        <li>GRPH (graph displays)
+    </ul>
+    <sub-heading>2.8.4.3 Choosing the Display Used for Plots</sub-heading><br>
+    <custom-spacing>When displaying either the ELEM or GRPH entity type, the analyst can control the type of element or graph display used for plots. Use: <custom-process>Utility Menu> PlotCtrls> Multi-Plot Controls</custom-process>. ‘ALL’ can be specified to have all windows use the selected display type, or that display type can be applied only to a specific window (default is window 1).</custom-spacing>
+    
+    <sub-heading>2.8.4.4 Displaying Selected Entities</sub-heading><br>
+    <custom-spacing>Issue <custom-process>Utility Menu> PlotCtrls> Multi-Plots</custom-process> or <custom-process>Utility Menu> Plot> Replot</custom-process> to display the entities selected.</custom-spacing>
+    </body>
+    </html>

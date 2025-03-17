@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">2.9 Creating Graphs</custom-heading><br>
+    <custom-spacing>A graph is used to review the material property curves, trace the time-history response of the system, or examine the relationship between any two items in the analysis. ANSYS graphs can be either 2-D (X-Y) or 3-D (X-Y-Z, where Z must always be <custom-style>TIME</custom-style>). Figure 2.20 shows two typical graphs:</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/18.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.20 Typical ANSYS Graphs</image-tag>
+    
+    <custom-spacing>The most convenient way to create and control graph displays is by using the GUI operations available under <custom-process>Utility Menu> Plot</custom-process> and <custom-process>Utility Menu> PlotCtrls</custom-process>. Alternatively, graphics action and control commands can be used.</custom-spacing>
+    
+    <sub-heading>2.9.1 Graph Display Actions</sub-heading><br>
+    <custom-spacing>Use <custom-process>Utility Menu> Plot> Materials</custom-process> to display linear material properties as a function of temperature. Use <custom-process>Utility Menu> Plot> Data Tables</custom-process> to display nonlinear data curves family of commands. Use <custom-process>Utility Menu> Plot> Array Parameters</custom-process> to display column vectors of array parameters. Use <custom-process>Main Menu> General Postproc> Fatigue> Store Stresses> Plot Stresses</custom-process> to display a stress item associated with a particular location and event versus loading number.</custom-spacing>
+    
+    <sub-heading>2.9.2 Changing the Specifications for Graph Displays</sub-heading><br>
+    <sub-heading>2.9.2.1 Changing the Type, Style, and Color of the Graph Display</sub-heading><br>
+    <custom-spacing>The appearance of the graph display can be altered as follows:</custom-spacing><br>
+    <custom-spacing>Turning axis divisions (tick marks) on or off. This feature can be controlled using the command <custom-process>Utility Menu> PlotCtrls> Style> Graphs</custom-process>.</custom-spacing><br>
+    <custom-spacing>Setting line thickness for axes, grid lines or graph curve lines. Graph items can be accentuated by increasing their line thickness, using the AXIS, GRID, and CURVE labels using <custom-process>Utility Menu> PlotCtrls> Style> Graphs</custom-process>.</custom-spacing><br>
+    <custom-spacing>Turning the grid on or off (in the XY plane). A grid can be added to the graph displays, using <custom-process>Utility Menu> PlotCtrls> Style> Graphs</custom-process>. A grid can be either a full grid or a partial grid.</custom-spacing><br>
+    <custom-spacing>Producing a dashed tolerance curve about the displayed curve. A range of data spread, tolerance, or uncertainty can be indicated on the graph curves using <custom-process>Main Menu> TimeHist Postpro> Settings> Graph</custom-process>.</custom-spacing><br>
+    <custom-spacing>Changing the color of curves (and color-filled areas under curves). The CURVE label on the <custom-process>Utility Menu> PlotCtrls> Style> Colors> color type</custom-process> allows to control the color of each curve in the graph.</custom-spacing>
+    
+    <sub-heading>2.9.2.2 Labeling the Graph</sub-heading><br>
+    <custom-spacing>Labeling the axes. The X and Y axes can be labelled using <custom-process>Utility Menu> PlotCtrls> Style> Graphs</custom-process>.</custom-spacing><br>
+    <custom-spacing>Labeling the curves. For POST26 plotted-variable graphs, the labels applied to the curves are established choosing: <custom-process>Main Menu> TimeHist Postpro> Define Variables</custom-process> or <custom-process>Main Menu> TimeHist Postpro> Elec&Mag> Circuit> Define Variables</custom-process>.</custom-spacing><br>
+    <custom-spacing>Adding user-defined graphics and text. Extra graphics and text can be added to the displays using the annotation functions by choosing <custom-process>Utility Menu> PlotCtrls> Annotation</custom-process>.</custom-spacing>
+    </body>
+    </html>

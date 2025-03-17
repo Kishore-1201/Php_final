@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solid Modeling</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">3.5 Solid Modeling</custom-heading><br>
+    <custom-spacing>A solid model relieves the analyst of the time-consuming task of building a complicated finite element model by direct generation. Some solid modeling and meshing operations can help to speed up the creation of the final analysis model.</custom-spacing>
+    
+    <sub-heading>3.5.1 Solid Modeling Operations</sub-heading><br>
+    <custom-spacing>The points that define the vertices of the model are called <custom-style>keypoints</custom-style> and are the ‘lowest-order’ solid model entities. If, in building the solid model, the analyst first creates the keypoints, and then uses those keypoints to define the ‘higher-order’ solid model entities, the model is said to be built ‘from the bottom up’ (Fig. 3.8). Models built from the bottom up are defined within the currently active coordinate system.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image9.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.8 Bottom Up Construction</image-tag>
+    
+    <custom-spacing>The ANSYS program also gives the analyst the ability to assemble the model using <custom-style>geometric primitives</custom-style>, which are fully-defined lines, areas, and volumes. As a primitive is created, the program automatically creates all the ‘lower’ entities associated with it. If the modeling effort <custom-style>begins</custom-style> with the ‘higher’ primitive entities, the model is said to be built ‘from the top down.’ Bottom up and top down modeling techniques can be freely combined, as appropriate, in any model. Remember that geometric primitives (Fig. 3.9) are built within the working plane while bottom up techniques are defined against the active coordinate system.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image10.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.9 Top Down Constructions (Primitives)</image-tag>
+    
+    <custom-spacing><b>Using Boolean operators:</b> The analyst can ‘sculpt’ the solid model using intersections, subtractions, and other Boolean operations (Fig. 3.10). Booleans allow to work directly with higher solid model entities to create complex shapes. Both bottom up and top down creations can be used in Boolean operations.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image11.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.10 Create Complex Shapes With Boolean Operations</image-tag>
+    
+    <custom-spacing><b>Dragging and rotating:</b> Boolean operators, although convenient, can be computationally costly. Sometimes a model can be constructed more efficiently by dragging (Fig. 3.11) or rotating.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image12.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.11 Dragging an Area to Create a Volume</image-tag>
+    
+    <custom-spacing><b>Moving and copying solid model entities:</b> A complicated area or volume that appears repetitively in the model need only be constructed once; it can then be moved, rotated, and copied (Fig. 3.12) to a new location on the model. It might be more convenient to place geometric primitives in their proper location by moving them, rather than by changing the working plane.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image13.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.12 Copying an Area</image-tag>
+    
+    <custom-spacing><b>Meshing:</b> The ultimate objective in building a solid model is to <custom-style>mesh</custom-style> (Fig. 3.13) that model with nodes and elements. First complete the solid model, set element attributes, and establish meshing controls. Then turn the ANSYS program free to generate the finite element mesh. A ‘mapped’ mesh containing all quadrilateral, all triangular, or all brick elements can be requested by taking care to meet certain requirements.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image14.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.13 Free and Mapped Meshes</image-tag>
+    
+    <custom-spacing><b>Moving and copying nodes and elements:</b> Automatic meshing is a vast improvement over direct generation of nodes and elements, but it can sometimes be computationally time consuming. If the model contains repetitive features, the most efficient approach to model generation would be to model and mesh a pattern region of the model and then generate copies (Fig. 3.14) of that meshed region.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image15.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.14 Copying a Meshed Area</image-tag>
+    
+    <custom-spacing><b>Solid model loads:</b> In the ANSYS program, loads are normally associated with nodes and elements. However, using solid modeling, it is inconvenient to define loads at nodes and elements. Fortunately, loads may be assigned directly to the solid model. When the solution calculations are initiated, the program will automatically transfer these solid model loads to the finite element model.</custom-spacing><br>
+    <custom-spacing><b>Revising the model (clearing and deleting):</b> Before revising the model, it is necessary to be aware of the hierarchy of solid model and finite element model entities. A lower order entity cannot be deleted if it is attached to a higher-order entity. Thus, a volume cannot be deleted if it has been meshed, a line cannot be deleted if it is attached to an area, and so forth. If an entity is attached to any loads, deleting or redefining that entity will delete the attached loads from the database. The hierarchy of modeling entities is as listed below:</custom-spacing>
+    <ul>
+        <li><b>Highest</b> Elements (and Element Loads)
+        <li>Nodes (and Nodal Loads)
+        <li>Volumes (and Solid-Model Body Loads)
+        <li>Areas (and Solid-Model Surface Loads)
+        <li>Lines (and Solid-Model Line Loads)
+        <li><b>Lowest</b> Keypoints (and Solid-Model Point Loads)
+    </ul>
+    <custom-spacing>If it is necessary to revise (Fig. 3.15) a solid model after it has been meshed, first delete all the nodes and elements in the portion of the model to be revised, using <custom-process>Main Menu> Preprocessor> Meshing> Clear</custom-process>. Solid model entities can be deleted and redefined after clearing the solid model. As an alternative to clearing, deleting, and redefining, consider modifying the keypoints directly, using: <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Keypoints> Set of KPs</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Keypoints> Single KP</custom-process>.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image16.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.15 Revising a Meshed Solid Model</image-tag>
+    
+    <sub-heading>3.5.2 Creating the Solid Model from the Bottom Up</sub-heading><br>
+    <custom-spacing>Any solid model, whether assembled from the bottom up or from the top down, is defined in terms of keypoints, lines, areas, and volumes. Figure 3.16 illustrates these entities.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image17.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.16 Basic Solid Model Entities</image-tag>
+    
+    <custom-spacing>Geometry in ANSYS is created from <custom-process>Main Menu> Preprocessor> Modeling> Create</custom-process> and has the following terminology (Fig. 3.17),</custom-spacing><br>
+    <custom-spacing><b>Keypoints:</b> These are points, locations in 3D space.</custom-spacing><br>
+    <custom-spacing><b>Lines:</b> This includes straight lines, curves, circles, spline curves, etc. Lines are typically defined using existing keypoints.</custom-spacing><br>
+    <custom-spacing><b>Areas:</b> This is a surface. When an area is created, it’s associated lines and keypoints are automatically created to border it.</custom-spacing><br>
+    <custom-spacing><b>Volumes:</b> This is a solid. When a volume is created, it’s associated areas, lines and keypoints are automatically created.</custom-spacing><br>
+    <custom-spacing><b>Solid model:</b> In most packages this would refer to the volumes only, but in ANSYS this refers to the geometry. Any geometry, for example, a line is considered a ‘solid model’. A child entity cannot be deleted without deleting its parent, in other words a line cannot be deleted if it’s a part of an area, can’t delete a keypoint if it’s the end point of a line, etc.</custom-spacing><br>
+    <custom-spacing>Keypoints are the vertices, lines are the edges, areas are the faces, and volumes are the interior of the object. Notice that there is a hierarchy in these entities: volumes, the highest-order entities, are bounded by areas, which are bounded by lines, which in turn are bounded by keypoints.</custom-spacing><br>
+    <custom-spacing>In bottom up construction, first create keypoints and use those keypoints to define higher-order solid model entities (Fig. 3.17).</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image18.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.17 Bottom up construction</image-tag>
+    
+    <sub-heading>3.5.2.1 Keypoints</sub-heading><br>
+    <custom-spacing>When building the model from the bottom up, begin by defining the lowest-order solid model entities, <custom-style>keypoints</custom-style>. Keypoints are defined within the currently active coordinate system. Then define lines, areas, and volumes connecting these keypoints. It is not always necessary to explicitly define all entities in ascending order to create higher-order entities: define areas and volumes directly in terms of the keypoints at their vertices. The intermediate entities will then be generated automatically as needed. For example, a brick-like volume is defined in terms of the eight keypoints at its corners, the program will automatically generate the bounding areas and lines.</custom-spacing><br>
+    <custom-spacing>Use <custom-process>Main Menu> Preprocessor> Modeling> Create> Keypoints> In Active CS</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Create> Keypoints> On Working Plane</custom-process> to define individual keypoints in the active coordinate system.</custom-spacing><br>
+    <custom-spacing>Use <custom-process>Main Menu> Preprocessor> Modeling> Create> Keypoints> On Line</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Create> Keypoints> On Line w/Ratio</custom-process> to define individual keypoints at a given location on an existing line.</custom-spacing><br>
+    <custom-spacing>Once an initial pattern of keypoints is created, generate additional keypoints and work with existing keypoints using:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling > Create> Keypoints> KP between KPs</custom-process> to create a keypoint between two existing keypoints
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling > Create> Keypoints> Fill between KPs</custom-process> to generate keypoints between two keypoints.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling > Create> Keypoints> KP at Center</custom-process> to create a keypoint at the center of a circular arc defined by three locations.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Copy> Keypoints</custom-process> to generate additional keypoints from a pattern of keypoints.
+    </ul>
+    <custom-spacing>The keypoints can be maintained using the methods listed below:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Utility Menu> List> Keypoint> Coordinates +Attributes</custom-process> or <custom-process>Utility Menu> List> Keypoint> Coordinates only</custom-process> or <custom-process>Utility Menu> List> Keypoint> Hard Points</custom-process> to list defined keypoints.
+        <li>Use <custom-process>Utility Menu> Select> Entities</custom-process> to select keypoints.
+    </ul>
+    
+    <sub-heading>3.5.2.2 Lines</sub-heading><br>
+    <custom-spacing>Lines are mainly used to represent the edges of an object. As with keypoints, lines are defined within the currently active coordinate system. It is not always necessary to define all lines explicitly, because the program will generate the necessary lines in many instances when an area or volume is defined. Lines are required if it is necessary to generate line elements or to create areas from lines.</custom-spacing><br>
+    <custom-spacing>Copy a pattern of lines to generate additional lines using any of the methods described below:</custom-spacing><br>
+    <custom-spacing>Use <custom-process>Main Menu> Preprocessor> Modeling> Copy> Lines</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Lines</custom-process> to generate additional lines from a pattern of lines. Use <custom-process>Main Menu> Preprocessor> Modeling> Reflect> Lines</custom-process> to generate lines from a line pattern by symmetry reflection.</custom-spacing><br>
+    <custom-spacing>An existing line can be modified by redefining it by using one of the methods described below:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Divide> Line into 2 Ln's</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Divide> Line into N Ln's</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Divide> Lines w/Options</custom-process> to divide up a line into smaller lines.
+    </ul>
+    <custom-spacing>Lines can be maintained using the methods listed below:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Utility Menu> Plot> Lines</custom-process> or <custom-process>Utility Menu> Plot> Specified Entities> Lines</custom-process> to display lines.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Delete> Line and Below</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Delete> Lines Only</custom-process> to delete lines
+    </ul>
+    
+    <sub-heading>3.5.2.3 Areas</sub-heading><br>
+    <custom-spacing>Flat areas are used to represent 2-D solid objects. Curved as well as flat areas are used to represent 3-D surfaces, such as shells, and the faces of 3-D solid objects. Areas are required to use area elements or to create volumes from areas. Most commands that create areas will also automatically generate the necessary lines and keypoints; similarly, many areas can be conveniently generated by defining volumes.</custom-spacing><br>
+    <custom-spacing>Any of the methods described below can be used to explicitly define areas. Several geometric primitives and Boolean commands can also be used to generate or modify areas.</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Create> Areas> Arbitrary> Through KPs</custom-process> to define an area in terms of its vertices.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Create> Areas> Arbitrary> By Lines</custom-process> to define an area in terms of its boundaries.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Extrude> Along Lines</custom-process> to define an area by ‘sweeping’ a line along a characteristic path.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Extrude> About Axis</custom-process> to define an area by rotating a line pattern about an axis.
+    </ul>
+    <custom-spacing>Existing areas can be copied to generate additional areas using the methods described below:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Copy> Areas</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Areas> Areas</custom-process> to generate additional areas from a pattern of areas.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Reflect> Areas</custom-process> to generate areas from an area pattern by symmetry reflection.
+    </ul>
+    <custom-spacing>Use the methods listed below to maintain areas. Only unmeshed areas that are not attached to a volume can be redefined or deleted.</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Utility Menu> List> Areas</custom-process> or <custom-process>Utility Menu> List> Picked Entities> Areas</custom-process> to list defined areas.
+        <li>Use <custom-process>Utility Menu> Plot> Areas</custom-process> or <custom-process>Utility Menu> Plot> Specified Entities> Areas</custom-process> to display areas.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Delete> Area and Below</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Delete> Areas Only</custom-process> to delete areas.
+    </ul>
+    
+    <sub-heading>3.5.2.4 Volumes</sub-heading><br>
+    <custom-spacing>Volumes are used to represent 3-D objects, and are required only to use volume elements. Most commands that create volumes will also automatically generate the necessary lower-order entities.</custom-spacing><br>
+    <custom-spacing>Adopt any of the methods described below to define volumes. Several geometric primitives and Boolean commands can also be used to generate or modify areas.</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Create> Volumes> Arbitrary> Through KPs</custom-process> to define a volume in terms of its vertices.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Create> Volumes> Arbitrary> By Areas</custom-process> to define a volume in terms of its boundaries.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Extrude> About Axis</custom-process> to define a volume by rotating an area pattern about an axis.
+    </ul>
+    <custom-spacing>Volumes can be maintained using the methods described below. Note that only unmeshed volumes can be redefined or deleted.</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Utility Menu> List> Picked Entities> Volumes</custom-process> or <custom-process>Utility Menu> List> Volumes</custom-process> to list volumes.
+        <li>Use <custom-process>Utility Menu> Plot> Specified Entities> Volumes</custom-process> or <custom-process>Utility Menu> Plot> Volumes</custom-process> to display volumes.
+        <li>Use <custom-process>Utility Menu> Select> Entities</custom-process> to select volumes.
+    </ul>
+    
+    <sub-heading>3.5.3 Creating the Solid Model from the Top Down</sub-heading><br>
+    <custom-spacing>In top down construction, geometric primitives are used to assemble the model. As a primitive is created, the program automatically creates all the ‘lower’ entities associated with it. A <custom-style>geometric primitive</custom-style> is a commonly used solid modeling shape that can be created with a single ANSYS command.</custom-spacing><br>
+    <custom-spacing>Because primitives are higher-order entities that can be constructed <custom-style>without</custom-style> first defining any keypoints, model generation that uses primitives is sometimes referred to as ‘top down’ modeling. Geometric primitives are created within the working plane.</custom-spacing><br>
+    <custom-spacing>Bottom up and top down modeling techniques can freely be combined, as appropriate, in any model. Remember that geometric primitives are built within the working plane while bottom up techniques are defined against the active coordinate system.</custom-spacing>
+    
+    <sub-heading>3.5.3.1 Creating Area Primitives</sub-heading><br>
+    <custom-spacing>Any area primitives created will lie flat on the working plane and will be oriented according to the working plane coordinate system. Area primitives must have surface areas greater than zero.</custom-spacing>
+    
+    <sub-heading>3.5.3.2 Creating Volume Primitives</sub-heading><br>
+    <custom-spacing>Volume primitives are positioned relative to the working plane.</custom-spacing>
+    
+    <sub-heading>3.5.4 Sculpting the Model with Boolean Operations</sub-heading><br>
+    <custom-spacing>Boolean operations can be applied to almost <custom-style>any</custom-style> solid model construction, whether it was created from the top down or from the bottom up. The only exceptions are that Boolean operations are not valid for entities created by</custom-spacing>
+
+    <custom-spacing>concatenation and that some Boolean operations cannot always be performed on entities that contain degeneracies.</custom-spacing><br>
+    <custom-spacing>Also, all solid-model loads and element attributes should be defined <custom-style>after</custom-style> the Boolean operations are completed. Take care to redefine the element attributes and solid-model loads when using Booleans to modify an existing model.</custom-spacing>
+    
+    <sub-heading>3.5.4.1 Intersect</sub-heading><br>
+    <custom-spacing>An <custom-style>intersection</custom-style> defines a new set of entities which is common to every original entity included in the operation (Fig. 3.18). In other words, an intersection represents the region of overlap of two or more entities. The new set can be of the same or lower dimension as the original entities. For instance, the intersection of two lines can be a keypoint, or it can be a line. The Boolean intersect commands are as follows:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Intersect> Common> Lines</custom-process> to create the intersection of lines.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Intersect> Common> Areas</custom-process> to create the intersection of areas.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Intersect> Common> Volumes</custom-process> to create the intersection of volumes.
+    </ul>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image19.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.18 Intersect operation</image-tag>
+    
+    <sub-heading>3.5.4.2 Add</sub-heading><br>
+    <custom-spacing>An <custom-style>addition</custom-style> of entities defines a new entity that includes all parts of the originals (Fig. 3.19). The resulting entity is a single seamless whole, containing no internal divisions. Only volumes or coplanar 2-D areas can be added in the ANSYS program. Areas added may contain holes within the area;elsa (i.e., internal loops. The Boolean add commands are as follows:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Add> Areas</custom-process> to add separate areas to create a single area.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Add> Volumes</custom-process> to add separate volumes to create a single volume.
+    </ul>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image20.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.19 Add operation</image-tag>
+    
+    <sub-heading>3.5.4.3 Subtract</sub-heading><br>
+    <custom-spacing>Subtracting (Fig. 3.20) one entity (E2) from another (E1), gives one of two results: Either the analyst creates a new entity or entities (E1 - E2 ≥ E3) that is of the same dimensionality as E1 and that contains no overlap with E2, or, if the overlap is of a lower dimensionality, simply E1 will be divided into two or more new entities (E1 - E2 ≥ E3 and E4). The Boolean subtract GUI paths are as follows:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Subtract> Lines</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Subtract> With Options> Lines</custom-process> to subtract lines from lines
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Subtract> Areas</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Subtract> With Options> Areas</custom-process> to subtract areas from areas.
+    </ul>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image21.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.20 Subtract operation</image-tag>
+    
+    <sub-heading>3.5.4.4 Overlap</sub-heading><br>
+    <custom-spacing>The <custom-style>overlap</custom-style> commands will join two or more entities to create three or more new entities that encompass all parts of the originals (Fig. 3.21). The end result is similar to an ‘add’ operation, except that boundaries will be created around the overlap zone. Thus, the overlap operation produces a number of relatively uncomplicated regions, as compared to the single relatively complicated region created by the add operation. For this reason, overlapped entities will often mesh better than added entities.</custom-spacing><br>
+    <custom-spacing>Overlapping is valid only if the overlap region has the same dimensionality as the original entities. The Boolean overlap GUI paths are as follows:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Overlap> Lines</custom-process> to overlap lines
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Overlap> Areas</custom-process> to overlap areas.
+    </ul>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image22.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.21 Overlap operation</image-tag>
+    
+    <sub-heading>3.5.4.5 Partition</sub-heading><br>
+    <custom-spacing>The <custom-style>partition</custom-style> commands will join two or more entities to create three or more new entities that encompass all parts of the originals (Fig. 3.22). The end result is similar to an ‘overlap’ operation if the overlap is of the same dimensionality as the original entities. However, unlike the <custom-style>overlap operations</custom-style>, non-overlapping input entities will not be deleted. The Boolean partition GUI paths are as follows:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Partition> Lines</custom-process> to partition lines.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Partition> Areas</custom-process> to partition areas.
+    </ul>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image23.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.22 Partition operation</image-tag>
+    
+    <sub-heading>3.5.4.6 Glue (or Merge)</sub-heading><br>
+    <custom-spacing>Glue is similar to overlap, except that it applies only to cases in which the intersection between entities occurs at a boundary, and is one dimension lower than the original entities (Fig. 3.23). The entities maintain their individuality, but they become connected at their intersection, as shown in the illustrations below. The Boolean glue GUI paths are as follows:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Glue> Lines</custom-process> to glue lines by ‘gluing’ lines.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Glue> Areas</custom-process> to glue areas by ‘gluing’ areas.
+    </ul>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image24.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.23 Glue operation</image-tag>
+    
+    <sub-heading>3.5.4.7 Divide</sub-heading><br>
+    <custom-spacing>Divides an entity into two or more entities (Fig. 3.24).</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image25.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.24 Divide operation</image-tag>
+    
+    <sub-heading>3.5.5 Updating after Boolean Operations</sub-heading><br>
+    <custom-spacing>Some Boolean commands will automatically update entities after the Boolean operation is performed on attached lower-order entities. For instance, if the GUI path <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Add> Areas</custom-process> is used to add several areas together that are attached to a single volume, that volume will be updated by replacing the original areas with the newly produced area. This releases the analyst from the work of deleting the higher-order entity and rebuilding it with bottom up techniques.</custom-spacing>
+    
+    <sub-heading>3.5.6 Moving and Copying Solid Model Entities</sub-heading><br>
+    <custom-spacing>If the model repetitively uses a relatively complicated area or volume, it is necessary to construct that part only once. Then copies of that part can be generated in new locations and new orientations as needed.</custom-spacing><br>
+    <custom-spacing>Move translates or rotates an entity by specifying DX,DY,DZ offsets (Fig. 3.25). DX,DY,DZ are interpreted in the active CS. To translate an entity, make the active CS Cartesian. To rotate an entity, make the active CS cylindrical or spherical. Another option is to transfer coordinates to a different system.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image26.jpg" alt="image" width="210px"></span>
+        <span><img src="./III  Modeling&Meshing/image27.jpg" alt="image" width="220px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.25 Moving an area</image-tag>
+    
+    <custom-spacing>Geometric primitives can also be considered to be ‘parts’. As geometric primitives are created, their location and orientation will be determined by the current working plane. Because it is not always particularly convenient to redefine the working plane for each new primitive that is created, it is more practical to allow a primitive to be created at the ‘wrong’ location, and then <custom-style>move</custom-style> that primitive to its correct position. Of course, this operation is not limited to geometric primitives: <custom-style>any</custom-style> solid model entity can be copied or moved.</custom-spacing><br>
+    <custom-spacing>Copy generates multiple copies of an entity. Specify the number of copies (2 or greater) and the DX,DY,DZ offset for each copy. DX,DY,DZ are interpreted in the active CS. It is useful to create multiple holes, ribs, protrusions, etc. (Fig. 3.26).</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image28.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.26 Copying an Area</image-tag>
+    
+    <sub-heading>3.5.6.1 Generating Entities from a Pattern</sub-heading><br>
+    <custom-spacing>ANSYS provides the following GUI paths for generating entities from a pattern:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Copy> Keypoints</custom-process> to generate additional keypoints from a pattern of keypoints
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Copy> Lines</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Lines</custom-process> to generate additional lines from a pattern of lines.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Copy> Areas</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Areas> Areas</custom-process> to generate additional areas from a pattern of areas.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Copy> Volumes</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Volumes</custom-process> to generate additional volumes from a pattern of volumes.
+    </ul>
+    
+    <sub-heading>3.5.6.2 Generating Entities by Symmetry Reflection</sub-heading><br>
+    <custom-spacing>ANSYS provides the following GUI paths for generating entities by symmetry reflection:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Reflect> Keypoints</custom-process> to generate a reflected set of keypoints.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Reflect> Lines</custom-process> to generate lines from a line pattern by symmetry reflection
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Reflect> Areas</custom-process> to generate areas from an area pattern by symmetry reflection
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Reflect> Volumes</custom-process> to generate volumes from a volume pattern by symmetry reflection
+    </ul>
+    
+    <sub-heading>3.5.6.3 Transferring a Pattern of Entities to a Coordinate System</sub-heading><br>
+    <custom-spacing>ANSYS provides the following GUI paths:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Transfer Coord> Keypoints</custom-process> to transfer a pattern of keypoints to another coordinate system.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Transfer Coord> Lines</custom-process> to transfer a pattern of lines to another coordinate system.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Transfer Coord> Areas</custom-process> to transfer a pattern of areas to another coordinate system.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Transfer Coord> Volumes</custom-process> to transfer a pattern of volumes to another coordinate system.
+    </ul>
+    
+    <sub-heading>3.5.7 Other Operations</sub-heading><br>
+    <custom-spacing>Besides Booleans, many other operations are available like Extrude, Scale, Reflect, Merge, Fillet.</custom-spacing>
+    
+    <sub-heading>3.5.7.1 Extrude</sub-heading><br>
+    <custom-spacing>Extrude quickly creates volumes from existing areas (or areas from lines, and lines from keypoints). If the area is meshed, the elements can be extruded along with the areas. There are four ways to extrude areas:</custom-spacing>
+    <ul>
+        <li><b>Along normal</b> — creates volume by normal offset of areas (Fig. 3.27b)
+        <li><b>By XYZ offset</b> — creates volume by a general x-y-z offset. Allows tapered extrusion.
+        <li><b>About axis</b> — creates volume by revolving areas about an axis (specified by two keypoints).
+        <li><b>Along lines</b> — creates volume by ‘dragging’ areas along a line or a set of contiguous lines.
+    </ul>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image29.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.27 Extrude operation</image-tag>
+    
+    <sub-heading>3.5.7.2 Reflect</sub-heading><br>
+    <custom-spacing>Reflect facilitates reflecting entities about a plane (Fig. 3.28). Specify the direction of reflection:</custom-spacing>
+    <ul>
+        <li>X for reflection about the YZ plane
+        <li>Y for XZ plane
+        <li>Z for XY plane
+    </ul>
+    <custom-spacing>All directions are interpreted in the active CS, which must be a Cartesian system.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image30.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.28 Reflect Operation</image-tag>
+    
+    <sub-heading>3.5.7.3 Merge</sub-heading><br>
+    <custom-spacing>Merge attaches two entities together by removing coincident keypoints (Fig. 3.29). Observe the removal of coincident keypoints on the centre line. Merging keypoints will automatically merge coincident higher-order entities, if any. This is usually required after a reflect, copy, or other operation that causes coincident entities.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image31.jpg" alt="image" width="250px"></span>
+        <span><img src="./III  Modeling&Meshing/image32.jpg" alt="image" width="250px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.29 Merge operation</image-tag>
+    
+    <sub-heading>3.5.7.4 Fillet</sub-heading><br>
+    <custom-spacing>Line fillet requires two intersecting lines with a common keypoint at the intersection (Fig. 3.30). If the common keypoint does not exist, do a partition operation first. ANSYS does not update the underlying area (if any), so either add or subtract the fillet region. Area filleting is similar.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image33.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.30 Fillet operation</image-tag>

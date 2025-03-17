@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">2.3 Solution</custom-heading><br>
+    <custom-spacing>In the solution phase of an analysis, the computer takes over and solves the simultaneous set of equations that the finite element method generates. The results of the solution are:</custom-spacing>
+    <ul>
+        <li>Nodal degree of freedom values, which form the primary solution
+        <li>Derived values, which form the element solution
+    </ul>
+    <custom-spacing>The element solution is usually calculated at the elements' integration points. The program writes the results to the database as well as to the results file (.RST, .RTH, or .RMG files).</custom-spacing>
+    
+    <sub-heading>2.3.1 Selecting a Solver</sub-heading><br>
+    <custom-spacing>Several methods for solving the system of simultaneous equations are available in the program: sparse direct solution, Preconditioned Conjugate Gradient (PCG) solution, Jacobi Conjugate Gradient (JCG) solution, Incomplete Cholesky Conjugate Gradient (ICCG) solution, and Quasi-Minimal Residual (QMR) solution. In addition, distributed versions of the sparse, PCG, and JCG solvers are available for use in Distributed ANSYS.</custom-spacing><br>
+    <custom-spacing>Select a solver using: <custom-process>Main Menu> Preprocessor> Loads> Analysis Type> Analysis Options</custom-process> or <custom-process>Main Menu> Solution> Load Step Options> Sol'n Control (: Sol'n Options Tab)</custom-process> or <custom-process>Main Menu> Solution> Analysis Options</custom-process> or <custom-process>Main Menu> Solution> Unabridged Menu> Analysis Options</custom-process></custom-spacing>
+    
+    <sub-heading>2.3.2 Obtaining the Solution</sub-heading><br>
+    <custom-spacing>Use <custom-process>Main Menu> Solution> Current LS</custom-process> to initiate the solution. Because the solution phase generally requires more computer resources that the other phases of an analysis, it is better suited to batch mode than interactive mode.</custom-spacing><br>
+    <custom-spacing>The solver writes output to the output file (Jobname.OUT) and the results file. If the solution is run interactively, the output ‘file’ is actually the screen. By using one of the following before issuing SOLVE, the output can be diverted to a file instead of the screen: <custom-process>Utility Menu> File> Switch Output to> File or Output Window</custom-process></custom-spacing><br>
+    <custom-spacing>Data written to the output file consist of the following:</custom-spacing>
+    <ul>
+        <li>Load summary information
+        <li>Mass and moments of inertia of the model
+        <li>Solution summary information
+        <li>A final closing banner that gives total CPU time and elapsed time
+        <li>Data requested by the <custom-style>OUTPR</custom-style> output control command or its GUI counterpart
+    </ul>
+    <custom-spacing>In interactive mode, much of the output is suppressed. The results file (.RST, .RTH, or .RMG) contains all results data in binary form, which can be reviewed in the postprocessors.</custom-spacing><br>
+    <custom-spacing>Another useful file produced during solution is <custom-style>Jobname.STAT</custom-style>, which gives the status of the solution. This file can be used to monitor an analysis while it is running. It is particularly useful in iterative analyses such as nonlinear and transient analyses. The <custom-style>SOLVE</custom-style> command calculates the solution for the load step data currently in the database.</custom-spacing>
+    
+    <sub-heading>2.3.3 Solving Multiple Load Steps</sub-heading><br>
+    <custom-spacing>There are three ways to define and solve multiple load steps:</custom-spacing>
+    <ul>
+        <li>Multiple <custom-style>SOLVE</custom-style> method
+        <li>Load step file method
+        <li>Array parameter method
+    </ul>
+    
+    <sub-heading>2.3.3.1 Using the Multiple SOLVE Method</sub-heading><br>
+    <custom-spacing>This method is the most straightforward. It involves issuing the <custom-style>SOLVE</custom-style> command after each load step is defined. The main disadvantage, for interactive use, is that the analyst has to wait for the solution to be completed before defining the next load step.</custom-spacing>
+    
+    <sub-heading>2.3.3.2 Using the Load Step File Method</sub-heading><br>
+    <custom-spacing>The load step file is a convenient method to solve problems while the analyst is away from the terminal. It involves writing each load step to a load step file (via the <custom-style>LSWRITE</custom-style> command or its GUI equivalent) and, with one command, reading in each file and obtaining the solution.</custom-spacing><br>
+    <custom-spacing>Issue <custom-process>Main Menu> Solution> From LS Files</custom-process> to solve multiple load steps. This reads in the load step files sequentially and initiates the solution for each load step.</custom-spacing>
+    
+    <sub-heading>2.3.3.3 Using the Array Parameter Method</sub-heading><br>
+    <custom-spacing>This method, mainly intended for transient or nonlinear static analyses, requires knowledge of array parameters and do-loops, which are part of ANSYS Parametric Design Language (APDL). The array parameter method involves building tables of <custom-style>load</custom-style> versus <custom-style>time</custom-style> using array parameters.</custom-spacing>
+    
+</body>
+</html>

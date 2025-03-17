@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">2.10 Annotation</custom-heading><br>
+    <custom-spacing>A common step in the analysis process is presenting model and results data with additional notations applied, such as dimensions, comments, highlights, or other text or artwork. The standard ANSYS display can be enhanced with a variety of annotation primitives including text, dimensions, polygons, symbols, and even pie charts. The ‘!’ and ‘$’ characters are not available for text annotation.</custom-spacing><br>
+    <custom-spacing>2-D text and graphics annotations are formed as a 2-D overlay on the graphics screen. Because this overlay exists as an imaginary plane, when the analyst transforms the model, the constructed annotation will not move with the model. Because of this, 2-D annotation should be used primarily for finalized reports and printouts. Access 2-D annotation functions through <custom-process>Utility Menu> PlotCtrls> Annotation> Create 2D Annotation</custom-process>.</custom-spacing><br>
+    <custom-spacing>The following annotation primitives are available from the 2-D annotation dialog box:</custom-spacing>
+    <ul>
+        <li>Text
+        <li>Lines
+        <li>Rectangles
+        <li>Circles
+        <li>Arcs
+        <li>Polygons
+        <li>Wedges
+        <li>Arrows
+        <li>Dimensions
+        <li>Pies
+        <li>Symbols
+    </ul>
+    <custom-spacing>On choosing <custom-process>Utility Menu> PlotCtrls> Annotation> Create 2D Annotation</custom-process>, the text annotation dialog box appears (Fig. 2.21). Text annotation can be applied either as stroke text or as bitmap fonts. The ‘!’ and ‘$’ characters cann’t be used in ANSYS text annotation.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/19.jpg" alt="image" width="150px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.21 Stroke Text Annotation Dialog Box</image-tag>
+    
+    <custom-spacing>The fields and buttons presented in the annotation dialog box change when the annotation entity type is reset. For example, if the annotation entity is reset to arcs, the dialog box shown, changes to display the options available for annotation arcs. Regardless of which annotation entity is choosen, the annotation dialog box always displays four action buttons:</custom-spacing><br>
+    <custom-spacing><custom-style>Undo</custom-style> - Erases the last annotation entity created.</custom-spacing><br>
+    <custom-spacing><custom-style>Refresh</custom-style> - Redisplays the annotation, which is useful after move and delete operations.</custom-spacing><br>
+    <custom-spacing><custom-style>Close</custom-style> - Closes the annotation dialog box.</custom-spacing><br>
+    <custom-spacing><custom-style>Help</custom-style> - Displays online help for the dialog of the currently selected annotation entity.</custom-spacing><br>
+    <custom-spacing>Once annotations are created, the analyst can control their display by selecting <custom-process>Utility Menu> PlotCtrls> Annotation> Display Annotation</custom-process>. Accessing this menu pick toggles annotation display on and off.</custom-spacing>
+    </body>
+    </html>

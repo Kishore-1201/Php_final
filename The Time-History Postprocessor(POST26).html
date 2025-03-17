@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">2.6 The Time-History Postprocessor (POST26)</custom-heading><br>
+    <custom-spacing>Use the time-history postprocessor to review analysis results at specific locations in the model as a function of time, frequency, or some other change in the analysis parameters that can be related to time. In this mode, the analyst can process results data in many ways. S/he can construct graphics displays, chart representations or tabular listings, or perform math operations on the data sets. A typical time-history task would be to graph result items versus time in a transient analysis, or to graph force versus deflection in a nonlinear structural analysis.</custom-spacing><br>
+    <custom-spacing>Following is the general process for using the time-history postprocessor:</custom-spacing>
+    <ol>
+        <li>Start the time-history processor, either interactively or via the command line.
+        <li>Define time-history variables. This involves not only identifying the variables, but also storing the variables.
+        <li>Process the variables to develop calculated data or to extract or generate related variable sets.
+        <li>Prepare output. This can be via graph plots, tabular listings or file output.
+    </ol>
+    
+    <sub-heading>2.6.1 Entering the Time-History Postprocessor</sub-heading><br>
+    <custom-spacing>The analyst enters the time history processor to process time or frequency related results data. Once an analysis is solved, ANSYS uses the results data to create a ‘Results File.’ The active results file (<custom-style>*.RST</custom-style>, <custom-style>*.RTH</custom-style>, <custom-style>*.RMG</custom-style>, etc.) is automatically loaded when the analyst enters postprocessing. If the current analysis contains no results file, the program queries for one. The file option can also be used to load any other results file for processing.</custom-spacing>
+    
+    <sub-heading>2.6.2 Importing Data</sub-heading><br>
+    <custom-spacing>This feature allows the analyst to read in set(s) of data from a file into time history variable(s). This enables the user, for instance, to display and compare test results data against the corresponding ANSYS results data.</custom-spacing>
+    
+    <sub-heading>2.6.3 Exporting Data</sub-heading><br>
+    <custom-spacing>This feature allows the analyst to write out selected time history variable(s) to an ASCII file or to APDL array/table parameter. This enables to perform several functions such as pass data on to another program for further processing or to archive data in an easily retrievable format.</custom-spacing>
+    
+    <sub-heading>2.6.4 Reviewing the Variables</sub-heading><br>
+    <custom-spacing>Once the variables are defined, they can be reviewed via graph plots or tabular listings.</custom-spacing>
+    
+    <sub-heading>2.6.4.1 Plotting Result Graphs</sub-heading><br>
+    <custom-spacing>The description for graph plotting, both with the variable viewer and from the command line follows:</custom-spacing><br>
+    <b>Interactive</b><br>
+    <custom-spacing>The ‘Graph Data’ button in the variable viewer allows to plot all the selected variables. A maximum of 10 variables can be plotted on a single graph. By default, the variable used for the X-axis of the graphs is TIME for static and transient analyses or FREQUENCY for harmonic analysis. The analyst can select a different variable for the X-axis of the graph using the radio button under the column X-AXIS in the list of variables.</custom-spacing><br>
+    <custom-spacing>When plotting complex data such as from a harmonic analysis, use the 'results to view' drop-down list on the right top corner of the variable viewer to indicate whether to plot Amplitude (default), Phase angle, Real part or Imaginary part.</custom-spacing><br>
+    <custom-spacing>The variable viewer stores all the time points available on the results file. A portion of this data can be displayed by selecting a range for the X-axis value. This is useful when it is necessary to focus on the response around a certain time point e.g., around the moment of impact in a drop test analysis. This is available in the ‘Data Properties’ dialog under the X-AXIS tab. Note that this is a global setting i.e. this setting is used for all subsequent graph plots.</custom-spacing>
+    
+    <sub-heading>2.6.4.2 Listing Results in Tabular Form</sub-heading><br>
+    <custom-spacing>Use the following procedures to create tabular data lists, interactively:</custom-spacing><br>
+    <b>Interactive</b><br>
+    <custom-spacing>The ‘List Data’ button of the variable viewer can be used to list up to six variables in the variable viewer.</custom-spacing><br>
+    <custom-spacing>When listing complex data such as from a harmonic analysis, use the 'results to view' drop-down list on the right top corner of the variable viewer to indicate whether to printout ‘amplitude and phase angle’ or ‘real and imaginary parts’ in the listing. Select amplitude or phase to list ‘Amplitude and Phase Angle’ results. Select real or imaginary to list ‘Real and Imaginary’ results.</custom-spacing><br>
+    <custom-spacing>Data being listed can be restricted to a range of time or frequency. This and other listing controls are available through the ‘Lists’ tab under Data Properties dialog. In addition to setting the range of time or frequency, this dialog also allows to:</custom-spacing>
+    <ul>
+        <li>Control the number of lines before repeating headers on the listings.
+        <li>Additionally print the extreme values of the selected variables.
+        <li>Specify printing every 'n'th data point.
+    </ul>
+    </body>
+    </html>

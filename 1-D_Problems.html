@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-D_Problems</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+        <custom-heading level="2" style="color: green;">4.1. 1-D Problems</custom-heading level="2">
+        <custom-spacing style="color: red;"><b>W1:</b> Consider a 2m long steel bar of 50mm<sup>2</sup> cross sectional area as shown below. Use two element mesh to model this problem. Find nodal displacements, element stresses and reaction. Take Young’s modulus, E=2x10<sup>5</sup> N/mm<sup>2</sup>, load=100N.</custom-spacing><br>
+        <custom-spacing><div class="container-1">
+            <span><img src="./IV Structural Analysis/image1.jpg" alt="image" width="450px" height="180"></span>
+        </div></custom-spacing>
+        <custom-spacing><b>Data:</b> Length of bar=2000mm, Cross sectional area=50mm<sup>2</sup>, E=2x10<sup>5</sup> N/mm<sup>2</sup>, Load=100N</custom-spacing><br>
+        <custom-spacing><b>Sol:</b></custom-spacing><br>
+        <custom-spacing><b>Preprocessing</b></custom-spacing>
+        <ol>
+            <li><b>Change jobname</b><br>
+                <custom-process>File> Change Jobname</custom-process><br>
+                <custom-spacing>Enter ‘Bar with end load’’ and click on ‘OK’.</custom-spacing>
+            <li><b>Define element types</b><br>
+                <custom-process>Preprocessor> Element Type> Add/Edit/Delete</custom-process><br>
+                <custom-spacing>Click on ‘Add..’, highlight ‘Link’, then ‘3D finit stn 180’, click on ‘OK’, then ‘Close’.</custom-spacing>
+            <li><b>Define the cross sectional area for the Link180</b><br>
+                <custom-process>Preprocessor> Sections> Link> Add</custom-process><br>
+                <custom-spacing>Type ‘1’ for ‘Add Link Section with ID’. Type ‘Bar’ for Section Name’. In this problem, the area is 50. Fill in the Link area value. Choose ‘Tension’ for ‘Tension Key and click on ‘OK’, then ‘Close’.</custom-spacing>
+            <li><b>Define Material Properties</b><br>
+                <custom-process>Preprocessor> Material Properties> Material Models> Structural> Linear> Elastic> Isotropic</custom-process><br>
+                <custom-spacing>‘OK’ for material set number 1, then enter 2e5 for EX, then ‘OK’.</custom-spacing>
+            <li><b>Create nodes at bar nodes</b><br>
+                <custom-process>Preprocessor> Modeling> Create> Nodes> In Active CS</custom-process><br>
+                <custom-spacing>Enter 1 for node number (ANSYS would automatically number nodes if this column is left blank). Enter the location as (X,Y,Z)=(0,0,0). Click on ‘Apply’. Continue defining nodes 2 & 3 using the locations based on the sketch of the bar, but after entering the node 3 location, click on ‘OK’ instead of ‘Apply’. So, node 2 is at (X,Y,Z)=(1000,0,0) and node 3 is at (X,Y,Z)=(2000,0,0).</custom-spacing><br>
+                <custom-spacing>As a check to ensure all nodes were entered correctly, list the nodes.</custom-spacing><br>
+                <custom-process>Utility Menu> List> Nodes</custom-process><br>
+                <custom-spacing>Turn on node numbering.</custom-spacing><br>
+                <custom-process>Utility Menu> PlotCtrls> Numbering</custom-process>
+            <li><b>Create link elements between nodes</b><br>
+                <custom-process>Preprocessor> Modelling> Create> Elements> Auto Numbered> Thru Nodes</custom-process><br>
+                <custom-spacing>A picking menu appears. Pick node 1, then node 2 and click on ‘Apply’ in the Picking Menu. Pick node 2, then node 3 and click on ‘OK’ in the Picking Menu.</custom-spacing>
+            <li><b>Apply constraints and forces on the model.</b><br>
+                <custom-process>Solution> Loads> Apply> Structural> Displacement> On Nodes</custom-process><br>
+                <custom-spacing>Pick node 1, then click ‘OK’ in the picking menu that has appeared. Choose ‘ALL DOF’ and use the default displacement value of zero.</custom-spacing><br>
+                <custom-spacing>Apply the forces.</custom-spacing><br>
+                <custom-process>Solution> Loads> Apply> Structural> Force/Moment> On Nodes</custom-process><br>
+                <custom-spacing>Pick node 3, then ‘OK’ in the picking menu, choose ‘FX’ as the direction of the force, and enter 100 for the force value. Click on ‘OK’.</custom-spacing>
+        </ol>
+        <custom-spacing><div class="container-1">
+            <span><img src="./IV Structural Analysis/image2.jpg" alt="image" width="250px"></span>
+        </div></custom-spacing>
+        <custom-spacing><b>Solution</b></custom-spacing>
+        <ol>
+            <li><b>Solve the problem</b><br>
+                <custom-process>Solution> Solve> Current LS</custom-process><br>
+                <custom-spacing>Click ‘OK’ in the ‘Solve Current Load Step’ Box</custom-spacing>
+        </ol>
+        
+        <custom-spacing><b>Postprocessing</b></custom-spacing>
+        <ol>
+            <li><b>Plot the deformed shape</b><br>
+                <custom-process>General Postproc> Plot Results> Deformed Shape</custom-process><br>
+                <custom-spacing>Choose ‘Def + undeformed’, then ‘OK’</custom-spacing>
+                <custom-spacing><div class="container-1">
+                    <span><img src="./IV Structural Analysis/image3.jpg" alt="image" width="300px"></span>
+                </div></custom-spacing>
+                <li><b>List reaction forces</b><br>
+                <custom-process>General Postproc> List Results> Reaction Solution</custom-process><br>
+                <custom-spacing>Click on ‘All struc forc F’, and ‘OK’</custom-spacing><br>
+                <custom-spacing><div class="container-1">
+                    <span><img src="./IV Structural Analysis/image4.jpg" alt="image" width="400px"></span>
+                </div></custom-spacing>
+                <custom-spacing>Print the information in the Listing Box, by clicking, in that box, on File> Print. Or else, just write the information down.</custom-spacing>
+            <li><b>List a summary, which includes the axial force and stress in each element</b><br>
+                <custom-process>General Postproc> List Results> Element Solution> LineElem results> Structural ELEM</custom-process><br>
+                <custom-spacing>Click ‘OK’, and a summary for each element is printed, including the node numbers, from which the corresponding bar element can be identified, and also the axial force (MFORX), and the axial stress (SAXL). Record or print, this information.</custom-spacing>
+            <li><b>List the x and y direction deflections for each node.</b><br>
+                <custom-process>General Postproc> List Results> Nodal Solution> DOF Solution> ALL DOFs</custom-process><br>
+                <custom-spacing>Click ‘OK’. Again, record or print, this information.</custom-spacing>
+            <li><b>Exit ANSYS</b><br>
+                <custom-process>Quit> Save Everything> OK</custom-process>
+        </ol>
+</body>
+</html>

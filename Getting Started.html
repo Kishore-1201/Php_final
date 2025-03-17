@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    .container-2{
+        justify-content: center;
+        align-items: center;
+        padding-left: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill; 
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <p>
+        <custom-heading level="1">2 ANSYS OPERATIONS</custom-heading level='1'>
+    
+    <custom-heading level='2'>2.1 Getting Started</custom-heading level='2'><br>
+    <custom-spacing>There are three basic choices (Fig. 2.1) to start ANSYS from the
+    Windows Start Menu.</custom-spacing>
+    <div class="container-1">
+        <span><img src="./II__Ansys_Operations/0.jpg" alt="image" width="170px"></span>
+        <span><img src="./II__Ansys_Operations/1.jpg" alt="image" width="230px"></span>
+    </div> 
+    <image-tag>Fig. 2.1 Three basic choices to start ANSYS</image-tag>
+    
+    <custom-style>ANSYS Workbench:</custom-style> This is a new GUI with an emphasis on CAD connectivity,
+    ease of use, and easy management of assembly contact.<br>
+    <custom-spacing><custom-style>ANSYS:</custom-style> This starts ANSYS in the traditional GUI. The program starts
+    immediately using the settings last changed under the next item, ‘Configure
+    ANSYS Products’.</custom-spacing><br>
+    <custom-style>Configure ANSYS Products:</custom-style> This choice brings up the ANSYS Launcher.<br>
+    <custom-spacing>ANSYS has many finite-element analysis capabilities, ranging from a
+    simple, linear, static analysis to a complex, nonlinear, transient dynamic
+    analysis.</custom-spacing>The process for a typical analysis involves three general tasks:<br>
+    <ul>
+        <li>Building the model
+        <li>Applying loads and obtaining the solution
+        <li>Reviewing the results.
+    </ul>
+    <sub-heading>2.1.1 Building the Model</sub-heading><br>
+    <custom-spacing>Building a finite element model requires more time than any other part
+    of the analysis. First, specify a jobname and analysis title. Then, use the
+    preprocessor to define the element type(s), element real constant(s), material
+    properties and the model geometry.</custom-spacing>
+    <sub-heading>2.1.1.1 Specifying a Jobname and Analysis Title</sub-heading>
+    This task is not required for an analysis, but is recommended.
+    <b>Defining the Jobname</b>
+    The <custom-style>jobname </custom-style> a name that identifies an analysis job. When the
+    analyst defines a jobname for an analysis, the jobname becomes the first part
+    of the name of all files the program creates. The extension or suffix for these
+    files&#39; names is a file identifier such as .DB. Using a jobname for each analysis,
+    ensures that no files are overwritten.
+    If a jobname is not specified, all files receive the name FILE or file,
+    depending on the operating system. The default jobname can be changed
+    using  <custom-process>Utility Menu&gt; File&gt; Change Jobname.</custom-process>
+    <b>Defining an Analysis Title</b>
+    <custom-process>Utility Menu&gt; File&gt;</custom-process> Change Title defines a title for the analysis. The
+    program includes the title on all graphics displays and on the solution output.
+    <b>Defining Units</b>
+    The program does not assume a system of units for the analysis. Any
+    system of units can be used so long as the same system is used for all the
+    data entered.
+    <sub-heading>2.1.1.2 Defining Element Types</sub-heading>
+    The element library contains more than 150 different element types.
+    Each element type has a unique number and a prefix that identifies the
+    element category: PLANE182, SOLID185, BEAM188, ELBOW290, and so on.
+    The element type determines, among other things:
+    <ul>
+        <li> degree-of-freedom set
+        <li>Whether the element lies in 2-D or 3-D space.
+    </ul>
+    BEAM188, for example, has six structural degrees of freedom (UX, UY,
+    UZ, ROTX, ROTY, ROTZ), is a line element, and can be modeled in 3-D
+    space.  User must be in the general preprocessor to define element types.
+    While defining the actual elements, point to the appropriate type reference
+    number using the <custom-process>Main Menu&gt; Preprocessor&gt; Modeling&gt; Create&gt;
+    Elements&gt; Elem Attributes.</custom-process>
+    <sub-heading>2.1.1.3 Defining Element Real Constants</sub-heading>
+    Element real constants are properties that depend on the element
+    type, such as the cross-sectional properties of a beam element. Not all
+    element types require real constants, and different elements of the same type
+    may have different real constant values.
+    As with element types, each set of real constants has a reference
+    number, and the table of reference number versus real constant set is called
+    the real <custom-style>constant table.</custom-style> While defining the elements, point to the appropriate
+    real constant reference number using <custom-process>Main Menu&gt; Preprocessor&gt;
+    Modeling&gt; Create&gt; Elements&gt; Elem Attributes.</custom-process>
+    <sub-heading>2.1.1.4 Defining Material Properties</sub-heading>
+    Most element types require material properties. Depending on the
+    application, material properties can be linear or nonlinear. As with element
+    types and real constants, each set of material properties has a material
+    reference number. The table of material reference numbers versus material
+    property sets is called the material table. Within one analysis, there may be
+    multiple material property sets. The program identifies each set with a unique
+    reference number.
+    <b>Linear Material Properties</b>
+    Linear material properties can be constant or temperature-dependent,
+    and isotropic or orthotropic. Use <custom-style>Main Menu&gt; Preprocessor&gt; Material
+    Props&gt; Material Models</custom-style> to define constant  material properties.
+    Also specify the appropriate property label; for example EX, EY, EZ for
+    Young&#39;s modulus, KXX, KYY, KZZ for thermal conductivity, and so forth. For
+    isotropic material it is necessary to define only the X-direction property; the
+    other directions default to the X-direction value.
+    Besides the defaults for Y- and Z-direction properties (which default to
+    the X-direction properties), other material property defaults are built in to
+    reduce the amount of input. For example, Poisson&#39;s ratio (NUXY) defaults to
+    0.3 and shear modulus (GXY) defaults to EX/2(1+NUXY).
+    The analyst can choose constant, isotropic, linear material properties
+    from a material library available through the GUI. Young&#39;s modulus, density,
+    coefficient of thermal expansion, Poisson&#39;s ratio, thermal conductivity and
+    specific heat are available for 10 materials in four unit systems.
+    <b>Material Model Interface</b>
+    The program GUI includes an intuitive hierarchical tree structure
+    interface for defining many material models. A logical top-down arrangement
+    of material categories guides in defining the appropriate model for the
+    analysis.
+    <b>Accessing the Material Model Interface</b>
+    Access the material model interface via <custom-process>Main Menu&gt; Preprocessor&gt;
+    Material Props&gt; Material Models.</custom-process> The <b>Define Material Model
+    Behavior</b> dialog box appears, which originally displays the top level of the
+    tree structure, as shown in Fig. 2.2.
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/2.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.2  Material Model Interface Initial Screen</image-tag>
+    
+    <b>Choosing Material Behavior</b><br>
+    The <b>Material Models Available</b> window on the right displays a list of
+    material categories. If a category is preceded by a folder icon, there are
+    subcategories available under the main category. On double-clicking on the
+    category, the subcategories appear indented, and below the category as
+    shown in Fig. 2.3.
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/3.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.3  Material Model Interface Tree Structure</image-tag>
+    
+    For example, under Structural are categories Linear, Nonlinear, and
+    others. The models are further categorized so that the analyst will eventually
+    see a vertical list of material property sets or material models that are
+    included under that category. Once it is decided which material property set
+    or model will be used, then choose it by double-clicking on the item. A dialog
+    
+    5
+    
+    box appears that prompts for the required input data for that  particular
+    model or property set.
+    <b>Entering Material Data</b>
+    Included in a data input dialog box is a table whose rows and columns
+    can be altered depending on the requirements of the specific material
+    property or model chosen. A typical data input dialog box is shown in Fig. 2.4.
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/4.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.4  A Data Input Dialog Box</image-tag>
+    
+    There are two interaction areas within a material data input dialog box:
+    the data input table, and a series of action buttons that appear at the bottom.
+    Depending on the material item defined, the labels in the table vary, as do
+    the number of rows and columns that appear initially. The material item also
+    dictates the number of rows and columns that are allowed to be added or
+    deleted. In most cases, the columns represent temperatures, and the rows
+    represent data values.
+    <b>Temperature Dependent Data</b>
+    Initially, the table is set up for temperature independent data so the
+    temperature field is grayed out. At this point, should the analyst decide to
+    enter data for various temperatures, s/he can quickly add columns of text
+    fields for the data representing each temperature. The temperature
+    dependent data can be added or deleted at any time. There is no necessity
+    to predetermine if the data should be temperature dependent.
+    
+    <b>Adding and Deleting Columns</b>
+    In order to add a column, position the text cursor in any field in the
+    existing column, then click on the Add Temperature button. A new column
+    appears to the right of the existing column, and both temperature fields
+    become active, as shown in Fig. 2.5.
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/5.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.5  Data Input Dialog Box - Added Column</image-tag>
+    
+    Then enter the two temperatures and the associated data in the rows.
+    More temperature columns can be added, as needed, by following the same
+    procedure. Insert columns between existing columns by clicking the text
+    cursor in a field within a column that is to the left of where it is nesessary to
+    insert the new column, then clicking on the <b>Add Temperature</b> button. A scroll
+    bar appears across the bottom of the table when the number of columns
+    exceeds the width of the dialog box.
+    <b>Adding and Deleting Rows</b>
+    It may be necessary to add another row of constants or other data for
+    a specific temperature. Then add or delete rows in a similar way as is
+    described above for adding or deleting columns. In order to add a row, click
+    the text cursor in any field in an existing row, then click on the <b>Add Row (or
+    Add Point)</b> button. A new row appears beneath the existing row, as shown
+    in Fig. 2.6.
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/6.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.6  Data Input Dialog Box - Added Row</image-tag>
+    
+    <custom-spacing>More rows can be added, as needed, by following the same procedure.
+        Insert rows between existing rows by positioning the text cursor in a field in 
+        the top row, then clicking on the <b>Add Row (or Add Point)</b> button. 
+        A vertical scroll bar appears in the table when the number of rows exceeds 
+        the height of the dialog box.</custom-spacing>
+    
+    <b>Entering/Editing Data in Text Fields</b><br>
+    <custom-spacing>When a data dialog box first appears, one of the text fields is 
+        selected (black highlight), meaning that the field is ready to accept and display 
+        data as the analyst types. The arrow keys can be used to move the selection status 
+        to other text fields. Also, pressing the Tab key allows to move the selection status 
+        to the text field positioned to the right of the field that is currently selected.</custom-spacing><br>
+    <custom-spacing>When the analyst starts typing within a text field, the highlight is 
+        replaced by the characters that are typed. The left and right arrow keys can be used 
+        to position the text cursor anywhere within the field should it be necessary to replace 
+        or delete characters in that field.</custom-spacing><br>
+    <custom-spacing>In order to edit data, first select the text field either by clicking on 
+        the field, or using the arrow keys to move the selection status to the particular field.</custom-spacing>
+    
+    <b>Logging/Editing Material Data</b><br>
+    <custom-spacing>The <custom-style>Material Models Defined</custom-style> window displays a log 
+        of each material model specified. After OK is chosen in the data input dialog box, this 
+        window displays a folder icon, and <custom-style>Material Model Number #</custom-style>,
+        followed by the properties defined for this model. Additional models can be defined with 
+        unique numbers by choosing <custom-process>Material> New Model</custom-process>, then 
+        typing a new number in the <custom-style>Define Material ID</custom-style> dialog box.
+        On double-clicking on any material model or property, the associated data input dialog 
+        box appears where the data can be edited, if chosen.</custom-spacing>
+    
+    <b>Using Material Library Files</b><br>
+    <custom-spacing>Although material properties can be defined separately for each finite element
+        analysis, the analyst can also store a material property set in an archival material
+        library file, then retrieve the set and reuse it in multiple analyses. Each material 
+        property set has its own library file. The material library files also enable several
+        users to share commonly used material property data.</custom-spacing>
+    
+    <sub-heading>2.1.1.5 Creating the Model Geometry</sub-heading><br>
+    <custom-spacing>Once material properties are defined, the next step in an analysis is
+        generating a finite element model - nodes and elements - that adequately describes the
+        model geometry. Figure 2.7 shows some sample finite element models.</custom-spacing>
+        <custom-spacing><div class="container-1">
+            <span><img src="./II__Ansys_Operations/7.jpg" alt="image" width="400px"></span>
+        </div></custom-spacing> 
+    <image-tag>Fig. 2.7 Sample Finite Element Models</image-tag>
+    
+    <custom-spacing>There are two methods to create the finite element model: solid
+        modeling and direct generation. In <custom-style>solid modeling</custom-style>,
+        the analyst describes the geometric shape of model, then instructs the program to 
+        automatically <custom-style>mesh</custom-style> the geometry with nodes and elements.
+        The size and shape in the elements that the program creates can be controlled. 
+        In <custom-style>direct generation</custom-style>, s/he ‘manually’ defines the 
+        location of each node and the connectivity of each element. Several convenience 
+        operations, such as copying patterns of existing nodes and elements, symmetry 
+        reflection, etc. are available.</custom-spacing>
+    
+    <sub-heading>2.1.2 Applying Loads and Obtaining the Solution</sub-heading><br>
+    <custom-spacing>In this step, the SOLUTION processor defines the analysis type and 
+        analysis options, apply loads, specify load step options, and initiate the finite 
+        element solution. Loads can also be applied via the PREP7 preprocessor.</custom-spacing>
+    
+    <sub-heading>2.1.2.1 Specifying the Analysis Type and Analysis Options</sub-heading><br>
+    <custom-spacing>Specify the analysis type based on the loading conditions and the 
+        response to be calculated. For example, if natural frequencies and mode shapes 
+        are to be calculated, choose a modal analysis. The following analysis types can be 
+        performed in the program: static (or steady-state), transient, harmonic, modal, 
+        spectrum, buckling, and substructuring.</custom-spacing><br>
+    <custom-spacing>Analysis options allows the analyst to customize the analysis type. 
+        Typical analysis options are the method of solution, stress stiffening on or off, 
+        and Newton-Raphson options.</custom-spacing><br>
+    <custom-spacing>Use <custom-process>Main Menu> Preprocessor> Loads> Analysis Type> New Analysis</custom-process> 
+        or <custom-process>Main Menu> Preprocessor> Loads> Analysis Type> Restart</custom-process> 
+        to define the analysis type and analysis options.</custom-spacing><br>
+    <custom-spacing>The analyst can specify either a new analysis or a restart, but a new a
+        analysis is the norm in most cases. A multiframe restart that allows to restart an
+        analysis at any point is available for static and transient analyses. The analysis 
+        type and analysis options cannot be changed after the first solution.</custom-spacing><br>
+    <custom-spacing>After the analysis type and analysis options are defined, the next step 
+        is to apply loads. Some structural analysis types require other items to be defined 
+        first, such as master degrees of freedom and gap conditions.</custom-spacing>
+    
+    <sub-heading>2.1.2.2 Applying Loads</sub-heading><br>
+    <custom-spacing>The word <custom-style>loads</custom-style> as used in ANSYS includes 
+        boundary conditions (constraints, supports, or boundary field specifications) as well 
+        as other externally (Fig. 2.8) and internally applied loads. Loads are divided into 
+        following categories:</custom-spacing>
+    <ul>
+        <li>DOF Constraints
+        <li>Forces
+        <li>Surface Loads
+        <li>Body Loads
+        <li>Inertia Loads
+        <li>Coupled-field Loads
+    </ul>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/22.png" alt="image" width="500px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.8 External Loads</image-tag>
+    
+    <custom-spacing>Most of these loads can be applied either on the solid model 
+        (keypoints, lines, and areas) or the finite element model (nodes and elements). Two 
+        important load-related terms need to be known are load step and substep.
+        A <custom-style>load step</custom-style> is simply a configuration of loads for 
+        which a solution is to be obtained. In a structural analysis, for example, the 
+        analyst may apply wind loads in one load step and gravity in a second load step. 
+         steps are also useful in dividing a transient load history curve into several segments.</custom-spacing><br>
+    <custom-spacing><custom-style>Substeps</custom-style> are incremental steps taken 
+        within a load step. They are mainly used for accuracy and convergence purposes 
+        in transient and nonlinear analyses. Substeps are also known as <custom-style>time steps</custom-style> 
+        - steps taken over a period of time.</custom-spacing><br>
+    <custom-spacing>The program uses the concept of <custom-style>time</custom-style> 
+        in transient analyses as well as static (or steady-state) analyses. In a transient 
+        analysis, time represents actual time, in seconds, minutes, or hours. In a static or steady-state analysis, time simply acts as a counter to identify load steps and substeps.</custom-spacing><br>
+    <custom-spacing>Loads and boundary conditions can be applied in both the Preprocessor 
+        (<custom-process>Main Menu > Preprocessor > Loads > Define Loads > Apply</custom-process>),
+         and the Solution processor (<custom-process>Main Menu > Solution > Define Loads > Apply</custom-process>).</custom-spacing>
+    <ol>
+        <li>Select the kind of constraint to be applied.
+        <li>Select the geometric entity on which it is to be applied.
+        <li>Enter the value and direction for it.
+    </ol>
+    <custom-spacing>There is no modify command for loads and B.C.’s. If a mistake is made simply
+        apply it again with a new value (the old one will be replaced if it’s on the same entity), 
+        or delete it and reapply it.</custom-spacing><br>
+    <custom-spacing>Although loads and boundary conditions can be applied to nodes or elements, 
+        it’s generally better to apply all B.C.’s to the geometry. When the solve command is issued, 
+        they will be automatically transferred to the underlying nodes and elements. If B.C.’s are 
+        put on the geometry, that geometry can be remeshed without having to reapply them.</custom-spacing>
+    
+    <sub-heading>2.1.2.3 Specifying Load Step Options</sub-heading><br>
+    <custom-spacing>Load step options are options that the analyst can change from load step 
+        to load step, such as number of substeps, time at the end of a load step, and output 
+        controls. Depending on the type of analysis s/he is doing, load step options may or may 
+        not be required. The analysis procedures in the analysis guide manuals describe the 
+        appropriate load step options as necessary.</custom-spacing>
+    
+    <sub-heading>2.1.2.4 Initiating the Solution</sub-heading><br>
+    <custom-spacing>Use <custom-process>Main Menu> Solution> Solve> Current LS</custom-process>
+         to initiate solution calculations. When this command is issued, the program takes model 
+         and loading information from the database and calculates the results. Results are written
+          to the results file (Jobname.RST, Jobname.RTH, or Jobname.RMG) and also to the database.
+           The only difference is that only one set of results can reside in the database at one 
+           time, while ANSYS can write all sets of results (for all substeps) to the results file.</custom-spacing><br>
+    <custom-spacing>Multiple load steps can be solved in a convenient manner using: 
+        <custom-process>Main Menu> Solution> Solve> From LS Files</custom-process>.</custom-spacing>
+    
+    <sub-heading>2.1.3 Reviewing the Results</sub-heading><br>
+    <custom-spacing>After the solution has been calculated, use the postprocessors to review the 
+        results. Two postprocessors are available: POST1 and POST26.</custom-spacing><br>
+    <custom-spacing>Use <custom-style>POST1</custom-style>, the general postprocessor, to review 
+        results at one substep (time step) over the entire model or selected portion of the model. 
+        The GUI path for entering POST1 is <custom-process>Main Menu> General Postproc</custom-process>, 
+        valid only at the Begin level. The analyst can obtain contour displays, deformed shapes, and tabular 
+        listings to review and interpret the results of the analysis. POST1 offers many other capabilities, 
+        including error estimation, load case combinations, calculations among results data, and path operations.</custom-spacing><br>
+    <custom-spacing>Use <custom-style>POST26</custom-style>, the time-history postprocessor, to review 
+        results at specific points in the model over all time steps. The GUI path for entering POST26 
+        is <custom-process>Main Menu> TimeHist Postpro</custom-process>, valid only at the Begin level. 
+        Graph plots of results data versus time (or frequency) and tabular listings can be obtained.</custom-spacing>
+        </custom-heading>
+        </custom-heading>
+        </p>
+        </body>
+        </html>

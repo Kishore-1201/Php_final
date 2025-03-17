@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revising the Model</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    
+    <custom-heading level="2">3.8 Revising the Model</custom-heading><br>
+    <custom-spacing>ANSYS offers various methods for revising and refining the model.</custom-spacing>
+    
+    <sub-heading>3.8.1 Refining a Mesh Locally</sub-heading><br>
+    <custom-spacing>There are generally two situations in which it may be necessary to refine a mesh in a local region:</custom-spacing>
+    <ul>
+        <li>A model has been meshed and the analyst would like a finer mesh in specific regions of the model, or
+        <li>The analyst has completed the analysis and, based on the results, would like a more detailed solution in a region of interest.
+    </ul>
+    <custom-spacing>For all area meshes and for volume meshes composed of tetrahedra, the ANSYS program allows to refine the mesh locally around specified nodes, elements, keypoints, lines, or areas. Meshes composed of volume elements other than tetrahedra cannot be locally refined.</custom-spacing>
+    
+    <sub-heading>3.8.1.1 Refining a Mesh</sub-heading><br>
+    <custom-spacing>Follow these two steps to refine a mesh:</custom-spacing>
+    <ol>
+        <li>Select the entity around which refinement will be done.
+        <li>Specify the level of refinement to be done. The refined elements will always be smaller than the original elements; the local mesh refinement process does not provide mesh coarsening (LEVEL).
+    </ol>
+    
+    <sub-heading>3.8.1.2 Refinement Commands and Menu Paths</sub-heading><br>
+    <custom-spacing>Use the following menu paths to select entities for refinement and to set refinement controls.</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Meshing> Modify Mesh> Refine At> Nodes</custom-process> to refine around a selected set of nodes
+        <li>Use <custom-process>Main Menu> Preprocessor> Meshing> Modify Mesh> Refine At> Elements</custom-process> or <custom-process>Main Menu > Preprocessor> Meshing> Modify Mesh> Refine At> All</custom-process> to refine around a selected set of elements.
+        <li>Use <custom-process>Main Menu> Preprocessor> Meshing> Modify Mesh> Refine At> Keypoints</custom-process> to refine around a selected set of keypoints.
+        <li>Use <custom-process>Main Menu> Preprocessor> Meshing> Modify Mesh> Refine At> Lines</custom-process> to refine around a selected set of lines
+        <li>Use <custom-process>Main Menu> Preprocessor> Meshing> Modify Mesh> Refine At> Areas</custom-process> to refine around a selected set of areas.
+    </ul>
+    <custom-spacing>Figure 3.35 shows examples of mesh refinement around a node, element, keypoint, and line. Figure 3.36 illustrates the use of the command to perform tetrahedral mesh refinement around an area.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image38.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.35 Mesh Refinement Around a Node</image-tag>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image39.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.36 Tetrahedral Mesh Refinement Around an Area</image-tag>
+
+    <sub-heading>3.8.1.3 Transfer of Attributes and Loads</sub-heading><br>
+    <custom-spacing>Element attributes associated with the ‘parent’ element are automatically transferred to all of the ‘child’ elements. These attributes include element type, material properties, real constants, and element coordinates.</custom-spacing><br>
+    <custom-spacing>Loads and boundary conditions applied to the solid model are transferred to nodes and elements when the solution is initiated. Therefore, solid model loads will be correctly applied to the new nodes and elements created during refinement. However, loads and boundary conditions applied at the node and element level cannot be transferred to new nodes and elements created during refinement. If there are such loads in a region selected for refinement, the program will not allow refinement to take place unless the loads are first deleted. Therefore, it is recommended that loads be applied only to the solid model rather than directly to nodes and elements if using mesh refinement is anticipated.</custom-spacing>
+    
+    <sub-heading>3.8.2 Keeping Track of Element Faces and Orientations</sub-heading><br>
+    <custom-spacing>If the model contains shell elements, and if surface loads are applied, the analyst needs to keep track of the element faces in order to be able to define the proper direction for the loads. In general, shell surface loads will be applied to element face one, and will be positive in accordance with the right-hand rule (following the I, J, K, L nodal sequence, as illustrated in Fig. 3.37). If shell elements are created by meshing a solid model area, the normal direction of the elements will be consistent with the normal direction of the area. The area's normal direction can be determined by executing menu path <custom-process>Utility Menu> List> Areas</custom-process>; the direction of the sequence of lines defining that area will define the normal direction by the right-hand rule.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image40.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.37 Positive Normal Direction as Defined by the Right-Hand Rule</image-tag>
+    
+    <sub-heading>3.8.3 Revising a Meshed Model: Clearing and Deleting</sub-heading><br>
+    <custom-spacing>Because of the solid modeling cross-reference checking that the ANSYS program performs, meshed solid model entities cannot be deleted. In order to revise the model, the analyst needs to clear solid model entities of their meshes by using the mesh clearing commands. These clearing commands can be thought of as the inverse of the meshing commands. After clearing the model, the analyst can proceed to modify the solid model as desired.</custom-spacing>
+    
+    <sub-heading>3.8.3.1 Clearing a Mesh</sub-heading><br>
+    <custom-spacing>The mesh clearing commands delete the nodes and elements associated with the corresponding solid model entity. When a higher level entity is cleared, all lower level entities will be automatically cleared, unless those lower entities are themselves meshed with elements. Nodes on the boundary of an entity shared by an adjoining meshed entity are <custom-style>not</custom-style> deleted as a result of clearing.</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Meshing> Clear> Keypoints</custom-process> to delete nodes and point elements associated with selected keypoints
+        <li>Use <custom-process>Main Menu> Preprocessor> Meshing> Clear> Lines</custom-process> to delete nodes and line elements associated with selected lines
+        <li>Use <custom-process>Main Menu> Preprocessor> Meshing> Clear> Areas</custom-process> to delete nodes and area elements associated with selected areas
+        <li>Use <custom-process>Main Menu> Preprocessor> Meshing> Clear> Volumes</custom-process> to delete nodes and volume elements associated with selected volumes
+    </ul>
+    <custom-spacing>The program will report how many of each kind of entity have been cleared after a mesh clearing operation. An entity is considered to have been ‘cleared’ if either its elements or its nodes have been cleared. If the elements/nodes being cleared are at the end of the element/node lists, then the next available element/node ID is reset accordingly.</custom-spacing>
+    
+    <sub-heading>3.8.3.2 Deleting Solid Model Entities</sub-heading><br>
+    <custom-spacing>Solid model entities can be deleted with the entity deletion commands described below. Lower level entities cannot be independently deleted if they are attached to a higher level entity. Thus, if a block is created using a geometric primitive command, the analyst cannot selectively delete a keypoint that is associated with that block, unless he/she first deletes, in descending hierarchical order, all the higher level entities that are attached to that keypoint.</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Delete> Area and Below</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Delete> Areas Only</custom-process> to delete unmeshed areas.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Delete> Keypoints</custom-process> to delete unmeshed keypoints.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Delete> Line and Below</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Delete> Lines Only</custom-process> to delete unmeshed lines.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Delete> Volume and Below</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Delete> Volumes Only</custom-process> to delete unmeshed volumes.
+    </ul>
+    
+    <sub-heading>3.8.3.3 Modifying Solid Model Entities</sub-heading><br>
+    <custom-spacing>The geometry of a solid model can be modified by changing the position of its keypoints using: <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Keypoints> Set of KPs</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Move/Modify> Keypoints> Single KP</custom-process></custom-spacing><br>
+    <custom-spacing>Any meshed regions attached to modified keypoints will be automatically cleared of nodes and elements. All lines, areas, and volumes attached to the modified keypoint will then be automatically redefined using the active coordinate system.</custom-spacing><br>
+    <custom-spacing>Unmeshed lines can be modified using the operations described below. These operations will also update attached unmeshed areas, even if these areas are attached to volumes.</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Divide> Line into 2 Lns</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Divide> Line into N Lns</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Divide> Lines w/Options</custom-process> to divide a single line into two or more lines.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Operate> Booleans> Add> Lines</custom-process> to combine adjacent lines into one line.
+        <li>Use <custom-process>Main Menu> Preprocessor> Modeling> Create> Lines> Lines> Line Fillet</custom-process> to generate a fillet line between two intersecting lines.
+    </ul>
+    
+    <sub-heading>3.8.4 Understanding Solid Model Cross-Reference Checking</sub-heading><br>
+    <custom-spacing>Several conditions restrict the analyst as s/he modifies the meshed solid model. These restrictions arise due to the cross-reference checking that has been incorporated into the ANSYS program to prevent contamination of the solid model and finite element model data. They may be summarized as follows:</custom-spacing>
+    <ul>
+        <li>Meshed keypoints, lines, areas, or volumes may not be deleted or moved.
+        <li>Nodes or elements associated with keypoints, lines, areas, or volumes may not be moved. They can be deleted only with the mesh clearing commands.
+        <li>Areas contained in volumes may not be deleted or changed.
+        <li>Lines contained in areas may not be deleted or changed.
+        <li>Keypoints contained in lines may not be deleted.
+    </ul>
+    <custom-spacing>The basic reasoning behind these rules might be visualized from Fig. 3.38. Schematically, the completed model can be thought of as a stack of blocks, in which the bottommost block represents the keypoints, the next block represents lines, and so forth. If a lower entity was to be disturbed, the analyst would disturb the entities that are stacked on top of it. This illustration somewhat oversimplifies the dependence of higher level entities on lower entities.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image41.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.38 Solid Model Cross-Reference Checking</image-tag>

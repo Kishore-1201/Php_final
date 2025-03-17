@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truss</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+        <custom-heading level="2" style="color: green;">4.2. 2-D Problems</custom-heading level="2">
+        <br><sub-heading style="color: green;">4.2.1. Truss</sub-heading>
+        <custom-spacing style="color: red;"><b>W2:</b> A simple truss is shown below. Modulus for material is 200GPa, A=500mm<sup>2</sup>, force at node 2 in the +y direction of 1,000N. Find the displacements and stresses.</custom-spacing><br>
+        <custom-spacing><div class="container-1">
+            <span><img src="image5.jpg" alt="image" width="250px"></span>
+        </div></custom-spacing>
+        <custom-spacing><b>Data:</b> E=2e5N/mm<sup>2</sup>, A=500mm<sup>2</sup>, F=1000N</custom-spacing><br>
+        <custom-spacing><b>Sol:</b></custom-spacing><br>
+        <custom-spacing><b>Preprocessing</b></custom-spacing>
+        <ol>
+            <li><b>Change jobname</b><br>
+                <custom-process>File> Change Jobname</custom-process><br>
+                <custom-spacing>Enter ‘Truss-1’, and click on ‘OK’.</custom-spacing>
+            <li><b>Define element types</b><br>
+                <custom-process>Preprocessor> Element Type> Add/Edit/Delete</custom-process><br>
+                <custom-spacing>Click on ‘Add..’, highlight ‘Link’, then ‘3D finit stn 180’, click on ‘OK’, then ‘Close’.</custom-spacing>
+            <li><b>Define the cross sectional area for the Link180</b><br>
+                <custom-process>Preprocessor> Sections> Link> Add</custom-process><br>
+                <custom-spacing>Type ‘1’ for ‘Add Link Section with ID’. Type ‘Truss 1’ for Section Name’. In this problem, the area is 500. Fill in the Link area value. Choose ‘Tension’ for ‘Tension Key and click on ‘OK’, then ‘Close’.</custom-spacing>
+            <li><b>Define Material Properties</b><br>
+                <custom-process>Preprocessor> Material Properties> Constant> Isotropic</custom-process><br>
+                <custom-spacing>‘OK’ for material set number 1, then enter 2e5 for EX, then ‘OK’.</custom-spacing>
+            <li><b>Create nodes at truss joints</b><br>
+                <custom-process>Preprocessor> Modeling> Create> Nodes> In Active CS</custom-process><br>
+                <custom-spacing>Enter 1 for node number Enter the location as (X,Y,Z)=(0,0,0). Click on ‘Apply’. Continue defining nodes 2&3 using the locations based on the sketch of the truss, but after entering the node 3 location, click on ‘OK’ instead of ‘Apply’. So, node 2 is at (X,Y)=(100,100) and node 3 is at (X,Y)=(200,0).</custom-spacing><br>
+                <custom-spacing>As a check to ensure all nodes were entered correctly, list the nodes.</custom-spacing><br>
+                <custom-process>Utility Menu> List> Nodes</custom-process><br>
+                <custom-spacing>Turn on node numbering.</custom-spacing><br>
+                <custom-process>Utility Menu> PlotCtrls> Numbering</custom-process>
+            <li><b>Create link elements between nodes</b><br>
+                <custom-process>Preprocessor> Create> Elements> Auto Numbered> Thru Nodes</custom-process><br>
+                <custom-spacing>A picking menu appears. Pick node 1, then node 2, and click on ‘Apply’ in the Picking Menu. Pick node 2, then node 3, and click on ‘OK’ in the Picking Menu.</custom-spacing>
+            <li><b>Apply constraints and forces on the model.</b><br>
+                <custom-process>Solution> Loads> Apply> Structural> Displacement> On Nodes</custom-process><br>
+                <custom-spacing>Pick nodes 1 & 3, then click ‘OK’ in the picking menu that has appeared. Choose ALL DOF, and use the default displacement value of zero.</custom-spacing><br>
+                <custom-spacing>Apply the forces.</custom-spacing><br>
+                <custom-process>Solution> Loads> Apply> Structural> Force/Moment> On Nodes</custom-process><br>
+                <custom-spacing>Pick node 2, then ‘OK’ in the picking menu, choose ‘FY’ as the direction of the force, and enter 1,000 for the force value. Click on ‘OK’.</custom-spacing>
+        </ol>
+        
+        <custom-spacing><b>Solution</b></custom-spacing>
+        <ol>
+            <li><b>Solve the problem</b><br>
+                <custom-process>Solution> Solve> Current LS</custom-process><br>
+                <custom-spacing>Click ‘OK’ in the ‘Solve Current Load Step’ Box.</custom-spacing>
+        </ol>
+        
+        <custom-spacing><b>Postprocessing</b></custom-spacing>
+        <ol>
+            <li><b>Plot the deformed shape</b><br>
+                <custom-process>General Postproc> Plot Results> Deformed Shape</custom-process><br>
+                <custom-spacing>Choose ‘Def + undeformed’, then ‘OK’.</custom-spacing>
+                <custom-spacing><div class="container-1">
+                    <span><img src="image6.jpg" alt="image" width="250px"></span>
+                </div></custom-spacing>
+                <li><b>List reaction forces</b><br>
+                <custom-process>General Postproc> List Results> Reaction Solution</custom-process><br>
+                <custom-spacing>Click on ‘All struc forc F’, and ‘OK’.</custom-spacing><br>
+                <custom-spacing><div class="container-1">
+                    <span><img src="image7.jpg" alt="image" width="300px"></span>
+                </div></custom-spacing>
+                <custom-spacing>Print the information in the Listing Box, by clicking, in that box, on File> Print. Or else, just write the information down.</custom-spacing>
+            <li><b>List a summary, which includes the axial force and stress in each element</b><br>
+                <custom-process>General Postproc> List Results> Element Solution> LineElem results> Structural ELEM</custom-process><br>
+                <custom-spacing>Click ‘OK’, and a summary for each element is printed, including the node numbers, from which the corresponding truss member can be identified, and also the axial force (MFORX), and the axial stress (SAXL). Record or print, this information.</custom-spacing>
+                <custom-spacing><div class="container-1">
+                    <span><img src="image8.jpg" alt="image" width="300px"></span>
+                </div></custom-spacing>
+                <li>List the y direction deflections for each node.<br>
+                <custom-process>General Postproc> List Results> Nodal Solution> DOF Solution> Y-Component of displacement</custom-process><br>
+                <custom-spacing><div class="container-1">
+                    <span><img src="image9.jpg" alt="image" width="300px"></span>
+                </div></custom-spacing>
+                <custom-spacing>Click ‘OK’. Again, record or print, this information.</custom-spacing>
+            <li>Exit ANSYS<br>
+                <custom-process>Quit> Save Everything> OK</custom-process>
+        </ol>
+        
+        <custom-spacing style="color: red;"><b>W3:</b> Find the displacements and stresses in the truss shown below. Consider area=300mm<sup>2</sup>, E=200GPa.</custom-spacing><br>
+        <custom-spacing><div class="container-1">
+            <span><img src="image10.jpg" alt="image" width="250px"></span>
+        </div></custom-spacing>
+        <custom-spacing><b>Data:</b> A=300mm<sup>2</sup>, E=2e5N/mm<sup>2</sup>, F=5,000N</custom-spacing><br>
+        <custom-spacing><b>Sol:</b></custom-spacing><br>
+        <custom-spacing><b>Preprocessing</b></custom-spacing>
+        <ol>
+            <li><b>Change jobname</b><br>
+                <custom-process>File > Change Jobname</custom-process><br>
+                <custom-spacing>Enter ‘Truss-2’, and click on ‘OK’.</custom-spacing>
+            <li><b>Define element types</b><br>
+                <custom-process>Preprocessor > Element Type > Add/Edit/Delete</custom-process><br>
+                <custom-spacing>Click on ‘Add..’, highlight ‘Link’, then ‘3D finit stn 180’, click on ‘OK’, then ‘Close’.</custom-spacing>
+            <li><b>Define the real constants for the Link180, which are cross-sectional area and initial strain</b><br>
+                <custom-process>Preprocessor> Real Constants> Add</custom-process><br>
+                <custom-spacing>Click ‘OK’ for ‘Type 1 LINK180’</custom-spacing><br>
+                <custom-spacing>In this problem, there is no initial strain (leave blank), and the area is 300. After filling in the area value, click on ‘OK’, then ‘Close’.</custom-spacing>
+            <li><b>Define Material Properties</b><br>
+                <custom-process>Preprocessor> Material Properties> Material Models> Structural Linear> Elastic> Isotropic></custom-process><br>
+                <custom-spacing>‘OK’ for material set number 1, then enter 2e5 for EX and ‘0.3’ for ‘PRXY’ , then ‘OK’.</custom-spacing>
+            <li><b>Create nodes at truss joints</b><br>
+                <custom-process>Preprocessor> Modeling> Create> Nodes> In Active CS</custom-process><br>
+                <custom-spacing>Enter 1 for node number. Enter the location as (X,Y,Z)=(0,0,0). Click on ‘Apply’. Continue defining nodes 2&3 using the locations based on the sketch of the truss, but after entering the node 3 location, click on ‘OK’ instead of ‘Apply’. So, node 2 is at (X,Y)=(750,0) and node 3 is at (X,Y)=(0,500).</custom-spacing><br>
+                <custom-spacing>As a check to ensure all nodes were entered correctly, list the nodes</custom-spacing><br>
+                <custom-process>Utility Menu>List> Nodes</custom-process><br>
+                <custom-spacing>Turn on node numbering.</custom-spacing><br>
+                <custom-process>Utility Menu> PlotCtrls> Numbering</custom-process>
+            <li><b>Create link elements between nodes</b><br>
+                <custom-process>Preprocessor> Create> Elements> Auto Numbered> Thru Nodes</custom-process><br>
+                <custom-spacing>A picking menu appears. Pick node 1, then node 2, and click on ‘Apply’ in the Picking Menu. Pick node 2, then node 3, and click on ‘OK’ in the Picking Menu.</custom-spacing>
+            <li><b>Apply constraints and forces on the model</b><br>
+                <custom-process>Solution > Loads > Apply > Structural > Displacement > On Nodes</custom-process><br>
+                <custom-spacing>Pick nodes 1 & 3, then click ‘OK’ in the picking menu that has appeared.</custom-spacing><br>
+                <custom-spacing>Choose ALL DOF.</custom-spacing><br>
+                <custom-spacing>Apply the forces.</custom-spacing><br>
+                <custom-process>Solution> Loads> Apply> Structural> Force/Moment> On Nodes</custom-process><br>
+                <custom-spacing>Pick node 2, then ‘OK’ in the picking menu, choose ‘FY’ as the direction of the force, and enter -5000 for the force value. Click on ‘OK’.</custom-spacing>
+        </ol>
+        
+        <custom-spacing><b>Solution</b></custom-spacing>
+        <ol>
+            <li><b>Solve the problem</b><br>
+                <custom-process>Solution> Solve> Current LS</custom-process><br>
+                <custom-spacing>Click ‘OK’ in the ‘Solve Current Load Step’ Box.</custom-spacing>
+        </ol>
+        
+        <custom-spacing><b>Postprocessing</b></custom-spacing>
+        <ol>
+            <li><b>Plot the deformed shape</b><br>
+                <custom-process>General Postproc> Plot Results> Deformed Shape</custom-process><br>
+                <custom-spacing>Choose ‘Def + undeformed’, then ‘OK’.</custom-spacing>
+                <custom-spacing><div class="container-1">
+                    <span><img src="image11.jpg" alt="image" width="250px"></span>
+                </div></custom-spacing>
+                <li><b>List reaction forces</b><br>
+                <custom-process>General Postproc> List Results> Reaction Solution</custom-process><br>
+                <custom-spacing>Click on ‘All items’, and ‘OK’.</custom-spacing><br>
+                <custom-spacing><div class="container-1">
+                    <span><img src="image12.jpg" alt="image" width="300px"></span>
+                </div></custom-spacing>
+                <custom-spacing>Print the information in the Listing Box, by clicking, in that box, on ‘File > Print’. Or else, just write the information down.</custom-spacing>
+            <li><b>List a summary, which includes the axial force and stress in each element.</b><br>
+                <custom-process>General Postproc> List Results> Element Solution> Favourites> Element Solution></custom-process><br>
+                <custom-spacing><div class="container-1">
+                    <span><img src="image13.jpg" alt="image" width="300px"></span>
+                </div></custom-spacing>
+                <custom-spacing>Click ‘OK’, and a summary for each element is printed, including the node numbers, from which the corresponding truss member can be identified, Record or print, this information.</custom-spacing>
+            <li><b>List the x and y direction deflections for each node:</b><br>
+                <custom-process>General Postproc> List Results> Nodal Solution> DOF Solution> Displacement vector sum</custom-process><br>
+                <custom-spacing>Click ‘OK’. Again, record or print, this information.</custom-spacing>
+            <li><b>Exit ANSYS</b><br>
+                <custom-process>Quit> Save Everything> OK</custom-process>
+        </ol>
+        
+        <custom-spacing style="color: red;"><b>W4:</b> Model and analyze the following simple truss structure geometry, loading, and boundary conditions. The model consists of three elements connected by three nodes. F=5,000N. Use ANSYS Link180 elements.</custom-spacing>
+        <custom-spacing><div class="container-1">
+            <span><img src="image14.jpg" alt="image" width="250px"></span>
+        </div></custom-spacing>
+        <custom-spacing><b>Data:</b> A=300mm<sup>2</sup>, E=7e4, F=5,000N</custom-spacing><br>
+        <custom-spacing><b>Sol:</b></custom-spacing><br>
+        <custom-spacing><b>Preprocessing</b></custom-spacing>
+        <ol>
+            <li><b>Change jobname</b><br>
+                <custom-process>File> Change Jobname</custom-process><br>
+                <custom-spacing>Enter ‘Truss-3’, and click on ‘OK’.</custom-spacing>
+            <li><b>Define element types</b><br>
+                <custom-process>Preprocessor> Element Type> Add/Edit/Delete</custom-process><br>
+                <custom-spacing>Click on ‘Add..’, highlight ‘Link’, then ‘3D finit stn 180’, click on ‘OK’, then ‘Close’.</custom-spacing>
+            <li><b>Define the sections for the Link180</b><br>
+                <custom-process>Preprocessor> Sections > Link> Add</custom-process><br>
+                <custom-spacing>Enter unique section ID, say ‘1’ and Click ‘OK’ for ‘Add Link Selection’. Enter unique Section Name, say ‘A’</custom-spacing><br>
+                <custom-spacing>In this problem, and the area is 300. Fill in the area value, click on ‘OK’.</custom-spacing>
+            <li><b>Define Material Properties</b><br>
+                <custom-process>Preprocessor> Material Properties> Constant> Isotropic</custom-process><br>
+                <custom-spacing>‘OK’ for material set number 1, then enter 7e4 for EX, then ‘OK’.</custom-spacing>
+            <li><b>Create nodes at truss joints</b><br>
+                <custom-process>Preprocessor> Modeling> Create> Nodes> In Active CS</custom-process><br>
+                <custom-spacing>Enter 1 for node number (ANSYS would automatically number nodes if this column is left blank). Enter the location as (X,Y,Z)=(0,0,0). Click on ‘Apply’. Continue defining nodes 2&3 using the locations based on the sketch of the truss, but after entering the node 3 location, click on ‘OK’ instead of ‘Apply’. So, node 2 is at (X,Y)=(400,0) and node 3 is at (X,Y)=(0,250).</custom-spacing><br>
+                <custom-spacing>As a check to ensure all nodes were entered correctly, list the nodes:</custom-spacing><br>
+                <custom-process>Utility Menu> List> Nodes</custom-process><br>
+                <custom-spacing>Turn on node numbering.</custom-spacing><br>
+                <custom-process>Utility Menu> PlotCtrls> Numbering</custom-process>
+            <li><b>Create link elements between nodes</b><br>
+                <custom-process>Preprocessor> Create> Elements> Auto Numbered> Thru Nodes</custom-process><br>
+                <custom-spacing>A picking menu appears. Pick node 1, then node 2, and click on ‘Apply’ in the Picking Menu. Next pick node 2, then node 3, and click on ‘Apply’ in the Picking Menu. Lastly pick node 3, then node 1, and click on ‘OK’ in the Picking Menu.</custom-spacing>
+            <li><b>Apply constraints and forces on the model</b><br>
+                <custom-process>Solution> Loads> Apply> Structural> Displacement> On Nodes</custom-process><br>
+                <custom-spacing>Pick node 1, then click ‘OK’ in the picking menu that has appeared. Choose ALL DOF, and use the default displacement value of zero. Pick node 2, then click ‘OK’. Choose UX, and use the default displacement value of zero. Apply the forces.</custom-spacing><br>
+                <custom-process>Solution > Loads > Apply > Structural > Force/Moment > On Nodes</custom-process><br>
+                <custom-spacing>Pick node 2, then ‘OK’ in the picking menu, choose ‘FY’ as the direction of the force, and enter -5000 for the force value. Click on ‘OK’.</custom-spacing>
+        </ol>
+        
+        <custom-spacing><b>Solution</b></custom-spacing>
+        <ol>
+            <li><b>Solve the problem</b><br>
+                <custom-process>Solution> Solve> Current LS</custom-process><br>
+                <custom-spacing>Click ‘OK’ in the ‘Solve Current Load Step’ Box.</custom-spacing>
+        </ol>
+        
+        <custom-spacing><b>Postprocessing</b></custom-spacing>
+        <ol>
+            <li><b>Plot the deformed shape</b><br>
+                <custom-process>General Postproc> Plot Results> Deformed Shape</custom-process><br>
+                <custom-spacing>Choose ‘Def + undeformed’, then ‘OK’.</custom-spacing>
+                <custom-spacing><div class="container-1">
+                    <span><img src="image15.jpg" alt="image" width="250px"></span>
+                </div></custom-spacing>
+                <li><b>List reaction forces</b><br>
+                <custom-process>General Postproc> List Results> Reaction Solution</custom-process><br>
+                <custom-spacing>Click on ‘All struc forc F’, and ‘OK’.</custom-spacing><br>
+                <custom-spacing>Print the information in the Listing Box, by clicking, in that box, on ‘File > Print’. Or else, just write the information down.</custom-spacing>
+            <li><b>List a summary, which includes the axial force and stress in each element</b><br>
+                <custom-process>General Postproc> List Results> Element Solution> Favourites> Element Solution></custom-process><br>
+                <custom-spacing>Click ‘OK’, and a summary for each element is printed, including the node numbers, from which the corresponding truss member can be identified,. Record or print, this information.</custom-spacing>
+            <li><b>List the x and y direction deflections for each node:</b><br>
+                <custom-process>General Postproc> List Results> Nodal Solution> DOF Solution></custom-process><br>
+                <custom-spacing>Click ‘OK’. Again, record or print, this information.</custom-spacing>
+            <li><b>Exit ANSYS</b><br>
+                <custom-process>Quit> Save Everything> OK</custom-process>
+        </ol>
+        
+        <custom-spacing style="color: red;"><b>W5:</b> Model and analyze the truss shown below. Cross-sectional area of truss members = 3.0E-4m<sup>2</sup>; Modulus of Elasticity = 207GPa.</custom-spacing><br>
+        <custom-spacing><div class="container-1">
+            <span><img src="image16.jpg" alt="image" width="300px"></span>
+        </div></custom-spacing>
+        <custom-spacing><b>Data:</b> E=2.07e11N/m<sup>2</sup>, Area=3e-4m<sup>2</sup></custom-spacing><br>
+        <custom-spacing><b>Sol:</b></custom-spacing><br>
+        <custom-spacing><b>Preprocessing</b></custom-spacing>
+        <ol>
+            <li><b>Change jobname</b><br>
+                <custom-process>File> Change Jobname</custom-process><br>
+                <custom-spacing>Enter ‘Bridge Truss’, and click on ‘OK’.</custom-spacing>
+            <li><b>Define element types</b><br>
+                <custom-process>Preprocessor> Element Type> Add/Edit/Delete</custom-process><br>
+                <custom-spacing>Click on ‘Add..’, highlight ‘Link’, then ‘3D finit stn 180’, click on ‘OK’, then ‘Close’. Note that in ANSYS this element is sometimes referred to as ‘LINK 180’, because it is element type 180 in the ANSYS element library.</custom-spacing>
+            <li><b>Define the section for the</b><br>
+                <custom-process>Preprocessor> Sections > Add</custom-process><br>
+                <custom-spacing>Enter area = 3e-4.</custom-spacing>
+            <li><b>Define Material Properties</b><br>
+                <custom-process>Preprocessor> Material Properties> Constant> Isotropic</custom-process><br>
+                <custom-spacing>‘OK’ for material set number 1, then enter 2.07E11 for EX, then ‘OK’.</custom-spacing>
+            <li><b>Create nodes at truss joints</b><br>
+                <custom-process>Preprocessor> Modeling> Create> Nodes> In Active CS</custom-process><br>
+                <custom-spacing>Enter 1 for node number. Enter the location as (X,Y,Z)=(0,0,0). Note that the locations are to be entered in meters, with node 1 located at the origin of the global x-y-z Cartesian coordinate system. Leave the entries for rotation angles blank. (Note: For this problem, all nodes will be in the X-Y plane, with Z=0). Click on ‘Apply’. Continue defining nodes 2-8 using the locations based on the sketch of the truss, but after entering the node 8 location, click on ‘OK’ instead of ‘Apply’. So, node 2 is at (X,Y)=(4,0), node 3 is at (X,Y)=(8,0), node 4 is at (X,Y)=(12,0), node 5 is at (X,Y)=(16,0), node 6 is at (X,Y)=(4,4), node 7 is at (X,Y)=(8,4), and node 8 is at (X,Y)=(12,4). The dimensions entered are in meters, and on the node definition menu, for this case, rotation angles are ignored, and for all nodes, Z=0.</custom-spacing><br>
+                <custom-spacing>As a check to ensure all nodes were entered correctly, list the nodes:</custom-spacing><br>
+                <custom-process>Utility Menu> List> Nodes</custom-process><br>
+                <custom-spacing>If any errors were made in defining the nodes, redefine a node by repeating the procedure of step 5. Of course, it is not necessary to redefine all nodes simply to move one. Just repeat the node creation command for the incorrectly placed node.</custom-spacing><br>
+                <custom-spacing>Turn on node numbering.</custom-spacing><br>
+                <custom-process>Utility Menu> PlotCtrls> Numbering</custom-process><br>
+                <custom-spacing>Check ‘Node Numbering’, then click ‘OK’. The node numbers may already be showing, but this will force the display of node numbers on subsequent plots.</custom-spacing>
+            <li><b>Create link elements between nodes.</b><br>
+                <custom-process>Preprocessor> Create> Elements> Auto Numbered >Thru Nodes</custom-process><br>
+                <custom-spacing>A picking menu appears. Pick node 1, then node 2, and click on ‘Apply’ in the Picking Menu. Continue creating elements using the definitions listed in the table below. After picking the nodes for the last element (element 13), choose ‘OK’ (instead of ‘Apply’) to define the element and close the picking menu.</custom-spacing><br>
+                <table>
+                    <tr><th>Element</th><th>Node I</th><th>Node J</th></tr>
+                    <tr><td>1</td><td>1</td><td>2</td></tr>
+                    <tr><td>2</td><td>2</td><td>3</td></tr>
+                    <tr><td>3</td><td>3</td><td>4</td></tr>
+                    <tr><td>4</td><td>4</td><td>5</td></tr>
+                    <tr><td>5</td><td>6</td><td>7</td></tr>
+                    <tr><td>6</td><td>7</td><td>8</td></tr>
+                    <tr><td>7</td><td>6</td><td>2</td></tr>
+                    <tr><td>8</td><td>3</td><td>7</td></tr>
+                    <tr><td>9</td><td>4</td><td>8</td></tr>
+                    <tr><td>10</td><td>1</td><td>6</td></tr>
+                    <tr><td>11</td><td>6</td><td>3</td></tr>
+                    <tr><td>12</td><td>3</td><td>8</td></tr>
+                    <tr><td>13</td><td>5</td><td>8</td></tr>
+                </table>
+            <li><b>Apply constraints and forces on the model.</b><br>
+                <custom-process>Solution> Loads> Apply> Structural> Displacement> On Nodes</custom-process><br>
+                <custom-spacing>Pick node 1, then click ‘OK’ in the picking menu that has appeared. Choose ALL DOF, and use the default displacement value of zero. Click on ‘Apply’. Pick node 5, then click ‘OK’ in the picking menu. To constrain this node in the Y-direction only, Click on ‘UY’. Make sure to unselect the ‘ALL DOF’ label! If the ‘ALL DOF’ label is highlighted, unselect it by clicking on it. After confirming that only ‘UY’ is highlighted, click ‘OK’.</custom-spacing><br>
+                <custom-spacing>Apply the forces.</custom-spacing><br>
+                <custom-process>Solution> Loads> Apply> Structural> Force/Moment> On Nodes</custom-process><br>
+                <custom-spacing>Pick node 4, then ‘OK’ in the picking menu, choose ‘FY’ as the direction of the force, and enter -150 for the force value. Click on ‘Apply’. Pick node 3, click ‘OK’ in the picking menu, and enter -125 for the force value (still in the FY direction). Click on ‘OK’.</custom-spacing>
+        </ol>
+        
+        <custom-spacing><b>Solution</b></custom-spacing>
+        <ol>
+            <li><b>Solve the problem</b><br>
+                <custom-process>Solution> Solve> Current LS</custom-process><br>
+                <custom-spacing>Click ‘OK’ in the ‘Solve Current Load Step’ Box.</custom-spacing>
+        </ol>
+        
+        <custom-spacing><b>Postprocessing</b></custom-spacing>
+        <ol>
+            <li><b>Plot the deformed shape</b><br>
+                <custom-process>General Postproc> Plot Results> Deformed Shape</custom-process><br>
+                <custom-spacing>Choose ‘Def + undeformed’, then ‘OK’.</custom-spacing>
+                <custom-spacing><div class="container-1">
+                    <span><img src="./IV Structural Analysis/image17.jpg" alt="image" width="300px"></span>
+                </div></custom-spacing>
+                <li><b>List reaction forces</b><br>
+                <custom-process>General Postproc> List Results> Reaction Solution</custom-process><br>
+                <custom-spacing>Click on ‘All struc forc F’, and ‘OK’.</custom-spacing><br>
+                <custom-spacing><div class="container-1">
+                    <span><img src="./IV Structural Analysis/image18.jpg" alt="image" width="300px"></span>
+                </div></custom-spacing>
+                <custom-spacing>Print the information in the Listing Box, by clicking, in that box, on ‘File > Print’. Or else, just write the information down.</custom-spacing>
+            <li><b>List a summary, which includes the axial force and stress in each element:</b><br>
+                <custom-process>General Postproc> List Results> Element Solution> Favourites> Element Solution></custom-process><br>
+                <custom-spacing>Click ‘OK’, and a summary for each element is printed, including the node numbers, from which the corresponding truss member can be identified. Record or print, this information.</custom-spacing>
+            <li><b>List the x and y direction deflections for each node:</b><br>
+                <custom-process>General Postproc> List Results> Nodal Solution> DOF Solution></custom-process><br>
+                <custom-spacing>Click ‘OK’. Again, record or print, this information.</custom-spacing>
+            <li><b>Exit ANSYS</b><br>
+                <custom-process>Quit> Save Everything> OK</custom-process>
+        </ol>
+        
+        <custom-spacing style="color: red;"><b>W6:</b> A tower is made up of trusses. The four trusses at the top are each 2m in length. The cross section of each of the truss members is 6.25e-3sq.m. Assume the structure is made of steel with modulus of elasticity E=200GPa. The tower is constrained along X and Y directions at the bottom left corner, and along Y direction at the bottom right corner. The tower is loaded at the top. The load is in vertical direction only, and its magnitude is 4000N. Determine deflection at each joint. Determine stress in each member. Determine reaction forces at the base.</custom-spacing><br>
+        <custom-spacing><div class="container-1">
+            <span><img src="./IV Structural Analysis/image19.jpg" alt="image" width="200px" height="300"></span>
+        </div></custom-spacing>
+        <custom-spacing><b>Data:</b> Height of each truss=2m, cross sectional area=6.25e-3sq.m., E=2e11N/m<sup>2</sup>, Load=-4000N</custom-spacing><br>
+        <custom-spacing><b>Sol:</b> A truss is a structural element that experiences loading only in the axial direction. In this example a 2-D Truss element will be used. A power transmission tower is a common example of a structure that is made up of only truss members. These towers are actually 3-D structures, but for the sake of simplicity a cross-sectional face of the tower will be taken. The tower is mainly subjected to loading in the vertical direction due to the weight of the cables. Also it is subjected to forces due to wind. In this example only loading due to the weight of the cables, which is in the vertical direction, will be considered.</custom-spacing><br>
+        <custom-spacing><b>Preprocessing</b></custom-spacing>
+        <ol>
+            <li><b>Model the structure</b><br>
+                <custom-process>Utility Menu> Workplane> WP Settings</custom-process><br>
+                <custom-spacing>The following window comes up</custom-spacing><br>
+                <custom-spacing>Check the Cartesian and Grid Only buttons</custom-spacing><br>
+                <custom-spacing>Enter Snap Incr=0.5, Spacing=0.5, Min=0, Max=10.</custom-spacing><br>
+                <custom-process>Main Menu> Preprocessor> Modeling> Create> Keypoints> On Working Plane</custom-process><br>
+                <custom-spacing>The following window comes up. Now pick the end points of the truss.</custom-spacing><br>
+                <custom-spacing>Select the keypoints on the workplane grid. The keypoints should look like this.</custom-spacing><br>
+                <custom-spacing>If the complete workplane cannot be seen then go to <custom-process>Utility Menu> PlotCntrls> Pan Zoom Rotate</custom-process> and zoom out to see the entire workplane</custom-spacing>
+                <custom-spacing><div class="container-1">
+                    <span><img src="./IV Structural Analysis/image20.jpg" alt="image" width="250px"></span>
+                </div></custom-spacing>
+                <li><b>Now create lines connecting the keypoints</b><br>
+                <custom-process>Preprocessor> Modeling> Create> Lines> Lines> Straight Line</custom-process><br>
+                <custom-spacing>Create lines by picking keypoints to make the figure shown below</custom-spacing>
+                <custom-spacing><div class="container-1">
+                    <span><img src="./IV Structural Analysis/image21.jpg" alt="image" width="250px"></span>
+                </div></custom-spacing>
+                <li><b>Define material properties</b><br>
+                <custom-process>Main Menu> Preprocessor> Material Props> Material Models</custom-process><br>
+                <custom-spacing>In the window that comes up, for Material Model 1, choose Structural> Linear> Elastic> Isotropic</custom-spacing><br>
+                <custom-spacing>Enter 1 for the Material Property Number and click ‘OK’. The following window comes up.</custom-spacing><br>
+                <custom-spacing>Fill in 2e11 for the Young's modulus and 0.3 for minor Poisson's Ratio. Click ‘OK’.</custom-spacing>
+            <li><b>Define element properties</b><br>
+                <custom-spacing>Select element type.</custom-spacing><br>
+                <custom-process>Preprocessor> Element Type> Add/Edit/Delete...</custom-process><br>
+                <custom-spacing>In the 'Element Types' window that opens click on Add... The following window opens.</custom-spacing><br>
+                <custom-spacing>Type 1 in the Element type reference number</custom-spacing><br>
+                <custom-spacing>Click on Structural Link and select 3D finit stn. Click OK. Close the 'Element types' window.</custom-spacing><br>
+                <custom-spacing>So now Element type 1 is selected to be a structural Link180 element. The trusses will be modeled as elements of Type 1, i.e. structural link element.</custom-spacing>
+            <li><b>Now define the cross sectional area for this element.</b><br>
+                <custom-process>Preprocessor> Real Constants</custom-process><br>
+                <custom-spacing>In the ‘Real Constants’ dialog box that comes up click on Add</custom-spacing><br>
+                <custom-spacing>In the ‘Element Type for Real Constants’ that comes up click ‘OK’. The following window comes up.</custom-spacing><br>
+                <custom-spacing>Type 6.25e-3 for cross sectional area and click on ‘OK’.</custom-spacing><br>
+                <custom-spacing>Now the cross sectional area of the link element is defined.</custom-spacing>
+            <li><b>Mesh the model</b><br>
+                <custom-spacing>Divide the tower into elements</custom-spacing><br>
+                <custom-process>Preprocessor> Meshing> Size Cntrls> ManualSize> Lines> All Lines</custom-process><br>
+                <custom-spacing>In the menu that comes up type 1 in the field for 'Number of element divisions'.</custom-spacing><br>
+                <custom-spacing>This divides each of the lines in the figure into 1 element.</custom-spacing><br>
+                <custom-spacing><div class="container-1">
+                    <span><img src="./IV Structural Analysis/image22.jpg" alt="image" width="300px"></span>
+                </div></custom-spacing>
+                <custom-spacing>Click on ‘OK’. Now the figure is meshed, ANSYS will automatically divide each line into 1 element.</custom-spacing><br>
+                <custom-process>Preprocessor> Meshing> Mesh> lines</custom-process><br>
+                <custom-spacing>Select all the lines and click on OK in the ‘Mesh Lines’ dialog box.</custom-spacing><br>
+                <custom-spacing>Now each line is a truss element (Element 1).</custom-spacing>
+            <li><b>Define boundary conditions and constraints</b><br>
+                <custom-spacing>Apply boundary conditions</custom-spacing><br>
+                <custom-spacing>The tower is constrained in the X and Y directions at the bottom left corner and in the Y direction at the bottom right corner.</custom-spacing><br>
+                <custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> Structural> Displacement> On Keypoints</custom-process><br>
+                <custom-spacing>Select the keypoint on displacement constraints are to be applied. The following window comes up.</custom-spacing><br>
+                <custom-spacing><div class="container-1">
+                    <span><img src="./IV Structural Analysis/image23.jpg" alt="image" width="250px"></span>
+                </div></custom-spacing>
+                <custom-spacing>Select UX and UY for the bottom left corner and UY for the bottom right corner and lick OK. The default displacement value is taken to be zero.</custom-spacing>
+            <li><b>Apply forces</b><br>
+                <custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> Structural> Forces/Moment> On Nodes</custom-process><br>
+                <custom-spacing>Select the top node.</custom-spacing><br>
+                <custom-spacing>Click on OK in the 'Apply F/M on Nodes' window. The following window will appear. Select FY and enter 4000 as the Force/Moment value. Click on ‘OK’.</custom-spacing><br>
+                <custom-spacing>The figure on the ANSYS Graphics window will look like the following.</custom-spacing>
+        </ol>
+        
+        <custom-spacing><b>Solution</b></custom-spacing>
+        <ol>
+            <li><b>Solve the problem.</b><br>
+                <custom-process>Main Menu> Solution> Analysis Type> New Analysis</custom-process><br>
+                <custom-spacing>Select static and click on ‘OK’.</custom-spacing><br>
+                <custom-process>Solution> Solve> Current LS</custom-process>
+        </ol>
+        
+        <custom-spacing><b>Postprocessing</b></custom-spacing>
+        <ol>
+            <li><b>List the results.</b><br>
+                <custom-process>General Postproc> List Results> Nodal Solution</custom-process><br>
+                <custom-spacing>Select DOF solution and Displacement vector sum. Click on ‘OK’. The nodal displacements will be listed.</custom-spacing><br>
+                <custom-spacing>List the stresses for each element by clicking <custom-process>Gen Postproc > List Results > Element Solution</custom-process>.</custom-spacing><br>
+                <custom-spacing>Now select LineElem Results.</custom-spacing>
+        </ol>
+        <custom-spacing><div class="container-1">
+            <span><img src="./IV Structural Analysis/image25.jpg" alt="image" width="250px"></span>
+        </div></custom-spacing>
+</body>
+</html>

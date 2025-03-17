@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">2.4 Overview of Postprocessing</custom-heading><br>
+    <custom-spacing>After building the model and obtaining the solution, the analyst wants answers to some critical questions: Will the design really work when put to use? How high are the stresses in this region? How does the temperature of this part vary with time? What is the heat loss across this face of my model? How does the magnetic flux flow through this device? How does the placement of this object affect fluid flow? The postprocessors in the ANSYS program can help answer these questions and others.</custom-spacing><br>
+    <custom-spacing>Postprocessing means reviewing the results of an analysis. It is probably the most important step in the analysis, because the analyst is trying to understand how the applied loads affect the design, how good the finite element mesh is, and so on.</custom-spacing>
+    
+    <sub-heading>2.4.1 Postprocessors Available</sub-heading><br>
+    <custom-spacing>Two postprocessors are available for reviewing the results: POST1, the general postprocessor, and POST26, the time-history postprocessor. POST1 allows the analyst to review the results over the entire model at specific load steps and substeps. In a static structural analysis, for example, s/he can display the stress distribution for load step 3. Or, in a transient thermal analysis, s/he can display the temperature distribution at time = 100 seconds. Figure 2.14 is a typical example of a POST1 plot.</custom-spacing><br>
+    <custom-spacing>POST26 allows the analyst to review the variation of a particular result item at specific points in the model with respect to time, frequency, or some other result item. In a transient magnetic analysis, for instance, the analyst can graph the eddy current in a particular element versus time. Or, in a nonlinear structural analysis, s/he can graph the force at a particular node versus its deflection. A Typical POST26 Graph is shown in Fig. 2.15.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/13.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.14 A Typical POST1 Contour Display</image-tag>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/14.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.15 A Typical POST26 Graph</image-tag>
+    
+    <custom-spacing>It is important to remember that the postprocessors in ANSYS are just <custom-style>tools</custom-style> for reviewing analysis results. The analyst still needs to use engineering judgment to <custom-style>interpret</custom-style> the results. For example, a contour display may show that the highest stress in the model is 37,800 psi. It is now up to her/him to determine whether this level of stress is acceptable for the design.</custom-spacing>
+    
+    <sub-heading>2.4.2 The Results Files</sub-heading><br>
+    <custom-spacing>The analyst can use <custom-style>OUTRES</custom-style> to direct the ANSYS solver to append selected results of an analysis to the results file at specified intervals during solution. The name of the results file depends on the analysis discipline:</custom-spacing>
+    <ul>
+        <li><custom-style>Jobname.RST</custom-style> for a structural analysis and coupled-field analysis
+        <li><custom-style>Jobname.RTH</custom-style> for a thermal and diffusion analyses
+        <li><custom-style>Jobname.RMG</custom-style> for a magnetic field analysis
+    </ul>
+    <custom-spacing>For fluid analyses, the file extension is <custom-style>.RST</custom-style> or <custom-style>.RTH</custom-style>, depending on whether structural degrees of freedom are present.</custom-spacing>
+    
+    <sub-heading>2.4.3 Types of Data Available for Postprocessing</sub-heading><br>
+    <custom-spacing>The solution phase calculates two types of results data - <custom-style>Primary data</custom-style> and <custom-style>Derived data</custom-style>. <custom-style>Primary data</custom-style> consist of the degree-of-freedom solution calculated at each node: displacements in a structural analysis, temperatures in a thermal analysis, magnetic potentials in a magnetic analysis, and so on. These are also known as nodal solution data.</custom-spacing><br>
+    <custom-spacing><custom-style>Derived data</custom-style> are those results calculated from the primary data, such as stresses and strains in a structural analysis, thermal gradients and fluxes in a thermal analysis, magnetic fluxes in a magnetic analysis, and the like. They are typically calculated for each element and may be reported at any of the following locations: at all nodes of each element, at all integration points of each element, or at the centroid of each element. Derived data are also known as element solution data, except when they are averaged at the nodes. In such cases, they become nodal solution data.</custom-spacing>
+    </body>
+    </html>

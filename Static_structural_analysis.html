@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUI</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+    <p>
+        <custom-heading level="1">4 STATIC STRUCTURAL ANALYSIS</custom-heading level="1">
+            <custom-heading>Structural Analysis Overview</custom-heading>
+            <custom-spacing>Structural analysis is probably the most common application of the finite element method. The term <i>structural</i> (or <i>structure</i>) implies not only civil engineering structures such as bridges and buildings, but also naval, aeronautical and mechanical structures such as ship hulls, aircraft bodies, and machine housings, as well as mechanical components such as pistons, machine parts and tools.</custom-spacing>
+            
+            <sub-heading>Types of Structural Analysis</sub-heading>
+            <custom-spacing>The following types of structural analyses can be performed using ANSYS:</custom-spacing>
+            <ul>
+                <li><b>Static Analysis</b> -- Used to determine displacements, stresses, etc. under static loading conditions, both linear and nonlinear static analyses. Nonlinearities can include plasticity, stress stiffening, large deflection, large strain, hyperelasticity, contact surfaces and creep.</li>
+                <li><b>Modal Analysis</b> -- Used to calculate the natural frequencies and mode shapes of a structure. Several mode-extraction methods are available.</li>
+                <li><b>Harmonic Analysis</b> -- Used to determine the response of a structure to harmonically time-varying loads.</li>
+                <li><b>Transient Dynamic Analysis</b> -- Used to determine the response of a structure to arbitrarily time-varying loads. All nonlinearities mentioned under Static Analysis above are allowed.</li>
+                <li><b>Spectrum Analysis</b> -- An extension of the modal analysis, used to calculate stresses and strains due to a response spectrum or a PSD input (random vibrations).</li>
+                <li><b>Buckling Analysis</b> -- Used to calculate the buckling loads and determine the buckling mode shape. Both linear (eigenvalue) buckling and nonlinear buckling analyses are possible.</li>
+                <li><b>Explicit Dynamic Analysis</b> -- This type of structural analysis is available via the ANSYS LS-DYNA product, which provides an interface to the LS-DYNA explicit finite element program. Explicit dynamic analysis calculates fast solutions for large deformation dynamics and complex contact problems.</li>
+            </ul>
+            <custom-spacing>The primary unknowns (nodal degrees of freedom) calculated in a structural analysis are displacements. Other quantities such as strains, stresses and reaction forces are then derived from the nodal displacements.</custom-spacing>
+            
+            <sub-heading>Selecting Elements</sub-heading>
+            <custom-spacing>Most element types are structural elements, ranging from simple spars and beams to more complex layered shells and large strain solids. Most types of structural analyses can use any of these elements.</custom-spacing>
+            
+            <sub-heading>Selecting Material Models</sub-heading>
+            <custom-spacing>For analyses described in this book, the analyst must specify the material that s/he intends to simulate. Using the GUI, the analyst can specify many materials that s/he intends to simulate via an intuitive material model interface. The interface uses a hierarchical tree structure of material categories, intended to assist in choosing the appropriate model for the analysis.</custom-spacing>
+            
+            <sub-heading>Solution Method</sub-heading>
+            <custom-spacing>The ANSYS family of products uses the h-method for solving structural problems. The h-method can be used for any type of analysis.</custom-spacing>
+            
+            <sub-heading>Static Analysis</sub-heading>
+            <custom-spacing>A static analysis calculates the effects of <i>steady</i> loading conditions on a structure, while ignoring inertia and damping effects, such as those caused by time-varying loads. A static analysis can, however, include steady inertia loads and time-varying loads that can be approximated as static equivalent loads.</custom-spacing>
+            <custom-spacing>Static analysis determines the displacements, stresses, strains, and forces in structures or components caused by loads that do not induce significant inertia and damping effects. Steady loading and response conditions are assumed; that is, the loads and the structure's response are assumed to vary slowly with respect to time. The types of loading that can be applied in a static analysis include:</custom-spacing>
+            <ul>
+                <li>Externally applied forces and pressures</li>
+                <li>Steady-state inertial forces</li>
+                <li>Imposed displacements</li>
+                <li>Temperatures</li>
+                <li>Fluences.</li>
+            </ul>
+            
+            <sub-heading>Linear vs. Nonlinear Static Analyses</sub-heading>
+            <custom-spacing>A static analysis can be either linear or nonlinear. All types of nonlinearities are allowed - large deformations, plasticity, creep, stress stiffening, contact elements, hyperelastic elements and so on. This section focuses on linear static analyses, with brief references to nonlinearities.</custom-spacing>
+            
+            <sub-heading>Performing a Static Analysis</sub-heading>
+            
+            <custom-spacing><b>Build the Model</b></custom-spacing>
+            <custom-spacing>Keep the following points in mind when doing a static analysis:</custom-spacing>
+            <ul>
+                <li>Both linear and nonlinear structural elements can be used</li>
+                <li>Material properties can be linear or nonlinear, isotropic or orthotropic and constant or temperature-dependent</li>
+                <li>Define stiffness in some form</li>
+                <li>For inertia loads, define the data required for mass calculations, such as density</li>
+                <li>For thermal loads, define the coefficient of thermal expansion.</li>
+            </ul>
+            <custom-spacing>Note the following information about mesh density:</custom-spacing>
+            <ul>
+                <li>Regions where stresses or strains vary rapidly require a relatively finer mesh than regions where stresses or strains are nearly constant.</li>
+                <li>While considering the influence of nonlinearities, remember that the mesh should be able to capture the effects of the nonlinearities. For example, plasticity requires a reasonable integration point density in areas with high plastic deformation gradients.</li>
+            </ul>
+            
+            <custom-spacing><b>Set Solution Controls</b></custom-spacing>
+            <custom-spacing>Setting solution controls involves defining the analysis type and common analysis options for an analysis, as well as specifying load step options for it. Take advantage of a streamlined solution interface when performing a structural static analysis. The <i>Solution Controls</i> dialog box (<custom-process>Main Menu> Solution> Analysis Type> Sol'n Controls</custom-process>) provides default settings that will work well for many structural static analyses. It is necessary to set only a few of the options. Because the streamlined solution interface is the <i>recommended tool</i> for setting solution controls in a structural static analysis, it is the method that is presented in this section. Solution controls for the analysis can also be set using the menu paths (<custom-process>Main Menu> Solution> Unabridged Menu> option</custom-process>).</custom-spacing>
+            
+            <custom-spacing><b>Apply the Loads</b></custom-spacing>
+            <custom-spacing>After the desired solution options are set, apply loads to the model. The load types applicable in a static analysis are Displacements, Velocities, Forces, Moments, Pressures, Temperatures, Fluences, Gravity, Spinning, etc.</custom-spacing>
+            <custom-spacing>Except for inertia and velocity loads, the analyst can define loads either on the solid model or on the finite element model. S/he can also apply boundary conditions via TABLE type array parameters or as function boundary conditions.</custom-spacing>
+            <custom-spacing>Loads can also be applied using TABLE type array parameters. In a structural analysis, valid primary variables are TIME, TEMP, and location (X, Y, Z). When defining the table, TIME must be in ascending order in the table index (as in any table array).</custom-spacing>
+            
+            <custom-spacing><b>Solve the Analysis</b></custom-spacing>
+            <custom-spacing>ANSYS is now ready to solve the problem.</custom-spacing>
+            <ol>
+                <li>Save a backup copy of the database to a named file (<custom-process>Utility Menu> File> Save as</custom-process>). Then retrieve the model by reentering the ANSYS program and issuing <i>RESUME</i>.</li>
+                <li>Start solution calculations (<custom-process>Main Menu> Solution> Solve> Current LS</custom-process>).</li>
+                <li>If it is necessary to include additional loading conditions (that is, multiple load steps), repeat the process of applying loads, specifying load step options, saving, and solving for each load step.</li>
+                <li>Leave SOLUTION. Close the Solution menu.</li>
+            </ol>
+            
+            <custom-spacing><b>Review the Results</b></custom-spacing>
+            <custom-spacing>Results from a static analysis are written to the structural results file, <i>Jobname.RST</i>. They consist of the following data:</custom-spacing>
+            <ul>
+                <li><b>Primary data:</b> Nodal displacements (UX, UY, UZ, ROTX, ROTY, ROTZ)</li>
+                <li><b>Derived data:</b> Nodal and element stresses, Nodal and element strains, Element forces, Nodal reaction forces and so on.</li>
+            </ul>
+            
+            <sub-heading>Postprocessors</sub-heading>
+            <custom-spacing>These results can be viewed using POST1, the general postprocessor, and POST26, the time-history processor.</custom-spacing>
+            <ul>
+                <li><b>POST1</b> is used to review results over the entire model at specific sub-steps (time-points). Some typical POST1 operations are explained below.</li>
+                <li><b>POST26</b> is used in nonlinear static analyses to track specific result items over the applied load history.</li>
+            </ul>
+            
+            <sub-heading>Reviewing Results Data</sub-heading>
+            <ol>
+                <li>Read in the database from the database file using <custom-process>Utility Menu> File> Resume from</custom-process></li>
+                <li>Read in the desired set of results. Identify the data set by load step and substep numbers or by time. If a time value is specified for which no results are available, the ANSYS program will perform linear interpolation on all the data to calculate the results at that time. <custom-process>Main Menu> General Postproc> Read Results> By Load Step</custom-process></li>
+                <li>Perform the necessary POST1 operations. Typical static analysis POST1 operations are explained below.</li>
+            </ol>
+            
+            <sub-heading>Postprocessing Operations</sub-heading>
+            <ul>
+                <li>Use <custom-process>Main Menu> General Postproc> Plot Results> Deformed Shape</custom-process> to display deformed shape.</li>
+                <li>Use <custom-process>Main Menu> General Postproc> List Results> Reaction Solu</custom-process> to list reaction forces and moments.</li>
+                <li>Use <custom-process>Main Menu> General Postproc> List Results> Element Solution</custom-process> to list nodal forces and moments.</li>
+            </ul>
+            <custom-spacing>The sum of all nodal forces and moments for a selected set of nodes can be listed. Select a set of nodes and use this feature to find out the total force acting on those nodes using <custom-process>Main Menu> General Postproc> Nodal Calcs> Total Force Sum</custom-process>.</custom-spacing>
+            <custom-spacing>The total force and total moment at each selected node can also be checked. For a body in equilibrium, the total load is zero at all nodes except where an applied load or reaction load exists: <custom-process>Main Menu> General Postproc> Nodal Calcs> Sum @ Each Node</custom-process></custom-spacing>
+            <custom-spacing>For line elements, such as beams, spars, and pipes, use <custom-process>Main Menu> General Postproc> Element Table> Define Table</custom-process> to gain access to derived data. Results data are identified by a combination of a label and a sequence number or component name on the <i>ETABLE</i> command.</custom-spacing>
+            <custom-spacing>Use <custom-process>Main Menu> General Postproc> Plot Results> Contour Plot> Nodal Solu</custom-process> or <custom-process>Element Solu</custom-process> to display contours.</custom-spacing>
+            <custom-spacing>Use <custom-process>Main Menu> General Postproc> Element Table> Plot Element Table</custom-process> and <custom-process>Main Menu> General Postproc> Plot Results> Contour Plot> Line Elem Res</custom-process> to contour element table data and line element data.</custom-spacing>
+            <custom-spacing>Use <custom-process>Main Menu> General Postproc> Plot Results> Vector Plot> Predefined</custom-process> to display vectors and <custom-process>Main Menu> General Postproc> List Results> Vector Data</custom-process> to view vector listings.</custom-spacing>
+            <custom-spacing>Use <custom-process>Main Menu> General Postproc> List Results> solution option</custom-process> to produce tabular listings.</custom-spacing>
+            
+    </p>
+</body>
+</html>

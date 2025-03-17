@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">2.7 Selecting and Components</custom-heading><br>
+    <sub-heading>2.7.1 Selecting</sub-heading><br>
+    <custom-spacing>Selecting (Fig. 2.17) is an important and fundamental concept in ANSYS. Selected entities are the active entities. All operations (including Solving) are performed on the selected set. In many operations items are selected on the fly; ANSYS prompts for what volumes to mesh for example, analyst picks them with the mouse, and ANSYS does the meshing. However there are many times when it is necessary to select things in more sophisticated ways. Also, in an ANSYS input file or batch file things can not be selected with the mouse!</custom-spacing><br>
+    <custom-spacing>Examples where this would be useful:</custom-spacing>
+    <ul>
+        <li>There are many different areas at Z = 0 analyst wants to constrain. He selects them all one by one when applying the constraint, or selects ‘By Location’ beforehand, then says ‘Pick All’ in the picking dialog.
+        <li>There is a structure with many fastener holes that analyst wants to constrain. Again, he could select them all one by one when applying the constraint, or select lines ‘By Length/Radius’, type in the radius of the holes to select all of them in one shot, then ‘Pick All’ in the picking dialog when applying the constraint.
+    </ul>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/16.jpg" alt="image" width="150px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.17</image-tag>
+    
+    <custom-spacing>After working with the selected set, use <custom-process>Utility Menu > Select > Everything</custom-process> to make the whole model active again.</custom-spacing><br>
+    <b>Select Entities Dialog Box Terminology (Fig. 2.18):</b><br>
+    <custom-spacing><custom-style>From Full:</custom-style> Select from the entire set of entities in the model.</custom-spacing><br>
+    <custom-spacing><custom-style>Reselect:</custom-style> Select a subset from the currently selected entities.</custom-spacing><br>
+    <custom-spacing><custom-style>Also Select:</custom-style> Select in addition to (from the whole model) the set analyst has currently selected.</custom-spacing><br>
+    <custom-spacing><custom-style>Unselect:</custom-style> Remove items from the selection set.</custom-spacing><br>
+    <custom-spacing><custom-style>Select All:</custom-style> This is not the same as Utility Menu > Select > Everything. This selects all of whatever entity analyst has specified at the top of the dialog.</custom-spacing><br>
+    <custom-spacing><custom-style>Invert:</custom-style> Reverses the selected and unselected entities (just the entities specified at the top of the dialog).</custom-spacing><br>
+    <custom-spacing><custom-style>OK:</custom-style> This does the select operation (or brings up a picker dialog so that analyst can pick with the mouse) and then dismisses the dialog.</custom-spacing><br>
+    <custom-spacing><custom-style>Apply:</custom-style> This does the operation but keeps the dialog box. Typically use this so the dialog stays active.</custom-spacing><br>
+    <custom-spacing><custom-style>Replot:</custom-style> Replots whatever is active in the graphics window.</custom-spacing><br>
+    <custom-spacing><custom-style>Plot:</custom-style> Plots only the entity specified at the top of the dialog.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/23.png" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.18</image-tag>
+    
+    <sub-heading>2.7.2 Organizing the Model using Components</sub-heading><br>
+    <custom-spacing>If a group of entities are selected and it might be necessary to use that selection set again, create a component out of it. Components are groups of entities but hold only one kind of entity at a time. Components can themselves be grouped into Assemblies, so this is the way to group different types of entities together. Use <custom-process>Utility Menu > Select > Comp/Assembly > Create Component…</custom-process> to create a component. The Component Manager (Fig. 2.19) makes it very easy to manage and manipulate groups and select/plot what analyst wants to see to the screen. This is found under <custom-process>Utility Menu > Select > Component Manager</custom-process>.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/17.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.19 Component Manager</image-tag>
+    </body>
+    </html>

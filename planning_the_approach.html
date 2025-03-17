@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning the Approach</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">3.2 Planning the Approach</custom-heading><br>
+    <custom-spacing>As the analyst begins to create the model, s/he will make a number of decisions that determine how the real system will be simulated mathematically. For example: What are the objectives of the analysis? Will s/he model all, or just a portion, of the real system? How much detail will be included in the model? What kinds of elements will be used? How dense should the finite element mesh be?</custom-spacing><br>
+    <custom-spacing>An attempt will be made to balance computational expense against precision of results. The decisions made in the planning stage of the analysis will mainly decide the success or failure of the analysis.</custom-spacing><br>
+    <custom-spacing>This first step of the analysis depends not on the capabilities in the ANSYS program, but on knowledge, experience, and professional expertize of the analyst. Only s/he can determine what the objectives must be. The objectives established at the start will control the rest of the choices as the model is created.</custom-spacing>
+    
+    <sub-heading>3.2.1 Choosing a Model Type</sub-heading><br>
+    <custom-spacing>The ANSYS model may be categorized as 2-D or 3-D, and as composed of point elements, line elements, area elements, or solid elements. Of course, the analyst can mix different kinds of elements (Fig. 3.1) as required. For example, the analyst might model a stiffened shell structure using 3-D shell elements to represent the skin and 3-D beam elements to represent the ribs.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image1.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.1 Different types of elements</image-tag>
+    
+    <custom-spacing><custom-style>LINE</custom-style> models can represent 2-D or 3-D beam or pipe structures, as well as 2-D models of 3-D axisymmetric shell structures. Solid modeling usually does not offer much benefit for generating line models; they are more often created by direct generation methods.</custom-spacing><br>
+    <custom-spacing><custom-style>2-D SOLID</custom-style> analysis models are used for thin planar structures (plane stress), ‘infinitely long’ structures having a constant cross section (plane strain), or axisymmetric solid structures. Although many 2-D analysis models are relatively easy to create by direct generation methods, they are usually easier to create with solid modeling.</custom-spacing><br>
+    <custom-spacing><custom-style>3-D SHELL</custom-style> models are used for thin structures in 3-D space. Although some 3-D shell analysis models are relatively easy to create by direct generation methods, they are usually easier to create with solid modeling.</custom-spacing><br>
+    <custom-spacing><custom-style>3-D SOLID</custom-style> analysis models are used for thick structures in 3-D space that have neither a constant cross section nor an axis of symmetry. Creating a 3-D solid analysis model by direct generation methods usually requires considerable effort. Solid modeling will nearly always make the job easier.</custom-spacing>
+    
+    <sub-heading>3.2.2 Choosing Between Linear and Higher Order Elements</sub-heading><br>
+    <custom-spacing>The ANSYS program's element library includes two basic types of area and volume elements: <custom-style>linear</custom-style> and <custom-style>quadratic</custom-style>. These basic element types are represented schematically in Fig. 3.2. Look at some of the points involved in selecting between these two basic element types:</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image2.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.2 Area and Volume Types</image-tag>
+    <custom-spacing>(a) Linear isoparametric (b) Linear isoparametric with extra shapes (c) Quadratic</custom-spacing>
+    
+    <sub-heading>3.2.2.1 Linear Elements</sub-heading><br>
+    <custom-spacing>For structural analyses, the corner node elements with extra shape functions will often yield an accurate solution. When using these elements, it is essential to avoid their degenerate forms. That is, avoid using the triangular form of 2-D linear elements and the wedge or tetrahedral forms of 3-D linear elements. Also take care to avoid using excessively distorted linear elements.</custom-spacing><br>
+    <custom-spacing>In <custom-style>nonlinear</custom-style> structural analyses, better accuracy can be obtained at less cost by using a fine mesh rather than a comparable coarse mesh of quadratic elements. Examples of (a) linear and (b) quadratic elements are shown in Fig. 3.3.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image3.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.3 Comparable Grids</image-tag>
+    
+    <custom-spacing>When modeling a curved shell, choose between using curved or flat shell elements. Each option has its own pros and cons. The majority of problems can be solved to a high degree of accuracy in a minimum amount of computer time with flat elements. Take care to ensure that enough flat elements are used to model the curved surface satisfactorily. Obviously, the smaller the element, the higher will be the accuracy.</custom-spacing><br>
+    <custom-spacing>For most non-structural analyses, the linear elements are nearly as good as the higher order elements, and are less expensive to use. Degenerate elements usually produce accurate results in non-structural analyses.</custom-spacing>
+    
+    <sub-heading>3.2.2.2 Quadratic Elements (Mid-side Nodes)</sub-heading><br>
+    <custom-spacing>For linear structural analyses with degenerate element shapes, the quadratic elements will usually give better results at less expense than will the linear elements.</custom-spacing>
+    

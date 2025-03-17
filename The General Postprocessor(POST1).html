@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">2.5 The General Postprocessor (POST1)</custom-heading><br>
+    <custom-spacing>Use POST1, the general postprocessor, to review analysis results over the entire model, or selected portions of the model, for a specifically defined combination of loads at a single time. POST1 has many capabilities, ranging from simple graphics displays and tabular listings to more complex data manipulations such as load case combinations. Issue <custom-process>Main Menu> General Postproc</custom-process> to enter the general postprocessor.</custom-spacing>
+    
+    <sub-heading>2.5.1 Reading Results Data into the Database</sub-heading><br>
+    <custom-spacing>The first step in POST1 is to read data from the results file into the database. Model data must exist in the database to do so. If the database does not already contain model data, issue <custom-process>Utility Menu> File> Resume Jobname.db</custom-process> to read the database file, <custom-style>Jobname.DB</custom-style>. The database should contain the <custom-style>same</custom-style> model for which the solution was calculated, including the element types, nodes, elements, element real constants, material properties, and nodal coordinate systems.</custom-spacing>
+    
+    <sub-heading>2.5.2 Reviewing Results in POST1</sub-heading><br>
+    <custom-spacing>Once the desired results data are stored in the database, the analyst can review them through graphics displays and tabular listings. In addition, s/he can map the results data onto a path.</custom-spacing>
+    
+    <sub-heading>2.5.2.1 Displaying Results Graphically</sub-heading><br>
+    <custom-spacing>Graphics displays are perhaps the most effective way to review results. The following types of graphics can be displayed in POST1:</custom-spacing>
+    <ul>
+        <li>Contour displays
+        <li>Deformed shape displays
+        <li>Vector displays
+        <li>Path plots
+        <li>Reaction force displays
+        <li>Particle flow traces
+    </ul>
+    <sub-heading>2.5.2.2 Listing Results in Tabular Form</sub-heading><br>
+    <custom-spacing>An effective way of documenting analysis results is to produce tabular listings in POST1. Listing options are available for nodal and element solution data, reaction data, element table data, and more.</custom-spacing><br>
+    <b>Listing Nodal and Element Solution Data</b><br>
+    <custom-spacing>Use <custom-process>Main Menu> General Postproc> List Results> Nodal Solution</custom-process> to list specified nodal solution data. Use <custom-process>Main Menu> General Postproc> List Results> Element Solution</custom-process> to list specified results for selected elements.</custom-spacing><br>
+    <custom-spacing>Specify the ELEM option with <custom-style>PRESOL</custom-style> to obtain line element solution printout. The program will list all applicable element results for the selected elements.</custom-spacing><br>
+    <b>Listing Reaction Loads and Applied Loads</b><br>
+    <custom-spacing>There are several options in POST1 for listing reaction loads and applied loads. The GUI path <custom-process>Main Menu> General Postproc> List Results> Reaction Solu</custom-process> lists reactions at constrained nodes in the selected set. The GUI path <custom-process>Main Menu> General Postproc> List Results> Nodal Loads</custom-process> lists the summed element nodal loads for the selected nodes, except for any zero values.</custom-spacing><br>
+    <custom-spacing>Another useful command is <custom-process>Main Menu> General Postproc> Nodal Calcs> Total Force Sum</custom-process>. It calculates and lists the force and moment summation for the selected set of nodes.</custom-spacing><br>
+    <b>Listing Element Table Data</b><br>
+    <custom-spacing>Use <custom-process>Main Menu> General Postproc> Element Table> List Elem Table</custom-process> or <custom-process>Main Menu> General Postproc> List Results> Elem Table Data</custom-process> to list specified data stored in the element table. Use <custom-process>Main Menu> General Postproc> Element Table> Sum of Each Item</custom-process> to list the sum of each column in the element table.</custom-spacing>
+    
+    <sub-heading>2.5.2.3 Using the Results Viewer to Access Results File Data</sub-heading><br>
+    <custom-spacing>The Results Viewer (Fig. 2.16) is a compact toolbar for viewing the analysis results. Selecting the Results Viewer disables much of the standard GUI functionality. Many of these operations are not available because of PowerGraphics limitations. However, a good deal of the POST1 functionality is contained in the Result Viewer menu structure, and in the right and middle mouse button context sensitive menus that are accessible in the Results Viewer.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/15.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.16 The Results Viewer</image-tag>
+    
+    <custom-spacing>The Results Viewer can be used to access any data stored in a valid results file (such as <custom-style>*.RST</custom-style>, <custom-style>*.RTH</custom-style>, and <custom-style>*.RMG</custom-style>). Because the viewer can access results data without loading the entire database file, it is an ideal location from which to compare data from many different analyses.</custom-spacing>
+    </body>
+    </html>

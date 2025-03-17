@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Control and Element Reordering</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+        <custom-heading level="2">3.10 Number Control and Element Reordering</custom-heading><br>
+        <custom-spacing>The numbering of keypoints, lines, areas, volumes, elements, nodes, element types, real constant sets, materials, coupled DOF sets, constraint equations, and coordinate systems can be controlled as per requirement. Control of the numbering is also useful when combining separately modeled portions of a model into one.</custom-spacing>
+        
+        <sub-heading>3.10.1 Number Control</sub-heading><br>
+        <custom-spacing>The GUI paths described here give the analyst control of the numbering. Control of the numbering is useful when combining separately modeled portions of a model into one.</custom-spacing>
+        
+        <sub-heading>3.10.1.1 Merging Coincident Items</sub-heading><br>
+        <custom-spacing>If two separate entities have the same location, these entities can be merged together into a single entity using <custom-process>Main Menu> Preprocessor> Numbering Ctrls> Merge Items</custom-process>.</custom-spacing><br>
+        <custom-spacing>For example, suppose that there are two separate but coincident nodes. If the nodes are merged, the higher numbered node will be deleted and will be replaced with the lower numbered coincident node. Two coincident nodes will thus be replaced by a single node.</custom-spacing>
+        
+        <sub-heading>3.10.1.2 Compressing Item Numbers</sub-heading><br>
+        <custom-spacing>As the model is built, the analyst creates unused slots in the numbering sequence for various items by deleting, clearing, merging, or performing other operations. These slots will remain empty for some items but will be filled in for other items as new items are created. These gaps can be eliminated by ‘compressing’ the numbering to save data storage space or to preserve desired sequencing. Use <custom-process>Main Menu> Preprocessor> Numbering Ctrls> Compress Numbers</custom-process>. The compression operation may be selectively re-executed for chosen item groups or may be simultaneously applied to all valid items.</custom-spacing>
+        
+        <sub-heading>3.10.1.3 Setting Starting Numbers</sub-heading><br>
+        <custom-spacing>When creating new, automatically-numbered items, it is suggested to set the starting number of the new series of items higher than the greatest number used by existing items. By doing so, it is ensured that the newly created entities will be consecutively numbered, and will thus be prevented from occupying gaps in the existing numbering sequence. Also, while creating portions of the model independently of one another, a set of starting numbers is specified to avoid numbering conflicts when they are combined together into one model. Such user-defined starting numbers can be specified using: <custom-process>Main Menu> Preprocessor> Numbering Ctrls> Set Start Number</custom-process>.</custom-spacing>
+        
+        <sub-heading>3.10.1.4 Adding Number Offsets</sub-heading><br>
+        <custom-spacing>In order to combine two independently created portions of a model and to prevent numbering conflicts, all selected items can be renumbered by <custom-style>adding</custom-style> an offset value to their existing numbers. Use <custom-process>Main Menu> Preprocessor> Numbering Ctrls> Add Num Offset</custom-process>. Re-execute this operation for each item group that is to be renumbered.</custom-spacing>
+        
+        <sub-heading>3.10.2 Element Reordering</sub-heading><br>
+        <custom-spacing>At the start of a solution, the ANSYS program will automatically reorder the elements so that they can be accessed in close proximity to each other. This reordering scheme could improve the memory usage and, hence, the speed of the global assembly. This operation does not affect the element numbers used to identify elements in pre- and post-processing of the database. In most cases, allowing the ANSYS program to reorder elements automatically is the preferred approach. The original element ordering can be reestablished using: <custom-process>Main Menu> Preprocessor> Numbering Ctrls> Element Reorder> Reset Elem Order</custom-process>.</custom-spacing>
+        
+   
+</body>
+</html>

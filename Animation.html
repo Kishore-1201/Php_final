@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">2.11 Animation</custom-heading><br>
+    <custom-spacing>Animation is a valuable tool for graphically interpreting many analysis results, especially nonlinear or time-dependent behavior. The ANSYS program provides tools that enable the analyst to animate any type of display.</custom-spacing>
+    
+    <sub-heading>2.11.1 Creating Animated Displays within ANSYS</sub-heading><br>
+    <custom-spacing>The easiest way to perform animation in ANSYS is to use the functions available under <custom-process>Utility Menu> PlotCtrls> Animate</custom-process>. These GUI functions allow to achieve ‘push-button animation’ effects in ANSYS. The GUI functions internally execute ANSYS animation commands, which the analyst can type in directly if prefered.</custom-spacing>
+    
+    <sub-heading>2.11.2 Basic Animation Commands</sub-heading><br>
+    <custom-spacing>Several frames can be displayed in rapid succession to achieve an animation effect, via these commands:</custom-spacing>
+    <ul>
+        <li><custom-process>Utility Menu> PlotCtrls> Redirect Plots> Delete Segments</custom-process>
+        <li><custom-process>Utility Menu> PlotCtrls> Redirect Plots> Segment Status</custom-process>
+        <li><custom-process>Utility Menu> PlotCtrls> Redirect Plots> To Animation File (Windows)</custom-process>
+        <li><custom-process>Utility Menu> PlotCtrls> Animate> Replay Animation</custom-process>
+        <li><custom-process>Utility Menu> PlotCtrls> Animate> Replay Animation</custom-process>
+    </ul>
+    </body>
+    </html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Coordinate Systems</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">3.3 Coordinate Systems</custom-heading><br>
+    <custom-spacing>The ANSYS program uses several types of coordinate systems, each used for a different purpose:</custom-spacing>
+    <ul>
+        <li><custom-style>Global</custom-style> and <custom-style>local</custom-style> coordinate systems are used to locate geometry items in space.
+        <li>The <custom-style>display</custom-style> coordinate system determines the system in which geometry items are listed or displayed.
+        <li>The <custom-style>nodal</custom-style> coordinate system defines the degree of freedom directions at each node and the orientation of nodal results data.
+        <li>The <custom-style>element</custom-style> coordinate system determines the orientation of material properties and element results data.
+        <li>The <custom-style>results</custom-style> coordinate system is used to convert nodal or element results data to a particular coordinate system for listings, displays, or general postprocessing operations (POST1).
+    </ul>
+    <custom-spacing>The working plane, which is separate from the coordinate systems, is for locating geometric primitives during the modeling process.</custom-spacing>
+    
+    <sub-heading>3.3.1 Global and Local Coordinate Systems</sub-heading><br>
+    <custom-spacing>Global and local coordinate systems are used to locate geometry items. When a node or a keypoint is defined, its coordinates are interpreted in the global Cartesian system by default. For some models, however, it may be more convenient to define the coordinates in a system other than global Cartesian. Input the geometry in any of three predefined (global) coordinate systems, or in any number of user defined (local) coordinate systems.</custom-spacing>
+    
+    <sub-heading>3.3.1.1 Global Coordinate Systems</sub-heading><br>
+    <custom-spacing>A global coordinate system (Fig. 3.4) can be thought of as an absolute reference frame. Three predefined global systems are available: <custom-style>Cartesian</custom-style>, <custom-style>cylindrical</custom-style>, and <custom-style>spherical</custom-style>. All three of these systems are right-handed and, by definition, share the same origin. They are identified by their coordinate system (CS) numbers: 0 for Cartesian, 1 and 5 for cylindrical, and 2 for spherical.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image4.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.4 Global Coordinate Systems</image-tag>
+    <custom-spacing>(a) Cartesian (X, Y, Z components) coordinate system 0 (C.S.0)<br>(b) Cylindrical (R, θ, Z components) coordinate system 1 (C.S.1)<br>(c) Spherical (R, θ, φ components) coordinate system 2 (C.S.2)<br>(d) Cylindrical (R, θ, Y components) coordinate system 5 (C.S.5)</custom-spacing>
+    
+    <sub-heading>3.3.1.2 Local Coordinate Systems</sub-heading><br>
+    <custom-spacing>In many cases, it may be necessary to establish own coordinate system, whose origin is offset from the global origin, or whose orientation differs from that of the predefined global systems. Such user defined coordinate systems, known as <custom-style>local</custom-style> coordinate systems, can be created in the following ways:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Utility Menu> WorkPlane> Local Coordinate Systems> Create Local CS> At Specified Loc</custom-process> to define the local system in terms of global Cartesian coordinates.
+        <li>Use <custom-process>Utility Menu> WorkPlane> Local Coordinate Systems> Create Local CS> By 3 Nodes</custom-process> to define the local system in terms of existing nodes.
+        <li>Use <custom-process>Utility Menu> WorkPlane> Local Coordinate Systems> Create Local CS> By 3 Keypoints</custom-process> to define the local system in terms of existing keypoints.
+        <li>Use <custom-process>Utility Menu> WorkPlane> Local Coordinate Systems> Create Local CS> At WP Origin</custom-process> to define the local system to be centered at the origin of the presently defined working plane.
+    </ul>
+    <custom-spacing>When a local coordinate system is defined, it becomes the active coordinate system. As a local system is created, assign it a CS identification number (which must be 11 or greater). Local coordinate systems can be created or deleted in any phase of the ANSYS session. Use <custom-process>Utility Menu> WorkPlane> Local Coordinate Systems> Delete Local CS</custom-process> to delete a local system. Use <custom-process>Utility Menu> List> Other> Local Coord Sys</custom-process> to view the status of all global and local coordinate systems.</custom-spacing><br>
+    <custom-spacing>The local coordinate systems can be Cartesian, cylindrical, or spherical, similar in form to the three predefined global systems. The analyst may define local cylindrical and spherical coordinate systems in either circular or elliptical configuration. Additionally, a <custom-style>toroidal</custom-style> local coordinate system can be defined, as illustrated in Fig. 3.5.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image5.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.5 Types of Coordinate System</image-tag>
+    
+    <sub-heading>3.3.1.3 Active Coordinate System</sub-heading><br>
+    <custom-spacing>The analyst may define as many coordinate systems as s/he likes, but only one of these systems may be <custom-style>active</custom-style> at a time. The choice of active coordinate system is determined as follows: Initially, the global Cartesian system is active by default. Each time a local coordinate system is defined, that newly-defined system then automatically becomes the active one. Use one of the following methods to activate one of the global coordinate systems or some other previously defined coordinate system:</custom-spacing>
+    <ul>
+        <li><custom-process>Utility Menu> WorkPlane> Change Active CS to> Global Cartesian</custom-process>
+        <li><custom-process>Utility Menu> WorkPlane> Change Active CS to> Global Cylindrical</custom-process>
+        <li><custom-process>Utility Menu> WorkPlane> Change Active CS to> Global Spherical</custom-process>
+        <li><custom-process>Utility Menu> WorkPlane> Change Active CS to> Specified Coord Sys</custom-process>
+        <li><custom-process>Utility Menu> WorkPlane> Change Active CS to> Working Plane</custom-process>
+    </ul>
+    <custom-spacing>A coordinate system can be activated in any stage of the ANSYS session. That same coordinate system will remain active in all later stages until it is changed intentionally.</custom-spacing>
+    
+    <sub-heading>3.3.2 Display Coordinate System</sub-heading><br>
+    <custom-spacing>By default, a listing of nodes or keypoints always shows their global Cartesian coordinates, even if they were defined in a different coordinate system. The <custom-style>display coordinate system</custom-style> used in such listings can be changed by one of the following methods:</custom-spacing>
+    <ul>
+        <li><custom-process>Utility Menu> WorkPlane> Change Display CS to> Global Cartesian</custom-process>
+        <li><custom-process>Utility Menu> WorkPlane> Change Display CS to> Global Cylindrical</custom-process>
+        <li><custom-process>Utility Menu> WorkPlane> Change Display CS to> Global Spherical</custom-process>
+        <li><custom-process>Utility Menu> WorkPlane> Change Display CS to> Specified Coord Sys</custom-process>
+    </ul>
+    <custom-spacing>Changing the display coordinate system will also affect the graphical displays. Unless a specific effect is advantageous in the displays, reset the display coordinate system to the global Cartesian system before issuing any graphics display action commands.</custom-spacing>
+    
+    <sub-heading>3.3.3 Element Coordinate Systems</sub-heading><br>
+    <custom-spacing>Every element has its own coordinate system, the <custom-style>element coordinate system</custom-style>, that determines the direction of orthotropic material properties, applied pressures, and results for that element. All element coordinate systems are right-handed orthogonal systems.</custom-spacing><br>
+    <custom-spacing>The default orientations for most elements' coordinate systems fit the following patterns:</custom-spacing>
+    <ul>
+        <li><custom-style>Line elements</custom-style> usually have the element X-axis directed from their node I toward their node J.
+        <li><custom-style>Shell elements</custom-style> usually have the element X-axis similarly directed (from I toward J), the Z-axis normal to the shell surface, and the Y-axis perpendicular to the X and Z axes.
+        <li>For <custom-style>2-D and 3-D solid elements</custom-style>, the element coordinate system is usually parallel to the global Cartesian system.
+    </ul>
+    <custom-spacing>Many element types have key options that permit to change the default element coordinate system orientation. For area and volume elements, the analyst can also change the orientation to align the element coordinate system with a previously defined local system by using: <custom-process>Main Menu> Preprocessor> Meshing> Mesh Attributes> Default Attribs</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Create> Elements> Elem Attributes</custom-process>.</custom-spacing>
+    
+    <sub-heading>3.3.4 Results Coordinate System</sub-heading><br>
+    <custom-spacing>Results data are calculated during solution and consist of displacements (UX, UY, ROTX, etc.), gradients (TGX, TGY, etc.), stresses (SX, SY, SZ, etc.), strains (EPPLX, EPPLXY, etc.), etc. These data are stored in the database and on the results file in either the nodal coordinate system or the element coordinate system. However, results data are <custom-style>generally</custom-style> rotated into the active results coordinate system for displays, listings, and element table data storage.</custom-spacing><br>
+    <custom-spacing>The active results coordinate system can be changed to another system, or to the coordinate systems used during solution. On listing, displaying, or operating on the results data, they are rotated to this results coordinate system first. Use <custom-process>Main Menu> General Postproc> Options for Output</custom-process> or <custom-process>Utility Menu> List> Results> Options</custom-process> to change the results coordinate system.</custom-spacing>
+    

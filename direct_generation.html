@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Generation</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">3.9 Direct Generation</custom-heading><br>
+    <custom-spacing>Direct generation is the approach in which the nodes and elements of a model are defined directly. Many convenience commands allow the analyst to copy, reflect, scale, etc. a given pattern of nodes or elements. However, direct generation requires about ten times as many data entries to define a model as compared to solid modeling. Planning, coordinate systems, and working planes apply to direct generation as well as to solid modeling.</custom-spacing><br>
+    <custom-spacing>A model assembled by direct generation is defined in terms of nodes and elements. Even though node and element generation operations can be interspersed, no one element can be defined until after all of its nodes have been created.</custom-spacing>
+    
+    <sub-heading>3.9.1 Nodes</sub-heading><br>
+    <custom-spacing>This section describes various GUI paths related to the direct generation of nodes. Use <custom-process>Main Menu> Preprocessor> Modeling> Create> Nodes> In Active CS</custom-process> or <custom-process>> On Working Plane</custom-process> to define individual nodes in the active coordinate system. Use <custom-process>Main Menu> Preprocessor> Modeling> Create> Nodes> On Keypoint</custom-process> to define a node at an existing keypoint.</custom-spacing>
+    
+    <sub-heading>3.9.2 Elements</sub-heading><br>
+    
+    <sub-heading>3.9.2.1 Prerequisites for Defining Element Attributes</sub-heading><br>
+    <custom-spacing>Define the minimum number of nodes required for that element and specify the proper element attributes before directly generating elements. Assemble tables of element attributes.</custom-spacing><br>
+    <custom-spacing>Once the element attribute tables are in place, the analyst can ‘point’ to various entries in the element tables. The values of these pointers, that are in effect at the time of creating the elements, are used by the program to assign attributes from the tables to the elements.</custom-spacing>
+    
+    <sub-heading>3.9.2.2 Defining Elements</sub-heading><br>
+    <custom-spacing>After defining the necessary nodes and setting the element attributes, the analyst can proceed to define the elements. An element can be defined by identifying its nodes using <custom-process>Main Menu> Preprocessor> Modeling> Create> Elements> Auto Numbered> Thru Nodes</custom-process> or <custom-process>Main Menu> Preprocessor> Modeling> Create> Elements> User Numbered> Thru Nodes</custom-process>. The number of nodes required for each element and the order in which they must be input are determined by the element type. The order in which nodes are defined determines the element normal direction.</custom-spacing>
+    
+    <sub-heading>3.9.2.3 Reading and Writing Text Files That Contain Element Data</sub-heading><br>
+    <custom-spacing>ANSYS program can read or write a text file that contains element data. These capabilities can be useful for transferring data to and from another program. Normally it will not be necessary to use these capabilities in a standard ANSYS model generating session.</custom-spacing>
+    
+    <sub-heading>3.9.2.4 Overlapping Elements</sub-heading><br>
+    <custom-spacing>If overlapping elements are created, various ANSYS features such as graphics, surface loads, selecting logic, etc. might not function as expected. It is best to avoid the use of overlapping elements altogether; if this is not possible, use extreme caution whenever overlapping elements are employed.</custom-spacing>
+    

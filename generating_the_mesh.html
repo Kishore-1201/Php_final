@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generating the Mesh</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+<custom-heading level="2">3.7 Generating the Mesh</custom-heading><br>
+    <custom-spacing>The process for generating a mesh of nodes and elements consists of three general steps:</custom-spacing>
+    <ul>
+        <li>Setting the element attributes
+        <li>Setting mesh controls
+        <li>Meshing the model.
+    </ul>
+    <custom-spacing>It is not always necessary to set mesh controls because the default mesh controls are appropriate for many models. If no controls are specified, the program will use the default settings to produce a free mesh. Alternatively, the <custom-style>SmartSize feature</custom-style> can be used to produce a better quality free mesh.</custom-spacing>
+    
+    <sub-heading>3.7.1 Free or Mapped Mesh</sub-heading><br>
+    <custom-spacing>Before meshing the model, and even before building the model, it is important to think about whether a free mesh or a mapped mesh (Fig. 3.31) is appropriate for the analysis. A <custom-style>free</custom-style> mesh has no restrictions in terms of element shapes, and has no specified pattern applied to it. A <custom-style>mapped</custom-style> mesh is restricted in terms of the element shape it contains and the pattern of the mesh. A mapped area mesh contains either only quadrilateral or only triangular elements, while a mapped volume mesh contains only hexahedron elements. In addition, a mapped mesh typically has a regular pattern, with obvious rows of elements. To generate this type of mesh, build the geometry as a series of fairly regular volumes and/or areas that can accept a mapped mesh.</custom-spacing><br>
+    <custom-spacing>A mapped mesh generates a very regular grid of elements. This can only be used on rectangular shaped areas or volumes. A free mesh will mesh any entity - regardless of shape.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image34.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.31 Free and Mapped Meshes</image-tag>
+    
+    <sub-heading>3.7.2 Setting Element Attributes</sub-heading><br>
+    <custom-spacing>Before generating a mesh of nodes and elements, the analyst must first define the appropriate element attributes. That is, s/he must specify the following:</custom-spacing>
+    <ul>
+        <li>The element type
+        <li>Real constant set
+        <li>Material properties set
+        <li>Element coordinate system
+        <li>Section ID.
+    </ul>
+    
+    <sub-heading>3.7.2.1 Creating Tables of Element Attributes</sub-heading><br>
+    <custom-spacing>In order to assign attributes to the elements, the analyst must first build tables of element attributes. Typical models include element types (menu path <custom-process>Main Menu> Preprocessor> Element Type> Add/Edit/Delete</custom-process>), real constants (menu path <custom-process>Main Menu> Preprocessor> Real Constants</custom-process>), and material properties (menu path <custom-process>Main Menu> Preprocessor> Material Props> material option</custom-process>).</custom-spacing><br>
+    <custom-spacing>A table of coordinate systems can also be assembled using <custom-process>Utility Menu> WorkPlane> Local Coordinate Systems> Create Local CS> option</custom-process>). This table can be used to assign element coordinate systems to elements.</custom-spacing>
+    
+    <sub-heading>3.7.2.2 Assigning Element Attributes Before Meshing</sub-heading><br>
+    <custom-spacing>Once the attribute tables are assembled, the analyst can assign element attributes to different parts of the model by ‘pointing’ to the appropriate entries in the tables. The pointers are simply a set of reference numbers that include a material number (MAT), a real constant set number (REAL), an element type number (TYPE), a coordinate system number (ESYS) and, for beam meshing with BEAM188, or BEAM189, a section ID number (SECNUM). The analyst can either assign the attributes directly to selected solid model entities, or define a default set of attributes that will be used for elements created in subsequent meshing operations.</custom-spacing>
+    
+    <sub-heading>3.7.3 Mesh Controls</sub-heading><br>
+    <custom-spacing>The default mesh controls that the program uses may produce a mesh that is adequate for the model being analyzed. In this case, it is not necessary to specify any mesh controls. However, if mesh controls are used, set them before meshing the solid model.</custom-spacing><br>
+    <custom-spacing>Mesh controls allow establishing such factors as the element shape, mid-side node placement, and element size to be used in meshing the solid model. This step is one of the most important of the entire analysis, for the decisions made at this stage in the model development will profoundly affect the accuracy and economy of the analysis.</custom-spacing>
+    
+    <sub-heading>3.7.3.1 The MeshTool</sub-heading><br>
+    <custom-spacing>The MeshTool (<custom-process>Main Menu> Preprocessor> Meshing> MeshTool</custom-process>) provides a convenient path to many of the most common mesh controls, as well as to the most frequently performed meshing operations. The MeshTool (Fig. 3.32) is an interactive ‘tool box,’ not only because of the numerous functions that it contains, but also because once opened, it remains open until the analyst either closes it or exits PREP7.</custom-spacing><br>
+    <custom-spacing>Although all of the functions available via the MeshTool are also available via the traditional commands and menus, using the MeshTool is a valuable shortcut.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image35.jpg" alt="image" width="150px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.32 Mesh Tool</image-tag>
+    
+    <custom-spacing>How fine of a mesh should be? Part of this is common sense. Put a finer mesh in areas of higher stress gradient, like near a stress concentration. Do simple experiments along with hand calculations; for example about 30 nodes are needed around a hole to get a good value of the peak stress. The stress convergence should follow a pattern as shown in Fig. 3.33. When the result is not changing much for a finer mesh, the mesh is converged.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image36.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.33 Stress convergence with mesh fineness</image-tag>
+    
+    <custom-spacing>If global attributes are set, that material, element type, real constant, beam section, etc. will be used for all elements in the model. It’s better to use the drop down to assign different attributes to different geometric entities in the model. Then mesh the whole model at one time.</custom-spacing><br>
+    <custom-spacing>Smart Size is used to automatically pick the element edge length depending on the sizes of features in the geometry. It makes a finer mesh around smaller features in order to capture them adequately.</custom-spacing>
+    
+    <sub-heading>3.7.3.2 Element Shape</sub-heading><br>
+    <custom-spacing>The analyst should set the allowable element shapes if s/he plans on meshing with an element type that can take on more than one shape. For instance, many area elements can both be triangular and quadrilateral shaped within the same meshed area. Volume elements can often be either hexahedral or tetrahedral shaped, but a mixture of the two shapes in the same model is not recommended.</custom-spacing>
+    
+    <sub-heading>3.7.3.3 Choosing Free or Mapped Meshing</sub-heading><br>
+    <custom-spacing>In addition to specifying element shape, the analyst may also want to specify the type of meshing that should be used to mesh the model. This is done by setting the meshing key: <custom-process>Main Menu> Preprocessor> Meshing> MeshTool</custom-process> or <custom-process>Main Menu> Preprocessor> Meshing> Mesher Opts</custom-process>.</custom-spacing><br>
+    <custom-spacing>Use the MeshTool (<custom-process>Main Menu> Preprocessor> Meshing> MeshTool</custom-process>) to specify meshing type. The MeshTool is the recommended method. Together, the settings for element shape and meshing type affect the resulting mesh.</custom-spacing>
+    
+    <sub-heading>3.7.3.4 Controlling Placement of Midside Nodes</sub-heading><br>
+    <custom-spacing>When meshing with quadratic elements, the placement of midside nodes can be controlled. The choices for mid-side node placement are:</custom-spacing>
+    <ul>
+        <li>Mid-side nodes of elements on a region boundary follow the curvature of the boundary line or area. This is the default.
+        <li>Place mid-side nodes of all elements so that element edges are straight. This option allows a coarse mesh along curves. However, the curvature of the model is not matched.
+        <li>Do not create mid-side nodes.
+    </ul>
+    <custom-spacing>To control mid-side node placement, use: <custom-process>Main Menu> Preprocessor> Meshing> Mesher Opts</custom-process></custom-spacing>
+    
+    <sub-heading>3.7.3.5 Smart Element Sizing for Free Meshing</sub-heading><br>
+    <custom-spacing>Smart element sizing (SmartSizing) is a meshing feature that creates initial element sizes for free meshing operations. SmartSizing gives the mesher a better chance of creating reasonably shaped elements during automatic mesh generation. This feature provides a range of settings for meshing.</custom-spacing><br>
+    <custom-spacing>By default, the <custom-style>default element size method</custom-style> of element sizing will be used during free meshing. However, it is recommended that SmartSizing be used instead for free meshing. To turn SmartSizing on, simply specify an element size level on the SmartSizing command.</custom-spacing><br>
+    <custom-spacing><b>The Advantages of SmartSizing</b></custom-spacing><br>
+    <custom-spacing>The SmartSizing algorithm first computes estimated element edge lengths for all lines in the areas or volumes being meshed. The edge lengths on these lines are then refined for curvature and proximity of features in the geometry. Since all lines and areas are sized before meshing begins, the quality of the generated mesh is not dependent on the order in which the areas or volumes are meshed.</custom-spacing><br>
+    <custom-spacing>If quadrilateral elements are being used for area meshing, SmartSizing tries to set an even number of line divisions around each area so that an all-quadrilateral mesh is possible. Triangles will be included in the mesh only if forcing all quadrilaterals would create poorly shaped elements, or if odd divisions exist on boundaries.</custom-spacing>
+    
+    <sub-heading>3.7.3.6 Default Element Odds for Mapped Meshing</sub-heading><br>
+    <custom-spacing>The <custom-style>default element size</custom-style> command allows the analyst to modify such defaults as: the minimum and maximum number of elements that will be attached to an unmeshed line, maximum spanned angle per element, and minimum and maximum edge length. This command (<custom-process>Main Menu> Preprocessor> Meshing> Size Cntrls> Global> Other</custom-process>) is always used to control element sizing for mapped meshing. The settings are also used by default for free meshing. However, it is recommended to use SmartSizing instead for free meshing operations.</custom-spacing><br>
+    <custom-spacing>As an example, the mapped mesh on the left in Fig. 3.34 was produced with the element size defaults that exist when entering the program. The mesh on the right was produced by modifying the minimum number of elements (MINL) and the maximum spanned angle per element (ANGL).</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./III  Modeling&Meshing/image36.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 3.34 Changing Default Element Sizes</image-tag>
+    
+    <sub-heading>3.7.3.7 Local Mesh Controls</sub-heading><br>
+    <custom-spacing>In many cases, the mesh produced by default element sizes is not appropriate due to the physics of the structure. Examples include models with stress concentrations or singularities. In these cases, the analyst will have to get more involved with the meshing process. More control can be taken by using the following element size specifications:</custom-spacing>
+    <ul>
+        <li>Use <custom-process>Main Menu> Preprocessor> Meshing> Size Cntrls> Global> Size</custom-process> to control the global element size in terms of the element edge length used on surface boundaries or the number of element divisions per line.
+        <li>Use <custom-process>Main Menu> Preprocessor> Meshing> Size Cntrls> Keypoints> All KPs</custom-process> or <custom-process>Main Menu> Preprocessor> Meshing> Size Cntrls> Keypoints> Picked KPs</custom-process> or <custom-process>Main Menu> Preprocessor> Meshing> Size Cntrls> Keypoints> Clr Size</custom-process> to control the element sizes near specified keypoints.
+        <li>Use <custom-process>Main Menu> Preprocessor> Meshing> Size Cntrls> Lines> All Lines</custom-process> or <custom-process>Main Menu> Preprocessor> Meshing> Size Cntrls> Lines> Picked Lines</custom-process> or <custom-process>Main Menu> Preprocessor> Meshing> Size Cntrls> Lines> Clr Size</custom-process> to control the number of elements on specified lines.
+    </ul>
+    
+    <sub-heading>3.7.3.8 Interior Mesh Controls</sub-heading><br>
+    <custom-spacing>The mesh can also be controlled on the interior of an area where there are no lines to guide the size of the mesh. To do so, use: <custom-process>Main Menu> Preprocessor> Meshing> Size Cntrls> Global> Area Cntrls</custom-process>.</custom-spacing>
+    
+    <sub-heading>3.7.4 Controls Used for Free and Mapped Meshing</sub-heading><br>
+    
+    <sub-heading>3.7.4.1 Free Meshing</sub-heading><br>
+    <custom-spacing>In <custom-style>free meshing</custom-style> operations, no special requirements restrict the solid model. Any model geometry, even if it is irregular, can be meshed. The element shapes used will depend on whether areas or volumes are being meshed. For area meshing, a free mesh can consist of only quadrilateral elements, only triangular elements, or a mixture of the two. For volume meshing, a free mesh is usually restricted to tetrahedral elements.</custom-spacing><br>
+    <custom-spacing>If the chosen element type is strictly triangular or tetrahedral, the program will use only that shape during meshing. However, if the chosen element type allows more than one shape (for example, <custom-style>PLANE183</custom-style> or <custom-style>SOLID186</custom-style>), the analyst can specify which shape to use by: <custom-process>Main Menu> Preprocessor> Meshing> Mesher Opts</custom-process>.</custom-spacing><br>
+    <custom-spacing>Also specify that free meshing should be used to mesh the model, using: <custom-process>Main Menu> Preprocessor> Meshing> Mesher Opts</custom-process>.</custom-spacing><br>
+    <custom-spacing>For area elements that support more than one shape, a mixed shape mesh will be produced by default. An all triangle mesh can be requested, but is not recommended if lower-order elements are being used.</custom-spacing><br>
+    <custom-spacing>In order to achieve a free volume mesh, choose an element type that allows only a tetrahedral shape, or use an element that supports multiple shapes and set the shape option to tetrahedral only.</custom-spacing>
+    
+    <sub-heading>3.7.4.2 Mapped Meshing</sub-heading><br>
+    <custom-spacing>The analyst can specify that the program use all quadrilateral area elements, all triangle area elements, or all hexahedral volume elements to generate a <custom-style>mapped mesh</custom-style>. Mapped meshing requires that an area or volume be ‘regular’, that is, it must meet certain criteria.</custom-spacing>
+    
+    <sub-heading>3.7.5 Meshing the Solid Model</sub-heading><br>
+    <custom-spacing>Once solid model is built, element attributes are established, and meshing controls are set, ANSYS is ready to generate the finite element mesh. First, however, it is usually good practice to save the model before initiating mesh generation: <custom-process>Utility Menu> File> Save as Jobname.db</custom-process>.</custom-spacing><br>
+    <custom-spacing>It may also be necessary to turn on the ‘mesh accept/reject’ prompt by picking <custom-process>Main Menu> Preprocessor> Meshing> Mesher Opts</custom-process>. This feature allows to easily discard an undesirable mesh.</custom-spacing><br>
+    <custom-spacing>If multiple volumes or areas are being meshed at one time, consider using the meshing option <custom-style>By Size</custom-style> so the mesh is created in the smallest volume or area first. This helps ensure that the mesh is adequately dense in smaller volumes or areas and that the mesh is of a higher quality.</custom-spacing>
+    
+    <sub-heading>3.7.6 Changing the Mesh</sub-heading><br>
+    <custom-spacing>If it is decided that the generated mesh is not appropriate, the mesh can easily be changed by one of the following methods:</custom-spacing>
+    <ul>
+        <li>Remesh with new element size specifications
+        <li>Use the accept/reject prompt to discard the mesh, then remesh
+        <li>Clear the mesh, redefine mesh controls, and remesh
+        <li>Refine the mesh locally
+        <li>Improve the mesh.
+    </ul>

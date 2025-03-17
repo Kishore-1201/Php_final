@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+        font-family: 'Poppins', Arial, sans-serif;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        color: var(--text-muted);
+        line-height: 1.6;
+        text-align: justify
+    }
+    
+    /* Custom Headings */
+    custom-heading[level='1'], 
+    custom-heading[level='2'] {
+        font-family: 'Times New Roman', Times, serif;
+        color: red;
+        font-weight: 900;
+        text-align: center; 
+        display: block;
+        margin: 0 auto;
+    }
+    
+    custom-heading[level='1'] {
+        font-size: 2rem; /* Adjusts based on screen */
+    }
+    
+    custom-heading[level='2'] {
+        font-size: 2.5rem;
+        margin: 20px 0;
+        padding-bottom: 50px;
+    }
+    
+    /* Sub-heading */
+    sub-heading {
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(26, 100, 184);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    
+    /* Image Tag */
+    image-tag {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Custom styles */
+    custom-style {
+        font-style: italic;
+    }
+    
+    custom-process {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 10px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+    
+    custom-spacing {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    
+    /* Containers */
+    .container-1 {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: rgba(251, 253, 255, 0.489);
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    
+    .container-1 img {
+        width: 150px;
+        height: 150px;
+        object-fit: fill;
+        max-width: 100%;
+        background-color: rgba(251, 253, 255, 0.489);
+    }
+    
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.8rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 2rem;
+            padding-bottom: 30px;
+        }
+    
+        sub-heading {
+            font-size: 1rem;
+        }
+    
+        .container-1 {
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+    
+        .container-1 img {
+            width: 120px;
+            height: 120px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        body {
+            padding-left: 3vw;
+            padding-right: 3vw;
+        }
+    
+        custom-heading[level='1'] {
+            font-size: 1.5rem;
+        }
+    
+        custom-heading[level='2'] {
+            font-size: 1.8rem;
+            padding-bottom: 20px;
+        }
+    
+        sub-heading {
+            font-size: 0.9rem;
+        }
+    
+        .container-1 img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+        </style>
+<body>
+    <custom-heading level="2">2.2 Loading</custom-heading><br>
+<custom-spacing>The primary objective of a finite element analysis is to examine how a structure
+    or component responds to certain loading conditions. Specifying the proper loading conditions 
+    is, therefore, a key step in the analysis. Loads can be applied on the model in a variety of ways.
+     With the help of load step options, the analyst can control how the loads are actually used during solution.</custom-spacing>
+
+<sub-heading>2.2.1 Understanding Loads</sub-heading><br>
+<custom-spacing>The term <custom-style>loads</custom-style> includes <custom-style>boundary conditions</custom-style>
+     and externally or internally applied forcing functions, as illustrated in Fig. 2.9. Examples 
+     of loads in different disciplines are:</custom-spacing><br>
+<b>Structural:</b> displacements, velocities, accelerations, forces, pressures, temperatures 
+(for thermal strain), gravity<br>
+<b>Thermal:</b> temperatures, heat flow rates, convections, internal heat generation, infinite surface<br>
+<custom-spacing>Boundary conditions, as well as other types of loading, are also shown.</custom-spacing>
+<custom-spacing><div class="container-1">
+    <span><img src="./II__Ansys_Operations/9.jpg" alt="image" width="300px"></span>
+</div></custom-spacing> 
+<image-tag>Fig. 2.9 Loads</image-tag>
+
+<custom-spacing>Loads are divided into six categories: DOF constraints, forces (concentrated loads), surface loads, body loads, inertia loads, and coupled-field loads.</custom-spacing>
+<ul>
+    <li>A <custom-style>DOF constraint</custom-style> fixes a degree of freedom (DOF) to a known 
+        value. Examples of constraints are specified displacements and symmetry boundary conditions
+         in a structural analysis, prescribed temperatures in a thermal analysis, and flux-parallel
+         boundary conditions.
+    <li>A <custom-style>force</custom-style> is a concentrated load applied at a node in the model.
+         Examples are forces and moments in a structural analysis, heat flow rates in a thermal
+          analysis, and current segments in a magnetic field analysis.
+    <li>A <custom-style>surface load</custom-style> is a distributed load applied over a surface.
+         Examples are pressures in a structural analysis and convections and heat fluxes in a thermal analysis.
+    <li>A <custom-style>body load</custom-style> is a volumetric or field load. Examples are 
+        temperatures and fluences in a structural analysis, heat generation rates in a thermal 
+        analysis, and current densities in a magnetic field analysis.
+    <li><custom-style>Inertia loads</custom-style> are those attributable to the inertia (mass matrix) 
+        of a body, such as gravitational acceleration, angular velocity, and angular acceleration. 
+        They are mainly used in a structural analysis.
+    <li><custom-style>Coupled-field loads</custom-style> are simply a special case of one of the
+         above loads, where results from one analysis are used as loads in another analysis. 
+         For example, magnetic forces calculated in a magnetic field analysis can be applied
+          as force loads in a structural analysis.
+</ul>
+<custom-spacing>A <custom-style>load step</custom-style> is simply a configuration of 
+    loads for which a solution is obtained. In a linear static or steady-state analysis,
+     the analyst can use different load steps to apply different sets of loads - wind 
+     load in the first load step, gravity load in the second load step, both loads and a 
+     different support condition in the third load step, and so on. In a transient analysis,
+      multiple load steps apply different segments of the load history curve.</custom-spacing><br>
+<custom-spacing>The program uses the set of elements which the analyst selects for the 
+    first load step. It doesn’t matter which element sets are specified for the later 
+    steps for all subsequent load steps. Use <custom-process>Utility Menu> Select> Entities</custom-process> 
+    to select an element set.</custom-spacing><br>
+<custom-spacing>Figure 2.10 shows a load history curve that requires three load steps -
+    the first load step for the ramped load, the second load step for the constant portion 
+    of the load, and the third load step for load removal.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/10.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+<image-tag>Fig. 2.10 Transient Load History Curve</image-tag>
+
+<sub-heading>2.2.3 The Role of Time in Tracking</sub-heading><br>
+<custom-spacing>The program uses time as a tracking parameter in <custom-style>all</custom-style> 
+    static and transient analyses, whether they are or are not truly time-dependent. The advantage 
+    of this is that the analyst can use one consistent ‘counter’ or ‘tracker’ in all cases, 
+    eliminating the need for analysis-dependent terminology. Moreover, time always increases
+     monotonically, and most things in nature happen over a period of time, however brief 
+     the period may be.</custom-spacing><br>
+<custom-spacing>Obviously, in a transient analysis or in a rate-dependent static 
+    analysis (creep or viscoplasticity), <custom-style>time</custom-style> represents 
+    actual, chronological time in seconds, minutes, or hours. Assign the time at the end of 
+    each load step while specifying the load history curve. Use one of the following to assign time:</custom-spacing>
+<ul>
+    <li><custom-process>Main Menu> Preprocessor> Loads> Load Step Opts> Time/Frequenc> Time and Substps</custom-process>
+    <li><custom-process>Main Menu> Preprocessor> Loads> Load Step Opts> Time/Frequenc> Time - Time Step</custom-process>
+    <li><custom-process>Main Menu> Solution> Analysis Type> Sol'n Control</custom-process>
+    <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Time and Substps</custom-process>
+    <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Time - Time Step</custom-process>
+    <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Time and Substps</custom-process>
+    <li><custom-process>Main Menu> Solution> Load Step Opts> Time /Frequenc> Time - Time Step</custom-process>
+</ul>
+<custom-spacing>In a rate-independent analysis, however, <custom-style>time</custom-style> 
+    simply becomes a counter that identifies load steps and substeps. By default, the program 
+    automatically assigns time = 1.0 at the end of load step 1, time = 2.0 at the end of load step 2,
+    and so on. Any substeps within a load step are assignedthe appropriate, linearly 
+    interpolated time value..</custom-spacing>
+
+
+    <sub-heading>2.2.4 Stepped Versus Ramped Loads</sub-heading><br>
+    <custom-spacing>When more than one substep is specified in a load step, the question of whether the loads should be <custom-style>stepped</custom-style> or <custom-style>ramped</custom-style> arises (Fig. 2.11).</custom-spacing>
+    <ul>
+        <li>If a load is <custom-style>stepped</custom-style>, then its full value is applied at the first substep and stays constant for the rest of the load step.
+        <li>If a load is <custom-style>ramped</custom-style>, then its value increases gradually at each substep, with the full value occurring at the end of the load step.
+    </ul>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/10.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.11 Stepped Versus Ramped Loads</image-tag>
+    
+    <custom-spacing>Use either of the following to indicate whether loads are ramped or stepped:</custom-spacing>
+    <ul>
+        <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Freq & Substeps: Transient Tab</custom-process>
+        <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Time and Substps</custom-process>
+        <li><custom-process>Main Menu> Solution> Load Step Opts > Time/Frequenc> Time & Time Step</custom-process>
+        <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Freq & Substeps</custom-process>
+        <li><custom-process>Main Menu> Solution> Load Step Opts> Time/Frequenc> Time and Substps / Main Menu> Solution> Load Step Opts> Time/Frequenc> Time & Time Step</custom-process>
+    </ul>
+    
+    <sub-heading>2.2.5 Applying Loads</sub-heading><br>
+    <custom-spacing>Most loads can be applied either on the solid model or on the finite element model. For example, the analyst can specify forces at a keypoint or a node. Similarly, s/he can specify convections on lines and areas or on nodes and element faces. No matter how the loads are specified, the solver expects all loads to be in terms of the finite element model. Therefore, if loads are specified on the solid model, the program automatically transfers them to the nodes and elements at the beginning of solution.</custom-spacing>
+    
+    <sub-heading>2.2.5.1 Solid-Model Loads: Advantages and Disadvantages</sub-heading><br>
+    <b>Advantages</b><br>
+    <custom-spacing>Solid-model loads are independent of the finite element mesh. That is, the element mesh can be changed without affecting the applied loads. This allows to make mesh modifications and conduct mesh sensitivity studies without having to reapply loads each time. The solid model usually involves fewer entities than the finite element model. Therefore, selecting solid model entities and applying loads on them is much easier, especially with graphical picking.</custom-spacing><br>
+    <b>Disadvantages</b><br>
+    <custom-spacing>Elements generated by meshing commands are in the currently active element coordinate system. Nodes generated by meshing commands use the global Cartesian coordinate system. Therefore, the solid model and the finite element model may have different coordinate systems and loading directions. Applying keypoint constraints can be tricky, especially when the constraint expansion option is used. All solid-model loads can not be displayed.</custom-spacing>
+    
+    <sub-heading>2.2.5.2 Finite-Element Loads: Advantages and Disadvantages</sub-heading><br>
+    <b>Advantages</b><br>
+    <custom-spacing>There is no need to worry about constraint expansion. All desired nodes can be selected and the appropriate constraints can be specified.</custom-spacing><br>
+    <b>Disadvantages</b><br>
+    <custom-spacing>Any modification of the finite element mesh invalidates the loads, requiring the analyst to delete the previous loads and re-apply them on the new mesh. Applying loads by graphical picking is inconvenient, unless only a few nodes or elements are involved.</custom-spacing>
+    
+    <sub-heading>2.2.5.3 DOF Constraints</sub-heading><br>
+    <custom-spacing>Following are some of the GUI paths that can be used to apply DOF constraints:</custom-spacing>
+    <ul>
+        <li><custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> load type> On Nodes</custom-process>
+        <li><custom-process>Utility Menu> List> Loads> DOF Constraints> On All Keypoints (or On Picked KPs)</custom-process>
+        <li><custom-process>Main Menu> Solution> Define Loads> Apply> load type> On Lines</custom-process>
+    </ul>
+    
+    <sub-heading>2.2.5.4 Transferring Constraints</sub-heading><br>
+    <custom-spacing>Use <custom-process>Main Menu> Preprocessor> Loads> Define Loads> Operate> Transfer to FE> Constraints</custom-process> or <custom-process>Main Menu> Solution> Define Loads> Operate> Transfer to FE> Constraints</custom-process> to transfer constraints that have been applied to the solid model to the corresponding finite element model.</custom-spacing><br>
+    <custom-spacing>Use <custom-process>Main Menu> Preprocessor> Loads> Define Loads> Operate> Transfer to FE> All Solid Lds</custom-process> or <custom-process>Main Menu> Solution> Define Loads> Operate> Transfer to FE> All Solid Lds</custom-process> to transfer all solid model boundary conditions.</custom-spacing>
+    
+    <sub-heading>2.2.5.6 Forces (Concentrated Loads)</sub-heading><br>
+    <custom-spacing>Following are examples of some of the GUI paths used for applying force loads:</custom-spacing>
+    <ul>
+        <li><custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> load type> On Nodes</custom-process>
+        <li><custom-process>Utility Menu> List> Loads> Forces> On All Keypoints (or On Picked KPs)</custom-process>
+        <li><custom-process>Main Menu> Solution> Define Loads> Apply> load type> On Line</custom-process>
+    </ul>
+    
+    <sub-heading>2.2.5.7 Surface Loads</sub-heading><br>
+    <custom-spacing>Following are examples of some of the GUI paths used for applying surface loads:</custom-spacing>
+    <ul>
+        <li><custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> load type> On Nodes</custom-process>
+        <li><custom-process>Utility Menu> List> Loads> Surface> On All Elements (or On Picked Elements)</custom-process>
+        <li><custom-process>Main Menu> Solution> Define Loads> Apply> load type> On Lines</custom-process>
+    </ul>
+    <custom-spacing>The program stores surface loads specified on nodes internally in terms of elements and element faces. Therefore, if both nodal and element surface load commands are used for the same surface, only the last specification is used.</custom-spacing><br>
+    <custom-spacing>The program applies pressures on axisymmetric shell elements or beam elements on their inner or outer surfaces, as appropriate. In-plane pressure load vectors for layered shells (such as SHELL281) are applied on the nodal plane. KEYOPT(11) determines the location of the nodal plane within the shell. When using flat elements to represent doubly curved surfaces, values which should be a function of the active radius of the meridian be inaccurate.</custom-spacing><br>
+    <b>Applying Pressure Loads on Beams</b><br>
+    <custom-spacing>Use <custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> Structural> Pressure> On Beams</custom-process> or <custom-process>Main Menu> Solution> Define Loads> Apply> Structural> Pressure> On Beams</custom-process> to apply pressure loads on the lateral faces and the two ends of beam elements.</custom-spacing><br>
+    <custom-spacing>Lateral pressures, which have units of force per unit length, can be applied both in the normal and tangential directions. The pressures may vary linearly along the element length, and can be specified on a portion of the element, as shown in Fig. 2.12. The analyst can also reduce the pressure down to a force at any location on a beam element by setting the <custom-style>JOFFST</custom-style> field to -1. End pressures have units of force.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/11.jpg" alt="image" width="400px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.12 Example of Beam Surface Loads</image-tag>
+    
+    <sub-heading>2.2.5.8 Applying Body Loads</sub-heading><br>
+    <custom-spacing>Following are examples of some of the GUI paths used for applying body loads:</custom-spacing>
+    <ul>
+        <li><custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> load type> On Nodes</custom-process>
+        <li><custom-process>Utility Menu> List> Loads> Body> On Picked Elems</custom-process>
+        <li><custom-process>Main Menu> Solution> Define Loads> Apply> load type> On Keypoints</custom-process>
+        <li><custom-process>Utility Menu> List> Loads> Body> On Picked Lines</custom-process>
+        <li><custom-process>Main Menu> Solution> Define Loads> Apply> load type> On Volumes</custom-process>
+    </ul>
+    
+    <sub-heading>2.2.5.9 Applying Coupled-Field Loads</sub-heading><br>
+    <custom-spacing>A coupled-field analysis usually involves applying results data from one analysis as loads in a second analysis. For example, the nodal temperatures calculated in a thermal analysis can be applied as body loads in a structural analysis. Similarly, magnetic forces calculated in a magnetic field analysis can be applied as nodal forces in a structural analysis. Use <custom-process>Main Menu> Preprocessor> Loads> Define Loads> Apply> load type> From source</custom-process> or <custom-process>Main Menu> Solution> Define Loads> Apply> load type> From source</custom-process> to apply such coupled-field loads.</custom-spacing>
+    
+    <sub-heading>2.2.5.10 Axisymmetric Loads and Reactions</sub-heading><br>
+    <custom-spacing>For constraints, surface loads, body loads, and Y-direction accelerations, loads are defined exactly as they would be for any nonaxisymmetric model. However, for concentrated forces the procedure is a little different. For these quantities, input load values of force, moment, etc. are on a ‘360° basis.’ That is, the load value is entered in terms of <custom-style>total load around the circumference</custom-style>. For example, if an axisymmetric axial load of 1500 pounds per inch of circumference were applied to a 10’ diameter pipe (Fig. 2.13), the total load of 47,124 lb. (1500*2 π*5 = 47,124) would be applied to node <custom-style>N</custom-style>.</custom-spacing><br>
+    <custom-spacing>Axisymmetric results are interpreted in the same fashion as their corresponding input loads. That is, reaction forces, moments, etc. are reported on a total load (360°) basis.</custom-spacing><br>
+    <custom-spacing>Axisymmetric harmonic elements require that their loads be supplied in a form that the program can interpret as a Fourier series. The GUI path <custom-process>Main Menu> Preprocessor> Loads> Load Step Opts> Other> For Harmonic Ele</custom-process> or <custom-process>Main Menu> Solution> Load Step Opts> Other> For Harmonic Ele</custom-process>, together with other load commands (D, F, SF, etc.), is required for these elements.</custom-spacing>
+    <custom-spacing><div class="container-1">
+        <span><img src="./II__Ansys_Operations/12.jpg" alt="image" width="300px"></span>
+    </div></custom-spacing> 
+    <image-tag>Fig. 2.13 Concentrated Axisymmetric Loads</image-tag>
+    
+    <sub-heading>2.2.6 Specifying Load Step Options</sub-heading><br>
+    <custom-spacing>As mentioned earlier, <custom-style>load step options</custom-style> is a collective name for options that control how loads are used during solution and other options such as output controls, damping specifications, and response spectrum data. Load step options can vary from load step to load step. There are six categories of load step options:</custom-spacing>
+    <ul>
+        <li>General Options
+        <li>Dynamics Options
+        <li>Nonlinear Options
+        <li>Output Controls
+        <li>Biot-Savart Options
+        <li>Spectrum Options
+    </ul>
+    <custom-spacing>These include such options as time at the end of a load step in transient and static analyses, number of substeps or the time step size, stepping or ramping of loads, and reference temperature for thermal strain calculations.</custom-spacing>
+    
+    <sub-heading>2.2.7 Creating Multiple Load Step Files</sub-heading><br>
+    <custom-spacing>All loads and load step options put together form a <custom-style>load step</custom-style>, for which the program can calculate the solution. If there are multiple load steps, store the data for each load step on a file, called the <custom-style>load step file</custom-style>, and read it in later for solution. Use <custom-process>Main Menu> Preprocessor> Loads> Load Step Opts> Write LS File</custom-process> or <custom-process>Main Menu> Solution> Load Step Opts> Write LS File</custom-process>.</custom-spacing><br>
+    <custom-spacing>If the <custom-style>Solution Controls</custom-style> dialog box is used to set the analysis and load step options, define each load step using the <custom-style>Basic</custom-style> tab. After all load step files are written, use one action command to read in the files sequentially and obtain the solution for each load step.</custom-spacing>
+    </body>
+    </html>
