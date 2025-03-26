@@ -4,432 +4,355 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Running the ANSYS Program</title>
-</head>
-<body>
     <style>
+        /* Custom Properties based on Ansys colors */
+        :root {
+            --primary-color: #ED1C24; /* Ansys Red */
+            --secondary-color: #FDFDFD; /* Off-White */
+            --gradient-bg: linear-gradient(135deg, #000000, #333333); /* Black to Dark Gray */
+            --dark-bg: #000000; /* Black */
+            --light-bg: #F5F6F5; /* Light Gray */
+            --text-dark: #000000; /* Black */
+            --text-muted: #333333; /* Dark Gray */
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-        font-family: 'Poppins', Arial, sans-serif;
-        padding-left: 10vw;
-        padding-right: 10vw;
-        color: var(--text-muted);
-        line-height: 1.6;
-        text-align: justify
-    }
-    
-    /* Custom Headings */
-    custom-heading[level='1'], 
-    custom-heading[level='2'] {
-        font-family: 'Times New Roman', Times, serif;
-        color: red;
-        font-weight: 900;
-        text-align: center; 
-        display: block;
-        margin: 0 auto;
-    }
-    
-    custom-heading[level='1'] {
-        font-size: 2rem; /* Adjusts based on screen */
-    }
-    
-    custom-heading[level='2'] {
-        font-size: 2.5rem;
-        margin: 20px 0;
-        padding-bottom: 50px;
-    }
-    
-    /* Sub-heading */
-    sub-heading {
-        font-family: 'Times New Roman', Times, serif;
-        color: rgb(26, 100, 184);
-        font-weight: bold;
-        font-size: 1.2rem;
-    }
-    
-    /* Image Tag */
-    image-tag {
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    /* Custom styles */
-    custom-style {
-        font-style: italic;
-    }
-    
-    custom-process {
-        font-family: 'Times New Roman', Times, serif;
-        padding: 10px;
-        margin: 10px 0;
-        font-weight: bold;
-    }
-    
-    custom-spacing {
-        margin-top: 15px;
-        margin-bottom: 5px;
-        display: block;
-    }
-    
-    /* Containers */
-    .container-1 {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        background-color: rgba(251, 253, 255, 0.489);
-        flex-wrap: wrap;
-        padding: 20px;
-    }
-    
-    .container-1 img {
-        width: 150px;
-        height: 150px;
-        object-fit: fill;
-        max-width: 100%;
-        background-color: rgba(251, 253, 255, 0.489);
-    }
-    .nav-buttons {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-muted);
+            line-height: 1.6;
+            padding-left: 10vw;
+            padding-right: 10vw;
+            text-align: justify;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-bg);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        .hero custom-heading[level='2'] {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF; /* Changed to white */
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Section */
+        .section {
+            background: var(--secondary-color);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid transparent;
+            position: relative;
+            transition: var(--transition);
+            margin: 2rem 0;
+        }
+
+        .section:hover {
+            border: 2px solid var(--primary-color);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section li {
+            position: relative;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .section li::before {
+            content: '→';
+            color: var(--primary-color);
+            position: absolute;
+            left: -1.5rem;
+            font-weight: bold;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .section p:hover {
+            color: var(--text-dark);
+        }
+
+        /* Custom Elements */
+        custom-heading[level='2'] {
+            font-family: 'Times New Roman', Times, serif;
+            color: var(--primary-color);
+            font-weight: 900;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            font-size: 2.5rem;
+        }
+
+        sub-heading {
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(26, 100, 184);
+            font-weight: bold;
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            transition: var(--transition);
+        }
+
+        sub-heading:hover {
+            color: rgb(40, 120, 200);
+        }
+
+        image-tag {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        custom-spacing {
+            margin-top: 15px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        custom-style {
+            font-style: italic;
+            color: var(--primary-color);
+        }
+
+        custom-process {
+            font-family: 'Times New Roman', Times, serif;
+            padding: 0.5rem;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        /* Containers */
+        .container-1 {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background-color: rgba(251, 253, 255, 0.8);
+            flex-wrap: wrap;
+            padding: 20px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .container-1:hover {
+            background-color: rgba(251, 253, 255, 1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .container-1 img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            max-width: 100%;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .container-1 img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
             padding: 10px;
+            text-align: center;
+            gap: 20px;
         }
 
         .nav-buttons a {
-            background-color: rgba(255, 16, 16, 0.808);
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
             text-decoration: none;
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            border-radius: 25px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
         }
 
         .nav-buttons a:hover {
-            background-color: #b30000;
+            background-color: #C81018;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
 
-        /* Center the navigation buttons */
-        .nav-buttons {
-            margin-top: 50px;
-            text-align: center;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-left: 5vw;
+                padding-right: 5vw;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero custom-heading[level='2'] {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 2rem;
+            }
+
+            .container-1 {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .container-1 img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
-    
-    /* Media Queries for Mobile Responsiveness */
-    @media (max-width: 768px) {
-        body {
-            padding-left: 5vw;
-            padding-right: 5vw;
+
+        @media (max-width: 480px) {
+            body {
+                padding-left: 3vw;
+                padding-right: 3vw;
+            }
+
+            .hero custom-heading[level='2'] {
+                font-size: 2rem;
+            }
+
+            .container-1 img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .section p, .section li {
+                font-size: 1rem;
+            }
         }
-    
-        custom-heading[level='1'] {
-            font-size: 1.8rem;
-        }
-    
-        custom-heading[level='2'] {
-            font-size: 2rem;
-            padding-bottom: 30px;
-        }
-    
-        sub-heading {
-            font-size: 1rem;
-        }
-    
-        .container-1 {
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-        }
-    
-        .container-1 img {
-            width: 120px;
-            height: 120px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        body {
-            padding-left: 3vw;
-            padding-right: 3vw;
-        }
-    
-        custom-heading[level='1'] {
-            font-size: 1.5rem;
-        }
-    
-        custom-heading[level='2'] {
-            font-size: 1.8rem;
-            padding-bottom: 20px;
-        }
-    
-        sub-heading {
-            font-size: 0.9rem;
-        }
-    
-        .container-1 img {
-            width: 100px;
-            height: 100px;
-        }
-    }
-        </style>
-    <custom-heading level="2">1.4 Running the ANSYS Program</custom-heading level='2'><br>
-        The ANSYS program can be run in interactive mode or in batch mode.
-        In interactive mode, the analyst exchanges information with the program
-        continuously. A command can be executed by selecting its menu path in the
-        GUI or by typing it in directly. The ANSYS program processes the command in
-        real time. Interactive mode permits to use the GUI, online help, and various
-        tools to create the model in the graphics window and modify it.
-        In batch mode, a file of commands is submitted to the ANSYS. A batch
-        job can be run in the background while doing other work on the system.
-        Batch mode is useful when there is no need to interact with the program,
-        such as during the solution phase. The ANSYS Launcher can be used to set
-        options for an ANSYS run.<br>
-        <sub-heading>1.4.1 Mechanical APDL Product Launcher</sub-heading><br>
-        <sub-heading>1.4.1.1 Starting an ANSYS Session from the Start Menu/Launcher</sub-heading><br>
-        Use the Mechanical APDL Product Launcher (Fig. 1.5) to run an ANSYS
-        program, one of the auxiliary programs, or to access a modifiable ANSYS file.
-        In order to access ANSYS functionality, including the launcher, choose <custom-process>Start >
-        All Programs > ACP 2020 R1</custom-process> and select the appropriate option. This causes
-        the launcher to appear automatically.<br>
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <custom-heading level="2">1.4 Running the ANSYS Program</custom-heading>
+    </div>
+
+    <div class="section">
+        <p>The ANSYS program can be run in interactive mode or in batch mode. In interactive mode, the analyst exchanges information with the program continuously. A command can be executed by selecting its menu path in the GUI or by typing it in directly. The ANSYS program processes the command in real time. Interactive mode permits to use the GUI, online help, and various tools to create the model in the graphics window and modify it.</p>
+        <p>In batch mode, a file of commands is submitted to the ANSYS. A batch job can be run in the background while doing other work on the system. Batch mode is useful when there is no need to interact with the program, such as during the solution phase. The ANSYS Launcher can be used to set options for an ANSYS run.</p>
+
+        <sub-heading>1.4.1 Mechanical APDL Product Launcher</sub-heading>
+        <sub-heading>1.4.1.1 Starting an ANSYS Session from the Start Menu/Launcher</sub-heading>
+        <p>Use the Mechanical APDL Product Launcher (Fig. 1.5) to run an ANSYS program, one of the auxiliary programs, or to access a modifiable ANSYS file. In order to access ANSYS functionality, including the launcher, choose <custom-process>Start > All Programs > ACP 2020 R1</custom-process> and select the appropriate option. This causes the launcher to appear automatically.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/6.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.5 Mechanical APDL Product Launcher</image-tag><br>
-    
-        Start Menu Options on Windows
-        Choose <custom-process>Start > All Programs > ANSYS 2020 R1 New > Mechanical
-        APDL Product Launcher 2020 R1</custom-process> to activate the launcher on Windows.
-        The File Management Tab
-        This tab contains the information necessary to manage the files, such
-        as location of the working directory and job name. The available options will
-        differ depending on the simulation environment selected. In
-        the ANSYS simulation environment, the analyst can specify:
-        Working directory
-        Sets the directory in which the ANSYS run will be executed. The
-        program writes files it generates to this directory. Type the new directory
-        name in the Working Directory text box to change the working directory or
-        press the <custom-process>Browse</custom-process> button to display a file selection dialog box. The working
-        directory can be specified by defining the
-        ANSYS201_WORKING_DIRECTORY environment variable. If
-        ANSYS201_WORKING_DIRECTORY is set, the launcher will use that setting
-        as the default. However, any working directory that is specified via the
-        launcher (such as a profile) overrides the
-        ANSYS201_WORKING_DIRECTORY environment variable setting.<br>
-        Jobname
-        Defines the base filename used for all files generated by the ANSYS
-        run. The initial jobname defaults to file. It can be changed to any
-        alphanumeric string up to 32 characters long.
-        The Customization/Preferences Tab
-        The settings under this tab permit to specify detailed settings about
-        the working environment, such as memory settings, parallel/distributed
-        processing settings, custom executables, and additional parameters. The
-        available options will differ depending on the simulation environment
-        selected on the first tab.
-        On selecting the ANSYS or ANSYS Batch simulation environment, the
-        analyst can specify:
-        Custom Memory Settings
-        Specifies the use of custom memory settings rather than using the
-        default memory model. Select custom memory settings in order to set the -
-        m or -db options.
-        Total Workspace (MB)
-        Specifies the initial allocation of memory requested for the ANSYS run.
-        It defaults to 2 GB (2048 MB). This value is adequate for most modest-sized
-        models.
-        Database (MB)
-        Specifies the portion of total memory that the database will use for the
-        initial allocation. It defaults to 1GB (1024 MB). This value is adequate for
-        most modest-sized models.
-        Graphics Device Name
-        Sets the graphics device (Fig. 1.6). The GUI requires a terminal that
-        supports graphics. The graphics device can be WIN32 (default), WIN32c, or
-        3D. The 3D graphics driver facilitates to rotate a shaded view of the model.
-        Most newer graphics cards can handle this well.<br>
+        </div>
+        <image-tag>Fig. 1.5 Mechanical APDL Product Launcher</image-tag>
+        <p><strong>Start Menu Options on Windows</strong></p>
+        <p>Choose <custom-process>Start > All Programs > ANSYS 2020 R1 New > Mechanical APDL Product Launcher 2020 R1</custom-process> to activate the launcher on Windows.</p>
+
+        <p><strong>The File Management Tab</strong></p>
+        <p>This tab contains the information necessary to manage the files, such as location of the working directory and job name. The available options will differ depending on the simulation environment selected. In the ANSYS simulation environment, the analyst can specify:</p>
+        <p><strong>Working Directory</strong></p>
+        <p>Sets the directory in which the ANSYS run will be executed. The program writes files it generates to this directory. Type the new directory name in the Working Directory text box to change the working directory or press the <custom-process>Browse</custom-process> button to display a file selection dialog box. The working directory can be specified by defining the ANSYS201_WORKING_DIRECTORY environment variable. If ANSYS201_WORKING_DIRECTORY is set, the launcher will use that setting as the default. However, any working directory that is specified via the launcher (such as a profile) overrides the ANSYS201_WORKING_DIRECTORY environment variable setting.</p>
+        <p><strong>Jobname</strong></p>
+        <p>Defines the base filename used for all files generated by the ANSYS run. The initial jobname defaults to file. It can be changed to any alphanumeric string up to 32 characters long.</p>
+
+        <p><strong>The Customization/Preferences Tab</strong></p>
+        <p>The settings under this tab permit to specify detailed settings about the working environment, such as memory settings, parallel/distributed processing settings, custom executables, and additional parameters. The available options will differ depending on the simulation environment selected on the first tab.</p>
+        <p>On selecting the ANSYS or ANSYS Batch simulation environment, the analyst can specify:</p>
+        <p><strong>Custom Memory Settings</strong></p>
+        <p>Specifies the use of custom memory settings rather than using the default memory model. Select custom memory settings in order to set the -m or -db options.</p>
+        <p><strong>Total Workspace (MB)</strong></p>
+        <p>Specifies the initial allocation of memory requested for the ANSYS run. It defaults to 2 GB (2048 MB). This value is adequate for most modest-sized models.</p>
+        <p><strong>Database (MB)</strong></p>
+        <p>Specifies the portion of total memory that the database will use for the initial allocation. It defaults to 1GB (1024 MB). This value is adequate for most modest-sized models.</p>
+        <p><strong>Graphics Device Name</strong></p>
+        <p>Sets the graphics device (Fig. 1.6). The GUI requires a terminal that supports graphics. The graphics device can be WIN32 (default), WIN32c, or 3D. The 3D graphics driver facilitates to rotate a shaded view of the model. Most newer graphics cards can handle this well.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/7.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.6</image-tag><br>
-    
-        Read start.ans at start-up
-        Indicates whether the start201.ans file is read at start-up. Include
-        commands to be executed when the program starts up in
-        the start201.ans file. Uncheck the box to not read the start201.ans at
-        start-up.<br>
-        <sub-heading>1.4.1.2 Launcher Menu Options</sub-heading><br>
-        Launcher-specific controls can be found under different launcher menu
-        options. The menu options are:
-        File: Use the <custom-process>File</custom-process> menu to exit.
-        Profiles: Use the <custom-process>Profiles</custom-process> menu to save a specific launcher configuration. The
-        profile the analyst is currently running is displayed in the launcher title bar. An
-        asterisk (*) follows the profile name if any settings are changed from what is
-        saved.
+        </div>
+        <image-tag>Fig. 1.6</image-tag>
+        <p><strong>Read start.ans at start-up</strong></p>
+        <p>Indicates whether the start201.ans file is read at start-up. Include commands to be executed when the program starts up in the start201.ans file. Uncheck the box to not read the start201.ans at start-up.</p>
+
+        <sub-heading>1.4.1.2 Launcher Menu Options</sub-heading>
+        <p>Launcher-specific controls can be found under different launcher menu options. The menu options are:</p>
+        <p><strong>File:</strong> Use the <custom-process>File</custom-process> menu to exit.</p>
+        <p><strong>Profiles:</strong> Use the <custom-process>Profiles</custom-process> menu to save a specific launcher configuration. The profile the analyst is currently running is displayed in the launcher title bar. An asterisk (*) follows the profile name if any settings are changed from what is saved.</p>
         <ul>
-            <li>Click <custom-process>Save Profile</custom-process> to save the current launcher configurations. A
-            name can be entered for this profile. The last run profile will
-            automatically be set as the default unless the analyst specifies
-            otherwise. Check the <custom-process>Set as Default</custom-process> box to set a subsequent profile
-            as the default .</li>
-            <li>Click <custom-process>Load Profile</custom-process> to select the last run profile or one of the saved
-            profiles.</li>
-            <li>Click <custom-process>Manage Profiles</custom-process> to rename a profile, specify a different
-            default profile, unset a default profile, or delete a profile.</li>
+            <li>Click <custom-process>Save Profile</custom-process> to save the current launcher configurations. A name can be entered for this profile. The last run profile will automatically be set as the default unless the analyst specifies otherwise. Check the <custom-process>Set as Default</custom-process> box to set a subsequent profile as the default.</li>
+            <li>Click <custom-process>Load Profile</custom-process> to select the last run profile or one of the saved profiles.</li>
+            <li>Click <custom-process>Manage Profiles</custom-process> to rename a profile, specify a different default profile, unset a default profile, or delete a profile.</li>
         </ul>
-        If the analyst chooses to use the detailed working directory
-        browse dialog box, it shows what files are contained in each directory,
-        allows creating a new directory, and allows filtering on file type. The
-        standard browse dialog displays only the directories from which to
-        choose.
-        By default, the launcher saves existing output files from batch
-        runs. When a new file is created, the old one is renamed
-        to jobname.out.<timestamp> when the batch job is started. The
-        timestamp is in the format YYYY-MM-DD@hh_mm_ss and reflects the
-        date that the file was renamed, not the date the original file was
-        created. Uncheck the <custom-process>Save Existing Output Files From Batch
-        Runs</custom-process> item under the <custom-process>Options</custom-process> menu on the launcher to overwrite the
-        output file rather than renaming it.
-        Use the <custom-process>Reset ANSYS GUI Configuration</custom-process> option to return the
-        ANSYS GUI to its default configuration if the menus or toolbars have
-        been rearranged. This option is especially useful if an ANSYS GUI
-        component has been moved out of the screen's viewable area.
-        The <custom-process>Delete All Settings/Profiles</custom-process> option deletes all profiles
-        saved for this release and sets all <custom-process>Options</custom-process> menu settings back to the
-        defaults. The launcher will also close automatically.<br>
-        <sub-heading>1.4.2 Interactive Mode</sub-heading><br>
-        In interactive mode, the analyst works with menus and dialog boxes to
-        drive the ANSYS program. ANSYS graphics capabilities, online help, and other
-        tools, such as wizards can be accessed easily.
-        The standard ANSYS GUI is the default. The Utility Menu, Standard
-        Toolbar, Input Window, ANSYS Toolbar, Main Menu, Graphics Window, Status
-        Area, and Output Window are shown in this layout. The toolbars can be
-        resized. The overall size of the GUI, the font, and the color can be modified.
-        Double-click on the following types of files from the Windows Explorer
-        to execute the ANSYS or DISPLAY programs:
+        <p>If the analyst chooses to use the detailed working directory browse dialog box, it shows what files are contained in each directory, allows creating a new directory, and allows filtering on file type. The standard browse dialog displays only the directories from which to choose.</p>
+        <p>By default, the launcher saves existing output files from batch runs. When a new file is created, the old one is renamed to jobname.out.<timestamp> when the batch job is started. The timestamp is in the format YYYY-MM-DD@hh_mm_ss and reflects the date that the file was renamed, not the date the original file was created. Uncheck the <custom-process>Save Existing Output Files From Batch Runs</custom-process> item under the <custom-process>Options</custom-process> menu on the launcher to overwrite the output file rather than renaming it.</p>
+        <p>Use the <custom-process>Reset ANSYS GUI Configuration</custom-process> option to return the ANSYS GUI to its default configuration if the menus or toolbars have been rearranged. This option is especially useful if an ANSYS GUI component has been moved out of the screen's viewable area.</p>
+        <p>The <custom-process>Delete All Settings/Profiles</custom-process> option deletes all profiles saved for this release and sets all <custom-process>Options</custom-process> menu settings back to the defaults. The launcher will also close automatically.</p>
+
+        <sub-heading>1.4.2 Interactive Mode</sub-heading>
+        <p>In interactive mode, the analyst works with menus and dialog boxes to drive the ANSYS program. ANSYS graphics capabilities, online help, and other tools, such as wizards can be accessed easily.</p>
+        <p>The standard ANSYS GUI is the default. The Utility Menu, Standard Toolbar, Input Window, ANSYS Toolbar, Main Menu, Graphics Window, Status Area, and Output Window are shown in this layout. The toolbars can be resized. The overall size of the GUI, the font, and the color can be modified.</p>
+        <p>Double-click on the following types of files from the Windows Explorer to execute the ANSYS or DISPLAY programs:</p>
         <ul>
-            <li>Double-click on a .db or .dbb file to execute the ANSYS program. When
-            executed in this way, ANSYS will set the filename to the filename of
-            the .db file and the working directory to the directory where the .db file
-            resides.</li>
-            <li>Double-click on a .grph or .f33 file to execute the DISPLAY program.
-            The first plot that appears in the file will be loaded into DISPLAY
-            automatically.</li>
+            <li>Double-click on a .db or .dbb file to execute the ANSYS program. When executed in this way, ANSYS will set the filename to the filename of the .db file and the working directory to the directory where the .db file resides.</li>
+            <li>Double-click on a .grph or .f33 file to execute the DISPLAY program. The first plot that appears in the file will be loaded into DISPLAY automatically.</li>
         </ul>
-        Start Menu Options on Windows
-        Choose <custom-process>Start > All Programs > ANSYS 2020 R1 New > Mechanical
-        APDL Product Launcher 2020 R1</custom-process> to activate the launcher on Windows.<br>
-        The File Management Tab
-        This tab contains the information necessary to manage the files, such
-        as location of the working directory and job name. The available options will
-        differ depending on the simulation environment selected. In
-        the ANSYS simulation environment, the analyst can specify:
-        Working directory
-        Sets the directory in which the ANSYS run will be executed. The
-        program writes files it generates to this directory. Type the new directory
-        name in the <custom-process>Working Directory</custom-process> text box to change the working directory or
-        press the <custom-process>Browse</custom-process> button to display a file selection dialog box. The working
-        directory can be specified by defining the
-        ANSYS201_WORKING_DIRECTORY environment variable. If
-        ANSYS201_WORKING_DIRECTORY is set, the launcher will use that setting
-        as the default. However, any working directory that is specified via the
-        launcher (such as a profile) overrides the
-        ANSYS201_WORKING_DIRECTORY environment variable setting.<br>
-    
-        Jobname
-        Defines the base filename used for all files generated by the ANSYS
-        run. The initial jobname defaults to file. It can be changed to any
-        alphanumeric string up to 32 characters long.<br>
-        The Customization/Preferences Tab
-        The settings under this tab permit to specify detailed settings about
-        the working environment, such as memory settings, parallel/distributed
-        processing settings, custom executables, and additional parameters. The
-        available options will differ depending on the simulation environment
-        selected on the first tab.<br>
-        On selecting the ANSYS or ANSYS Batch simulation environment, the
-        analyst can specify:
-        Custom Memory Settings
-        Specifies the use of custom memory settings rather than using the
-        default memory model. Select custom memory settings in order to set the -
-        m or -db options.<br>
-        Total Workspace (MB)
-        Specifies the initial allocation of memory requested for the ANSYS run.
-        It defaults to 2 GB (2048 MB). This value is adequate for most modest-sized
-        models.<br>
-        Database (MB)
-        Specifies the portion of total memory that the database will use for the
-        initial allocation. It defaults to 1GB (1024 MB). This value is adequate for
-        most modest-sized models.<br>
-        Graphics Device Name
-        Sets the graphics device (Fig. 1.6). The GUI requires a terminal that
-        supports graphics. The graphics device can be WIN32 (default), WIN32c, or
-        3D. The 3D graphics driver facilitates to rotate a shaded view of the model.
-        Most newer graphics cards can handle this well.<br>
-    
-        Read start.ans at start-up
-        Indicates whether the start201.ans file is read at start-up. Include
-        commands to be executed when the program starts up in
-        the start201.ans file. Uncheck the box to not read the start201.ans at
-        start-up.<br>
-        <sub-heading>1.4.1.2 Launcher Menu Options</sub-heading><br>
-        Launcher-specific controls can be found under different launcher menu
-        options. The menu options are:
-        File: Use the <custom-process>File</custom-process> menu to exit.<br>
-        Profiles: Use the <custom-process>Profiles</custom-process> menu to save a specific launcher configuration. The
-        profile the analyst is currently running is displayed in the launcher title bar. An
-        asterisk (*) follows the profile name if any settings are changed from what is
-        saved.<br>
-        <ul>
-            <li>Click <custom-process>Save Profile</custom-process> to save the current launcher configurations. A
-            name can be entered for this profile. The last run profile will
-            automatically be set as the default unless the analyst specifies
-            otherwise. Check the <custom-process>Set as Default</custom-process> box to set a subsequent profile
-            as the default .</li>
-            <li>Click <custom-process>Load Profile</custom-process> to select the last run profile or one of the saved
-            profiles.</li>
-            <li>Click <custom-process>Manage Profiles</custom-process> to rename a profile, specify a different
-            default profile, unset a default profile, or delete a profile.</li>
-        </ul>
-        If the analyst chooses to use the detailed working directory
-        browse dialog box, it shows what files are contained in each directory,
-        allows creating a new directory, and allows filtering on file type. The
-        standard browse dialog displays only the directories from which to
-        choose.<br>
-        By default, the launcher saves existing output files from batch
-        runs. When a new file is created, the old one is renamed
-        to jobname.out.<timestamp> when the batch job is started. The
-        timestamp is in the format YYYY-MM-DD@hh_mm_ss and reflects the
-    
-        date that the file was renamed, not the date the original file was
-        created. Uncheck the <custom-process>Save Existing Output Files From Batch
-        Runs</custom-process> item under the <custom-process>Options</custom-process> menu on the launcher to overwrite the
-        output file rather than renaming it.<br>
-        Use the <custom-process>Reset ANSYS GUI Configuration</custom-process> option to return the
-        ANSYS GUI to its default configuration if the menus or toolbars have
-        been rearranged. This option is especially useful if an ANSYS GUI
-        component has been moved out of the screen's viewable area.<br>
-        The <custom-process>Delete All Settings/Profiles</custom-process> option deletes all profiles
-        saved for this release and sets all <custom-process>Options</custom-process> menu settings back to the
-        defaults. The launcher will also close automatically.<br>
-        <sub-heading>1.4.2 Interactive Mode</sub-heading><br>
-        In interactive mode, the analyst works with menus and dialog boxes to
-        drive the ANSYS program. ANSYS graphics capabilities, online help, and other
-        tools, such as wizards can be accessed easily.<br>
-        The standard ANSYS GUI is the default. The Utility Menu, Standard
-        Toolbar, Input Window, ANSYS Toolbar, Main Menu, Graphics Window, Status
-        Area, and Output Window are shown in this layout. The toolbars can be
-        resized. The overall size of the GUI, the font, and the color can be modified.<br>
-        Double-click on the following types of files from the Windows Explorer
-        to execute the ANSYS or DISPLAY programs:
-        <ul>
-            <li>Double-click on a .db or .dbb file to execute the ANSYS program. When
-            executed in this way, ANSYS will set the filename to the filename of
-            the .db file and the working directory to the directory where the .db file
-            resides.</li>
-            <li>Double-click on a .grph or .f33 file to execute the DISPLAY program.
-            The first plot that appears in the file will be loaded into DISPLAY
-            automatically.</li>
-        </ul>
+
         <div class="nav-buttons">
             <a href="Mechanical_APDL_Environment.html">Previous</a>
             <a href="GUI.html">Next</a>
         </div>
+    </div>
 </body>
 </html>

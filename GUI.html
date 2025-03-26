@@ -4,827 +4,603 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GUI</title>
-</head>
-<body>
     <style>
+        /* Custom Properties based on Ansys colors */
+        :root {
+            --primary-color: #ED1C24; /* Ansys Red */
+            --secondary-color: #FDFDFD; /* Off-White */
+            --gradient-bg: linear-gradient(135deg, #000000, #333333); /* Black to Dark Gray */
+            --dark-bg: #000000; /* Black */
+            --light-bg: #F5F6F5; /* Light Gray */
+            --text-dark: #000000; /* Black */
+            --text-muted: #333333; /* Dark Gray */
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-        font-family: 'Poppins', Arial, sans-serif;
-        padding-left: 10vw;
-        padding-right: 10vw;
-        color: var(--text-muted);
-        line-height: 1.6;
-        text-align: justify
-    }
-    
-    /* Custom Headings */
-    custom-heading[level='1'], 
-    custom-heading[level='2'] {
-        font-family: 'Times New Roman', Times, serif;
-        color: red;
-        font-weight: 900;
-        text-align: center; 
-        display: block;
-        margin: 0 auto;
-    }
-    
-    custom-heading[level='1'] {
-        font-size: 2rem; /* Adjusts based on screen */
-    }
-    
-    custom-heading[level='2'] {
-        font-size: 2.5rem;
-        margin: 20px 0;
-        padding-bottom: 50px;
-    }
-    
-    /* Sub-heading */
-    sub-heading {
-        font-family: 'Times New Roman', Times, serif;
-        color: rgb(26, 100, 184);
-        font-weight: bold;
-        font-size: 1.2rem;
-    }
-    
-    /* Image Tag */
-    image-tag {
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    /* Custom styles */
-    custom-style {
-        font-style: italic;
-    }
-    
-    custom-process {
-        font-family: 'Times New Roman', Times, serif;
-        padding: 10px;
-        margin: 10px 0;
-        font-weight: bold;
-    }
-    
-    custom-spacing {
-        margin-top: 15px;
-        margin-bottom: 5px;
-        display: block;
-    }
-    
-    /* Containers */
-    .container-1 {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        background-color: rgba(251, 253, 255, 0.489);
-        flex-wrap: wrap;
-        padding: 20px;
-    }
-    
-    .container-1 img {
-        width: 150px;
-        height: 150px;
-        object-fit: fill;
-        max-width: 100%;
-        background-color: rgba(251, 253, 255, 0.489);
-    }
-    .nav-buttons {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-muted);
+            line-height: 1.6;
+            padding-left: 10vw;
+            padding-right: 10vw;
+            text-align: justify;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-bg);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        .hero custom-heading[level='2'] {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF; /* Changed to white */
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Section */
+        .section {
+            background: var(--secondary-color);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid transparent;
+            position: relative;
+            transition: var(--transition);
+            margin: 2rem 0;
+        }
+
+        .section:hover {
+            border: 2px solid var(--primary-color);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section li {
+            position: relative;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .section li::before {
+            content: '→';
+            color: var(--primary-color);
+            position: absolute;
+            left: -1.5rem;
+            font-weight: bold;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .section p:hover {
+            color: var(--text-dark);
+        }
+
+        /* Custom Elements */
+        custom-heading[level='2'] {
+            font-family: 'Times New Roman', Times, serif;
+            color: var(--primary-color);
+            font-weight: 900;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            font-size: 2.5rem;
+        }
+
+        sub-heading {
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(26, 100, 184);
+            font-weight: bold;
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            transition: var(--transition);
+        }
+
+        sub-heading:hover {
+            color: rgb(40, 120, 200);
+        }
+
+        image-tag {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        custom-spacing {
+            margin-top: 15px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        custom-style {
+            font-style: italic;
+            color: var(--primary-color);
+        }
+
+        custom-process {
+            font-family: 'Times New Roman', Times, serif;
+            padding: 0.5rem;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        custom-processor {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        /* Containers */
+        .container-1 {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background-color: rgba(251, 253, 255, 0.8);
+            flex-wrap: wrap;
+            padding: 20px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .container-1:hover {
+            background-color: rgba(251, 253, 255, 1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .container-1 img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            max-width: 100%;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .container-1 img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
             padding: 10px;
+            text-align: center;
+            gap: 20px;
         }
 
         .nav-buttons a {
-            background-color: rgba(255, 16, 16, 0.808);
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
             text-decoration: none;
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            border-radius: 25px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
         }
 
         .nav-buttons a:hover {
-            background-color: #b30000;
+            background-color: #C81018;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
 
-        /* Center the navigation buttons */
-        .nav-buttons {
-            margin-top: 50px;
-            text-align: center;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-left: 5vw;
+                padding-right: 5vw;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero custom-heading[level='2'] {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 2rem;
+            }
+
+            .container-1 {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .container-1 img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
-    
-    /* Media Queries for Mobile Responsiveness */
-    @media (max-width: 768px) {
-        body {
-            padding-left: 5vw;
-            padding-right: 5vw;
+
+        @media (max-width: 480px) {
+            body {
+                padding-left: 3vw;
+                padding-right: 3vw;
+            }
+
+            .hero custom-heading[level='2'] {
+                font-size: 2rem;
+            }
+
+            .container-1 img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .section p, .section li {
+                font-size: 1rem;
+            }
         }
-    
-        custom-heading[level='1'] {
-            font-size: 1.8rem;
-        }
-    
-        custom-heading[level='2'] {
-            font-size: 2rem;
-            padding-bottom: 30px;
-        }
-    
-        sub-heading {
-            font-size: 1rem;
-        }
-    
-        .container-1 {
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-        }
-    
-        .container-1 img {
-            width: 120px;
-            height: 120px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        body {
-            padding-left: 3vw;
-            padding-right: 3vw;
-        }
-    
-        custom-heading[level='1'] {
-            font-size: 1.5rem;
-        }
-    
-        custom-heading[level='2'] {
-            font-size: 1.8rem;
-            padding-bottom: 20px;
-        }
-    
-        sub-heading {
-            font-size: 0.9rem;
-        }
-    
-        .container-1 img {
-            width: 100px;
-            height: 100px;
-        }
-    }
-        </style>
-        <custom-heading level="2">1.5 GUI</custom-heading level='2'><br>
-        The GUI is an easy and intuitive way to interact with the program. The
-        GUI mode is often referred to as interactive mode. The GUI allows to perform
-        an analysis interactively with little or no knowledge of individual commands.
-        Each GUI option activates one or more commands to perform the requested
-        operation. Most operations can be performed interactively, but some
-        operations are available only by entering commands in the command input
-        area or via a batch file. The program records all commands issued in the
-        input history file (Jobname.LOG).<br>
-    
-        ANSYS can be run through the GUI and commands input window, or
-        by creating an ASCII text file for input, or both. It is often more desirable to
-        use a combination of both graphical methods and input files. An input file is
-        often useful for defining the initial model geometry, characteristics, and
-        constraints. This is because the input file can be easily changed to correct the
-        errors that are inevitable when setting up a new ANSYS model. Once the
-        input is correct and the model geometry and material characteristics are read
-        into ANSYS, it is then desirable to examine the results using either direct
-        command input with the command input window, or the graphical menu
-        selections.<br>
-        <sub-heading>1.5.1 GUI Components</sub-heading><br>
-        Dialog boxes are used to provide input for a particular function. The
-        type of dialog box provided depends on the type of input required. The input
-        might require any of the following: text entry box, check button, radio button,
-        option button, single-selection list, multiple-selection list, two-column
-        selection list, a tabbed box, or a tree structure. Other components of a dialog
-        box include action buttons such as OK, Apply, and Cancel.<br>
-        <sub-heading>1.5.1.1 Text Entry Boxes</sub-heading><br>
-        In a text entry box (Fig. 1.7) numbers or character strings are
-        entered. If text already exists in the text entry box, overwrite it by
-        highlighting the existing text. Press and drag the left mouse button to
-        highlight existing text. Double-clicking the left mouse button on a word
-        highlights the word, and triple-clicking it highlights the entire string.<br>
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <custom-heading level="2">1.5 GUI</custom-heading>
+    </div>
+
+    <div class="section">
+        <p>The GUI is an easy and intuitive way to interact with the program. The GUI mode is often referred to as interactive mode. The GUI allows to perform an analysis interactively with little or no knowledge of individual commands. Each GUI option activates one or more commands to perform the requested operation. Most operations can be performed interactively, but some operations are available only by entering commands in the command input area or via a batch file. The program records all commands issued in the input history file (Jobname.LOG).</p>
+        <p>ANSYS can be run through the GUI and commands input window, or by creating an ASCII text file for input, or both. It is often more desirable to use a combination of both graphical methods and input files. An input file is often useful for defining the initial model geometry, characteristics, and constraints. This is because the input file can be easily changed to correct the errors that are inevitable when setting up a new ANSYS model. Once the input is correct and the model geometry and material characteristics are read into ANSYS, it is then desirable to examine the results using either direct command input with the command input window, or the graphical menu selections.</p>
+
+        <sub-heading>1.5.1 GUI Components</sub-heading>
+        <p>Dialog boxes are used to provide input for a particular function. The type of dialog box provided depends on the type of input required. The input might require any of the following: text entry box, check button, radio button, option button, single-selection list, multiple-selection list, two-column selection list, a tabbed box, or a tree structure. Other components of a dialog box include action buttons such as OK, Apply, and Cancel.</p>
+
+        <sub-heading>1.5.1.1 Text Entry Boxes</sub-heading>
+        <p>In a text entry box (Fig. 1.7) numbers or character strings are entered. If text already exists in the text entry box, overwrite it by highlighting the existing text. Press and drag the left mouse button to highlight existing text. Double-clicking the left mouse button on a word highlights the word, and triple-clicking it highlights the entire string.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/8.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.7 Text Entry Box</image-tag><br>
-    
-        <sub-heading>1.5.1.2 Check Buttons</sub-heading><br>
-        Check buttons are square buttons that enable or disable features. Click
-        on it with the left mouse button to change a check button from ON to OFF or
-        vice versa. The buttons under "Preferences for GUI Filtering" (Fig. 1.8) are
-        check buttons.<br>
+        </div>
+        <image-tag>Fig. 1.7 Text Entry Box</image-tag>
+
+        <sub-heading>1.5.1.2 Check Buttons</sub-heading>
+        <p>Check buttons are square buttons that enable or disable features. Click on it with the left mouse button to change a check button from ON to OFF or vice versa. The buttons under "Preferences for GUI Filtering" (Fig. 1.8) are check buttons.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/9.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.8 Check and Radio Buttons</image-tag><br>
-    
-        <sub-heading>1.5.1.3 Radio Buttons</sub-heading><br>
-        Radio buttons are diamond shaped buttons used to select one of
-        several options. One button is always "On" in a set of radio buttons. Clicking
-        on the desired item makes that button active and turns off other buttons. The
-        buttons shown under "Structural discipline options" (Fig. 1.8) are radio
-        buttons.<br>
-        <sub-heading>1.5.1.4 Option Buttons</sub-heading><br>
-        With option buttons (Fig. 1.9) the analyst selects an item from a pop-
-        up menu that collapses into one button showing the active choice. Adopt the
-        following procedure to select a different option:
-        1. Place the cursor on the button
-        2. Press the left mouse button and hold it
-        3. Drag the mouse through the pop-up menu until the desired item is
-        highlighted.<br>
+        </div>
+        <image-tag>Fig. 1.8 Check and Radio Buttons</image-tag>
+
+        <sub-heading>1.5.1.3 Radio Buttons</sub-heading>
+        <p>Radio buttons are diamond shaped buttons used to select one of several options. One button is always "On" in a set of radio buttons. Clicking on the desired item makes that button active and turns off other buttons. The buttons shown under "Structural discipline options" (Fig. 1.8) are radio buttons.</p>
+
+        <sub-heading>1.5.1.4 Option Buttons</sub-heading>
+        <p>With option buttons (Fig. 1.9) the analyst selects an item from a pop-up menu that collapses into one button showing the active choice. Adopt the following procedure to select a different option:</p>
+        <ol>
+            <li>Place the cursor on the button</li>
+            <li>Press the left mouse button and hold it</li>
+            <li>Drag the mouse through the pop-up menu until the desired item is highlighted.</li>
+        </ol>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/10.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.9 Option Buttons</image-tag><br>
-    
-        <sub-heading>1.5.1.5 Single-Selection Lists</sub-heading><br>
-        A single-selection list (Fig. 1.10) is used to select one option from a
-        scrollable list. Clicking on the desired item highlights it and copies it to the
-        Selection box, where it can be edited.<br>
+        </div>
+        <image-tag>Fig. 1.9 Option Buttons</image-tag>
+
+        <sub-heading>1.5.1.5 Single-Selection Lists</sub-heading>
+        <p>A single-selection list (Fig. 1.10) is used to select one option from a scrollable list. Clicking on the desired item highlights it and copies it to the Selection box, where it can be edited.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/11.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.10 Example of a Single-Selection List</image-tag><br>
-    
-        <sub-heading>1.5.1.6 Multiple-Selection Lists</sub-heading><br>
-        A multiple-selection list (Fig. 1.11) is used to select items from a list. It
-        resembles the single-selection list except that there is no Selection box, and
-        more than one item can be selected. Clicking on an item highlights and makes
-        it active, and clicking the same item again deactivates it.<br>
+        </div>
+        <image-tag>Fig. 1.10 Example of a Single-Selection List</image-tag>
+
+        <sub-heading>1.5.1.6 Multiple-Selection Lists</sub-heading>
+        <p>A multiple-selection list (Fig. 1.11) is used to select items from a list. It resembles the single-selection list except that there is no Selection box, and more than one item can be selected. Clicking on an item highlights and makes it active, and clicking the same item again deactivates it.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/12.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.11 Multiple-Selection List</image-tag><br>
-    
-        <sub-heading>1.5.1.7 Two-Column Selection Lists</sub-heading><br>
-        One of several choices can be selected from a two-column selection list
-        (Fig. 1.12). It resembles the single-selection list except the choices are
-        grouped into categories. Select a category from the left column, then pick the
-        desired item from the right column. Choices available in the right column vary
-        according to the choice in the left column.
-        The GUI displays this type of list primarily when it is necessary to
-        select from a large number of items.<br>
+        </div>
+        <image-tag>Fig. 1.11 Multiple-Selection List</image-tag>
+
+        <sub-heading>1.5.1.7 Two-Column Selection Lists</sub-heading>
+        <p>One of several choices can be selected from a two-column selection list (Fig. 1.12). It resembles the single-selection list except the choices are grouped into categories. Select a category from the left column, then pick the desired item from the right column. Choices available in the right column vary according to the choice in the left column. The GUI displays this type of list primarily when it is necessary to select from a large number of items.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/13.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.12 Two-Column Selection List</image-tag><br>
-    
-        <sub-heading>1.5.1.8 Tabbed Dialog Boxes</sub-heading><br>
-        A tabbed dialog box (Fig. 1.13) presents groups of related commands
-        in one location. Select an individual tab by clicking on it, or by
-        using Ctrl+Tab to move between the tabs. Some tabbed dialog boxes require
-        that the analyst navigates through each tab sequentially, with later tabs
-        “grayed out” until s/he completes required tasks in an earlier tab.<br>
+        </div>
+        <image-tag>Fig. 1.12 Two-Column Selection List</image-tag>
+
+        <sub-heading>1.5.1.8 Tabbed Dialog Boxes</sub-heading>
+        <p>A tabbed dialog box (Fig. 1.13) presents groups of related commands in one location. Select an individual tab by clicking on it, or by using Ctrl+Tab to move between the tabs. Some tabbed dialog boxes require that the analyst navigates through each tab sequentially, with later tabs “grayed out” until s/he completes required tasks in an earlier tab.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/14.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.13 Tabbed Dialog Box</image-tag><br>
-    
-        <sub-heading>1.5.1.9 Drop-Down List Boxes</sub-heading><br>
-        A drop-down list box (Fig. 1.14) provides a list of choices for an option.
-        Make a selection by clicking on the small arrow on the right side of the list
-        box and then scrolling to and clicking on the desired choice from the list.<br>
+        </div>
+        <image-tag>Fig. 1.13 Tabbed Dialog Box</image-tag>
+
+        <sub-heading>1.5.1.9 Drop-Down List Boxes</sub-heading>
+        <p>A drop-down list box (Fig. 1.14) provides a list of choices for an option. Make a selection by clicking on the small arrow on the right side of the list box and then scrolling to and clicking on the desired choice from the list.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/15.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.14 Drop-Down List Box</image-tag><br>
-    
-        <sub-heading>1.5.1.10 Tree Structures</sub-heading><br>
-        A tree structure (Fig. 1.15) presents a hierarchical flow of logical
-        choices from major categories to specific subcategories. Select a major
-        category by double-clicking on the category. Subcategories appear listed
-        vertically and indented beneath that major category. If a subcategory is
-        selected in the same way, further subcategories are listed, and become more
-        specific. Continually selecting subcategories yields the final item in the
-        “branch” of the tree. At this point, instead of a categorical choice, enter or
-        edit data to provide specific input.<br>
+        </div>
+        <image-tag>Fig. 1.14 Drop-Down List Box</image-tag>
+
+        <sub-heading>1.5.1.10 Tree Structures</sub-heading>
+        <p>A tree structure (Fig. 1.15) presents a hierarchical flow of logical choices from major categories to specific subcategories. Select a major category by double-clicking on the category. Subcategories appear listed vertically and indented beneath that major category. If a subcategory is selected in the same way, further subcategories are listed, and become more specific. Continually selecting subcategories yields the final item in the “branch” of the tree. At this point, instead of a categorical choice, enter or edit data to provide specific input.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/16.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.15 Tree Structures</image-tag><br>
-    
-        Double-click on the name of the final item to display a data input
-        dialog box (Fig. 1.16) where the data is entered or edited.<br>
+        </div>
+        <image-tag>Fig. 1.15 Tree Structures</image-tag>
+        <p>Double-click on the name of the final item to display a data input dialog box (Fig. 1.16) where the data is entered or edited.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/17.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.16 Sample Data Input Dialog Box</image-tag><br>
-    
-        <sub-heading>1.5.1.11 Using Action Buttons</sub-heading><br>
-        A dialog box typically contains combinations of the following action
-        buttons:
+        </div>
+        <image-tag>Fig. 1.16 Sample Data Input Dialog Box</image-tag>
+
+        <sub-heading>1.5.1.11 Using Action Buttons</sub-heading>
+        <p>A dialog box typically contains combinations of the following action buttons:</p>
         <ul>
             <li>OK - Applies the changes and closes the dialog box.</li>
-            <li>Apply - Applies changes but does not close the dialog box. Use this
-            button when it is necessary to make more than one change within a
-            dialog box, or when it is necessary to execute a function more than
-            once.</li>
-            <li>Reset - The settings in the dialog box revert to the previous or default
-            settings.</li>
-            <li>Cancel - Closes the dialog box without applying any changes made.
-            The difference between Cancel and Reset is that Reset does not
-            close the dialog box.</li>
+            <li>Apply - Applies changes but does not close the dialog box. Use this button when it is necessary to make more than one change within a dialog box, or when it is necessary to execute a function more than once.</li>
+            <li>Reset - The settings in the dialog box revert to the previous or default settings.</li>
+            <li>Cancel - Closes the dialog box without applying any changes made. The difference between Cancel and Reset is that Reset does not close the dialog box.</li>
             <li>Help - Displays help information for the function being performed.</li>
         </ul>
-        <sub-heading>1.5.2 Layout of the GUI</sub-heading><br>
-        If the analyst enters the program through the launcher, the GUI is
-        activated automatically for interactive running. The GUI (Fig. 1.17) has seven
-        areas:<br>
+
+        <sub-heading>1.5.2 Layout of the GUI</sub-heading>
+        <p>If the analyst enters the program through the launcher, the GUI is activated automatically for interactive running. The GUI (Fig. 1.17) has seven areas:</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/18.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.17 The Program GUI replace</image-tag><br>
-        1. <b>Utility Menu</b> - Contains functions that are available throughout the
-        ANSYS session, such as file controls, selections, graphic controls and
-        parameters. The analyst can also exit the program through this menu.
-        <br>2. <b>Standard Toolbar</b> - Contains push buttons that execute commonly
-        used ANSYS commands. More push buttons can be added if desired.
-        <br>3. <b>Command Input Area</b> - Shows program prompt messages and
-        allows analyst to type in commands directly.
-        <br>4. <b>Main Menu</b> - Contains the primary ANSYS functions, organized by
-        preprocessor, solution, general postprocessor, design optimizer. It is
-        from this menu that the vast majority of modelling commands are
-        issued.
-        <br>5. <b>Graphics Window</b> - The Graphic Window is where graphics are
-        shown and graphical picking can be made. It is here where analyst will
-        graphically view the model in its various stages of construction and the
-        ensuing results from the analysis.
-        <br>6. <b>Status and Prompt Area</b> - located at the bottom of the GUI, shows
-        prompts and the status of the analysis. Typically, prompts for functions
-        that involve graphical picking will be seen. Be sure to read the prompt
-        so the proper entities can be picked in the proper order. This area also
-        contains status information.
-        <br>7. <b>Output Window</b> - The Output Window (Fig. 1.18) shows text output
-        from the program, such as listing of data etc. It is usually positioned
-        behind the main window and can be put to the front if necessary.
-        The GUI is fairly easy to use. There is some terminology related to
-        basic operation:<br>
-    
-        <custom-spacing><custom-style>Resume:</custom-style> Resume opens a previously saved database. Resuming a
-        database doesn’t change the jobname. For example: start ANSYS with
-        a jobname of file. Then resume example.db, do some work, then save.
-        That save is done to file.db! This can be avoided by always resuming
-        using the <img src="./I_Ansys_Basics/19.jpg" alt="image">icon on the toolbar. If example.db is opened using this
-        method, it resumes the model and automatically changes the jobname
-        to example.</custom-spacing>
-        <custom-spacing><custom-style>Plotting:</custom-style> Contrary to the name, this has nothing to do with sending an
-        image to a plotter or printer. Plotting in ANSYS refers to drawing
-        something in the graphics window. Plot one type of entity (lines,
-        elements, etc.) to the screen at a time. To plot more than one kind of
-        entity use, <custom-process>“Plot > Multiplot”</custom-process>, which by default will plot everything in
-        the model at once.</custom-spacing>
-        <custom-spacing><custom-style>Plot Controls:</custom-style>his refers to how the “plot” has to look on the screen
-        (shaded, wireframe, entity numbers on or off, etc). Other plot control
-        functions include sending an image to a graphics file or printer.</custom-spacing>
-        <custom-spacing><custom-style>Raise hidden:</custom-style> If a dialog box disappears behind the main window, bring
-        it back with this.<br></custom-spacing>
+        </div>
+        <image-tag>Fig. 1.17 The Program GUI</image-tag>
+        <ol>
+            <li><strong>Utility Menu</strong> - Contains functions that are available throughout the ANSYS session, such as file controls, selections, graphic controls and parameters. The analyst can also exit the program through this menu.</li>
+            <li><strong>Standard Toolbar</strong> - Contains push buttons that execute commonly used ANSYS commands. More push buttons can be added if desired.</li>
+            <li><strong>Command Input Area</strong> - Shows program prompt messages and allows analyst to type in commands directly.</li>
+            <li><strong>Main Menu</strong> - Contains the primary ANSYS functions, organized by preprocessor, solution, general postprocessor, design optimizer. It is from this menu that the vast majority of modelling commands are issued.</li>
+            <li><strong>Graphics Window</strong> - The Graphic Window is where graphics are shown and graphical picking can be made. It is here where analyst will graphically view the model in its various stages of construction and the ensuing results from the analysis.</li>
+            <li><strong>Status and Prompt Area</strong> - located at the bottom of the GUI, shows prompts and the status of the analysis. Typically, prompts for functions that involve graphical picking will be seen. Be sure to read the prompt so the proper entities can be picked in the proper order. This area also contains status information.</li>
+            <li><strong>Output Window</strong> - The Output Window (Fig. 1.18) shows text output from the program, such as listing of data etc. It is usually positioned behind the main window and can be put to the front if necessary.</li>
+        </ol>
+        <p>The GUI is fairly easy to use. There is some terminology related to basic operation:</p>
+        <custom-spacing><custom-style>Resume:</custom-style> Resume opens a previously saved database. Resuming a database doesn’t change the jobname. For example: start ANSYS with a jobname of file. Then resume example.db, do some work, then save. That save is done to file.db! This can be avoided by always resuming using the <img src="./I_Ansys_Basics/19.jpg" alt="image" style="vertical-align: middle;"> icon on the toolbar. If example.db is opened using this method, it resumes the model and automatically changes the jobname to example.</custom-spacing>
+        <custom-spacing><custom-style>Plotting:</custom-style> Contrary to the name, this has nothing to do with sending an image to a plotter or printer. Plotting in ANSYS refers to drawing something in the graphics window. Plot one type of entity (lines, elements, etc.) to the screen at a time. To plot more than one kind of entity use, <custom-process>“Plot > Multiplot”</custom-process>, which by default will plot everything in the model at once.</custom-spacing>
+        <custom-spacing><custom-style>Plot Controls:</custom-style> This refers to how the “plot” has to look on the screen (shaded, wireframe, entity numbers on or off, etc). Other plot control functions include sending an image to a graphics file or printer.</custom-spacing>
+        <custom-spacing><custom-style>Raise hidden:</custom-style> If a dialog box disappears behind the main window, bring it back with this.</custom-spacing>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/20.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.18 Output Window</image-tag><br>
-    
-        The analyst can resize the toolbar, Main Menu and Graphics Window,
-        as well as the GUI. In order to resize the areas in the GUI, drag the borders
-        around the areas of the GUI while holding down the left mouse button.<br>
-        In order to change the overall size of the GUI, position the mouse on
-        of the corners of the GUI and drag it diagonally towards the center of the GUI
-        while holding down the left mouse button. Save the GUI size settings by
-        selecting <custom-process>Utility Menu> MenuCtrls> Save Menu Layout</custom-process>.<br>
-        The GUI iconified. Later to completely remove the program from the
-        screen without terminating the session, the session can be brought back by
-        restoring the icon. The remainder of this section describes each of the areas
-        of the GUI.<br>
-        <sub-heading>1.5.2.1 The Utility Menu</sub-heading><br>
-        The Utility Menu contains utility functions such as file controls,
-        selecting, graphics controls, and parameters. Most of these functions can be
-        executed anytime during the session. For example, while picking locations on
-        the working plane to create keypoints, the analyst can select <custom-process>Utility Menu>
-        PlotCtrls> Pan-Zoom-Rotate> Iso</custom-process> to change the view to an isometric view.<br>
-        Each menu topic on the Utility Menu brings up a pull-down menu of
-        subtopics, which in turn either cascade to a submenu (indicated by a >) or
-        perform an action. The action may do any of the following:
+        </div>
+        <image-tag>Fig. 1.18 Output Window</image-tag>
+        <p>The analyst can resize the toolbar, Main Menu and Graphics Window, as well as the GUI. In order to resize the areas in the GUI, drag the borders around the areas of the GUI while holding down the left mouse button.</p>
+        <p>In order to change the overall size of the GUI, position the mouse on one of the corners of the GUI and drag it diagonally towards the center of the GUI while holding down the left mouse button. Save the GUI size settings by selecting <custom-process>Utility Menu> MenuCtrls> Save Menu Layout</custom-process>.</p>
+        <p>The GUI can be iconified. Later, to completely remove the program from the screen without terminating the session, the session can be brought back by restoring the icon. The remainder of this section describes each of the areas of the GUI.</p>
+
+        <sub-heading>1.5.2.1 The Utility Menu</sub-heading>
+        <p>The Utility Menu contains utility functions such as file controls, selecting, graphics controls, and parameters. Most of these functions can be executed anytime during the session. For example, while picking locations on the working plane to create keypoints, the analyst can select <custom-process>Utility Menu> PlotCtrls> Pan-Zoom-Rotate> Iso</custom-process> to change the view to an isometric view.</p>
+        <p>Each menu topic on the Utility Menu brings up a pull-down menu of subtopics, which in turn either cascade to a submenu (indicated by a >) or perform an action. The action may do any of the following:</p>
         <ul>
             <li>Immediately execute a function</li>
             <li>Bring up a dialog box (indicated by a ...)</li>
             <li>Bring up a picking menu (indicated by a +).</li>
         </ul>
-        Figure 1.19 shows the pull-down list of subtopics seen when
-        the List topic is selected:<br>
+        <p>Figure 1.19 shows the pull-down list of subtopics seen when the List topic is selected:</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/21.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.19 Example of a Pull-Down, Cascading Menu</image-tag><br>
-    
-        Left mouse button is used to "pull down" a menu topic on the Utility
-        Menu. Pressing and dragging the mouse button permits to move rapidly to
-        the desired subtopic. Releasing the mouse button while it is on an "action"
-        subtopic causes the program to perform that action. Clicking the left mouse
-        button leaves the pull-down and cascading menus in place. The menus
-        disappear when the analyst clicks on an action subtopic or elsewhere in the
-        GUI.<br>
-        Use the keyboard to pull down a menu topic and move to the desired
-        function. Do so via the menu's mnemonic character, indicated by an
-        underscore. Simply place the mouse cursor anywhere in the Utility Menu and
-        press the ALT key and the mnemonic character simultaneously. For example,
-        pressing ALT+F with the mouse cursor anywhere in the Utility Menu pulls
-        down the File menu, since F is the mnemonic (indicated by the underscore
-        in File).<br>
-        Once the pull-down menu appears, the analyst can use the other
-        mnemonic characters (without the ALT) or the arrow keys on the keyboard to
-        navigate to the desired menu topic and the ENTER or RETURN key to "pick"
-        it.<br>
-        The Utility Menu lists 10 topics. A brief description of each topic
-        follows.<br>
+        </div>
+        <image-tag>Fig. 1.19 Example of a Pull-Down, Cascading Menu</image-tag>
+        <p>Left mouse button is used to "pull down" a menu topic on the Utility Menu. Pressing and dragging the mouse button permits to move rapidly to the desired subtopic. Releasing the mouse button while it is on an "action" subtopic causes the program to perform that action. Clicking the left mouse button leaves the pull-down and cascading menus in place. The menus disappear when the analyst clicks on an action subtopic or elsewhere in the GUI.</p>
+        <p>Use the keyboard to pull down a menu topic and move to the desired function. Do so via the menu's mnemonic character, indicated by an underscore. Simply place the mouse cursor anywhere in the Utility Menu and press the ALT key and the mnemonic character simultaneously. For example, pressing ALT+F with the mouse cursor anywhere in the Utility Menu pulls down the File menu, since F is the mnemonic (indicated by the underscore in File).</p>
+        <p>Once the pull-down menu appears, the analyst can use the other mnemonic characters (without the ALT) or the arrow keys on the keyboard to navigate to the desired menu topic and the ENTER or RETURN key to "pick" it.</p>
+        <p>The Utility Menu lists 10 topics. A brief description of each topic follows:</p>
         <ul>
-            <li>File - Contains file and database related functions, such as clearing the
-            database, saving it to a file, and resuming it from a file. Some of the
-            functions under the File menu are valid at Begin level only. If the
-            analyst selects such a function when not at Begin level, s/he will see a
-            dialog box giving a choice of moving to Begin level and executing the
-            function or cancelling the function.</li>
-            <li>Select - Includes functions that allow to select subsets of entities and
-            to create components.</li>
-            <li>List - Enables to list virtually any data item stored in the database. The
-            analyst can also obtain status information about different areas of the
-            program and list the contents of files residing on the system.</li>
-            <li>Plot - Plots keypoints, lines, areas, volumes, nodes, elements, and
-            other data that can be graphically displayed.</li>
-            <li>PlotCtrls - Includes functions which control the view, style, and other
-            characteristics of graphics displays.</li>
-            <li>The Hard Copy function helps in obtaining hard copies of the entire
-            screen or just the Graphics Window.</li>
-            <li>WorkPlane - Enables to toggle the working plane on or off and to
-            move, rotate, and otherwise maneuver the working plane. The analyst
-            can also create, delete, and switch coordinate systems by using this
-            menu.</li>
-            <li>Parameters - Includes functions to define, edit, and delete scalar and
-            array parameters.</li>
-            <li>Macro - Allows to execute macros and data blocks. The analyst can
-            also create, edit, and delete abbreviations, which appear as push
-            buttons on the Toolbar.</li>
-            <li>MenuCtrls - Permits to create, edit, and delete abbreviations on the
-            Toolbar Once the analyst adjusts the GUI to her/his liking, s/he can
-            use the Save Menu Layout function to save the current GUI
-            configuration.</li>
+            <li><strong>File</strong> - Contains file and database related functions, such as clearing the database, saving it to a file, and resuming it from a file. Some of the functions under the File menu are valid at Begin level only. If the analyst selects such a function when not at Begin level, s/he will see a dialog box giving a choice of moving to Begin level and executing the function or cancelling the function.</li>
+            <li><strong>Select</strong> - Includes functions that allow to select subsets of entities and to create components.</li>
+            <li><strong>List</strong> - Enables to list virtually any data item stored in the database. The analyst can also obtain status information about different areas of the program and list the contents of files residing on the system.</li>
+            <li><strong>Plot</strong> - Plots keypoints, lines, areas, volumes, nodes, elements, and other data that can be graphically displayed.</li>
+            <li><strong>PlotCtrls</strong> - Includes functions which control the view, style, and other characteristics of graphics displays.</li>
+            <li><strong>The Hard Copy</strong> function helps in obtaining hard copies of the entire screen or just the Graphics Window.</li>
+            <li><strong>WorkPlane</strong> - Enables to toggle the working plane on or off and to move, rotate, and otherwise maneuver the working plane. The analyst can also create, delete, and switch coordinate systems by using this menu.</li>
+            <li><strong>Parameters</strong> - Includes functions to define, edit, and delete scalar and array parameters.</li>
+            <li><strong>Macro</strong> - Allows to execute macros and data blocks. The analyst can also create, edit, and delete abbreviations, which appear as push buttons on the Toolbar.</li>
+            <li><strong>MenuCtrls</strong> - Permits to create, edit, and delete abbreviations on the Toolbar. Once the analyst adjusts the GUI to her/his liking, s/he can use the Save Menu Layout function to save the current GUI configuration.</li>
         </ul>
-        <sub-heading>1.5.2.2 The Standard Toolbar</sub-heading><br>
-        The Standard Toolbar (Fig. 1.20) contains a set of icon buttons that
-        execute commonly -used functions.<br>
+
+        <sub-heading>1.5.2.2 The Standard Toolbar</sub-heading>
+        <p>The Standard Toolbar (Fig. 1.20) contains a set of icon buttons that execute commonly-used functions.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/22.jpg" alt="image" width="700px"></span>
-        </div> 
-        <image-tag>Fig. 1.20 Standard Toolbar</image-tag><br>
-    
-        By default, the Standard Toolbar is loaded and positioned when the
-        analyst starts ANSYS. The Standard Toolbar is defined at start up, and cannot
-        be modified during the session. The standard buttons and their functions
-        include:
+        </div>
+        <image-tag>Fig. 1.20 Standard Toolbar</image-tag>
+        <p>By default, the Standard Toolbar is loaded and positioned when the analyst starts ANSYS. The Standard Toolbar is defined at start up, and cannot be modified during the session. The standard buttons and their functions include:</p>
         <ul>
-            <li>New Analysis: Saves and clears information for the existing analysis and
-            starts a new analysis.</li>
-            <li>Open File: Reads database or input files to be read into ANSYS. The file type
-            determines the operation.</li>
-            <li>Save Analysis: Saves the current analysis to a database file.</li>
-            <li>Pan-Zoom-Rotate: Opens the Pan-Zoom-Rotate dialog box.</li>
-            <li>Image Capture: Opens the image capture GUI.</li>
-            <li>Report Generator: Opens the report generator GUI.</li>
-            <li>Help: Displays the table of contents for the HTML-based help.</li>
-            <li>Raise Hidden: Raises hidden windows to the top of the application.</li>
-            <li>Reset Picking: Resets the picking menu if it becomes unresponsive or does
-            not appear when invoked via a menu pick or a command in the Input
-            Window.</li>
-            <li>Contact Manager: Opens the Contact Manager GUI.</li>
+            <li><strong>New Analysis:</strong> Saves and clears information for the existing analysis and starts a new analysis.</li>
+            <li><strong>Open File:</strong> Reads database or input files to be read into ANSYS. The file type determines the operation.</li>
+            <li><strong>Save Analysis:</strong> Saves the current analysis to a database file.</li>
+            <li><strong>Pan-Zoom-Rotate:</strong> Opens the Pan-Zoom-Rotate dialog box.</li>
+            <li><strong>Image Capture:</strong> Opens the image capture GUI.</li>
+            <li><strong>Report Generator:</strong> Opens the report generator GUI.</li>
+            <li><strong>Help:</strong> Displays the table of contents for the HTML-based help.</li>
+            <li><strong>Raise Hidden:</strong> Raises hidden windows to the top of the application.</li>
+            <li><strong>Reset Picking:</strong> Resets the picking menu if it becomes unresponsive or does not appear when invoked via a menu pick or a command in the Input Window.</li>
+            <li><strong>Contact Manager:</strong> Opens the Contact Manager GUI.</li>
         </ul>
-        <sub-heading>1.5.2.3 Command Input Options</sub-heading><br>
-        Although the GUI provides intuitive graphical access, the analyst can
-        provide input to the program by typing in commands, even while the GUI is
-        active. There are two modes available for directly entering commands during
-        the analysis. The Single Line Input Window displays only one line and uses a
-        drop-down window to display the command history. The Command Window
-        can be used for more intensive command operations, such as pasting in
-        multiple command strings or copying longer strings and selected commands
-        from the history window. Both modes are described below.<br>
-        The Single Line Input Window<br>
-    
-        The Input Window (Fig. 1.21) is the default display for all GUI
-        operations. The Input Window is used to conveniently enter single
-        commands. It is also used to access the history buffer without changing the
-        overall configuration of the GUI. As commands are entered into the Input
-        Window, dynamic command help appears in a box above the window. As the
-        analyst types the letters, the command help displays the possible commands,
-        and guides through the proper spelling and syntax of the command.<br>
+
+        <sub-heading>1.5.2.3 Command Input Options</sub-heading>
+        <p>Although the GUI provides intuitive graphical access, the analyst can provide input to the program by typing in commands, even while the GUI is active. There are two modes available for directly entering commands during the analysis. The Single Line Input Window displays only one line and uses a drop-down window to display the command history. The Command Window can be used for more intensive command operations, such as pasting in multiple command strings or copying longer strings and selected commands from the history window. Both modes are described below.</p>
+        <p><strong>The Single Line Input Window</strong></p>
+        <p>The Input Window (Fig. 1.21) is the default display for all GUI operations. The Input Window is used to conveniently enter single commands. It is also used to access the history buffer without changing the overall configuration of the GUI. As commands are entered into the Input Window, dynamic command help appears in a box above the window. As the analyst types the letters, the command help displays the possible commands, and guides through the proper spelling and syntax of the command.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/23.jpg" alt="image" width="700px"></span>
-        </div> 
-        <image-tag>Fig. 1.21 Single Line Input Window</image-tag><br>
-    
-        The history buffer contains all previously entered commands. Individual
-        lines from the history buffer can be displayed in the Input Window and
-        indexed with the up or down arrow keyboard keys. Once displayed in the
-        window, the analyst can edit the entry and execute it by using the return key.
-        View and access the history buffer by clicking the down arrow on the
-        right of the text entry box. A drop down list containing the entry history
-        appears. Clicking the left mouse button on any line in the history buffer
-        moves that line to the text entry box where the analyst can edit and execute
-        it. A double click on any line in the history buffer automatically executes that
-        line.<br>
-        The vertical scroll bar at the right corner of the (unhighlighted) history
-        buffer box allows to scroll through the history buffer. The up and down arrow
-        keys can also be used to navigate the history buffer.<br>
-        The Floating Command Window<br>
-        Bring the Floating Command Window (Fig. 1.22) up by clicking on the
-        keyboard icon at the left side of the Single Line Input Window. The Command
-        Window is a floating window that can be resized and positioned easily for
-        more complex command entry operations. When the command window is
-        closed, all the operations will appear in the history buffer.<br>
+        </div>
+        <image-tag>Fig. 1.21 Single Line Input Window</image-tag>
+        <p>The history buffer contains all previously entered commands. Individual lines from the history buffer can be displayed in the Input Window and indexed with the up or down arrow keyboard keys. Once displayed in the window, the analyst can edit the entry and execute it by using the return key. View and access the history buffer by clicking the down arrow on the right of the text entry box. A drop down list containing the entry history appears. Clicking the left mouse button on any line in the history buffer moves that line to the text entry box where the analyst can edit and execute it. A double click on any line in the history buffer automatically executes that line.</p>
+        <p>The vertical scroll bar at the right corner of the (unhighlighted) history buffer box allows to scroll through the history buffer. The up and down arrow keys can also be used to navigate the history buffer.</p>
+        <p><strong>The Floating Command Window</strong></p>
+        <p>Bring the Floating Command Window (Fig. 1.22) up by clicking on the keyboard icon at the left side of the Single Line Input Window. The Command Window is a floating window that can be resized and positioned easily for more complex command entry operations. When the command window is closed, all the operations will appear in the history buffer.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/24.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.22 The Floating Command Window</image-tag><br>
-    
-        When the command history is accessed with the command window,
-        select commands from the buffer, and selectively enter them into input line,
-        in any order of selection. Do this by holding down the <custom-process>Ctrl</custom-process> key and clicking on
-        each command. As this is done, the commands appear in the input line
-        below. Then edit the commands, changing parameters or syntax, before
-        hitting enter to execute them.<br>
-        The size and location of the Floating Command Window can be set to
-        the desired orientation. Then use the <custom-process>“Save Menu Layout”</custom-process> feature to make it
-        default. The Single Line Window will be available when the Command Window
-        is closed, but will no longer be the default.<br>
-        The Command Window provides a scrollable, editable text area where
-        individual commands can be entered or pasted in long command strings.
-        Multiple commands can also be selected from the history buffer area, either
-        using the shift key to select large contiguous portions of the history, or the
-        control key to select multiple, individual commands. Like the Input Window,
-        dynamic command help is available; as command is typed, the probable
-        command is displayed. This display shows the complete command syntax,
-        and stays visible so that the help system can be checked.<br>
-        <sub-heading>1.5.2.4 The Toolbar</sub-heading><br>
-        The Toolbar (Fig. 1.23) is a convenient area where push-buttons can
-        be added for command, function and macro shortcuts. The Toolbar is a set of
-        push buttons that execute commonly used functions. The toolbar can be set
-        up to provide one-button access to the favorite and frequently used functions.
-        It is loaded and positioned by default, and can be modified during the
-        session. Some push buttons are predefined, but all others are to be defined
-        by the analyst. That is, the analyst selects how many push buttons the
-        Toolbar contains (to a maximum of 100) and what functions they execute.<br>
+        </div>
+        <image-tag>Fig. 1.22 The Floating Command Window</image-tag>
+        <p>When the command history is accessed with the command window, select commands from the buffer, and selectively enter them into input line, in any order of selection. Do this by holding down the <custom-process>Ctrl</custom-process> key and clicking on each command. As this is done, the commands appear in the input line below. Then edit the commands, changing parameters or syntax, before hitting enter to execute them.</p>
+        <p>The size and location of the Floating Command Window can be set to the desired orientation. Then use the <custom-process>“Save Menu Layout”</custom-process> feature to make it default. The Single Line Window will be available when the Command Window is closed, but will no longer be the default.</p>
+        <p>The Command Window provides a scrollable, editable text area where individual commands can be entered or pasted in long command strings. Multiple commands can also be selected from the history buffer area, either using the shift key to select large contiguous portions of the history, or the control key to select multiple, individual commands. Like the Input Window, dynamic command help is available; as command is typed, the probable command is displayed. This display shows the complete command syntax, and stays visible so that the help system can be checked.</p>
+
+        <sub-heading>1.5.2.4 The Toolbar</sub-heading>
+        <p>The Toolbar (Fig. 1.23) is a convenient area where push-buttons can be added for command, function and macro shortcuts. The Toolbar is a set of push buttons that execute commonly used functions. The toolbar can be set up to provide one-button access to the favorite and frequently used functions. It is loaded and positioned by default, and can be modified during the session. Some push buttons are predefined, but all others are to be defined by the analyst. That is, the analyst selects how many push buttons the Toolbar contains (to a maximum of 100) and what functions they execute.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/25.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.23 The Toolbar</image-tag><br>
-    
-        <b>Adding Buttons to the Toolbar</b>
-        Additional push buttons are added to the Toolbar by creating
-        abbreviations. An abbreviation is simply an alias (up to 32 characters long) for
-        a complete command or GUI function name. For example, <custom-style>SAVE_DB</custom-style> is an
-        alias for the <custom-process>SAVE</custom-process> command and <custom-style>RESUM_DB</custom-style> is an alias for the
-        <custom-process>RESUME</custom-process> command. Macros can also be added to the Toolbar by defining an
-        abbreviation that executes the macro.<br>
-        Creating Abbreviations
-        Select <custom-process>Utility Menu> MenuCtrls> Edit Toolbar</custom-process> or <custom-process>Macro> Edit
-        Abbreviations</custom-process> to create an abbreviation. Both menu choices bring up the
-        "Edit Toolbar/Abbreviations" dialog box shown in Fig. 1.24. The Toolbar
-        immediately reflects any changes the analyst makes to the abbreviations
-        using this dialog box.<br>
+        </div>
+        <image-tag>Fig. 1.23 The Toolbar</image-tag>
+        <p><strong>Adding Buttons to the Toolbar</strong></p>
+        <p>Additional push buttons are added to the Toolbar by creating abbreviations. An abbreviation is simply an alias (up to 32 characters long) for a complete command or GUI function name. For example, <custom-style>SAVE_DB</custom-style> is an alias for the <custom-process>SAVE</custom-process> command and <custom-style>RESUM_DB</custom-style> is an alias for the <custom-process>RESUME</custom-process> command. Macros can also be added to the Toolbar by defining an abbreviation that executes the macro.</p>
+        <p><strong>Creating Abbreviations</strong></p>
+        <p>Select <custom-process>Utility Menu> MenuCtrls> Edit Toolbar</custom-process> or <custom-process>Macro> Edit Abbreviations</custom-process> to create an abbreviation. Both menu choices bring up the "Edit Toolbar/Abbreviations" dialog box shown in Fig. 1.24. The Toolbar immediately reflects any changes the analyst makes to the abbreviations using this dialog box.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/26.jpg" alt="image" width="250px"></span>
-        </div> 
-        <image-tag>Fig. 1.24 Edit Toolbar / Abbreviations Dialog Box</image-tag><br>
-    
-        An abbreviation can also be created by issuing the <custom-process>*ABBR</custom-process> command
-        from the Input Window. In this method, it is necessary to update the Toolbar
-        manually by picking <custom-process>Utility Menu> MenuCtrls> Update Toolbar</custom-process>. The Toolbar
-        can be sized to make it smaller or larger to fit the set of abbreviations.<br>
-        The order in which abbreviations are defined determines the placement
-        of the buttons on the Toolbar. After defining the buttons, they cannot be
-        rearranged graphically within the GUI.<br>
-        Buttons that execute commands or functions from a processor other
-        than the current one will not work. For example, if the analyst is in PREP7 and
-        picks a button for a POST1 command, s/he will receive an "unrecognized
-        PREP7 command..." warning.<br>
-        After creating own set of abbreviations in the Toolbar, the analyst can
-        save them in a file by choosing either <custom-process>Utility Menu> MenuCtrls> Save
-        Toolbar</custom-process> or <custom-process>Utility Menu> Macro> Save Abbr</custom-process>. Pick either <custom-process>Utility Menu>
-        MenuCtrls> Restore Toolbar</custom-process> or <custom-process>Utility Menu> Macro> Restore Abbr</custom-process> to
-        restore a set of abbreviations from a file.<br>
-        <sub-heading>1.5.2.5 Main Menu</sub-heading><br>
-        The Main Menu (Fig. 1.25) is where the analyst begins the analysis. It
-        contains the analysis functions used to create the model. The Main Menu is
-        arranged in a tree structure. This structure has progressive submenus
-        accessible as the analyst proceeds through the steps of the analysis. Each
-        menu topic in the main menu either expands to show more menu options
-        (indicated by a boxed +) or performs an action (indicated by an icon
-        preceding the menu topic). Click on the boxed + or the topic name to expand
-        a menu topic to reveal the subtopics (the boxed + will turn into a boxed -).
-        Continue expanding subtopics (also indicated by a boxed +) until the desired
-        action is reached. The action name is preceded by an icon used to indicate
-        the action:
+        </div>
+        <image-tag>Fig. 1.24 Edit Toolbar / Abbreviations Dialog Box</image-tag>
+        <p>An abbreviation can also be created by issuing the <custom-process>*ABBR</custom-process> command from the Input Window. In this method, it is necessary to update the Toolbar manually by picking <custom-process>Utility Menu> MenuCtrls> Update Toolbar</custom-process>. The Toolbar can be sized to make it smaller or larger to fit the set of abbreviations.</p>
+        <p>The order in which abbreviations are defined determines the placement of the buttons on the Toolbar. After defining the buttons, they cannot be rearranged graphically within the GUI.</p>
+        <p>Buttons that execute commands or functions from a processor other than the current one will not work. For example, if the analyst is in PREP7 and picks a button for a POST1 command, s/he will receive an "unrecognized PREP7 command..." warning.</p>
+        <p>After creating own set of abbreviations in the Toolbar, the analyst can save them in a file by choosing either <custom-process>Utility Menu> MenuCtrls> Save Toolbar</custom-process> or <custom-process>Utility Menu> Macro> Save Abbr</custom-process>. Pick either <custom-process>Utility Menu> MenuCtrls> Restore Toolbar</custom-process> or <custom-process>Utility Menu> Macro> Restore Abbr</custom-process> to restore a set of abbreviations from a file.</p>
+
+        <sub-heading>1.5.2.5 Main Menu</sub-heading>
+        <p>The Main Menu (Fig. 1.25) is where the analyst begins the analysis. It contains the analysis functions used to create the model. The Main Menu is arranged in a tree structure. This structure has progressive submenus accessible as the analyst proceeds through the steps of the analysis. Each menu topic in the main menu either expands to show more menu options (indicated by a boxed +) or performs an action (indicated by an icon preceding the menu topic). Click on the boxed + or the topic name to expand a menu topic to reveal the subtopics (the boxed + will turn into a boxed -). Continue expanding subtopics (also indicated by a boxed +) until the desired action is reached. The action name is preceded by an icon used to indicate the action:</p>
         <ul>
             <li>A square for a dialog box</li>
             <li>An arrow for a picking menu.</li>
-        </ul><br>
+        </ul>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/27.jpg" alt="image" width="250px"></span>
-        </div> 
-        <image-tag>Fig. 1.25 Main Menu</image-tag><br>
-    
-        <b>Using Preferences to Set Menu Content</b>
-        One of the most useful customizations that can be performed from the
-        GUI is to apply filtering to the menu choices. Filtering lets grey out, or
-        completely hide many of the functions the analyst determines s/he won’t
-        need during the analysis. Use the preferences dialog box to adjust the
-        filtering.<br>
-        At the start of the program, no filtering is applied. Menu choices for all
-        analysis disciplines are displayed. Menu items that are not applicable are
-        grayed out, based on the context of the analysis. The grayed out items can
-        be removed by choosing the appropriate discipline from within the
-        <custom-process>“Preferences for GUI Filtering”</custom-process> dialog box. Not all menu options may be visible
-        during the analysis. If the desired option is not available, check the
-        preferences and element types.<br>
-        For example, selecting Thermal suppresses structural, magnetic, and
-        fluid element types in the <custom-process>“Element Types”</custom-process> dialog box, displacements, and
-        potentials, etc. In the <custom-process>“Apply Loads”</custom-process> and <custom-process>“Delete Loads”</custom-process> menus, and so on.
-        Another item is the methodology used for structural analysis: h-method or LS-
-        DYNA Explicit. By default, the program uses h-method. The analyst can also
-        change the menu hierarchy and customize it to her/his needs by using the
-        User Interface Design Language (UIDL), an ANSYS-developed GUI language.<br>
-        <sub-heading>Additional Usability Features</sub-heading><br>
-        On opening a Main Menu topic, the submenus stay in place until the
-        analyst selects a different Main Menu topic. If a menu topic is not seen, scroll
-        up or down in the Main Menu area until it is found or click the boxed – to
-        collapse subtopics that are no longer in use.<br>
-        Individual topics in the Main Menu can be completely expanded to
-        reveal each and every subtopic. Right-mouse click context-sensitive control is
-        available within the Main Menu to expand and collapse the individual topics.
-        Once an individual subtopic is completely expanded, the analyst can
-        selectively close topics to have areas at different locations under each main
-        topic expanded. As s/he does so, the amount of expansion accessed is
-        recorded and replicated in the next time.<br>
-        Menus can be set to automatically collapse and expand the subtopics.
-        Use the <custom-process>“Collapse Siblings”</custom-process> feature (found in the right-mouse click menu) to
-        set the menu expansion preferences. When collapse is selected, the subtopics
-        opened automatically collapse when another main topic is selected.<br>
-        When many submenus are open, navigating the main menu can
-        become confusing, especially when individual submenus are large enough to
-        push the heading out of the viewing area. The Preprocessor subtopic alone
-        has more than 800 nested subheadings beneath it. Use the same right-mouse
-        click context-sensitive control to configure the main menu for selectable
-        contrasting color display within each nested level. Designate any color for the
-        menu text at each level, making the transition between levels easily
-        detectable. This makes navigating within a subtopic, and up to higher levels
-        much easier.<br>
-        <sub-heading>Main Menu Analysis Functions</sub-heading><br>
-        Most of the functions in the main menu are <custom-style>“modal”</custom-style> with respect to
-        each other; that is, the analyst must complete one function before starting
-        the next. For example, for creating keypoints on the working plane, s/he
-        cannot simultaneously create lines or mesh volumes. However, s/he can
-        define or edit scalar parameters in the middle of creating keypoints since
-        parameter functions are <custom-style>“modeless”</custom-style> Utility Menu functions.<br>
-        The Main Menu functions will vary according to the product and type of
-        analysis. The following functions are included in the default, non-filtered Main
-        Menu:
+        </div>
+        <image-tag>Fig. 1.25 Main Menu</image-tag>
+        <p><strong>Using Preferences to Set Menu Content</strong></p>
+        <p>One of the most useful customizations that can be performed from the GUI is to apply filtering to the menu choices. Filtering lets grey out, or completely hide many of the functions the analyst determines s/he won’t need during the analysis. Use the preferences dialog box to adjust the filtering.</p>
+        <p>At the start of the program, no filtering is applied. Menu choices for all analysis disciplines are displayed. Menu items that are not applicable are grayed out, based on the context of the analysis. The grayed out items can be removed by choosing the appropriate discipline from within the <custom-process>“Preferences for GUI Filtering”</custom-process> dialog box. Not all menu options may be visible during the analysis. If the desired option is not available, check the preferences and element types.</p>
+        <p>For example, selecting Thermal suppresses structural, magnetic, and fluid element types in the <custom-process>“Element Types”</custom-process> dialog box, displacements, and potentials, etc. In the <custom-process>“Apply Loads”</custom-process> and <custom-process>“Delete Loads”</custom-process> menus, and so on. Another item is the methodology used for structural analysis: h-method or LS-DYNA Explicit. By default, the program uses h-method. The analyst can also change the menu hierarchy and customize it to her/his needs by using the User Interface Design Language (UIDL), an ANSYS-developed GUI language.</p>
+
+        <sub-heading>Additional Usability Features</sub-heading>
+        <p>On opening a Main Menu topic, the submenus stay in place until the analyst selects a different Main Menu topic. If a menu topic is not seen, scroll up or down in the Main Menu area until it is found or click the boxed – to collapse subtopics that are no longer in use.</p>
+        <p>Individual topics in the Main Menu can be completely expanded to reveal each and every subtopic. Right-mouse click context-sensitive control is available within the Main Menu to expand and collapse the individual topics. Once an individual subtopic is completely expanded, the analyst can selectively close topics to have areas at different locations under each main topic expanded. As s/he does so, the amount of expansion accessed is recorded and replicated in the next time.</p>
+        <p>Menus can be set to automatically collapse and expand the subtopics. Use the <custom-process>“Collapse Siblings”</custom-process> feature (found in the right-mouse click menu) to set the menu expansion preferences. When collapse is selected, the subtopics opened automatically collapse when another main topic is selected.</p>
+        <p>When many submenus are open, navigating the main menu can become confusing, especially when individual submenus are large enough to push the heading out of the viewing area. The Preprocessor subtopic alone has more than 800 nested subheadings beneath it. Use the same right-mouse click context-sensitive control to configure the main menu for selectable contrasting color display within each nested level. Designate any color for the menu text at each level, making the transition between levels easily detectable. This makes navigating within a subtopic, and up to higher levels much easier.</p>
+
+        <sub-heading>Main Menu Analysis Functions</sub-heading>
+        <p>Most of the functions in the main menu are <custom-style>“modal”</custom-style> with respect to each other; that is, the analyst must complete one function before starting the next. For example, for creating keypoints on the working plane, s/he cannot simultaneously create lines or mesh volumes. However, s/he can define or edit scalar parameters in the middle of creating keypoints since parameter functions are <custom-style>“modeless”</custom-style> Utility Menu functions.</p>
+        <p>The Main Menu functions will vary according to the product and type of analysis. The following functions are included in the default, non-filtered Main Menu:</p>
         <ul>
-            <li><custom-processor>Preprocessor</custom-processor> – Enters the modelling processor and contains <custom-processor>PREP7</custom-processor>
-            functions such as modelling, meshing, and loads.</li>
-            <li><custom-processor>Solution</custom-processor> – Enters <custom-processor>SOLUTION</custom-processor> and contains <custom-processor>SOLUTION</custom-processor> functions
-            such as analysis type and options, loads, load step options, and
-            solution execution.</li>
-            <li><custom-processor>General Postproc</custom-processor> – Enters the general postprocessor and
-            contains <custom-processor>POST1</custom-processor> functions such as plotting and listing of results.</li>
-            <li><custom-processor>TimeHist Postpro</custom-processor> – Enters the time-history postprocessor and
-            loads the Time History Variable Viewer. Contains <custom-processor>POST26</custom-processor> functions
-            such as defining, listing, and plotting of variables.</li>
+            <li><custom-processor>Preprocessor</custom-processor> – Enters the modelling processor and contains <custom-processor>PREP7</custom-processor> functions such as modelling, meshing, and loads.</li>
+            <li><custom-processor>Solution</custom-processor> – Enters <custom-processor>SOLUTION</custom-processor> and contains <custom-processor>SOLUTION</custom-processor> functions such as analysis type and options, loads, load step options, and solution execution.</li>
+            <li><custom-processor>General Postproc</custom-processor> – Enters the general postprocessor and contains <custom-processor>POST1</custom-processor> functions such as plotting and listing of results.</li>
+            <li><custom-processor>TimeHist Postpro</custom-processor> – Enters the time-history postprocessor and loads the Time History Variable Viewer. Contains <custom-processor>POST26</custom-processor> functions such as defining, listing, and plotting of variables.</li>
         </ul>
-    
-        <sub-heading>Additional Main Menu Utilities</sub-heading><br>
-        The default main menu also contains the following dialog boxes that
-        are available at any time during the analysis:
+
+        <sub-heading>Additional Main Menu Utilities</sub-heading>
+        <p>The default main menu also contains the following dialog boxes that are available at any time during the analysis:</p>
         <ul>
             <li><custom-process>Session Editor</custom-process> – Opens the session editor</li>
-            <li><custom-process>Finish</custom-process> – Exits the current processor and moves to the Begin level by
-            executing the <custom-process>FINISH</custom-process> command.</li>
+            <li><custom-process>Finish</custom-process> – Exits the current processor and moves to the Begin level by executing the <custom-process>FINISH</custom-process> command.</li>
         </ul>
-        <sub-heading>1.5.2.6 The Graphics Window</sub-heading><br>
-        The Graphics Window is where all graphics displays are drawn and all
-        graphical picking is done. It is usually the largest of the GUI windows.
-        Maintain the 4:3 width-to-height proportion while changing the size of the
-        Graphics Window. Graphics displays are drawn in the Graphics window when
-        a plot is requested. In addition, graphics displays that are generated by
-        immediate mode and XOR mode will be seen.<br>
-        <custom-spacing>Immediate Mode</custom-spacing><br>
-        An immediate mode plot is one that is drawn automatically when the
-        analyst creates, moves, reflects, or otherwise manipulates the model. It is
-        only a temporary graphics display meant to give immediate feedback on the
-        function just executed. As a result, an immediate mode plot has two
-        drawbacks:
-        1. It will be destroyed if a menu or a dialog is brought up on top of it or if
-        the GUI is iconified and restored.
-        2. Its scaling is based on the scaling for the last plot request, so if the
-        new entity lies <custom-style>“outside”</custom-style>the boundaries of that scaled image, it will not
-        appear in the Graphics Window. Issue a plot request to see the new
-        entity.<br>
-        Numbers and symbols drawn in immediate mode have a similar
-        drawback: they will disappear when a plot is requested unless they are
-        explicitly set to <custom-style>“on”</custom-style> via the appropriate functions under the <custom-process>PlotCtrls</custom-process> menu.
-        Immediate mode can be turned off using the <custom-process>Immediate Display</custom-process> function
-        under <custom-process>Utility Menu> PlotCtrls> Erase Options</custom-process>.<br>
-        If a plot is requested <custom-style>“manually”</custom-style>, the program calculates the graphics
-        scaling such that the display fills the window. This is more of a
-        <custom-style>“permanent”</custom-style> display in that it stays in place even if it is obscured by a dialog
-        box or a menu or if the Graphics Window is iconified and then restored.<br>
-        <custom-spacing>XOR Mode</custom-spacing><br>
-        The program uses this mode when something needs to be drawn or
-        erased quickly without destroying whatever is currently being displayed in the
-        Graphics Window. For example, XOR mode takes effect during graphical
-        picking to highlight or unhighlight the item being picked. It is also used to
-        display the working plane and for rubber-banding.<br>
-        The advantage of using XOR mode is that it produces an instantaneous
-        display without affecting the existing plot on the screen. The only drawback is
-        that drawing in the same location a second time erases the display. For
-        example, picking the same node or keypoint a second time erases the
-        highlight. Similarly, with the working plane display on, requesting another plot
-        without erasing the screen erases the working plane.<br>
-        <custom-spacing>Capture Image Feature</custom-spacing><br>
-        A useful feature that permits to create <custom-style>“snapshots”</custom-style> of the Graphics
-        Window is the <custom-process>Capture Image</custom-process> function (using the <custom-process>Capture Image</custom-process> button in
-        the Standard Toolbar or <custom-process>Utility Menu> PlotCtrls> Capture Image</custom-process>). After an
-        image is captured, it can be saved to a file and then restored in any session.
-        Captured images are useful for comparing different views, sets of results, or
-        other significant images simultaneously on the screen.<br>
-        <custom-spacing>Mouse Functionality</custom-spacing><br>
-        Pressing the scroll wheel button (Fig. 1.26) is the same as a middle
-        mouse button.<br>
-        Picking Entities:
-        Left Button: Picks an entity. Picking is cumulative, so it is not necessary to
-        press control or shift to pick more than one entity. Click and hold the button,
-        then move the cursor around until the entity under consideration is
-        highlighted. When the button is released the highlighted entity will be
-        selected.<br>
-        Middle Button: Completes a selection. This is like clicking <custom-process>“Apply”</custom-process> in the
-        picking dialog (also called <custom-style>“the picker”</custom-style>).<br>
-        Right Button: Toggles back and forth between <custom-style>“pick”</custom-style> and <custom-style>“unpick”</custom-style> mode.
-        Cursor changes indicating what mode ANSYS is in.<br>
+
+        <sub-heading>1.5.2.6 The Graphics Window</sub-heading>
+        <p>The Graphics Window is where all graphics displays are drawn and all graphical picking is done. It is usually the largest of the GUI windows. Maintain the 4:3 width-to-height proportion while changing the size of the Graphics Window. Graphics displays are drawn in the Graphics window when a plot is requested. In addition, graphics displays that are generated by immediate mode and XOR mode will be seen.</p>
+        <custom-spacing><strong>Immediate Mode</strong></custom-spacing>
+        <p>An immediate mode plot is one that is drawn automatically when the analyst creates, moves, reflects, or otherwise manipulates the model. It is only a temporary graphics display meant to give immediate feedback on the function just executed. As a result, an immediate mode plot has two drawbacks:</p>
+        <ol>
+            <li>It will be destroyed if a menu or a dialog is brought up on top of it or if the GUI is iconified and restored.</li>
+            <li>Its scaling is based on the scaling for the last plot request, so if the new entity lies <custom-style>“outside”</custom-style> the boundaries of that scaled image, it will not appear in the Graphics Window. Issue a plot request to see the new entity.</li>
+        </ol>
+        <p>Numbers and symbols drawn in immediate mode have a similar drawback: they will disappear when a plot is requested unless they are explicitly set to <custom-style>“on”</custom-style> via the appropriate functions under the <custom-process>PlotCtrls</custom-process> menu. Immediate mode can be turned off using the <custom-process>Immediate Display</custom-process> function under <custom-process>Utility Menu> PlotCtrls> Erase Options</custom-process>.</p>
+        <p>If a plot is requested <custom-style>“manually”</custom-style>, the program calculates the graphics scaling such that the display fills the window. This is more of a <custom-style>“permanent”</custom-style> display in that it stays in place even if it is obscured by a dialog box or a menu or if the Graphics Window is iconified and then restored.</p>
+        <custom-spacing><strong>XOR Mode</strong></custom-spacing>
+        <p>The program uses this mode when something needs to be drawn or erased quickly without destroying whatever is currently being displayed in the Graphics Window. For example, XOR mode takes effect during graphical picking to highlight or unhighlight the item being picked. It is also used to display the working plane and for rubber-banding.</p>
+        <p>The advantage of using XOR mode is that it produces an instantaneous display without affecting the existing plot on the screen. The only drawback is that drawing in the same location a second time erases the display. For example, picking the same node or keypoint a second time erases the highlight. Similarly, with the working plane display on, requesting another plot without erasing the screen erases the working plane.</p>
+        <custom-spacing><strong>Capture Image Feature</strong></custom-spacing>
+        <p>A useful feature that permits to create <custom-style>“snapshots”</custom-style> of the Graphics Window is the <custom-process>Capture Image</custom-process> function (using the <custom-process>Capture Image</custom-process> button in the Standard Toolbar or <custom-process>Utility Menu> PlotCtrls> Capture Image</custom-process>). After an image is captured, it can be saved to a file and then restored in any session. Captured images are useful for comparing different views, sets of results, or other significant images simultaneously on the screen.</p>
+        <custom-spacing><strong>Mouse Functionality</strong></custom-spacing>
+        <p>Pressing the scroll wheel button (Fig. 1.26) is the same as a middle mouse button.</p>
+        <p><strong>Picking Entities:</strong></p>
+        <p><strong>Left Button:</strong> Picks an entity. Picking is cumulative, so it is not necessary to press control or shift to pick more than one entity. Click and hold the button, then move the cursor around until the entity under consideration is highlighted. When the button is released the highlighted entity will be selected.</p>
+        <p><strong>Middle Button:</strong> Completes a selection. This is like clicking <custom-process>“Apply”</custom-process> in the picking dialog (also called <custom-style>“the picker”</custom-style>).</p>
+        <p><strong>Right Button:</strong> Toggles back and forth between <custom-style>“pick”</custom-style> and <custom-style>“unpick”</custom-style> mode. Cursor changes indicating what mode ANSYS is in.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/28.jpg" alt="image" width="200px"></span>
-        </div> 
-        <image-tag>Fig. 1.26</image-tag><br>
-    
-        Manipulating the Model View: (these defaults can be changed to different
-        buttons if desired)
-        <custom-process>CTRL + Left Button</custom-process>: Pans the model side to side and up and down.<br>
-        <custom-process>CTRL + Middle Button</custom-process>: Moves the mouse left and right to rotate about screen
-        Z. Up and down zooms in and out.<br>
-        <custom-process>CTRL + Right Button</custom-process>: Rotates the model.<br>
-        Right Button: Click and drag the right button to zoom in using a window.
-        Rolling the scroll wheel also zooms in and out.<br>
-    
-        When the right button is clicked in the graphics area a pop-up menu
-        with some very common graphics functions appears (Fig. 1.27) . ANSYS does
-        not always refresh the graphics screen so <custom-process>Replot</custom-process> is very handy. <custom-process>Fit</custom-process> makes the
-        whole model visible. <custom-process>Zoom Back</custom-process> will go back to the view the way it was just
-        before zooming in. Along with some of the standard <custom-process>Pan-Zoom-Rotate</custom-process>
-        functions, the analyst can also access many of the window control functions
-        found in the <custom-process>PlotCrtrls</custom-process> section of the Utility Menu. Placing the cursor over the
-        legend areas of the Graphics Window channels the context to access the
-        legend control menus.<br>
+        </div>
+        <image-tag>Fig. 1.26</image-tag>
+        <p><strong>Manipulating the Model View:</strong> (these defaults can be changed to different buttons if desired)</p>
+        <p><custom-process>CTRL + Left Button</custom-process>: Pans the model side to side and up and down.</p>
+        <p><custom-process>CTRL + Middle Button</custom-process>: Moves the mouse left and right to rotate about screen Z. Up and down zooms in and out.</p>
+        <p><custom-process>CTRL + Right Button</custom-process>: Rotates the model.</p>
+        <p><strong>Right Button:</strong> Click and drag the right button to zoom in using a window. Rolling the scroll wheel also zooms in and out.</p>
+        <p>When the right button is clicked in the graphics area a pop-up menu with some very common graphics functions appears (Fig. 1.27). ANSYS does not always refresh the graphics screen so <custom-process>Replot</custom-process> is very handy. <custom-process>Fit</custom-process> makes the whole model visible. <custom-process>Zoom Back</custom-process> will go back to the view the way it was just before zooming in. Along with some of the standard <custom-process>Pan-Zoom-Rotate</custom-process> functions, the analyst can also access many of the window control functions found in the <custom-process>PlotCtrls</custom-process> section of the Utility Menu. Placing the cursor over the legend areas of the Graphics Window channels the context to access the legend control menus.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/29.jpg" alt="image" width="200px"></span>
-        </div> 
-        <image-tag>Fig. 1.27 Right Button Pop-up Menu</image-tag><br>
-    
-        <sub-heading>1.5.2.7 The Output Window</sub-heading><br>
-        The Output Window (Fig. 1.18) receives all text output from the
-        program - command responses, notes, warnings, errors, and any other
-        messages. It is usually positioned behind the GUI, but it can be raised to the
-        front when necessary.<br>
-        <custom-spacing>Sizing and Positioning the Output Window on Windows Systems</custom-spacing><br>
-        The size and position of the Output Window can be saved using:
-        1. Move the window to the desired location
-        2. Size the window to the desired dimensions
-        3. Select <custom-process>Utility Menu> MenuCtrls> Save Menu Layout</custom-process>.<br>
-        <sub-heading>1.5.2.8 Creating, Modifying and Positioning Toolbars</sub-heading><br>
-        When a session is begun, the start up routine reads a number of text
-        files and scripts that set parameters and conditions for the session. Many of
-        these files can be modified to provide a more customized level of operation.
-        The start160.ans file is one such file. Call up toolbars, set their position
-        and define their content in a similar fashion.<br>
-        <sub-heading>1.5.2.9 Help System</sub-heading><br>
-        Much of the ANSYS documentation is available on-line. Type <custom-process>help,
-        command</custom-process> to get help on any command. Another option to get help is to
-        select <custom-process>HELP</custom-process> on the menu bar at the top of the screen. Information about the
-        commands, theory, and element types used by ANSYS can be viewed in Fig.
-        1.28.<br>
+        </div>
+        <image-tag>Fig. 1.27 Right Button Pop-up Menu</image-tag>
+
+        <sub-heading>1.5.2.7 The Output Window</sub-heading>
+        <p>The Output Window (Fig. 1.18) receives all text output from the program - command responses, notes, warnings, errors, and any other messages. It is usually positioned behind the GUI, but it can be raised to the front when necessary.</p>
+        <custom-spacing><strong>Sizing and Positioning the Output Window on Windows Systems</strong></custom-spacing>
+        <p>The size and position of the Output Window can be saved using:</p>
+        <ol>
+            <li>Move the window to the desired location</li>
+            <li>Size the window to the desired dimensions</li>
+            <li>Select <custom-process>Utility Menu> MenuCtrls> Save Menu Layout</custom-process>.</li>
+        </ol>
+
+        <sub-heading>1.5.2.8 Creating, Modifying and Positioning Toolbars</sub-heading>
+        <p>When a session is begun, the start up routine reads a number of text files and scripts that set parameters and conditions for the session. Many of these files can be modified to provide a more customized level of operation. The start160.ans file is one such file. Call up toolbars, set their position and define their content in a similar fashion.</p>
+
+        <sub-heading>1.5.2.9 Help System</sub-heading>
+        <p>Much of the ANSYS documentation is available on-line. Type <custom-process>help, command</custom-process> to get help on any command. Another option to get help is to select <custom-process>HELP</custom-process> on the menu bar at the top of the screen. Information about the commands, theory, and element types used by ANSYS can be viewed in Fig. 1.28.</p>
         <div class="container-1">
             <span><img src="./I_Ansys_Basics/30.jpg" alt="image" width="300px"></span>
-        </div> 
-        <image-tag>Fig. 1.28 Help system</image-tag><br>
+        </div>
+        <image-tag>Fig. 1.28 Help System</image-tag>
+
         <div class="nav-buttons">
             <a href="Running_the_ANSYS_Program.html">Previous</a>
             <a href="Graphical_Picking.html">Next</a>
         </div>
+    </div>
 </body>
 </html>

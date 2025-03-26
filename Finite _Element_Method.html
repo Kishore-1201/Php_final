@@ -5,225 +5,335 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finite Element Method</title>
     <style>
+        /* Custom Properties based on Ansys colors */
+        :root {
+            --primary-color: #ED1C24; /* Ansys Red */
+            --secondary-color: #FDFDFD; /* Off-White */
+            --gradient-bg: linear-gradient(135deg, #000000, #333333); /* Black to Dark Gray */
+            --dark-bg: #000000; /* Black */
+            --light-bg: #F5F6F5; /* Light Gray */
+            --text-dark: #000000; /* Black */
+            --text-muted: #333333; /* Dark Gray */
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-        font-family: 'Poppins', Arial, sans-serif;
-        padding-left: 10vw;
-        padding-right: 10vw;
-        color: var(--text-muted);
-        line-height: 1.6;
-        text-align: justify
-    }
-    
-    /* Custom Headings */
-    custom-heading[level='1'], 
-    custom-heading[level='2'] {
-        font-family: 'Times New Roman', Times, serif;
-        color: red;
-        font-weight: 900;
-        text-align: center; 
-        display: block;
-        margin: 0 auto;
-    }
-    
-    custom-heading[level='1'] {
-        font-size: 2rem; /* Adjusts based on screen */
-    }
-    
-    custom-heading[level='2'] {
-        font-size: 2.5rem;
-        margin: 20px 0;
-        padding-bottom: 50px;
-    }
-    
-    /* Sub-heading */
-    sub-heading {
-        font-family: 'Times New Roman', Times, serif;
-        color: rgb(26, 100, 184);
-        font-weight: bold;
-        font-size: 1.2rem;
-    }
-    
-    /* Image Tag */
-    image-tag {
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    /* Custom styles */
-    custom-style {
-        font-style: italic;
-    }
-    
-    custom-process {
-        font-family: 'Times New Roman', Times, serif;
-        padding: 10px;
-        margin: 10px 0;
-        font-weight: bold;
-    }
-    
-    custom-spacing {
-        margin-top: 15px;
-        margin-bottom: 5px;
-        display: block;
-    }
-    
-    /* Containers */
-    .container-1 {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        background-color: rgba(251, 253, 255, 0.489);
-        flex-wrap: wrap;
-        padding: 20px;
-    }
-    
-    .container-1 img {
-        width: 300px;
-        height: 150px;
-        object-fit: fill;
-        max-width: 100%;
-        background-color: rgba(251, 253, 255, 0.489);
-    }
-    .nav-buttons {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-muted);
+            line-height: 1.6;
+            padding-left: 10vw;
+            padding-right: 10vw;
+            text-align: justify;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-bg);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        .hero custom-heading[level='1'] {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF; /* Changed to white */
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Section */
+        .section {
+            background: var(--secondary-color);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid transparent;
+            position: relative;
+            transition: var(--transition);
+            margin: 2rem 0;
+        }
+
+        .section:hover {
+            border: 2px solid var(--primary-color);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            color: var(--text-dark);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .section p:hover {
+            color: var(--text-dark);
+        }
+
+        /* Custom Elements */
+        custom-heading[level='1'] {
+            font-family: 'Times New Roman', Times, serif;
+            color: var(--primary-color);
+            font-weight: 900;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            font-size: 2rem;
+        }
+
+        sub-heading {
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(26, 100, 184);
+            font-weight: bold;
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            transition: var(--transition);
+        }
+
+        sub-heading:hover {
+            color: rgb(40, 120, 200);
+        }
+
+        image-tag {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        custom-spacing {
+            margin-top: 15px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        custom-style {
+            font-style: italic;
+            color: var(--primary-color);
+        }
+
+        /* Containers */
+        .container-1 {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background-color: rgba(251, 253, 255, 0.8);
+            flex-wrap: wrap;
+            padding: 20px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .container-1:hover {
+            background-color: rgba(251, 253, 255, 1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .container-1 img {
+            width: 300px;
+            height: 150px;
+            object-fit: cover;
+            max-width: 100%;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .container-1 img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
             padding: 10px;
+            text-align: center;
+            gap: 20px;
         }
 
         .nav-buttons a {
-            background-color: rgba(255, 16, 16, 0.808);
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
             text-decoration: none;
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            border-radius: 25px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
         }
 
         .nav-buttons a:hover {
-            background-color: #b30000;
+            background-color: #C81018;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        .container-2{
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background-color: rgba(251, 253, 255, 0.8);
+            flex-wrap: wrap;
+            padding: 20px;
+            border-radius: 8px;
         }
 
-        /* Center the navigation buttons */
-        .nav-buttons {
-            margin-top: 50px;
-            text-align: center;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-left: 5vw;
+                padding-right: 5vw;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero custom-heading[level='1'] {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 2rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .container-1 {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .container-1 img {
+                width: 200px;
+                height: 120px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
-    
-    /* Media Queries for Mobile Responsiveness */
-    @media (max-width: 768px) {
-        body {
-            padding-left: 5vw;
-            padding-right: 5vw;
+
+        @media (max-width: 480px) {
+            body {
+                padding-left: 3vw;
+                padding-right: 3vw;
+            }
+
+            .hero custom-heading[level='1'] {
+                font-size: 2rem;
+            }
+
+            .container-1 img {
+                width: 150px;
+                height: 100px;
+            }
+
+            .section p {
+                font-size: 1rem;
+            }
         }
-    
-        custom-heading[level='1'] {
-            font-size: 1.8rem;
-        }
-    
-        custom-heading[level='2'] {
-            font-size: 2rem;
-            padding-bottom: 30px;
-        }
-    
-        sub-heading {
-            font-size: 1rem;
-        }
-    
-        .container-1 {
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-        }
-    
-        .container-1 img {
-            width: 150px;
-            height: 120px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        body {
-            padding-left: 3vw;
-            padding-right: 3vw;
-        }
-    
-        custom-heading[level='1'] {
-            font-size: 1.5rem;
-        }
-    
-        custom-heading[level='2'] {
-            font-size: 1.8rem;
-            padding-bottom: 20px;
-        }
-    
-        sub-heading {
-            font-size: 0.9rem;
-        }
-    
-        .container-1 img {
-            width: 150px;
-            height: 100px;
-        }
-    }
-        </style>
+    </style>
 </head>
 <body>
-    <custom-heading level="1">1 ANSYS BASICS</custom-heading level='1'>
+    <div class="hero">
+        <custom-heading level="1">1 ANSYS BASICS</custom-heading>
+    </div>
 
-    <p>ANSYS is a sophisticated and comprehensive finite element program. It has capabilities in many different physics fields such as static structural, nonlinear, thermal, implicit and explicit dynamics, fluid flow, electromagnetics, and electric field analysis (Fig. 1.1). Obviously because ANSYS is a huge program with so many capabilities it is impossible to cover everything in this small book. This book will give an introduction as to how the ANSYS program works and how these basic skills will be applicable to any type of analysis within ANSYS. The most important concepts in using ANSYS will be addressed here in a compressed format. The key to becoming productive in any computer aided engineering program is to start to think like the program thinks, to get the big picture of how it works in general.</p>
+    <div class="section">
+        <p>ANSYS is a sophisticated and comprehensive finite element program. It has capabilities in many different physics fields such as static structural, nonlinear, thermal, implicit and explicit dynamics, fluid flow, electromagnetics, and electric field analysis (Fig. 1.1). Obviously because ANSYS is a huge program with so many capabilities it is impossible to cover everything in this small book. This book will give an introduction as to how the ANSYS program works and how these basic skills will be applicable to any type of analysis within ANSYS. The most important concepts in using ANSYS will be addressed here in a compressed format. The key to becoming productive in any computer aided engineering program is to start to think like the program thinks, to get the big picture of how it works in general.</p>
 
-    <div class="container-1">
-        <span><img src="./I_Ansys_Basics/1.png" alt="image"></span>
-    </div> 
-    <image-tag>Fig. 1.1 Some applications of ANSYS</image-tag>
+        <div class="container-2">
+            <span><img src="./I_Ansys_Basics/1.png" alt="image"></span>
+        </div>
+        <image-tag>Fig. 1.1 Some applications of ANSYS</image-tag>
 
-    <p>ANSYS is an integrated program with all operations performed under one Graphic User Interface, GUI. Creating the model, running it, and postprocessing the results are all done without leaving the ANSYS environment.</p>
+        <p>ANSYS is an integrated program with all operations performed under one Graphic User Interface, GUI. Creating the model, running it, and postprocessing the results are all done without leaving the ANSYS environment.</p>
 
-    <custom-spacing>There are many different ways of working within ANSYS. Like every software, ANSYS is driven by commands. It gives easy access to these commands. These commands are simple to use; just a keyword followed by several arguments.</custom-spacing>
+        <custom-spacing>There are many different ways of working within ANSYS. Like every software, ANSYS is driven by commands. It gives easy access to these commands. These commands are simple to use; just a keyword followed by several arguments.</custom-spacing>
 
-    <p>New ANSYS users generally don’t use scripting to start with and just want to find out how to do what they want within the GUI environment. That’s where this book starts as well. Each key concept is explained as briefly as possible.</p>
+        <p>New ANSYS users generally don’t use scripting to start with and just want to find out how to do what they want within the GUI environment. That’s where this book starts as well. Each key concept is explained as briefly as possible.</p>
 
-    <sub-heading>1.1 Finite Element Method</sub-heading>
+        <sub-heading>1.1 Finite Element Method</sub-heading>
 
-    <custom-spacing>It is very helpful to an engineer using ANSYS to have at least some idea of how the finite element method (FEM) works. What happens internally when ANSYS is told to Solve? Many terms associated with finite element modeling in general heard over and over again are based on the common numerical algorithms. After all, the finite element method is purely a mathematical technique.</custom-spacing>
+        <custom-spacing>It is very helpful to an engineer using ANSYS to have at least some idea of how the finite element method (FEM) works. What happens internally when ANSYS is told to Solve? Many terms associated with finite element modeling in general heard over and over again are based on the common numerical algorithms. After all, the finite element method is purely a mathematical technique.</custom-spacing>
 
-    <custom-spacing>The FEM was developed more by engineers during the 1950s and 1960s using physical insight than by mathematicians using abstract methods. The underlying theory is over 100 years old. It was the basis for pen-and-paper calculations in the evaluation of suspension bridges and steam boilers. It was first applied to problems of stress analysis. In all applications the analyst seeks to calculate a field quantity: in stress analysis it is the displacement field or the stress field; in thermal analysis it is the temperature field or the heat flux; in fluid flow it is the stream function or the velocity potential function; and so on. Results of greatest interest are usually peak values of either the field quantity or its gradients. The FE method is a way of getting a numerical solution to a specific problem. An FE analysis does not produce a formula as a solution, nor does it solve a class of problems. Also, the solution is approximate unless the problem is so simple that a convenient exact formula is already available.</custom-spacing>
+        <custom-spacing>The FEM was developed more by engineers during the 1950s and 1960s using physical insight than by mathematicians using abstract methods. The underlying theory is over 100 years old. It was the basis for pen-and-paper calculations in the evaluation of suspension bridges and steam boilers. It was first applied to problems of stress analysis. In all applications the analyst seeks to calculate a field quantity: in stress analysis it is the displacement field or the stress field; in thermal analysis it is the temperature field or the heat flux; in fluid flow it is the stream function or the velocity potential function; and so on. Results of greatest interest are usually peak values of either the field quantity or its gradients. The FE method is a way of getting a numerical solution to a specific problem. An FE analysis does not produce a formula as a solution, nor does it solve a class of problems. Also, the solution is approximate unless the problem is so simple that a convenient exact formula is already available.</custom-spacing>
 
-    <p>When there is a structure like a simply supported beam, it’s easy enough to grab an engineering handbook or textbook and look up the equations needed to calculate the bending moments and displacements. However if there is a structure that is even just a little more complicated, like a stepladder (Fig. 1.2) for example, one will not be able to go to the engineering handbook and look up the stepladder equation. Sure, it’s possible to derive some governing equation(s) for the stepladder but this might be a lot of trouble. For even more complex structures it quickly becomes impossible to do so.</p>
+        <p>When there is a structure like a simply supported beam, it’s easy enough to grab an engineering handbook or textbook and look up the equations needed to calculate the bending moments and displacements. However if there is a structure that is even just a little more complicated, like a stepladder (Fig. 1.2) for example, one will not be able to go to the engineering handbook and look up the stepladder equation. Sure, it’s possible to derive some governing equation(s) for the stepladder but this might be a lot of trouble. For even more complex structures it quickly becomes impossible to do so.</p>
 
-    <div class="container-1">
-        <span><img src="./I_Ansys_Basics/36.png" alt="image" width="300px"></span>
-    </div> 
-    <image-tag>Fig. 1.2 A Stepladder and its FE Model</image-tag>
+        <div class="container-1">
+            <span><img src="./I_Ansys_Basics/36.png" alt="image" width="300px"></span>
+        </div>
+        <image-tag>Fig. 1.2 A Stepladder and its FE Model</image-tag>
 
-    <custom-spacing>This is where the finite element technique comes in. In this method an arbitrarily complex structure that cannot be described with an equation is broken down into small pieces, each of which is simple enough on its own that it can be described with an equation. While the actual structure theoretically contains an infinite number of small pieces it could be broken down into, this method breaks it down into a finite number of pieces of a specific size that analyst can choose. The smaller the pieces, the closer the approximation is to reality. Then the response of the entire structure is calculated by essentially summing up the response of each little piece. These small pieces are called <span style="font-style: italic;">elements</span>, and each element is connected to its neighbor by nodes at each of its vertices.</custom-spacing>
+        <custom-spacing>This is where the finite element technique comes in. In this method an arbitrarily complex structure that cannot be described with an equation is broken down into small pieces, each of which is simple enough on its own that it can be described with an equation. While the actual structure theoretically contains an infinite number of small pieces it could be broken down into, this method breaks it down into a finite number of pieces of a specific size that analyst can choose. The smaller the pieces, the closer the approximation is to reality. Then the response of the entire structure is calculated by essentially summing up the response of each little piece. These small pieces are called <custom-style>elements</custom-style>, and each element is connected to its neighbor by nodes at each of its vertices.</custom-spacing>
 
-    <p>More and more these days solid part is meshed to create nodes and elements. It’s important to realize that the solid CAD part is not the finite element model; it is just a vehicle used to tell ANSYS where analyst wants the nodes and elements to go. The finite element method works only with the nodes and elements.</p>
+        <p>More and more these days solid part is meshed to create nodes and elements. It’s important to realize that the solid CAD part is not the finite element model; it is just a vehicle used to tell ANSYS where analyst wants the nodes and elements to go. The finite element method works only with the nodes and elements.</p>
 
-    <custom-spacing>The FE method involves cutting a structure into several elements (pieces of the structure), describing the behavior of each element in a simple way, and then connecting elements together again. This process results in a set of simultaneous algebraic equations. In stress analysis these equations are equilibrium equations of the connection points. There may be several hundred or several thousand such equations, which means that computer implementation is mandatory. A more sophisticated description of the FE method regards it as piecewise polynomial interpolation. That is, over an element, a field quantity such as displacement is interpolated from values of the field quantity at the connection points. By connecting elements together, the field quantity becomes interpolated over the entire structure in piecewise fashion, by as many polynomial expressions as there are elements. The best values of the field quantity at the connection points are those that minimize some function such as total energy. The minimization process generates a set of simultaneous algebraic equations for values of the field quantity at the connection points.</custom-spacing>
+        <custom-spacing>The FE method involves cutting a structure into several elements (pieces of the structure), describing the behavior of each element in a simple way, and then connecting elements together again. This process results in a set of simultaneous algebraic equations. In stress analysis these equations are equilibrium equations of the connection points. There may be several hundred or several thousand such equations, which means that computer implementation is mandatory. A more sophisticated description of the FE method regards it as piecewise polynomial interpolation. That is, over an element, a field quantity such as displacement is interpolated from values of the field quantity at the connection points. By connecting elements together, the field quantity becomes interpolated over the entire structure in piecewise fashion, by as many polynomial expressions as there are elements. The best values of the field quantity at the connection points are those that minimize some function such as total energy. The minimization process generates a set of simultaneous algebraic equations for values of the field quantity at the connection points.</custom-spacing>
 
-    <p>The power of the FE method is its versatility. The object analyzed may have arbitrary shape, arbitrary supports and arbitrary loads. Such generality does not exist in classical analytical methods. For example, temperature-induced stresses are difficult to analyze with classical methods, even when the structure geometry and the temperature field are both simple. The FE method treats thermal stresses as easily as stresses induced by mechanical load, and the temperature distribution itself can be calculated by FE.</p>
+        <p>The power of the FE method is its versatility. The object analyzed may have arbitrary shape, arbitrary supports and arbitrary loads. Such generality does not exist in classical analytical methods. For example, temperature-induced stresses are difficult to analyze with classical methods, even when the structure geometry and the temperature field are both simple. The FE method treats thermal stresses as easily as stresses induced by mechanical load, and the temperature distribution itself can be calculated by FE.</p>
 
-    <custom-spacing>The theory of FE includes matrix manipulations, numerical integration, equation solving, and other procedures carried out automatically by commercial software. The analyst may see only hints of these procedures as the software processes data. The analyst deals mainly with preprocessing (describing loads, supports, materials, and generating the FE mesh) and postprocessing (sorting output, listing and plotting of results).</custom-spacing>
+        <custom-spacing>The theory of FE includes matrix manipulations, numerical integration, equation solving, and other procedures carried out automatically by commercial software. The analyst may see only hints of these procedures as the software processes data. The analyst deals mainly with preprocessing (describing loads, supports, materials, and generating the FE mesh) and postprocessing (sorting output, listing and plotting of results).</custom-spacing>
 
-    <p>There are various levels of engineering abstraction built into different kinds of elements. A solid element is fully defined by its geometry in 3D space (think of it as a small block cut out of the part), while shells (also called plates) are idealized by a surface and so need a thickness to be assigned for them to fully understand what they are. A beam element is a further abstraction. A simple line between two points defines it geometrically, and so analyst has to supply its area, moment of inertia, torsional stiffness, etc.</p>
+        <p>There are various levels of engineering abstraction built into different kinds of elements. A solid element is fully defined by its geometry in 3D space (think of it as a small block cut out of the part), while shells (also called plates) are idealized by a surface and so need a thickness to be assigned for them to fully understand what they are. A beam element is a further abstraction. A simple line between two points defines it geometrically, and so analyst has to supply its area, moment of inertia, torsional stiffness, etc.</p>
 
-    <custom-spacing>All of the basic calculations in the finite element method are performed at the nodes. What happens inside an element between the nodes is controlled by the element shape function. This is an assumed distribution of the primary variable and can be linear, quadratic, cubic, etc. For structural analysis the primary variable is the displacement and is also called the degree of freedom (DOF). A general three dimensional structural model has six degrees of freedom at each node, translations in the X, Y and Z directions, and rotations about those three axes. For a thermal analysis the degrees of freedom are the temperatures at each node.</custom-spacing>
+        <custom-spacing>All of the basic calculations in the finite element method are performed at the nodes. What happens inside an element between the nodes is controlled by the element shape function. This is an assumed distribution of the primary variable and can be linear, quadratic, cubic, etc. For structural analysis the primary variable is the displacement and is also called the degree of freedom (DOF). A general three dimensional structural model has six degrees of freedom at each node, translations in the X, Y and Z directions, and rotations about those three axes. For a thermal analysis the degrees of freedom are the temperatures at each node.</custom-spacing>
 
-    <p>The fundamental equation of the finite element method is [K]{ u} = { F}, where [K] is the stiffness matrix, {u} is the displacement vector, and {F} is the applied load vector. This is analogous to a simple spring (Fig. 1.3) that obeys Hooke’s Law (stress = Young’s modulus x strain), and is the essence of “small deflection theory”, or linear analysis. Small deflection theory means that the displacement calculated for the applied load can be extrapolated to any value of load, and that the stiffness of the structure does not change for any value of applied load. Strictly speaking, this assumption is never exactly true, but for a very large class of analyses it has traditionally been considered good enough.</p>
+        <p>The fundamental equation of the finite element method is [K]{ u} = { F}, where [K] is the stiffness matrix, {u} is the displacement vector, and {F} is the applied load vector. This is analogous to a simple spring (Fig. 1.3) that obeys Hooke’s Law (stress = Young’s modulus x strain), and is the essence of “small deflection theory”, or linear analysis. Small deflection theory means that the displacement calculated for the applied load can be extrapolated to any value of load, and that the stiffness of the structure does not change for any value of applied load. Strictly speaking, this assumption is never exactly true, but for a very large class of analyses it has traditionally been considered good enough.</p>
 
-    <div class="container-1">
-        <span><img src="./I_Ansys_Basics/3.jpg" alt="image" width="300px"></span>
-    </div> 
-    <image-tag>Fig. 1.3</image-tag>
-    <div class="nav-buttons">
-        <a href="">Previous</a>
-        <a href="Introduction_to_ANSYS.html">Next</a>
+        <div class="container-1">
+            <span><img src="./I_Ansys_Basics/3.jpg" alt="image" width="300px"></span>
+        </div>
+        <image-tag>Fig. 1.3</image-tag>
+
+        <div class="nav-buttons">
+            <a href="#">Previous</a>
+            <a href="Introduction_to_ANSYS.html">Next</a>
+        </div>
     </div>
 </body>
 </html>
