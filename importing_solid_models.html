@@ -88,6 +88,33 @@
         max-width: 100%;
         background-color: rgba(251, 253, 255, 0.489);
     }
+    .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .nav-buttons a {
+            background-color: rgba(255, 16, 16, 0.808);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #b30000;
+        }
+
+        /* Center the navigation buttons */
+        .nav-buttons {
+            margin-top: 50px;
+            text-align: center;
+        }
     
     /* Media Queries for Mobile Responsiveness */
     @media (max-width: 768px) {
@@ -151,4 +178,9 @@
     <custom-spacing>A solid model can be created in a favorite CAD system, saved as an IGES file, and then imported to ANSYS. Once successfully imported, the model can be meshed similar to any model created within the program.</custom-spacing><br>
     <custom-spacing>The Initial Graphics Exchange Specification (IGES) is a vendor-neutral standard format used to exchange geometric models between various CAD and CAE systems. The filter permits import of partial files. Multiple files also can be imported into the same model.</custom-spacing><br>
     <custom-spacing>ANSYS provides the <custom-style>SMOOTH method</custom-style> for importing IGES files. This method uses the standard ANSYS geometry database and has no capabilities for automatically creating volumes.</custom-spacing>
-    
+    <div class="nav-buttons">
+        <a href="solid_modeling.html">Previous</a>
+        <a href="generating_the_mesh.html">Next</a>
+    </div>
+</body>
+</html>

@@ -82,6 +82,33 @@
         max-width: 100%;
         background-color: rgba(251, 253, 255, 0.489);
     }
+    .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .nav-buttons a {
+            background-color: rgba(255, 16, 16, 0.808);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #b30000;
+        }
+
+        /* Center the navigation buttons */
+        .nav-buttons {
+            margin-top: 50px;
+            text-align: center;
+        }
     
     /* Media Queries for Mobile Responsiveness */
     @media (max-width: 768px) {
@@ -147,5 +174,9 @@
 The analyst must always use caution and double-check everything while developing a model.</custom-spacing><br>
     <custom-spacing>A problem most analysts will encounter is to make a change to a model in error, long after the database was saved. The analyst will have to learn to use a text editor on the log file, to extract that portion of the log file after the last time the database was saved, or retrieved (whichever was most recent). Remove the offending command. That portion of the log file will have to be run on the model as it was the last time it was saved or retrieved. Make sure to be in the correct part of ANSYS (usually /PREP7) when reading in the instructions with /INPUT. The same method can apply if the computer is subjected to a power failure, or if ANSYS crashes without leaving an ‘ansabort.db’ file. After re-starting, take a text editor to the log file, and re-run the appropriate instructions on the model database file as it was when last saved or retrieved.</custom-spacing><br>
     <custom-spacing>The most common of all errors in Finite Element Modeling is the incorrect application of loads and boundary conditions. This must be thought about very carefully. Most models (not all) are prevented from undergoing free body motion in 2-D or 3-D space, by eliminating at least a minimal number of degrees of freedom (2 translations plus 1 rotation in 2-D, and 3 translations plus 3 rotations in 3-D). Rotations can be prevented either by having constraints on translations at enough distinct nodes in space, or by directly constraining a rotational degree of freedom at a node. A common check on results is to see whether the sums of the reaction forces at the constrained nodes equal the sums of the applied forces and gravity loads.</custom-spacing>
+    <div class="nav-buttons">
+        <a href="Documenting the Analysis.html">Previous</a>
+        <a href="model_generation.html">Next</a>
+    </div>
 </body>
 </html>

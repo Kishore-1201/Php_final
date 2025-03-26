@@ -82,6 +82,33 @@
         max-width: 100%;
         background-color: rgba(251, 253, 255, 0.489);
     }
+    .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .nav-buttons a {
+            background-color: rgba(255, 16, 16, 0.808);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #b30000;
+        }
+
+        /* Center the navigation buttons */
+        .nav-buttons {
+            margin-top: 50px;
+            text-align: center;
+        }
     
     /* Media Queries for Mobile Responsiveness */
     @media (max-width: 768px) {
@@ -336,5 +363,9 @@
     <sub-heading>2.2.7 Creating Multiple Load Step Files</sub-heading><br>
     <custom-spacing>All loads and load step options put together form a <custom-style>load step</custom-style>, for which the program can calculate the solution. If there are multiple load steps, store the data for each load step on a file, called the <custom-style>load step file</custom-style>, and read it in later for solution. Use <custom-process>Main Menu> Preprocessor> Loads> Load Step Opts> Write LS File</custom-process> or <custom-process>Main Menu> Solution> Load Step Opts> Write LS File</custom-process>.</custom-spacing><br>
     <custom-spacing>If the <custom-style>Solution Controls</custom-style> dialog box is used to set the analysis and load step options, define each load step using the <custom-style>Basic</custom-style> tab. After all load step files are written, use one action command to read in the files sequentially and obtain the solution for each load step.</custom-spacing>
-    </body>
+    <div class="nav-buttons">
+        <a href="Getting Started.html">Previous</a>
+        <a href="Solution.html">Next</a>
+    </div>    
+</body>
     </html>

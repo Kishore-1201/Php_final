@@ -82,6 +82,33 @@
         max-width: 100%;
         background-color: rgba(251, 253, 255, 0.489);
     }
+    .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .nav-buttons a {
+            background-color: rgba(255, 16, 16, 0.808);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #b30000;
+        }
+
+        /* Center the navigation buttons */
+        .nav-buttons {
+            margin-top: 50px;
+            text-align: center;
+        }
     
     /* Media Queries for Mobile Responsiveness */
     @media (max-width: 768px) {
@@ -166,5 +193,9 @@
     <custom-spacing>Labeling the axes. The X and Y axes can be labelled using <custom-process>Utility Menu> PlotCtrls> Style> Graphs</custom-process>.</custom-spacing><br>
     <custom-spacing>Labeling the curves. For POST26 plotted-variable graphs, the labels applied to the curves are established choosing: <custom-process>Main Menu> TimeHist Postpro> Define Variables</custom-process> or <custom-process>Main Menu> TimeHist Postpro> Elec&Mag> Circuit> Define Variables</custom-process>.</custom-spacing><br>
     <custom-spacing>Adding user-defined graphics and text. Extra graphics and text can be added to the displays using the annotation functions by choosing <custom-process>Utility Menu> PlotCtrls> Annotation</custom-process>.</custom-spacing>
-    </body>
+    <div class="nav-buttons">
+        <a href="Getting Started with Graphics.html">Previous</a>
+        <a href="Annotation.html">Next</a>
+    </div>    
+</body>
     </html>

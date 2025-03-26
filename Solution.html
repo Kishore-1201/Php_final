@@ -82,6 +82,33 @@
         max-width: 100%;
         background-color: rgba(251, 253, 255, 0.489);
     }
+    .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .nav-buttons a {
+            background-color: rgba(255, 16, 16, 0.808);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #b30000;
+        }
+
+        /* Center the navigation buttons */
+        .nav-buttons {
+            margin-top: 50px;
+            text-align: center;
+        }
     
     /* Media Queries for Mobile Responsiveness */
     @media (max-width: 768px) {
@@ -184,6 +211,9 @@
     
     <sub-heading>2.3.3.3 Using the Array Parameter Method</sub-heading><br>
     <custom-spacing>This method, mainly intended for transient or nonlinear static analyses, requires knowledge of array parameters and do-loops, which are part of ANSYS Parametric Design Language (APDL). The array parameter method involves building tables of <custom-style>load</custom-style> versus <custom-style>time</custom-style> using array parameters.</custom-spacing>
-    
+    <div class="nav-buttons">
+        <a href="Loading.html">Previous</a>
+        <a href="Overview of Postprocessing.html">Next</a>
+    </div>
 </body>
 </html>

@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started</title>
+</head>
+<body>
     <style>
         body {
         font-family: 'Poppins', Arial, sans-serif;
@@ -74,20 +80,41 @@
         flex-wrap: wrap;
         padding: 20px;
     }
-    .container-2{
-        justify-content: center;
-        align-items: center;
-        padding-left: 20px;
-        flex-wrap: wrap;
-    }
     
     .container-1 img {
         width: 150px;
         height: 150px;
-        object-fit: fill; 
+        object-fit: fill;
         max-width: 100%;
         background-color: rgba(251, 253, 255, 0.489);
     }
+    .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .nav-buttons a {
+            background-color: rgba(255, 16, 16, 0.808);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #b30000;
+        }
+
+        /* Center the navigation buttons */
+        .nav-buttons {
+            margin-top: 50px;
+            text-align: center;
+        }
     
     /* Media Queries for Mobile Responsiveness */
     @media (max-width: 768px) {
@@ -145,8 +172,7 @@
             height: 100px;
         }
     }
-        </style>
-<body>
+    </style>
     <p>
         <custom-heading level="1">2 ANSYS OPERATIONS</custom-heading level='1'>
     
@@ -495,5 +521,9 @@
         </custom-heading>
         </custom-heading>
         </p>
-        </body>
-        </html>
+        <div class="nav-buttons">
+            <a href="Customizing_the_GUI.html">Previous</a>
+            <a href="Loading.html">Next</a>
+        </div>
+    </body>
+</html>

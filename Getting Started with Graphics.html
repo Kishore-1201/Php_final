@@ -64,6 +64,33 @@
         margin-bottom: 5px;
         display: block;
     }
+    .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .nav-buttons a {
+            background-color: rgba(255, 16, 16, 0.808);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #b30000;
+        }
+
+        /* Center the navigation buttons */
+        .nav-buttons {
+            margin-top: 50px;
+            text-align: center;
+        }
     
     /* Containers */
     .container-1 {
@@ -232,5 +259,9 @@
     
     <sub-heading>2.8.4.4 Displaying Selected Entities</sub-heading><br>
     <custom-spacing>Issue <custom-process>Utility Menu> PlotCtrls> Multi-Plots</custom-process> or <custom-process>Utility Menu> Plot> Replot</custom-process> to display the entities selected.</custom-spacing>
-    </body>
+    <div class="nav-buttons">
+        <a href="Selecting and Components.html">Previous</a>
+        <a href="Creating Graphs.html">Next</a>
+    </div>    
+</body>
     </html>

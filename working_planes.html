@@ -88,6 +88,33 @@
         max-width: 100%;
         background-color: rgba(251, 253, 255, 0.489);
     }
+    .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .nav-buttons a {
+            background-color: rgba(255, 16, 16, 0.808);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #b30000;
+        }
+
+        /* Center the navigation buttons */
+        .nav-buttons {
+            margin-top: 50px;
+            text-align: center;
+        }
     
     /* Media Queries for Mobile Responsiveness */
     @media (max-width: 768px) {
@@ -197,4 +224,7 @@
         <span><img src="./III  Modeling&Meshing/image8.jpg" alt="image" width="300px"></span>
     </div></custom-spacing> 
     <image-tag>Fig. 3.7 Working Plane</image-tag>
-    
+    <div class="nav-buttons">
+        <a href="coordinate_systems.html">Previous</a>
+        <a href="solid_modeling.html">Next</a>
+    </div>

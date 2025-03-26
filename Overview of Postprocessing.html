@@ -82,6 +82,33 @@
         max-width: 100%;
         background-color: rgba(251, 253, 255, 0.489);
     }
+    .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .nav-buttons a {
+            background-color: rgba(255, 16, 16, 0.808);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #b30000;
+        }
+
+        /* Center the navigation buttons */
+        .nav-buttons {
+            margin-top: 50px;
+            text-align: center;
+        }
     
     /* Media Queries for Mobile Responsiveness */
     @media (max-width: 768px) {
@@ -171,5 +198,9 @@
     <sub-heading>2.4.3 Types of Data Available for Postprocessing</sub-heading><br>
     <custom-spacing>The solution phase calculates two types of results data - <custom-style>Primary data</custom-style> and <custom-style>Derived data</custom-style>. <custom-style>Primary data</custom-style> consist of the degree-of-freedom solution calculated at each node: displacements in a structural analysis, temperatures in a thermal analysis, magnetic potentials in a magnetic analysis, and so on. These are also known as nodal solution data.</custom-spacing><br>
     <custom-spacing><custom-style>Derived data</custom-style> are those results calculated from the primary data, such as stresses and strains in a structural analysis, thermal gradients and fluxes in a thermal analysis, magnetic fluxes in a magnetic analysis, and the like. They are typically calculated for each element and may be reported at any of the following locations: at all nodes of each element, at all integration points of each element, or at the centroid of each element. Derived data are also known as element solution data, except when they are averaged at the nodes. In such cases, they become nodal solution data.</custom-spacing>
-    </body>
+    <div class="nav-buttons">
+        <a href="Solution.html">Previous</a>
+        <a href="The General Postprocessor(POST1).html">Next</a>
+    </div>
+</body>
     </html>
