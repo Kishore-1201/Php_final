@@ -7,174 +7,402 @@
 </head>
 <body>
     <style>
+        /* Custom Properties based on Ansys colors */
+        :root {
+            --primary-color: #ED1C24; /* Ansys Red */
+            --secondary-color: #FDFDFD; /* Off-White */
+            --gradient-bg: linear-gradient(135deg, #000000, #333333); /* Black to Dark Gray */
+            --dark-bg: #000000; /* Black */
+            --light-bg: #F5F6F5; /* Light Gray */
+            --text-dark: #000000; /* Black */
+            --text-muted: #333333; /* Dark Gray */
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background: var(--secondary-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .navbar-left img {
+      height: 40px;
+      transition: var(--transition);
+    }
+
+    .navbar-left img:hover {
+      transform: scale(1.1);
+    }
+
+    .navbar-right ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .navbar-right a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .navbar-right a:hover {
+      color: var(--primary-color);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown .dropbtn {
+      background: transparent;
+      color: var(--text-dark);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .dropdown:hover .dropbtn {
+      color: var(--primary-color);
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: var(--secondary-color);
+      min-width: 12rem;
+      box-shadow: var(--shadow-sm);
+      border-radius: 8px;
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .dropdown-content a {
+      color: var(--text-dark);
+      padding: 0.75rem 1rem;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      color: var(--primary-color);
+      background: #f0f0f0;
+    }
+
         body {
-        font-family: 'Poppins', Arial, sans-serif;
-        padding-left: 10vw;
-        padding-right: 10vw;
-        color: var(--text-muted);
-        line-height: 1.6;
-        text-align: justify
-    }
-    
-    /* Custom Headings */
-    custom-heading[level='1'], 
-    custom-heading[level='2'] {
-        font-family: 'Times New Roman', Times, serif;
-        color: red;
-        font-weight: 900;
-        text-align: center; 
-        display: block;
-        margin: 0 auto;
-    }
-    
-    custom-heading[level='1'] {
-        font-size: 2rem; /* Adjusts based on screen */
-    }
-    
-    custom-heading[level='2'] {
-        font-size: 2.5rem;
-        margin: 20px 0;
-        padding-bottom: 50px;
-    }
-    
-    /* Sub-heading */
-    sub-heading {
-        font-family: 'Times New Roman', Times, serif;
-        color: rgb(26, 100, 184);
-        font-weight: bold;
-        font-size: 1.2rem;
-    }
-    
-    /* Image Tag */
-    image-tag {
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    /* Custom styles */
-    custom-style {
-        font-style: italic;
-    }
-    
-    custom-process {
-        font-family: 'Times New Roman', Times, serif;
-        padding: 10px;
-        margin: 10px 0;
-        font-weight: bold;
-    }
-    
-    custom-spacing {
-        margin-top: 15px;
-        margin-bottom: 5px;
-        display: block;
-    }
-    
-    /* Containers */
-    .container-1 {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        background-color: rgba(251, 253, 255, 0.489);
-        flex-wrap: wrap;
-        padding: 20px;
-    }
-    
-    .container-1 img {
-        width: 150px;
-        height: 150px;
-        object-fit: fill;
-        max-width: 100%;
-        background-color: rgba(251, 253, 255, 0.489);
-    }
-    .nav-buttons {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-muted);
+            line-height: 1.6;
+            padding-left: 10vw;
+            padding-right: 10vw;
+            text-align: justify;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-bg);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        .hero custom-heading[level='2'] {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF; /* Changed to white */
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Section */
+        .section {
+            background: var(--secondary-color);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid transparent;
+            position: relative;
+            transition: var(--transition);
+            margin: 2rem 0;
+        }
+
+        .section:hover {
+            border: 2px solid var(--primary-color);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section li {
+            position: relative;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .section li::before {
+            content: '→';
+            color: var(--primary-color);
+            position: absolute;
+            left: -1.5rem;
+            font-weight: bold;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .section p:hover {
+            color: var(--text-dark);
+        }
+
+        /* Custom Elements */
+        custom-heading[level='2'] {
+            font-family: 'Times New Roman', Times, serif;
+            color: var(--primary-color);
+            font-weight: 900;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            font-size: 2.5rem;
+        }
+
+        sub-heading {
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(26, 100, 184);
+            font-weight: bold;
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            transition: var(--transition);
+        }
+
+        sub-heading:hover {
+            color: rgb(40, 120, 200);
+        }
+
+        image-tag {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        custom-spacing {
+            margin-top: 15px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        custom-style {
+            font-style: italic;
+            color: var(--primary-color);
+        }
+
+        custom-process {
+            font-family: 'Times New Roman', Times, serif;
+            padding: 0.5rem;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        custom-processor {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        /* Containers */
+        .container-1 {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            background-color: rgba(251, 253, 255, 0.8);
+            flex-wrap: wrap;
+            padding: 20px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .container-1:hover {
+            background-color: rgba(251, 253, 255, 1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .container-1 img {
+            /* width: 150px;
+            height: 150px; */
+            object-fit: cover;
+            max-width: 100%;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .container-1 img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
             padding: 10px;
+            text-align: center;
+            gap: 20px;
         }
 
         .nav-buttons a {
-            background-color: rgba(255, 16, 16, 0.808);
-            color: white;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
             text-decoration: none;
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            border-radius: 25px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
         }
 
         .nav-buttons a:hover {
-            background-color: #b30000;
+            background-color: #C81018;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
 
-        /* Center the navigation buttons */
-        .nav-buttons {
-            margin-top: 50px;
-            text-align: center;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-left: 5vw;
+                padding-right: 5vw;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero custom-heading[level='2'] {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 2rem;
+            }
+
+            .container-1 {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .container-1 img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
-    
-    /* Media Queries for Mobile Responsiveness */
-    @media (max-width: 768px) {
-        body {
-            padding-left: 5vw;
-            padding-right: 5vw;
+
+        @media (max-width: 480px) {
+            body {
+                padding-left: 3vw;
+                padding-right: 3vw;
+            }
+
+            .hero custom-heading[level='2'] {
+                font-size: 2rem;
+            }
+
+            .container-1 img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .section p, .section li {
+                font-size: 1rem;
+            }
         }
-    
-        custom-heading[level='1'] {
-            font-size: 1.8rem;
-        }
-    
-        custom-heading[level='2'] {
-            font-size: 2rem;
-            padding-bottom: 30px;
-        }
-    
-        sub-heading {
-            font-size: 1rem;
-        }
-    
-        .container-1 {
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-        }
-    
-        .container-1 img {
-            width: 120px;
-            height: 120px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        body {
-            padding-left: 3vw;
-            padding-right: 3vw;
-        }
-    
-        custom-heading[level='1'] {
-            font-size: 1.5rem;
-        }
-    
-        custom-heading[level='2'] {
-            font-size: 1.8rem;
-            padding-bottom: 20px;
-        }
-    
-        sub-heading {
-            font-size: 0.9rem;
-        }
-    
-        .container-1 img {
-            width: 100px;
-            height: 100px;
-        }
-    }
-        </style>
+    </style>
 <body>
+    <nav class="navbar">
+        <div class="navbar-left">
+          <a href="index.html"><img src="ansys-logo.jpg" alt="Ansys Logo"></a>
+        </div>
+        <div class="navbar-right">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+              <button class="dropbtn">Tutorials</button>
+              <div class="dropdown-content">
+                <a href="Ansys_Basics.html">1.Ansys_Basics</a>
+                <a href="Ansys_Operations.html">2.Ansys_Operations</a>
+                <a href="Modeling&Meshing.html">3.Modeling&Meshing</a>
+                <a href="Structural_Analysis.html">4.Structural_Analysis</a>
+              </div>
+            </li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="pattern.html">Pattern</a></li>
+            <li><a href="index.php">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="hero">
     <custom-heading level="2">3.3 Coordinate Systems</custom-heading><br>
+      </div>
+      <div class="section">
     <custom-spacing>The ANSYS program uses several types of coordinate systems, each used for a different purpose:</custom-spacing>
     <ul>
         <li><custom-style>Global</custom-style> and <custom-style>local</custom-style> coordinate systems are used to locate geometry items in space.
@@ -249,3 +477,6 @@
         <a href="planning_the_approach.html">Previous</a>
         <a href="working_planes.html">Next</a>
     </div>
+      </div>
+</body>
+</html>
