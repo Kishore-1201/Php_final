@@ -454,15 +454,15 @@
     const tl = gsap.timeline();
     tl.to("#logo", {
       delay: 1,
-      duration: 1.8,
+      duration: 2.5,
       width: 65, // Match navbar logo size
       x: -window.innerWidth / 2.108 + 48, // Adjust to left side (3rem padding)
       y: -window.innerHeight / 2.14 + 16, // Adjust to top (1rem padding)
       ease: "power2.inOut",
     })
     .to("#logoOverlay", {
-      opacity: 0,
-      duration: 0.7,
+      opacity: -1,
+      duration: 1.35,
       onComplete: () => {
         document.getElementById("logoOverlay").style.display ="none";
         document.getElementById("navbarLogo").style.opacity = 1;
