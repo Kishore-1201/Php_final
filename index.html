@@ -25,6 +25,34 @@
       padding: 0;
       box-sizing: border-box;
     }
+    .logo-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: white; /* Black background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 1;
+      transition: opacity 0.7s ease;
+    }
+    .logo-overlay img {
+      width: 80vw;
+      max-width: 900px;
+      animation: pulseLogo 1s ease-in-out;
+    }
+    @keyframes pulseLogo {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .ansys-logo {
+      height: 40px; /* Match navbar-left img height */
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
 
     body {
       font-family: 'Poppins', Arial, sans-serif;
@@ -45,6 +73,11 @@
       padding: 1rem 3rem;
       background: var(--secondary-color);
       box-shadow: var(--shadow-sm);
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
     }
 
     .navbar-left img {
@@ -147,6 +180,22 @@
       overflow: hidden;
     }
 
+    #three-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 40rem;
+      padding: 20px;
+    }
+
     .hero h1 {
       font-size: 3.5rem;
       font-weight: 700;
@@ -167,9 +216,19 @@
       animation: fadeInUp 1s ease 0.4s backwards;
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .red-square {
+      position: absolute;
+      background: var(--primary-color);
+      opacity: 0.7;
+      z-index: 2;
+      pointer-events: none;
+      border-radius: 2px;
+    }
+
+    @keyframes moveSquare {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+      50% { opacity: 0.4; }
+      100% { transform: translate(100px, -200px) scale(1.2); opacity: 0; }
     }
 
     /* Content */
@@ -214,7 +273,7 @@
     .section p {
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
-       text-align: justify;
+      text-align: justify;
     }
 
     .section ul {
@@ -310,8 +369,8 @@
 
       .section p, 
       .section ul, 
-      .section li{
-        text-align:left;
+      .section li {
+        text-align: left;
       }
       .section:hover {
         transform: scale(1.03) translateZ(10px); /* Toned down 3D for mobile */
@@ -323,15 +382,21 @@
         transform: none; /* No scaling */
         border: 2px solid var(--primary-color); /* Red border only */
       }
+
+      .red-square {
+        transform: scale(0.8);
+      }
     }
   </style>
 </head>
 <body>
-
+  <div class="logo-overlay" id="logoOverlay">
+    <img src="ansys-logo.jpg" alt="Ansys Logo" id="logo">
+  </div>
   <!-- Navbar -->
   <nav class="navbar">
     <div class="navbar-left">
-      <a href="index.html"><img src="ansys-logo.jpg" alt="Ansys Logo"></a>
+      <a href="index.html"><img src="ansys-logo.jpg" alt="Ansys Logo" class="ansys-logo" id="navbarLogo"></a>
     </div>
     <div class="navbar-right">
       <ul>
@@ -355,9 +420,12 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1>Ansys Tutorials by Ajayaram Burri</h1>
+    <canvas id="three-canvas"></canvas>
+    <!-- <div class="hero-content"> -->
+    <h1>Ansys Tutorials</h1>
     <p>Learn engineering simulation with hands-on tutorials from an industry expert with over 17 years of experience.</p>
     <a href="#get-started" class="cta-button">Start Learning Now</a>
+    <!-- </div> -->
   </section>
 
   <!-- Main Content -->
@@ -376,21 +444,6 @@
         <li><strong>Optimized Design:</strong> With advanced simulation capabilities, engineers can optimize their designs for better performance and durability, ensuring that products meet strict engineering standards.</li>
         <li><strong>Industry Standard:</strong> Ansys is widely used across industries like automotive, aerospace, electronics, and manufacturing, making it a crucial tool for engineering professionals.</li>
         <li><strong>Speed and Efficiency:</strong> With powerful computing resources, Ansys can simulate complex systems in a fraction of the time compared to traditional physical testing methods.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>About Ajayaram Burri</h2>
-      <p>Ajayaram Burri is an experienced professional with over 17 years of expertise in the field of Product Design and Development. His career has spanned various industries including Automotive, Heavy Engineering, and Electrical Integration. Ajayaram has contributed to major projects involving both light and heavy structures and has a deep understanding of CAD/CAE tools, particularly in areas like wire harness design, system integration, and electrical vehicle development.</p>
-    </div>
-    <div class="section">
-      <h2>Key Highlights of Ajayaram's Career</h2>
-      <ul>
-        <li>Masters in Energy Systems (M.Tech) from Jawaharlal Nehru Technological University.</li>
-        <li>Extensive experience in Electrical Vehicle Design, leading projects at Nikola Corporation in Fuel Cell Electric Vehicle technology.</li>
-        <li>Proven track record at Caterpillar Inc. designing electrical systems for Off-Highway Trucks and Hydraulic Mining Shovels.</li>
-        <li>Led teams and managed offshore work with L&T Technology Services, reducing costs and enhancing manufacturing processes.</li>
-        <li>Patent holder for innovative designs such as "Bullock Cart Automaton" and "Cascadable Fountain Head."</li>
       </ul>
     </div>
 
@@ -428,6 +481,91 @@
     <p>© 2025 Ansys Tutorials by Ajayaram Burri. All rights reserved.</p>
     <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Contact Us</a></p>
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script>
+    // Logo animation timeline
+    const tl = gsap.timeline();
+    tl.to("#logo", {
+      delay: 1,
+      duration: 2.5,
+      width: 65, // Match navbar logo size
+      x: -window.innerWidth / 2.108 + 48, // Adjust to left side (3rem padding)
+      y: -window.innerHeight / 2.14 + 16, // Adjust to top (1rem padding)
+      ease: "power2.inOut",
+    })
+    .to("#logoOverlay", {
+      opacity: -1,
+      duration: 1.35,
+      onComplete: () => {
+        document.getElementById("logoOverlay").style.display ="none";
+        document.getElementById("navbarLogo").style.opacity = 1;
+      }
+    }, "-=0.5");
 
+// Three.js Setup
+const canvas = document.getElementById('three-canvas');
+if (canvas) {
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.position.z = 4;
+
+  // Particle System
+  const particleGeometry = new THREE.BufferGeometry();
+  const particleCount = 100;
+  const positions = new Float32Array(particleCount * 3);
+  for (let i = 0; i < particleCount * 3; i += 3) {
+    positions[i] = (Math.random() - 0.5) * 10;
+    positions[i + 1] = (Math.random() - 0.5) * 10;
+    positions[i + 2] = (Math.random() - 0.5) * 10;
+  }
+  particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const particleMaterial = new THREE.PointsMaterial({ color: 0xED1C24, size: 0.05 });
+  const particles = new THREE.Points(particleGeometry, particleMaterial);
+  scene.add(particles);
+
+  // Lighting
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+  scene.add(ambientLight);
+
+  // Animation
+  function animate() {
+    requestAnimationFrame(animate);
+    particles.rotation.y += 0.002;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // Resize Handler
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+}
+
+// Red Square Animations
+function createSquare() {
+  const square = document.createElement('div');
+  square.className = 'red-square';
+  const size = Math.random() * 20 + 10;
+  square.style.width = `${size}px`;
+  square.style.height = `${size}px`;
+  square.style.left = `${Math.random() * 100}vw`;
+  square.style.bottom = '0';
+  document.querySelector('.hero').appendChild(square);
+  const duration = Math.random() * 3 + 2;
+  square.style.animation = `moveSquare ${duration}s linear`;
+  square.addEventListener('animationend', () => square.remove());
+}
+setInterval(createSquare, 500);
+
+// GSAP Animations for Hero Content
+gsap.from('.hero-content h1', { opacity: 0, y: 50, duration: 1, delay: 0.5 });
+gsap.from('.hero-content p', { opacity: 0, y: 50, duration: 1, delay: 0.7 });
+gsap.from('.hero-content .cta-button', { opacity: 0, y: 50, duration: 1, delay: 0.9 });
+</script>
 </body>
 </html>
